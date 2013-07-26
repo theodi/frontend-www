@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	  <%= stylesheet_link_tag    "application", :media => "all" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+		<title>ODI People | <%= yield :title %></title>
+  </head>
+
+  <body>	
+	<div id="wrapper">
+		<section>
+				<header>
+					<div class="container">
+						<h1><%= yield(:title) %></h1>
+					</div>
+				</header>
+
+				<div class='container main-default' id='main'>
+      	<%= yield %>
+				</div>
+			
+		</section>
+	</div>
+  </body>
+</html>
