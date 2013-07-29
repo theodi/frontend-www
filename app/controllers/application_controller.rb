@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   
   def content_api
     content_api ||= GdsApi::ContentApi.new(
-      Plek.current.find("contentapi")
+      Plek.current.find("contentapi"),
+      CONTENT_API_CREDENTIALS
     )
   end
   
