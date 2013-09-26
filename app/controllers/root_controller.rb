@@ -17,4 +17,19 @@ class RootController < ApplicationController
     render "section.html"
   end
   
+  def article    
+    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
+                  fetch_artefact(params[:slug], params[:edition], nil, nil)
+                  
+    @publication = PublicationPresenter.new(artefact)
+    respond_to do |format|
+      format.html do
+        render @publication.format
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+  
 end
