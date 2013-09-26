@@ -12,7 +12,9 @@ class PublicationPresenter
   ]
 
   PASS_THROUGH_DETAILS_KEYS = [
-    :body, :subtitle, :featured
+    :body, :subtitle, :featured, :image, :honorific_prefix, 
+    :honorific_suffix, :affiliation, :role, :description, :url,
+    :telephone, :email, :twitter, :linkedin, :github
   ]
   
   PASS_THROUGH_KEYS.each do |key|
