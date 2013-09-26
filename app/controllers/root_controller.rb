@@ -6,7 +6,6 @@ class RecordNotFound < StandardError
 end
 
 class RootController < ApplicationController
-  slimmer_template :wrapper
   
   def index
     @title = "Welcome"
