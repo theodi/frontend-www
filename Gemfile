@@ -19,7 +19,6 @@ gem 'statsd-ruby', '1.0.0', :require => 'statsd'
 gem 'sqlite3'
 gem 'plek', '1.4.0'
 gem 'gds-api-adapters', '7.1.0'
-gem 'slimmer'
 
 gem 'dotenv-rails'
 
@@ -36,6 +35,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'odlifier', github: 'theodi/odlifier'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
