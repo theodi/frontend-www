@@ -1,2 +1,27 @@
 module ApplicationHelper
+
+  def attachment(object, options={})
+    return '' if object.nil?
+    tag = case object['content_type']
+    when /^image/
+      image_tag(object['web_url'], options)
+    when /^video/
+      video_tag(object['web_url'], options.merge(controls: true))
+    end
+    caption = content_tag(:figcaption, asset_caption(object))
+    content_tag(:figure, tag + caption)
+  end
+
+  def asset_caption(asset)
+    title = h asset['title']
+    if asset['description'].present?
+      title += "; " + asset['description']
+    end    
+    byline = h(asset['attribution'])
+    byline = "By #{h asset['creator']}" if byline.blank? && asset['creator'].present? 
+    byline_link = link_to byline, asset['source'] if asset['source'] && byline    
+    license = Odlifier.translate(asset['license'], nil)
+    [title, byline_link, license].select{|x| !x.blank?}.join('. ').html_safe
+  end
+
 end

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  include Slimmer::Template
 
   protect_from_forgery
   

@@ -6,7 +6,6 @@ class RecordNotFound < StandardError
 end
 
 class RootController < ApplicationController
-  slimmer_template :wrapper
   
   def index
     @title = "Welcome"
@@ -16,6 +15,21 @@ class RootController < ApplicationController
     @artefacts = content_api.sorted_by(params[:section], "curated").results
     @title = params[:section].capitalize
     render "section.html"
+  end
+  
+  def article    
+    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
+                  fetch_artefact(params[:slug], params[:edition], nil, nil)
+                  
+    @publication = PublicationPresenter.new(artefact)
+    respond_to do |format|
+      format.html do
+        render @publication.format
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
   end
   
 end

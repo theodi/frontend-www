@@ -1,6 +1,6 @@
 <% content_for :title, @title %>
 <ul>
 	<% @artefacts.each do |artefact| %>
-		<li><%= link_to artefact.title, Plek.current.find(artefact.format.pluralize) + '/' + artefact.slug  %></li>
+		<li><%= link_to artefact.title, '/' + artefact.slug  %></li>
 	<% end %>
 </ul>
