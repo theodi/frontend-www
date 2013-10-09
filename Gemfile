@@ -14,11 +14,8 @@ gem 'thin'
 
 gem 'statsd-ruby', '1.0.0', :require => 'statsd'
 
-gem 'statsd-ruby', '1.0.0', :require => 'statsd'
-
 gem 'sqlite3'
-gem 'plek', '1.4.0'
-gem 'gds-api-adapters', '7.1.0'
+gem 'gds-api-adapters', :github => 'theodi/gds-api-adapters'
 
 gem 'dotenv-rails'
 
