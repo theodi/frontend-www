@@ -14,7 +14,7 @@ class PublicationPresenter
   PASS_THROUGH_DETAILS_KEYS = [
     :body, :subtitle, :featured, :image, :honorific_prefix, 
     :honorific_suffix, :affiliation, :role, :description, :url,
-    :telephone, :email, :twitter, :linkedin, :github
+    :telephone, :email, :twitter, :linkedin, :github, :content,
   ]
   
   PASS_THROUGH_KEYS.each do |key|
@@ -31,6 +31,14 @@ class PublicationPresenter
   
   def format
     @artefact["format"]
+  end
+  
+  def author
+    @artefact["author"]
+  end
+  
+  def created
+    DateTime.parse(@artefact["created_at"]).strftime("%Y-%m-%d")
   end
 
 end

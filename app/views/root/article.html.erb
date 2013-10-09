@@ -1,0 +1,27 @@
+<% content_for :title, "News" %>
+
+<div class="article-main">
+    <article class="article-body">
+      <h2><%= @publication.title %></h2>
+      <div class="article-meta">
+          <span class="date"><%= @publication.created %></span> by
+          <%= link_to @publication.author["name"], @publication.author["web_url"], :class => "author" %>
+      </div>
+      
+      <%= @publication.content.html_safe %>
+      
+    </article>
+</div>
+
+<aside class="article-sidebar">
+    <div class="module img-module" style="background-color: #4ee879;">
+        <%= image_tag "bus.jpg", alt: "Bill Thompson" %>
+        <h4 class="module-heading"><a href="#">Bill Thompson #ODIfridays</a></h4>
+        <span class="category">Community</span>
+    </div>
+
+    <div class="module module-light" style="background-color: #0092f6;">
+        <h4 class="module-heading"><a href="#">ODI London tech team week notes #44</a></h4>
+        <span class="category">Blog</span>
+    </div>
+</aside>
