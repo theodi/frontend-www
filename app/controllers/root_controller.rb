@@ -11,7 +11,8 @@ class RootController < ApplicationController
     @title = "Welcome"
   end
   
-  def section    
+  def section
+    @section = params[:section].parameterize
     @artefacts = content_api.sorted_by(params[:section], "curated").results
     @title = params[:section].capitalize
     render "section.html"
