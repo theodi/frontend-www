@@ -6,7 +6,7 @@ require File.expand_path('../config/application', __FILE__)
 
 Www::Application.load_tasks
 
-task :default => 'bootstrap'
+task :default => 'test'
 
 task :bootstrap => :environment do
   # Woosh!
