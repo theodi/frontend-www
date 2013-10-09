@@ -9,7 +9,7 @@ class ArtefactRetriever
     self.logger = logger
     self.statsd = statsd
     self.supported_formats = supported_formats ||
-      %w{news, person}
+      %w{news, person, article}
   end
 
   def fetch_artefact(slug, edition = nil, snac = nil, location = nil)
