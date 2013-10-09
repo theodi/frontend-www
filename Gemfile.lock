@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/theodi/gds-api-adapters.git
+  revision: cf3b40333b6dfb7742f11ba793a590a0b54070d0
+  specs:
+    gds-api-adapters (7.5.0)
+      link_header
+      lrucache (~> 0.1.1)
+      null_logger
+      plek
+      rest-client (~> 1.6.3)
+
+GIT
   remote: git://github.com/theodi/odlifier.git
   revision: 00bc05b1935cbc8c5fe56339904b3abdd50a2d98
   specs:
@@ -57,12 +68,6 @@ GEM
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
-    gds-api-adapters (7.1.0)
-      link_header
-      lrucache (~> 0.1.1)
-      null_logger
-      plek
-      rest-client (~> 1.6.3)
     hike (1.2.3)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -145,10 +150,9 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   dotenv-rails
   foreman
-  gds-api-adapters (= 7.1.0)
+  gds-api-adapters!
   jquery-rails
   odlifier!
-  plek (= 1.4.0)
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3
