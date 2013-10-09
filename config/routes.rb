@@ -1,7 +1,7 @@
 Www::Application.routes.draw do
   root :to => 'root#index'
-  get 'browse/:section', to: 'root#section'
-  get ':slug', to: 'root#article'
+  get ':section', to: 'root#section'
+  get ':section/:slug', to: 'root#article'
 
 
 end
