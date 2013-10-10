@@ -11,6 +11,11 @@
       <%= @publication.content.html_safe %>
       
     </article>
+    
+    <h3>Comments</h3>
+    
+    <%= juvia_comments @publication.slug %>
+  
 </div>
 
 <aside class="article-sidebar">
