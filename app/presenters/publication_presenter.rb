@@ -8,7 +8,7 @@ class PublicationPresenter
   end
   
   PASS_THROUGH_KEYS = [
-    :title, :details, :web_url
+    :title, :details, :web_url, :slug
   ]
 
   PASS_THROUGH_DETAILS_KEYS = [
