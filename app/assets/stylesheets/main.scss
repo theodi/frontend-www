@@ -1,0 +1,483 @@
+
+// Import bootstrap
+@import "bootstrap/bootstrap";
+
+/*------------------------------------*\
+    VARIABLES
+\*------------------------------------*/
+
+$odiBlue: #00b7ff;
+$odiOrange: #ff6700;
+$odiOrangeDark: #f06100;
+
+
+
+
+
+/*------------------------------------*\
+    BASE
+\*------------------------------------*/
+
+body {
+    color: #4d4d4d;
+    font-size: 18px;
+}
+
+
+
+/*------------------------------------*\
+    TYPOGRAPHY
+\*------------------------------------*/
+
+h1, h2, h3, h4 {
+    text-rendering: optimizelegibility;
+}
+
+h1, h2 {
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+.standfirst {
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 30px;
+    margin: 15px 0 20px 0;
+}
+
+p, blockquote {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 15px;
+}
+
+ul, ol {
+    margin-bottom: 15px;
+}
+
+
+/*------------------------------------*\
+    BUTTONS
+\*------------------------------------*/
+
+
+
+/*------------------------------------*\
+    HEADER
+\*------------------------------------*/
+
+/* shouldn't be necessary in future boostrap - https://github.com/twbs/bootstrap/issues/9382 */
+
+.navbar-form {
+    margin-bottom: 13px;
+    margin-top: 13px;
+    input[type=text] {
+        max-width: 150px;
+    }
+    input[type=submit] {
+        height: 34px;
+        margin-left: -3px;
+    }
+}
+
+#odi-logo{
+    height: 40px;
+    padding: 0;
+}
+
+.navbar-inverse li  {
+    border-left: 1px solid #707070;
+}
+
+.site-header {
+    input {
+        background: #666;
+        border: solid 1px #666;
+        border-radius: 0;
+        color: #000;
+        height: 34px;
+        &[type=submit] {
+            text-transform: uppercase;
+        }
+    }
+    ::-webkit-input-placeholder {
+        color: #000;
+    }
+
+    :-moz-placeholder {
+        color: #000;
+    }
+
+    :-ms-input-placeholder {
+        color: #000;
+    }
+}
+
+.nav {
+    a {
+        color: #333;
+        &:hover,
+        &:focus {
+            background: #181818;
+            color: #fff;
+            .caret {
+                border-top-color: $odiOrange;
+            }
+        }
+    }
+}
+
+/*------------------------------------*\
+    FOOTER
+\*------------------------------------*/
+
+.site-footer {
+    background-color: #000;
+    font-size: 0.88em;
+    color: #adaeaf;
+    margin-top: 55px;
+    padding-top: 40px;
+    padding-bottom: 52px;
+
+    a {
+        color: #adaeaf;
+        &:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+    p {
+        font-size: 16px;
+    }
+}
+
+.footer-logo {
+    background: url('logo-footer.png');
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 0 30px 0;
+    width: 204px;
+    height: 49px;
+}
+
+/*------------------------------------*\
+    PAGE
+\*------------------------------------*/
+
+.page-title {
+    background-color: $odiBlue;
+    color: #fff;
+    margin-bottom: 30px;
+    padding: 10px 0;
+
+    h1 {
+        margin: 10px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding-bottom: 0.1em;
+    }
+}
+
+
+/*------------------------------------*\
+    MODULES
+\*------------------------------------*/
+
+.home-module {
+    @extend .col-md-3;
+}
+
+.module {
+    border: solid 1px #ddd;
+    color: #000;
+    font-weight: bold;
+    padding: 25px 25px 27px 25px;
+    margin-bottom: 20px;
+
+    a {
+        color: #000;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .category {
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+}
+
+.module-heading {
+
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 25px;
+    margin-top: 0;
+
+}
+
+/* Is it an image or text module */
+
+.img-module {
+
+    .module-heading {
+
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 30px;
+        margin-bottom: 25px;
+        margin-top: 11px;
+
+    }
+
+    // Center images that may be smaller than the module
+    img {
+
+        display: block;
+        margin: 0 auto;
+
+    }
+
+}
+
+.module-light,
+.module-light a {
+    color: #fff;
+}
+
+
+/*------------------------------------*\
+    ARTICLE
+\*------------------------------------*/
+
+/* Article column layouts */
+
+.article-main {
+    @extend .col-md-8;
+    padding-right: 70px;
+}
+
+.article-sidebar {
+    @extend .col-md-4;
+}
+
+.article-full {
+    @extend .col-md-12;
+}
+
+/* Article components */
+
+.site-header .article-hero {
+
+    margin-bottom: 0;
+
+}
+
+.article-hero {
+    margin: -30px 0 30px;
+    position: relative;
+    text-align: center;
+
+    .hero {
+
+        margin-left: 15px;
+        margin-right: 15px;
+
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .headline {
+        color: #00d1af;
+        font-size: 80px;
+        font-weight: bold;
+        line-height: 70px;
+        padding: 100px 45px 130px 45px;
+        text-align: left;
+        margin: 0;
+
+    }
+
+    @media (min-width: 992px) {
+
+        .headline {
+
+            padding: 85px 45px 99px 45px;
+            min-height: 324px;
+
+        }
+
+    }
+
+    @media (min-width: 1200px) {
+
+        .headline {
+
+            padding: 114px 45px 140px 45px;
+            min-height: 394px;
+
+        }
+
+    }
+
+    @media (max-width: 979px) {
+
+        .headline {
+
+            font-size: 80px;
+            line-height: 70px;
+            padding: 48px 45px 60px 45px;
+            min-height: 249px;
+
+        }
+
+    }
+
+    @media (max-width:767px) {
+        .headline {
+            font-size: 55px;
+            line-height: 60px;
+            padding: 55px 30px 67px 30px;
+            min-height: 0;
+        }
+    }
+
+}
+
+.hero-label {
+    color: #fff;
+    font-weight: bold;
+    line-height: 20px;
+    position: absolute;
+    text-align: left;
+    bottom: 0;
+    p {
+        margin-bottom: 0;
+    }
+    .type {
+        font-size: 13px;
+        text-transform: uppercase;
+        line-height: 21px;
+    }
+    .annotation {
+        background: #000;
+        font-size: 18px;
+        padding: 10px 15px;
+    }
+}
+
+.hero-img {
+    background: #204855;
+    height: 400px;
+}
+
+.article-body {
+    li {
+        margin-bottom: 5px;
+        line-height: 24px;
+    }
+}
+
+.article-meta {
+    color: #8e8c8c;
+    font-size: 14px;
+}
+
+
+
+
+/*------------------------------------*\
+    FORMS
+\*------------------------------------*/
+
+
+
+
+
+/*------------------------------------*\
+    RESPONSIVE
+\*------------------------------------*/
+
+@media (max-width: 979px) {
+
+    .footer-nav .pull-right {
+        float: left;
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .site-header {
+        .navbar-form {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        .navbar-nav {
+            margin: 0 -15px;
+        }
+    }
+
+    .navbar-inverse {
+        li {
+            display: inline-block;
+        }
+    }
+
+    .navbar .pull-right {
+        float: left;
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 479px) {
+
+    /* Header */
+
+    .navbar-inverse .navbar-inner {
+        border-bottom: 1px solid #707070;
+    }
+
+    .navbar .nav.pull-right {
+        float: left;
+        display: block;
+        clear: both;
+    }
+
+    #topbar .navbar-inner {
+        margin: 0 -15px;
+    }
+
+    #topbar ul li {
+        &.search {
+            float: left;
+        }
+        a {
+            padding: 15px;
+        }
+    }
+
+    #main-nav {
+        a {
+            padding: 15px 15px 15px 0;
+        }
+    }
+
+    /* Footer */
+
+
+}
+
+
+
+
