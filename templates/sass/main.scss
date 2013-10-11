@@ -185,12 +185,75 @@ ul, ol {
 
 
 /*------------------------------------*\
-    MODULES
+    MASONRY MODULES (on landing pages)
 \*------------------------------------*/
 
-.home-module {
-    @extend .col-md-3;
+.grid {
+
+    padding-left: 15px;
+    padding-right: 15px;
+    @include box-sizing(border-box);
+
+    // Move the whole back to the left a bit, to compnesate for the gap
+    // you're adding between the blocks
+    margin-left: -1.5%;
+
+    @media (max-width: 767px) {
+
+        // Less than tablet portrait - one column
+        // So grid container needs to match left/right margins of rest of layout
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+
+        // Override the inline styles added by Masonry.js, to allow grid items to
+        // return to a 100% width one-column layout
+        height: auto !important;
+
+    }
+
 }
+
+.home-module {
+
+    list-style: none;
+    @include box-sizing(border-box);
+
+    // Create a gap between the masonry blocks
+    margin-left: 1.5%;
+
+    // Default the grid to two columns
+    width: 46.5%;
+
+    @media (min-width: 992px) {
+
+        // At large enough size, show three columns
+        // Note, Masonry can't add up! So work out your columns width and gaps
+        // by trial and error!
+        // (e.g. 33% should give you three columsn, but it won't...)
+        width: 30.5%;
+
+    }
+
+    @media (max-width: 767px) {
+
+        // Less than tablet portrait - one column
+        width: 100%;
+        margin-left: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        // Override the inline styles added by Masonry.js, to allow grid items to
+        // return to a 100% width one-column layout
+        position: static !important;
+
+    }
+
+}
+
+/*------------------------------------*\
+    MODULES
+\*------------------------------------*/
 
 .module {
     border: solid 1px #ddd;
@@ -210,6 +273,10 @@ ul, ol {
         font-size: 14px;
         text-transform: uppercase;
     }
+
+    // No extra gap above most headlines in modules
+    h2 { margin-top: 0; }
+
 }
 
 .module-heading {
@@ -380,10 +447,17 @@ ul, ol {
 }
 
 .article-body {
+
     li {
+
         margin-bottom: 5px;
         line-height: 24px;
+
     }
+
+    // Line top of articles up with top of sidebar
+    h2 { margin-top: 0; }
+
 }
 
 .article-meta {
