@@ -12,6 +12,10 @@
       <script src="javascripts/html5shiv.js"></script>
       <script src="javascripts/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Modernizr to detect CSS transitions etc., for Masonry animations -->
+    <script src="javascripts/modernizr.custom.js"></script>
+
 </head>
 
 <body>
@@ -111,7 +115,7 @@
         <div class="row">
 
             <!-- Upper blocks -->
-            <ul class="grid">
+            <ul class="grid effect-2" id="grid1">
 
                 <li class="home-module">
                     <div class="module module-light module-colour-10">
@@ -179,7 +183,7 @@
             </div>
 
             <!-- Lower blocks -->
-            <ul class="grid">
+            <ul class="grid effect-2" id="grid2">
 
                 <li class="home-module">
                     <div class="module module-light module-colour-10">
@@ -321,9 +325,11 @@
     <!-- Bootstrap JS -->
     <script src="javascripts/bootstrap-dropdown.js"></script>
 
-    <!-- Masonry, with script to check for image loading -->
+    <!-- Masonry and its required scripts -->
     <script src="javascripts/imagesloaded.pkgd.min.js"></script>
     <script src="javascripts/masonry.pkgd.min.js"></script>
+    <script src="javascripts/classie.js"></script>
+    <script src="javascripts/AnimOnScroll.js"></script>
 
     <!-- Layout (Masonry initialisation etc.) -->
     <script src="javascripts/layout.js"></script>

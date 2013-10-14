@@ -9,3 +9,15 @@ $('.grid').imagesLoaded(function() {
     });
 
 });
+
+new AnimOnScroll( document.getElementById('grid1'), {
+    minDuration : 0.4,
+    maxDuration : 0.7,
+    viewportFactor : 0.2
+});
+
+new AnimOnScroll( document.getElementById('grid2'), {
+    minDuration : 0.4,
+    maxDuration : 0.7,
+    viewportFactor : 0.2
+});

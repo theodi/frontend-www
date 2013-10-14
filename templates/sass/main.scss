@@ -265,6 +265,46 @@ ul, ol {
 
 }
 
+
+/*------------------------------------*\
+    MASONRY MODULES (animations)
+\*------------------------------------*/
+
+// From http://tympanus.net/codrops/2013/07/02/loading-effects-for-grid-items-with-css-animations/
+.grid li {
+
+    opacity: 0;
+}
+
+.grid li.shown,
+.no-js .grid li,
+.no-cssanimations .grid li {
+    opacity: 1;
+}
+
+/* Effect 2: Move Up */
+.grid.effect-2 li.animate {
+    -webkit-transform: translateY(200px);
+    -moz-transform: translateY(200px);
+    transform: translateY(200px);
+    -webkit-animation: moveUp 0.65s ease forwards;
+    -moz-animation: moveUp 0.65s ease forwards;
+    animation: moveUp 0.65s ease forwards;
+}
+
+@-webkit-keyframes moveUp {
+    to { -webkit-transform: translateY(0); opacity: 1; }
+}
+
+@-moz-keyframes moveUp {
+    to { -moz-transform: translateY(0); opacity: 1; }
+}
+
+@keyframes moveUp {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
 /*------------------------------------*\
     MODULES
 \*------------------------------------*/
