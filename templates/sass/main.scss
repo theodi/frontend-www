@@ -10,6 +10,23 @@ $odiBlue: #00b7ff;
 $odiOrange: #ff6700;
 $odiOrangeDark: #f06100;
 
+// Colour variables, primarily for home modules
+$odiColour1: #D50303;
+$odiColour2: $odiOrange;
+$odiColour3: #F8BB26;
+$odiColour4: #67EE67;
+$odiColour5: #0DBB37;
+$odiColour6: #036B56;
+$odiColour7: #05D2AA;
+$odiColour8: #38DDF8;
+$odiColour9: $odiBlue;
+$odiColour10: #178CFF;
+$odiColour11: #2254F3;
+$odiColour12: #691A4B;
+$odiColour13: #B03197;
+$odiColour14: #D73058;
+$odiColour15: #E5007C;
+$odiColour16: #EE3AAA;
 
 
 
@@ -190,6 +207,7 @@ ul, ol {
 
 .grid {
 
+    margin-top: 25px;
     padding-left: 15px;
     padding-right: 15px;
     @include box-sizing(border-box);
@@ -197,6 +215,12 @@ ul, ol {
     // Move the whole back to the left a bit, to compnesate for the gap
     // you're adding between the blocks
     margin-left: -1.5%;
+
+    @media (min-width: 992px) {
+
+        margin-left: 1.5%;
+
+    }
 
     @media (max-width: 767px) {
 
@@ -219,19 +243,22 @@ ul, ol {
     list-style: none;
     @include box-sizing(border-box);
 
-    // Create a gap between the masonry blocks
-    margin-left: 1.5%;
-
     // Default the grid to two columns
     width: 46.5%;
+    margin-left: 1.5%;
+    margin-right: 0;
 
     @media (min-width: 992px) {
 
         // At large enough size, show three columns
         // Note, Masonry can't add up! So work out your columns width and gaps
         // by trial and error!
-        // (e.g. 33% should give you three columsn, but it won't...)
+        // (e.g. 33% should give you three columns, but it won't...)
         width: 30.5%;
+
+        // Create a gap between the masonry blocks
+        margin-left: 0.75%;
+        margin-right: 0.75%;
 
     }
 
@@ -251,16 +278,33 @@ ul, ol {
 
 }
 
+// .grid {
+
+//     padding: 0;
+//     margin-left: 15px;
+//     margin-right: 15px;
+
+// }
+
+// .home-module {
+
+//     margin: 0;
+//     width: 33.33%;
+
+// }
+
 /*------------------------------------*\
     MODULES
 \*------------------------------------*/
 
 .module {
-    border: solid 1px #ddd;
+
     color: #000;
     font-weight: bold;
-    padding: 25px 25px 27px 25px;
+    padding: 25px 0 27px 0;
     margin-bottom: 20px;
+
+    min-height: 220px;
 
     a {
         color: #000;
@@ -270,12 +314,22 @@ ul, ol {
     }
 
     .category {
+
         font-size: 14px;
         text-transform: uppercase;
+        padding-left: 25px;
+        padding-right: 25px;
+
     }
 
-    // No extra gap above most headlines in modules
-    h2 { margin-top: 0; }
+    // Center images that may be smaller than the module
+    img {
+
+        display: block;
+        margin: 0 auto 20px;
+        max-width: 100%;
+
+    }
 
 }
 
@@ -286,30 +340,16 @@ ul, ol {
     line-height: 40px;
     margin-bottom: 25px;
     margin-top: 0;
+    padding-left: 25px;
+    padding-right: 25px;
 
 }
 
-/* Is it an image or text module */
+.module-subheading {
 
-.img-module {
-
-    .module-heading {
-
-        font-size: 30px;
-        font-weight: bold;
-        line-height: 30px;
-        margin-bottom: 25px;
-        margin-top: 11px;
-
-    }
-
-    // Center images that may be smaller than the module
-    img {
-
-        display: block;
-        margin: 0 auto;
-
-    }
+    font-size: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
 
 }
 
@@ -318,6 +358,67 @@ ul, ol {
     color: #fff;
 }
 
+.module-dark,
+.module-dark a {
+    color: #000;
+}
+
+// Colour classes for the modules
+.module-colour-1 { background-color: $odiColour1; }
+.module-colour-2 { background-color: $odiColour2; }
+.module-colour-3 { background-color: $odiColour3; }
+.module-colour-4 { background-color: $odiColour4; }
+.module-colour-5 { background-color: $odiColour5; }
+.module-colour-6 { background-color: $odiColour6; }
+.module-colour-7 { background-color: $odiColour7; }
+.module-colour-8 { background-color: $odiColour8; }
+.module-colour-9 { background-color: $odiColour9; }
+.module-colour-10 { background-color: $odiColour10; }
+.module-colour-11 { background-color: $odiColour11; }
+.module-colour-12 { background-color: $odiColour12; }
+.module-colour-13 { background-color: $odiColour13; }
+.module-colour-14 { background-color: $odiColour14; }
+.module-colour-15 { background-color: $odiColour15; }
+.module-colour-16 { background-color: $odiColour16; }
+
+// Module with background image
+.module-image-background {
+
+    background-repeat: no-repeat;
+    background-position: center 25px;
+
+    .module-heading {
+
+        // Center and uppercase the headline
+        text-transform: uppercase;
+        text-align: center;
+
+        // No vertical centering possible, so add enough padding so the background
+        // image can be seen
+        padding-top: 150px;
+        padding-bottom: 100px;
+
+    }
+
+}
+
+// Module with fullscreen image
+.module-image-fullbleed {
+
+    // Remove all borders so image can expand
+    padding: 0;
+    img, .module-heading { margin: 0 }
+
+    // Actually make the image fill the block
+    // This is basically compensating for column size rounding errors :()
+    img {
+
+        width: 100%;
+        height: auto;
+
+    }
+
+}
 
 /*------------------------------------*\
     ARTICLE
@@ -343,6 +444,13 @@ ul, ol {
 .site-header .article-hero {
 
     margin-bottom: 0;
+
+}
+
+.article-hero.within-header {
+
+    margin-bottom: 0;
+    margin-top: 0;
 
 }
 
