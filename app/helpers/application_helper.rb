@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def attachment(object, options={})
+  def attachment(object, caption = true, options={})
     return '' if object.nil?
     tag = case object['content_type']
     when /^image/
@@ -8,8 +8,12 @@ module ApplicationHelper
     when /^video/
       video_tag(object['web_url'], options.merge(controls: true))
     end
-    caption = content_tag(:figcaption, asset_caption(object))
-    content_tag(:figure, tag + caption)
+    if caption === true
+      caption = content_tag(:figcaption, asset_caption(object))
+      content_tag(:figure, tag + caption)
+    else
+      tag
+    end
   end
 
   def asset_caption(asset)

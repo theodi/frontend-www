@@ -14,8 +14,16 @@ class RootController < ApplicationController
   def section
     @section = params[:section].parameterize
     @artefacts = content_api.sorted_by(params[:section], "curated").results
-    @title = params[:section].capitalize
+    @title = params[:section].humanize.capitalize
     render "section.html"
+  end
+  
+  def page
+    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
+                  fetch_artefact(params[:slug], params[:edition], nil, nil)
+    
+    @publication = PublicationPresenter.new(artefact)
+    render "content/page"
   end
   
   def article    
@@ -25,7 +33,7 @@ class RootController < ApplicationController
     @publication = PublicationPresenter.new(artefact)
     respond_to do |format|
       format.html do
-        render @publication.format
+        render "content/#{@publication.format}"
       end
       format.json do
         render :json => @publication.to_json

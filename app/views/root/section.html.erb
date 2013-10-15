@@ -1,6 +1,10 @@
 <% content_for :title, @title %>
-<ul>
 	<% @artefacts.each do |artefact| %>
-	  <li><%= link_to artefact.title, send("#{@section}_article_path", artefact.slug) %>
+  	<div class="home-module">
+      <div class="module">
+          <h2><%= artefact.title %></h2>
+          <p>Example of a text block would go here</p>
+          <%= link_to "See more", send("#{@section}_article_path", artefact.slug), :class => "btn btn-primary" %>
+      </div>
+    </div>
 	<% end %>
-</ul>
