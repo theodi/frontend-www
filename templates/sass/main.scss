@@ -63,6 +63,10 @@ h3 {
     font-weight: normal;
     line-height: 30px;
     margin: 15px 0 20px 0;
+
+    // For any standfirst blocks at the very top of a page
+    &.no-title { margin-top: 0; }
+
 }
 
 p, blockquote {
@@ -431,6 +435,18 @@ ul, ol {
     }
 
 }
+
+
+/*------------------------------------*\
+    PEOPLE MODULES
+\*------------------------------------*/
+
+.people-team {
+
+    h2 { padding-left: 15px; }
+
+}
+
 
 /*------------------------------------*\
     ARTICLE
