@@ -16,3 +16,6 @@
 .powenv
 .powrc
 .DS_Store
+
+# Ignore Sass compilation cache
+.sass-cache
