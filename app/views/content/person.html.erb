@@ -1,0 +1,13 @@
+<% content_for :title, [@publication.honorific_prefix, @publication.title, @publication.honorific_suffix].join(" ") %>
+
+<div class='row-fluid'>
+	<div class='span8'>
+	  
+	  <h2><%= @publication.subtitle %></h2>
+	  
+	  <%= attachment @publication.image, false, :class => 'leader-image' %>
+	  
+	  <%= @publication.description.html_safe %>
+	  
+	</div>
+</div>
