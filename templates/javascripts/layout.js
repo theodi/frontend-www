@@ -32,50 +32,10 @@ if ($('#grid2').length) {
 
 }
 
-// Grids on people page
-if ($('#grid-people-team-board').length) {
+// Grid on people page
+if ($('#grid-people').length) {
 
-    new AnimOnScroll( document.getElementById('grid-people-team-board'), {
-        minDuration : 0.4,
-        maxDuration : 0.7,
-        viewportFactor : 0.2
-    });
-
-}
-
-if ($('#grid-people-team-executive').length) {
-
-    new AnimOnScroll( document.getElementById('grid-people-team-executive'), {
-        minDuration : 0.4,
-        maxDuration : 0.7,
-        viewportFactor : 0.2
-    });
-
-}
-
-if ($('#grid-people-team-commercial').length) {
-
-    new AnimOnScroll( document.getElementById('grid-people-team-commercial'), {
-        minDuration : 0.4,
-        maxDuration : 0.7,
-        viewportFactor : 0.2
-    });
-
-}
-
-if ($('#grid-people-team-technical').length) {
-
-    new AnimOnScroll( document.getElementById('grid-people-team-technical'), {
-        minDuration : 0.4,
-        maxDuration : 0.7,
-        viewportFactor : 0.2
-    });
-
-}
-
-if ($('#grid-people-team-operations').length) {
-
-    new AnimOnScroll( document.getElementById('grid-people-team-operations'), {
+    new AnimOnScroll( document.getElementById('grid-people'), {
         minDuration : 0.4,
         maxDuration : 0.7,
         viewportFactor : 0.2
