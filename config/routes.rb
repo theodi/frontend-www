@@ -5,7 +5,10 @@ Www::Application.routes.draw do
     :consultation_responses, :guides].each do |section|
     section_slug = section.to_s.dasherize
     get "#{section_slug}", to: 'root#list', as: "#{section}_section", :section => section_slug
+
     get "#{section_slug}/:slug", as: "#{section}_article", to: 'root#article', :section => section_slug
+
+    get "#{section_slug}/:slug/badge", as: "#{section}_badge", to: 'root#badge', :section => section_slug
   end  
   
   [:culture, :our_space, :dashboards, :membership, :certificates, :pg_certificate, :lunchtime_lectures, :newsroom, :virtual_tour].each do |page|
