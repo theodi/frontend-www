@@ -41,6 +41,12 @@ class RootController < ApplicationController
   def article    
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
                   fetch_artefact(params[:slug], params[:edition], nil, nil)
+    
+    # If the content type or tag doesn't match the slug, return 404
+    if artefact['format'] != params[:section].singularize && 
+        artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
+      raise ActionController::RoutingError.new('Not Found') 
+    end
                   
     @publication = PublicationPresenter.new(artefact)
     respond_to do |format|
