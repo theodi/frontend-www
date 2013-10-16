@@ -1,0 +1,47 @@
+<% content_for :title, @section['title'] %>
+
+<% content_for :hero do %>
+<section class="article-hero">
+    <div class="container">
+        <div class="row">
+            <div class="hero" style="background-color:#eb1976">
+                <img src="<%= @section['hero_image'] %>" />
+                <div class="hero-label">
+                    <div class="annotation">
+                        <span class="type">image:</span>
+                        <%= @section['hero_text'].html_safe %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<% end %>
+
+<ul class="grid effect-2" id="grid2">
+    
+    <% @section['links'].each do |link| %>
+
+    <li class="home-module">
+        <div class="module module-light module-colour-<%= link['colour'] %>">
+            <a href="<%= link['link'] %>">
+                <h1 class="module-heading"><%= link['title'] %></h1>
+                <p class="module-subheading"><%= link['text'] %></p>
+            </a>
+        </div>
+    </li>
+    
+    <% end %>
+
+</ul>
+
+<% content_for :extra_javascript do %>
+  <!-- Masonry and its required scripts -->
+  <script src="assets/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/masonry.pkgd.min.js"></script>
+  <script src="assets/classie.js"></script>
+  <script src="assets/AnimOnScroll.js"></script>
+
+  <!-- Layout (Masonry initialisation etc.) -->
+  <script src="assets/layout.js"></script>
+<% end %>

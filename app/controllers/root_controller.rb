@@ -11,11 +11,17 @@ class RootController < ApplicationController
     @title = "Welcome"
   end
   
-  def section
+  def list
     @section = params[:section].parameterize
     @artefacts = content_api.sorted_by(params[:section], "curated").results
     @title = params[:section].humanize.capitalize
-    render "section.html"
+    render "list.html"
+  end
+  
+  def section
+    sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
+    @section = sections[params[:section]]
+    render "section/section"
   end
   
   def page
@@ -23,7 +29,13 @@ class RootController < ApplicationController
                   fetch_artefact(params[:slug], params[:edition], nil, nil)
     
     @publication = PublicationPresenter.new(artefact)
-    render "content/page"
+    
+    begin
+      # Use a specific template if present
+      render "content/page-#{params[:slug]}"
+    rescue
+      render "content/page"
+    end
   end
   
   def article    

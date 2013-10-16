@@ -1,0 +1,110 @@
+about:
+    title: "About"
+    hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
+    hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
+    links:
+     -
+      title: "About the ODI"
+      text: "Here is some text"
+      link: "/about-us"
+      colour: 10
+     -
+      title: "Our space"
+      text: "Here is some text"
+      link: "/space"
+      colour: 12
+     -
+      title: "Data as culture"
+      text: "Here is some text"
+      link: "/culture"
+      colour: 3
+     -
+       title: "FAQ"
+       text: "Here is some text"
+       link: "/faq"
+       colour: 14
+     -
+       title: "Press Enquiries"
+       text: "Here is some text"
+       link: "/press"
+       colour: 7
+     -
+       title: "Contact us"
+       text: "Here is some text"
+       link: "/contact"
+       colour: 2
+get-involved:
+     title: "Get Involved"
+     hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
+     hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
+     links:
+      -
+       title: "Membership intro"
+       text: "Here is some text"
+       link: "/join-us"
+       colour: 10
+      -
+       title: "Start-ups"
+       text: "Here is some text"
+       link: "/start-ups"
+       colour: 12
+      -
+       title: "ODI Challenge Series"
+       text: "Here is some text"
+       link: "/challenge-series"
+       colour: 3
+learning:
+    title: "Learning"
+    hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
+    hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
+    links:
+     -
+      title: "Upcoming Courses"
+      text: "Here is some text"
+      link: "/courses"
+      colour: 10
+     -
+      title: "Post-Grad Intro"
+      text: "Here is some text"
+      link: "/pg-certificate"
+      colour: 12
+     -
+      title: "Upcoming Friday Lecture"
+      text: "Here is some text"
+      link: "/friday-lecture"
+      colour: 3
+     - 
+      title: "Library Intro"
+      text: "Here is some text"
+      link: "/library"
+      colour: 14
+whats-happening:
+    title: "What's Happening?"
+    hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
+    hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
+    links:
+     -
+      title: "Upcoming Events"
+      text: "Here is some text"
+      link: "/events"
+      colour: 10
+     -
+      title: "Calendar"
+      text: "Here is some text"
+      link: "/calendar"
+      colour: 12
+     -
+      title: "News"
+      text: "Here is some text"
+      link: "/news"
+      colour: 3
+     - 
+      title: "Friday Lunchtime Lectures"
+      text: "Here is some text"
+      link: "/lunchtime-lectures"
+      colour: 14
+     - 
+      title: "Hire the ODI space"
+      text: "Here is some text"
+      link: "/hire"
+      colour: 7
