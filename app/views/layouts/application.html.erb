@@ -88,12 +88,13 @@
         </div>
     </header> <!-- /site-header -->
 
-
     <header class="page-title">
         <div class="container">
             <h1><%= yield :title %></h1>
         </div>
     </header>
+    
+    <%= yield :hero %>
 
     <div class="container">
         <div class="row">
@@ -129,10 +130,8 @@
         </div>
     </footer>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="//code.jquery.com/jquery.js"></script>
-    <!-- Bootstrap JS -->
     <%= javascript_include_tag "application" %>
+    <%= yield :extra_javascript %>
 
   </body>
 </html>
