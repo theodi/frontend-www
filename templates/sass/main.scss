@@ -63,6 +63,10 @@ h3 {
     font-weight: normal;
     line-height: 30px;
     margin: 15px 0 20px 0;
+
+    // For any standfirst blocks at the very top of a page
+    &.no-title { margin-top: 0; }
+
 }
 
 p, blockquote {
@@ -105,12 +109,20 @@ ul, ol {
     padding: 0;
 }
 
+.navbar-inverse {
+
+    // This is the black nav at the very top
+    // Dropdowns in this should be above dropdowns in the white nav
+    z-index: 2000;
+
+}
+
 .navbar-inverse li  {
     border-left: 1px solid #707070;
 }
 
 .site-header {
-    input {
+    .navbar-form input {
         background: #666;
         border: solid 1px #666;
         border-radius: 0;
@@ -246,6 +258,7 @@ ul, ol {
         // (e.g. 33% should give you three columns, but it won't...)
         margin: 0;
         width: 33.33%;
+
     }
 
     @media (max-width: 767px) {
@@ -264,6 +277,7 @@ ul, ol {
     }
 
 }
+
 
 
 /*------------------------------------*\
@@ -432,6 +446,62 @@ ul, ol {
 
 }
 
+
+/*------------------------------------*\
+    PEOPLE MODULES
+\*------------------------------------*/
+
+.people-team {
+
+    .home-module {
+
+        @media (min-width: 992px) {
+
+            // Three columns
+            width: 33.33%;
+
+        }
+
+        @media (min-width: 1200px) {
+
+            // Four columns
+            width: 25%;
+
+        }
+
+    }
+
+    .home-module > div {
+
+        // Two columns
+        min-height: 455px;
+
+        @media (min-width: 992px) {
+
+            // Three columns
+            min-height: 455px;
+
+        }
+
+        @media (min-width: 1200px) {
+
+            // Three smaller columns
+            min-height: 485px;
+
+        }
+
+        @media (max-width: 767px) {
+
+            // Less than tablet portrait - one column
+            min-height: 0;
+
+        }
+
+    }
+
+}
+
+
 /*------------------------------------*\
     ARTICLE
 \*------------------------------------*/
@@ -592,9 +662,119 @@ ul, ol {
     FORMS
 \*------------------------------------*/
 
+.dropdown-menu-button {
 
+    z-index: 2000;
+    position: relative;
 
+}
 
+#login, #register {
+
+    position: absolute;
+    left: auto;
+    right: 0;
+    width: 450px;
+    padding: 30px 25px;
+    background: $odiOrange;
+    color: white;
+}
+
+#login label, #register label {
+
+    font-size: 19px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    display: block;
+
+}
+
+#login input, #register input {
+
+    outline: none;
+
+}
+
+#login input[type="text"], #register input[type="text"],
+#login input[type="email"], #register input[type="email"],
+#login input[type="password"], #register input[type="password"] {
+
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: 1px solid white;
+    background: #ff954d;
+    height: 60px;
+    padding: 0 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 20px;
+
+}
+
+#login .form-field-inline input[type=checkbox],
+#register .form-field-inline input[type=checkbox] {
+
+    margin: -2px 0 0 0;
+    height: auto;
+
+}
+
+#login .form-field-inline label,
+#register .form-field-inline label {
+
+    font-size: 14px;
+    color: #fff;
+    display: inline;
+
+}
+
+#login .form-field-inline, #register .form-field-inline {
+
+    float: left;
+    margin: 3px 0 0 0;
+
+}
+
+#login .form-field-inline .forgot-password, #register .form-field-inline .forgot-password {
+
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    margin: 0 0 0 17px;
+    padding: 0;
+
+}
+
+#login .form-field-inline label:hover, #register .form-field-inline label:hover {
+
+    text-decoration: underline;
+
+}
+
+#login a:hover, #login a:focus,
+#register a:hover, #register a:focus {
+
+    background: none;
+
+}
+
+label, select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
+
+    cursor: pointer;
+
+}
+
+#login .btn-primary, #register .btn-primary {
+
+    float: right;
+    background: #dc4810;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-top: 3px;
+
+}
 
 /*------------------------------------*\
     RESPONSIVE
