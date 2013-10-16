@@ -258,6 +258,7 @@ ul, ol {
         // (e.g. 33% should give you three columns, but it won't...)
         margin: 0;
         width: 33.33%;
+
     }
 
     @media (max-width: 767px) {
@@ -276,6 +277,7 @@ ul, ol {
     }
 
 }
+
 
 
 /*------------------------------------*\
@@ -451,6 +453,24 @@ ul, ol {
 
 .people-team {
 
+    .home-module {
+
+        @media (min-width: 992px) {
+
+            // Three columns
+            width: 33.33%;
+
+        }
+
+        @media (min-width: 1200px) {
+
+            // Four columns
+            width: 25%;
+
+        }
+
+    }
+
     .home-module > div {
 
         // Two columns
@@ -458,7 +478,7 @@ ul, ol {
 
         @media (min-width: 992px) {
 
-            // At large enough size, show three columns
+            // Three columns
             min-height: 455px;
 
         }
@@ -466,7 +486,7 @@ ul, ol {
         @media (min-width: 1200px) {
 
             // Three smaller columns
-            min-height: 431px;
+            min-height: 485px;
 
         }
 
