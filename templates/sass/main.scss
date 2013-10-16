@@ -55,24 +55,61 @@ h1, h2 {
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 22px;
+    margin: 30px 0 10px
 }
 
 .standfirst {
     font-size: 22px;
     font-weight: normal;
     line-height: 30px;
-    margin: 15px 0 20px 0;
+    margin: 15px 0 40px 0;
+    color: #8e8c8c;
 }
 
-p, blockquote {
+p {
     font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 15px;
+    line-height: 26px;
+    margin-bottom: 20px;
+
+}
+
+blockquote {
+    border-left: none;
+    font-size: 22px;
+margin: 10px 20px;
+padding: 0.5em 10px;
+quotes: "\201C" "\201D" "\2018" "\2019";
+ color: #8e8c8c;
+
+    p {
+  display: inline;
+  }
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 10px;
+  vertical-align: -0.4em;
+}
+
+small, figcaption {
+
+font-size: 85%;
 }
 
 ul, ol {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+
+}
+
+hr.heavy {
+border: 0;
+height: 5px;
+background: url(images/divider.png);
 }
 
 
@@ -580,9 +617,34 @@ ul, ol {
 
 }
 
+figure {
+
+    margin: 0 20px 20px 0;
+    float: left;
+
+    img {
+      margin: 0 0 10px;
+      max-width: 100%;
+    }
+
+    figcaption {
+        background-color: #dadada;
+        padding: 3px 6px;
+
+    }
+}
+
 .article-meta {
     color: #8e8c8c;
     font-size: 14px;
+}
+
+table {
+    border-top: 2px solid #dadada;
+
+    thead {
+        background-color: #f9f9f9;
+    }
 }
 
 
