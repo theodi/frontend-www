@@ -1,0 +1,45 @@
+<% content_for :title, @title %>
+<div class="people-team">
+  
+  <ul class="grid effect-2" id="grid-people">
+	<% @teams.each do |k,team| %>
+	  <% team[:people].each do |person| %>
+	  <li class="home-module">
+        <div class="module module-light module-colour-<%= team[:colour] %>">
+            <a href="<%= team_article_path(person.slug) %>">
+                <%= image_tag person.details.square, size: "180x180", alt: person.title %>
+                <h1 class="module-heading"><%= person.title %></h1>
+                <p class="module-subheading"><%= person.details.role %></p>
+                <span class="category"><%= team[:name] %></span>
+            </a>
+        </div>
+    </li>
+    <% end %>
+	<% end %>
+	</ul>
+	
+</div>
+
+<% content_for :extra_javascript do %>
+  <!-- Masonry and its required scripts -->
+  <script src="assets/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/masonry.pkgd.min.js"></script>
+  <script src="assets/classie.js"></script>
+  <script src="assets/AnimOnScroll.js"></script>
+
+  <!-- Layout (Masonry initialisation etc.) -->
+  <script src="assets/layout.js"></script>
+  
+  <script>
+  // Grid on people page
+  if ($('#grid-people').length) {
+
+      new AnimOnScroll( document.getElementById('grid-people'), {
+          minDuration : 0.4,
+          maxDuration : 0.7,
+          viewportFactor : 0.2
+      });
+
+  }
+  </script>
+<% end %>
