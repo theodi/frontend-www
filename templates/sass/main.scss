@@ -75,32 +75,46 @@ p {
     line-height: 26px;
     margin-bottom: 20px;
 
+    
+    a {
+        @include transition(all 0.5s);
+    }
+
+    a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid $odiOrangeDark;
+    color: $odiOrangeDark;
+    }
+
 }
 
 blockquote {
     border-left: none;
-    font-size: 22px;
-margin: 10px 20px;
-padding: 0.5em 10px;
+margin: 10px 0;
+padding: 0.5em 0;
 quotes: "\201C" "\201D" "\2018" "\2019";
  color: #8e8c8c;
 
     p {
   display: inline;
   }
+
+  small {
+    padding-top: 15px;
+  }
 }
 
 blockquote:before {
   color: #ccc;
   content: open-quote;
-  font-size: 4em;
+  font-size: 4.5em;
   line-height: 0.1em;
-  margin-right: 10px;
+  margin-right: 6px;
+  margin-left: -3px;
   vertical-align: -0.4em;
 }
 
-small, figcaption {
-
+figcaption {
 font-size: 85%;
 }
 
@@ -108,6 +122,8 @@ ul, ol {
     margin-bottom: 30px;
 
 }
+
+
 
 hr.heavy {
 border: 0;
@@ -398,9 +414,9 @@ background: url(images/divider.png);
 .module-heading {
 
     font-weight: bold;
-    font-size: 40px;
-    line-height: 40px;
-    margin-bottom: 25px;
+    font-size: 35px;
+    line-height: 38px;
+    margin-bottom: 20px;
     margin-top: 0;
     padding-left: 25px;
     padding-right: 25px;
@@ -409,8 +425,8 @@ background: url(images/divider.png);
 
 .module-subheading {
 
-    font-size: 25px;
-    padding-left: 25px;
+    font-size: 21px;
+    padding-left: 23px;
     padding-right: 25px;
 
 }
@@ -688,19 +704,25 @@ background: url(images/divider.png);
 
 figure {
 
-    margin: 0 20px 20px 0;
-    float: left;
+    margin: 0 0 10px 0;
 
     img {
-      margin: 0 0 10px;
+      margin: 0;
       max-width: 100%;
     }
 
     figcaption {
-        background-color: #dadada;
-        padding: 3px 6px;
+        background-color: $odiBlue;
+        color: #fff;
+        font-weight: bold;
+        padding: 5px 10px;
 
     }
+}
+
+figure.pull-right {
+
+    margin-left: 10px;
 }
 
 .article-meta {

@@ -1652,7 +1652,9 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
-  user-select: none; }
+  user-select: none;
+  -webkit-box-shadow: 1px 1px #acabab;
+  box-shadow: 1px 1px #acabab; }
   .btn:focus {
     outline: thin dotted #333;
     outline: 5px auto -webkit-focus-ring-color;
@@ -1695,7 +1697,9 @@ textarea.input-lg, .input-group-lg > textarea.form-control,
 .btn-primary {
   color: white;
   background-color: #ff6700;
-  border-color: #e65d00; }
+  border-color: #e65d00;
+  -webkit-box-shadow: 1px 1px #c25002;
+  box-shadow: 1px 1px #c25002; }
   .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
     color: white;
     background-color: #d65700; }
@@ -4931,26 +4935,35 @@ p {
   font-size: 18px;
   line-height: 26px;
   margin-bottom: 20px; }
+  p a {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s; }
+  p a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #f06100;
+    color: #f06100; }
 
 blockquote {
   border-left: none;
-  font-size: 22px;
-  margin: 10px 20px;
-  padding: 0.5em 10px;
+  margin: 10px 0;
+  padding: 0.5em 0;
   quotes: "\201C" "\201D" "\2018" "\2019";
   color: #8e8c8c; }
   blockquote p {
     display: inline; }
+  blockquote small {
+    padding-top: 15px; }
 
 blockquote:before {
   color: #ccc;
   content: open-quote;
-  font-size: 4em;
+  font-size: 4.5em;
   line-height: 0.1em;
-  margin-right: 10px;
+  margin-right: 6px;
+  margin-left: -3px;
   vertical-align: -0.4em; }
 
-small, figcaption {
+figcaption {
   font-size: 85%; }
 
 ul, ol {
@@ -5148,16 +5161,16 @@ hr.heavy {
 
 .module-heading {
   font-weight: bold;
-  font-size: 40px;
-  line-height: 40px;
-  margin-bottom: 25px;
+  font-size: 35px;
+  line-height: 38px;
+  margin-bottom: 20px;
   margin-top: 0;
   padding-left: 25px;
   padding-right: 25px; }
 
 .module-subheading {
-  font-size: 25px;
-  padding-left: 25px;
+  font-size: 21px;
+  padding-left: 23px;
   padding-right: 25px; }
 
 .module-light,
@@ -5336,14 +5349,18 @@ hr.heavy {
   margin-top: 0; }
 
 figure {
-  margin: 0 20px 20px 0;
-  float: left; }
+  margin: 0 0 10px 0; }
   figure img {
-    margin: 0 0 10px;
+    margin: 0;
     max-width: 100%; }
   figure figcaption {
-    background-color: #dadada;
-    padding: 3px 6px; }
+    background-color: #00b7ff;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px; }
+
+figure.pull-right {
+  margin-left: 10px; }
 
 .article-meta {
   color: #8e8c8c;
