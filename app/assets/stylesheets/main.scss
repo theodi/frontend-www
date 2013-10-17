@@ -48,6 +48,7 @@ body {
 
 h1, h2, h3, h4 {
     text-rendering: optimizelegibility;
+    clear: both;
 }
 
 h1, h2 {
@@ -55,7 +56,8 @@ h1, h2 {
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 22px;
+    margin: 30px 0 10px
 }
 
 .standfirst {
@@ -63,16 +65,70 @@ h3 {
     font-weight: normal;
     line-height: 30px;
     margin: 15px 0 20px 0;
+
+    // For any standfirst blocks at the very top of a page
+    &.no-title { margin-top: 0; }
 }
 
-p, blockquote {
+p {
     font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 15px;
+    line-height: 26px;
+    margin-bottom: 20px;
+
+    
+    a {
+        @include transition(all 0.5s);
+    }
+
+    a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid $odiOrangeDark;
+    color: $odiOrangeDark;
+    }
+
+}
+
+blockquote {
+    border-left: none;
+margin: 10px 0;
+padding: 0.5em 0;
+quotes: "\201C" "\201D" "\2018" "\2019";
+ color: #8e8c8c;
+
+    p {
+  display: inline;
+  }
+
+  small {
+    padding-top: 15px;
+  }
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4.5em;
+  line-height: 0.1em;
+  margin-right: 6px;
+  margin-left: -3px;
+  vertical-align: -0.4em;
+}
+
+figcaption {
+font-size: 85%;
 }
 
 ul, ol {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
+
+}
+
+
+
+hr.heavy {
+border: 0;
+height: 5px;
+background: url(images/divider.png);
 }
 
 
@@ -105,12 +161,20 @@ ul, ol {
     padding: 0;
 }
 
+.navbar-inverse {
+
+    // This is the black nav at the very top
+    // Dropdowns in this should be above dropdowns in the white nav
+    z-index: 2000;
+
+}
+
 .navbar-inverse li  {
     border-left: 1px solid #707070;
 }
 
 .site-header {
-    input {
+    .navbar-form input {
         background: #666;
         border: solid 1px #666;
         border-radius: 0;
@@ -172,7 +236,7 @@ ul, ol {
 }
 
 .footer-logo {
-    background: url('logo-footer.png');
+    background: url('../images/logo-footer.png');
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -246,6 +310,7 @@ ul, ol {
         // (e.g. 33% should give you three columns, but it won't...)
         margin: 0;
         width: 33.33%;
+
     }
 
     @media (max-width: 767px) {
@@ -264,6 +329,7 @@ ul, ol {
     }
 
 }
+
 
 
 /*------------------------------------*\
@@ -348,9 +414,9 @@ ul, ol {
 .module-heading {
 
     font-weight: bold;
-    font-size: 40px;
-    line-height: 40px;
-    margin-bottom: 25px;
+    font-size: 35px;
+    line-height: 38px;
+    margin-bottom: 20px;
     margin-top: 0;
     padding-left: 25px;
     padding-right: 25px;
@@ -359,8 +425,8 @@ ul, ol {
 
 .module-subheading {
 
-    font-size: 25px;
-    padding-left: 25px;
+    font-size: 21px;
+    padding-left: 23px;
     padding-right: 25px;
 
 }
@@ -431,6 +497,62 @@ ul, ol {
     }
 
 }
+
+
+/*------------------------------------*\
+    PEOPLE MODULES
+\*------------------------------------*/
+
+.people-team {
+
+    .home-module {
+
+        @media (min-width: 992px) {
+
+            // Three columns
+            width: 33.33%;
+
+        }
+
+        @media (min-width: 1200px) {
+
+            // Four columns
+            width: 25%;
+
+        }
+
+    }
+
+    .home-module > div {
+
+        // Two columns
+        min-height: 455px;
+
+        @media (min-width: 992px) {
+
+            // Three columns
+            min-height: 455px;
+
+        }
+
+        @media (min-width: 1200px) {
+
+            // Three smaller columns
+            min-height: 485px;
+
+        }
+
+        @media (max-width: 767px) {
+
+            // Less than tablet portrait - one column
+            min-height: 0;
+
+        }
+
+    }
+
+}
+
 
 /*------------------------------------*\
     ARTICLE
@@ -580,9 +702,40 @@ ul, ol {
 
 }
 
+figure {
+
+    margin: 0 0 10px 0;
+
+    img {
+      margin: 0;
+      max-width: 100%;
+    }
+
+    figcaption {
+        background-color: $odiBlue;
+        color: #fff;
+        font-weight: bold;
+        padding: 5px 10px;
+
+    }
+}
+
+figure.pull-right {
+
+    margin-left: 10px;
+}
+
 .article-meta {
     color: #8e8c8c;
     font-size: 14px;
+}
+
+table {
+    border-top: 2px solid #dadada;
+
+    thead {
+        background-color: #f9f9f9;
+    }
 }
 
 
@@ -592,9 +745,119 @@ ul, ol {
     FORMS
 \*------------------------------------*/
 
+.dropdown-menu-button {
 
+    z-index: 2000;
+    position: relative;
 
+}
 
+#login, #register {
+
+    position: absolute;
+    left: auto;
+    right: 0;
+    width: 450px;
+    padding: 30px 25px;
+    background: $odiOrange;
+    color: white;
+}
+
+#login label, #register label {
+
+    font-size: 19px;
+    font-weight: normal;
+    margin-bottom: 10px;
+    display: block;
+
+}
+
+#login input, #register input {
+
+    outline: none;
+
+}
+
+#login input[type="text"], #register input[type="text"],
+#login input[type="email"], #register input[type="email"],
+#login input[type="password"], #register input[type="password"] {
+
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: 1px solid white;
+    background: #ff954d;
+    height: 60px;
+    padding: 0 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 20px;
+
+}
+
+#login .form-field-inline input[type=checkbox],
+#register .form-field-inline input[type=checkbox] {
+
+    margin: -2px 0 0 0;
+    height: auto;
+
+}
+
+#login .form-field-inline label,
+#register .form-field-inline label {
+
+    font-size: 14px;
+    color: #fff;
+    display: inline;
+
+}
+
+#login .form-field-inline, #register .form-field-inline {
+
+    float: left;
+    margin: 3px 0 0 0;
+
+}
+
+#login .form-field-inline .forgot-password, #register .form-field-inline .forgot-password {
+
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    margin: 0 0 0 17px;
+    padding: 0;
+
+}
+
+#login .form-field-inline label:hover, #register .form-field-inline label:hover {
+
+    text-decoration: underline;
+
+}
+
+#login a:hover, #login a:focus,
+#register a:hover, #register a:focus {
+
+    background: none;
+
+}
+
+label, select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
+
+    cursor: pointer;
+
+}
+
+#login .btn-primary, #register .btn-primary {
+
+    float: right;
+    background: #dc4810;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-top: 3px;
+
+}
 
 /*------------------------------------*\
     RESPONSIVE
