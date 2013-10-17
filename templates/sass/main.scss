@@ -656,6 +656,23 @@ ul, ol {
 }
 
 
+/*------------------------------------*\
+    FORMS
+\*------------------------------------*/
+
+.list-body {
+
+    // Two thirds of the page
+    @extend .col-md-8;
+
+}
+
+.list-aside {
+
+    // One third of the page
+    @extend .col-md-4;
+
+}
 
 
 /*------------------------------------*\

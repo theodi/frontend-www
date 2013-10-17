@@ -894,11 +894,13 @@ pre code {
 .col-md-3,
 .col-md-4,
 .article-sidebar,
+.list-aside,
 .col-md-5,
 .col-md-6,
 .col-md-7,
 .col-md-8,
 .article-main,
+.list-body,
 .col-md-9,
 .col-md-10,
 .col-md-11,
@@ -1255,11 +1257,13 @@ pre code {
   .col-md-3,
   .col-md-4,
   .article-sidebar,
+  .list-aside,
   .col-md-5,
   .col-md-6,
   .col-md-7,
   .col-md-8,
   .article-main,
+  .list-body,
   .col-md-9,
   .col-md-10,
   .col-md-11 {
@@ -1282,7 +1286,7 @@ pre code {
   }
 
   /* line 215, ../sass/bootstrap/_grid.scss */
-  .col-md-4, .article-sidebar {
+  .col-md-4, .article-sidebar, .list-aside {
     width: 33.33333%;
   }
 
@@ -1302,7 +1306,7 @@ pre code {
   }
 
   /* line 219, ../sass/bootstrap/_grid.scss */
-  .col-md-8, .article-main {
+  .col-md-8, .article-main, .list-body {
     width: 66.66667%;
   }
 
@@ -8087,13 +8091,16 @@ ul, ol {
 /*------------------------------------*\
     FORMS
 \*------------------------------------*/
-/* line 665, ../sass/main.scss */
+/*------------------------------------*\
+    FORMS
+\*------------------------------------*/
+/* line 682, ../sass/main.scss */
 .dropdown-menu-button {
   z-index: 2000;
   position: relative;
 }
 
-/* line 672, ../sass/main.scss */
+/* line 689, ../sass/main.scss */
 #login, #register {
   position: absolute;
   left: auto;
@@ -8104,7 +8111,7 @@ ul, ol {
   color: white;
 }
 
-/* line 683, ../sass/main.scss */
+/* line 700, ../sass/main.scss */
 #login label, #register label {
   font-size: 19px;
   font-weight: normal;
@@ -8112,12 +8119,12 @@ ul, ol {
   display: block;
 }
 
-/* line 692, ../sass/main.scss */
+/* line 709, ../sass/main.scss */
 #login input, #register input {
   outline: none;
 }
 
-/* line 700, ../sass/main.scss */
+/* line 717, ../sass/main.scss */
 #login input[type="text"], #register input[type="text"],
 #login input[type="email"], #register input[type="email"],
 #login input[type="password"], #register input[type="password"] {
@@ -8134,14 +8141,14 @@ ul, ol {
   font-size: 20px;
 }
 
-/* line 717, ../sass/main.scss */
+/* line 734, ../sass/main.scss */
 #login .form-field-inline input[type=checkbox],
 #register .form-field-inline input[type=checkbox] {
   margin: -2px 0 0 0;
   height: auto;
 }
 
-/* line 725, ../sass/main.scss */
+/* line 742, ../sass/main.scss */
 #login .form-field-inline label,
 #register .form-field-inline label {
   font-size: 14px;
@@ -8149,13 +8156,13 @@ ul, ol {
   display: inline;
 }
 
-/* line 733, ../sass/main.scss */
+/* line 750, ../sass/main.scss */
 #login .form-field-inline, #register .form-field-inline {
   float: left;
   margin: 3px 0 0 0;
 }
 
-/* line 740, ../sass/main.scss */
+/* line 757, ../sass/main.scss */
 #login .form-field-inline .forgot-password, #register .form-field-inline .forgot-password {
   display: block;
   font-size: 14px;
@@ -8164,23 +8171,23 @@ ul, ol {
   padding: 0;
 }
 
-/* line 750, ../sass/main.scss */
+/* line 767, ../sass/main.scss */
 #login .form-field-inline label:hover, #register .form-field-inline label:hover {
   text-decoration: underline;
 }
 
-/* line 757, ../sass/main.scss */
+/* line 774, ../sass/main.scss */
 #login a:hover, #login a:focus,
 #register a:hover, #register a:focus {
   background: none;
 }
 
-/* line 763, ../sass/main.scss */
+/* line 780, ../sass/main.scss */
 label, select, button, input[type="button"], input[type="reset"], input[type="submit"], input[type="radio"], input[type="checkbox"] {
   cursor: pointer;
 }
 
-/* line 769, ../sass/main.scss */
+/* line 786, ../sass/main.scss */
 #login .btn-primary, #register .btn-primary {
   float: right;
   background: #dc4810;
@@ -8193,29 +8200,29 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
     RESPONSIVE
 \*------------------------------------*/
 @media (max-width: 979px) {
-  /* line 785, ../sass/main.scss */
+  /* line 802, ../sass/main.scss */
   .footer-nav .pull-right {
     float: left;
     width: 100%;
   }
 }
 @media (max-width: 767px) {
-  /* line 794, ../sass/main.scss */
+  /* line 811, ../sass/main.scss */
   .site-header .navbar-form {
     margin-bottom: 0;
     margin-top: 0;
   }
-  /* line 798, ../sass/main.scss */
+  /* line 815, ../sass/main.scss */
   .site-header .navbar-nav {
     margin: 0 -15px;
   }
 
-  /* line 804, ../sass/main.scss */
+  /* line 821, ../sass/main.scss */
   .navbar-inverse li {
     display: inline-block;
   }
 
-  /* line 809, ../sass/main.scss */
+  /* line 826, ../sass/main.scss */
   .navbar .pull-right {
     float: left;
     width: 100%;
@@ -8223,33 +8230,33 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
 }
 @media (max-width: 479px) {
   /* Header */
-  /* line 821, ../sass/main.scss */
+  /* line 838, ../sass/main.scss */
   .navbar-inverse .navbar-inner {
     border-bottom: 1px solid #707070;
   }
 
-  /* line 825, ../sass/main.scss */
+  /* line 842, ../sass/main.scss */
   .navbar .nav.pull-right {
     float: left;
     display: block;
     clear: both;
   }
 
-  /* line 831, ../sass/main.scss */
+  /* line 848, ../sass/main.scss */
   #topbar .navbar-inner {
     margin: 0 -15px;
   }
 
-  /* line 836, ../sass/main.scss */
+  /* line 853, ../sass/main.scss */
   #topbar ul li.search {
     float: left;
   }
-  /* line 839, ../sass/main.scss */
+  /* line 856, ../sass/main.scss */
   #topbar ul li a {
     padding: 15px;
   }
 
-  /* line 845, ../sass/main.scss */
+  /* line 862, ../sass/main.scss */
   #main-nav a {
     padding: 15px 15px 15px 0;
   }
