@@ -79,6 +79,15 @@ ul, ol {
     margin-bottom: 15px;
 }
 
+hr.heavy {
+
+    border: 0;
+    height: 5px;
+    background: url(../images/divider.png);
+    clear: both;
+
+ }
+
 
 /*------------------------------------*\
     BUTTONS
@@ -657,7 +666,7 @@ ul, ol {
 
 
 /*------------------------------------*\
-    FORMS
+    LISTING PAGES (News etc.)
 \*------------------------------------*/
 
 .list-body {
@@ -665,12 +674,30 @@ ul, ol {
     // Two thirds of the page
     @extend .col-md-8;
 
+    margin-bottom: 20px;
+
 }
 
 .list-aside {
 
     // One third of the page
     @extend .col-md-4;
+
+}
+
+.list-item {
+
+    h2 {
+
+        line-height: 40px;
+
+    }
+
+    .date { font-size: 20px; }
+
+    .date, .meta { margin-bottom: 5px; }
+
+    .more { margin-top: 20px; }
 
 }
 
