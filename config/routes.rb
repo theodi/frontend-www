@@ -4,7 +4,7 @@ Www::Application.routes.draw do
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :procurement, :organizations, :nodes,
     :consultation_responses, :guides].each do |section|
     section_slug = section.to_s.dasherize
-    get "#{section_slug}", to: 'root#list', as: "#{section}_section", :section => section_slug
+    get "#{section_slug}", as: "#{section}_section", to: "root##{section}_list", :section => section_slug
 
     get "#{section_slug}/:slug", as: "#{section}_article", to: 'root#article', :section => section_slug
 
