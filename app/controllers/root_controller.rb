@@ -6,16 +6,21 @@ class RecordNotFound < StandardError
 end
 
 class RootController < ApplicationController
+  
+  def action_missing(name, *args, &block)
+    if name.to_s =~ /^(.*)_list$/
+      @section = params[:section].parameterize
+      @artefacts = content_api.sorted_by(params[:section], "curated").results
+      @title = params[:section].humanize.capitalize
+      render "list/list.html"
+    else
+      super
+    end
+  end
 
   def index
     @title = "Welcome"
   end
-
-  def list
-    @section = params[:section].parameterize
-    @artefacts = content_api.sorted_by(params[:section], "curated").results
-    @title = params[:section].humanize.capitalize
-    render "list.html"
   end
 
   def section
