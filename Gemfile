@@ -4,7 +4,7 @@ source 'https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/'
 #ruby=ruby-1.9.3
 #ruby-gemset=www
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 
 gem 'foreman'
 gem 'thin'

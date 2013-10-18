@@ -6,16 +6,48 @@ class RecordNotFound < StandardError
 end
 
 class RootController < ApplicationController
+  
+  def action_missing(name, *args, &block)
+    if name.to_s =~ /^(.*)_list$/
+      @section = params[:section].parameterize
+      @artefacts = content_api.sorted_by(params[:section], "curated").results
+      @title = params[:section].humanize.capitalize
+      render "list/list.html"
+    else
+      super
+    end
+  end
 
   def index
     @title = "Welcome"
   end
-
-  def list
-    @section = params[:section].parameterize
-    @artefacts = content_api.sorted_by(params[:section], "curated").results
-    @title = params[:section].humanize.capitalize
-    render "list.html"
+  
+  def team_list
+    @teams = {
+      :board => {
+        :name => "Board",
+        :colour => 6
+      },
+      :executive => {
+        :name => "Executive Team",
+        :colour => 16
+      },
+      :commercial => {
+        :name => "Commercial Team",
+        :colour => 10
+      },
+      :technical => {
+        :name => "Technical Team",
+        :colour => 12
+      },
+      :operations => {
+        :name => "Operations Team",
+        :colour => 2
+      },
+    }
+    @teams.map { |team,hash| hash[:people] = content_api.sorted_by(team.to_s, "curated").results }
+    @title = "Team"
+    render "list/people.html"
   end
 
   def section
