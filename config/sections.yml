@@ -12,7 +12,7 @@ about:
       title: "Our space"
       text: "Here is some text"
       link: "/space"
-      colour: 12
+      colour: 0
      -
       title: "Data as culture"
       text: "Here is some text"
@@ -22,7 +22,7 @@ about:
        title: "FAQ"
        text: "Here is some text"
        link: "/faq"
-       colour: 14
+       colour: 0
      -
        title: "Press Enquiries"
        text: "Here is some text"
@@ -32,7 +32,7 @@ about:
        title: "Contact us"
        text: "Here is some text"
        link: "/contact"
-       colour: 2
+       colour: 0
 get-involved:
      title: "Get Involved"
      hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
@@ -47,7 +47,7 @@ get-involved:
        title: "Start-ups"
        text: "Here is some text"
        link: "/start-ups"
-       colour: 12
+       colour: 0
       -
        title: "ODI Challenge Series"
        text: "Here is some text"
@@ -67,7 +67,7 @@ learning:
       title: "Post-Grad Intro"
       text: "Here is some text"
       link: "/pg-certificate"
-      colour: 12
+      colour: 0
      -
       title: "Upcoming Friday Lecture"
       text: "Here is some text"
@@ -77,7 +77,7 @@ learning:
       title: "Library Intro"
       text: "Here is some text"
       link: "/library"
-      colour: 14
+      colour: 0
 whats-happening:
     title: "What's Happening?"
     hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
@@ -92,7 +92,7 @@ whats-happening:
       title: "Calendar"
       text: "Here is some text"
       link: "/calendar"
-      colour: 12
+      colour: 0
      -
       title: "News"
       text: "Here is some text"
@@ -102,7 +102,7 @@ whats-happening:
       title: "Friday Lunchtime Lectures"
       text: "Here is some text"
       link: "/lunchtime-lectures"
-      colour: 14
+      colour: 0
      - 
       title: "Hire the ODI space"
       text: "Here is some text"
