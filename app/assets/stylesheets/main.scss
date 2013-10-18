@@ -126,8 +126,17 @@ ul, ol {
 hr.heavy {
 border: 0;
 height: 5px;
-background: url(divider.png);
+background: url('divider.png');
 }
+
+hr.heavy {
+
+    border: 0;
+    height: 5px;
+    background: url('divider.png');
+    clear: both;
+
+ }
 
 
 /*------------------------------------*\
@@ -169,9 +178,6 @@ background: url(divider.png);
 
 .navbar-inverse li  {
     border-left: 1px solid #707070;
-    &:first-child {
-        border-left: none;
-    }
 }
 
 .site-header {
@@ -737,6 +743,42 @@ table {
 }
 
 
+/*------------------------------------*\
+    LISTING PAGES (News etc.)
+\*------------------------------------*/
+
+.list-body {
+
+    // Two thirds of the page
+    @extend .col-md-8;
+
+    margin-bottom: 20px;
+
+}
+
+.list-aside {
+
+    // One third of the page
+    @extend .col-md-4;
+
+}
+
+.list-item {
+
+    h2 {
+
+        // Line height better for wrapping headlines
+        line-height: 40px;
+
+    }
+
+    .date { font-size: 20px; }
+
+    .date, .meta { margin-bottom: 5px; }
+
+    .more { margin-top: 20px; }
+
+}
 
 
 /*------------------------------------*\
