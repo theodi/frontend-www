@@ -22,20 +22,20 @@
             <div class="navbar-header">
               <a class="navbar-brand" href="/"><%= image_tag('logo-footer.png', alt: "The ODI", id: "odi-logo") %></a>
             </div>
-            <div class="pull-right">
-              <form class="navbar-form navbar-left">
-                <div class="form-group">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search ODI"/>
-                    <input type="submit" value="Go" class="btn"/>
-                  </div>
+            <!--
+            <form class="navbar-form navbar-left">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search ODI"/>
+                  <input type="submit" value="Go" class="btn"/>
                 </div>
-              </form>
-              <ul class="nav navbar-nav">
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#about">Sign in</a></li>
-              </ul>
-            </div>
+              </div>
+            </form>
+            -->
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/contact">Contact us</a></li>
+              <!-- <li><a href="#about">Sign in</a></li> -->
+            </ul>
           </div>
         </div>
 
@@ -51,8 +51,8 @@
                         <li><a href="/jobs">Jobs</a></li>
                         <li><a href="/procurement">Procurement</a></li>
                         <li><a href="/culture">Data as Culture</a></li>
-                        <li><a href="/our-space">Space</a></li>
-                        <li><a href="/dashboards">Dashboards</a></li>
+                        <li><a href="/space">Space</a></li>
+                        <li><a href="http://dashboards.theodi.org/">Dashboards</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -60,10 +60,10 @@
                     <ul class="dropdown-menu">
                         <li><a href="/membership">Membership</a></li>
                         <li><a href="/start-ups">Start-ups</a></li>
-                        <li><a href="/certificates">Open Data Certificates</a></li>
+                        <li><a href="https://certificates.theodi.org/">Open Data Certificates</a></li>
                         <li><a href="/nodes">Nodes</a></li>
-                        <li><a href="/consultation-responses">Consultation Response</a></li>
-                        <li><a href="#">ODI on the web</a></li>
+                        <li><a href="/consultation-responses">Consultation Responses</a></li>
+                        <!--<li><a href="#">ODI on the web</a></li>-->
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -79,7 +79,7 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" href="#">News <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/newsroom">Newsroom</a></li>
+                        <li><a href="/news">Newsroom</a></li>
                     </ul>
                 </li>
               </ul>
@@ -120,9 +120,9 @@
                 <div class="col-md-4 footer-nav">
                     <nav>
                         <ul class="pull-right list-inline">
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Get in touch</a></li>
+                            <li><a href="/terms-of-use">Terms of use</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/contact">Get in touch</a></li>
                         </ul>
                     </nav>
                 </div>

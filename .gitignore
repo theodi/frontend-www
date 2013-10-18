@@ -19,3 +19,5 @@
 
 # Ignore Sass compilation cache
 .sass-cache
+
+.env
