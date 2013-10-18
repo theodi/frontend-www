@@ -26,23 +26,23 @@ class RootController < ApplicationController
     @teams = {
       :board => {
         :name => "Board",
-        :colour => 6
+        :colour => 8
       },
       :executive => {
         :name => "Executive Team",
-        :colour => 16
+        :colour => 8
       },
       :commercial => {
         :name => "Commercial Team",
-        :colour => 10
+        :colour => 8
       },
       :technical => {
         :name => "Technical Team",
-        :colour => 12
+        :colour => 8
       },
       :operations => {
         :name => "Operations Team",
-        :colour => 2
+        :colour => 8
       },
     }
     @teams.map { |team,hash| hash[:people] = content_api.sorted_by(team.to_s, "curated").results }

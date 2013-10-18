@@ -8,25 +8,23 @@
 
 $odiBlue: #00b7ff;
 $odiOrange: #ff6700;
-$odiOrangeDark: #f06100;
+$odiRed: #d60303;
+$odiGrey: #999999;
+$odiGreyDark: #333333;
 
 // Colour variables, primarily for home modules
-$odiColour1: #D50303;
-$odiColour2: $odiOrange;
-$odiColour3: #F8BB26;
-$odiColour4: #67EE67;
-$odiColour5: #0DBB37;
-$odiColour6: #036B56;
-$odiColour7: #05D2AA;
-$odiColour8: #38DDF8;
-$odiColour9: $odiBlue;
-$odiColour10: #178CFF;
-$odiColour11: #2254F3;
-$odiColour12: #691A4B;
-$odiColour13: #B03197;
-$odiColour14: #D73058;
-$odiColour15: #E5007C;
-$odiColour16: #EE3AAA;
+$odiColour1: #D60303; // red
+$odiColour2: $odiOrange; // orange
+$odiColour3: #F9BC26; // yellow
+$odiColour4: #67EF67; //light green
+$odiColour5: #0DBC37; // med green
+$odiColour6: #1dd3a7; // turquoise
+$odiColour7: #2254f4; // dark blue
+$odiColour8: $odiBlue;
+$odiColour9: #08def9; // light blue 
+$odiColour10: #ef3aab; // pink
+$odiColour11: #e6007c; // magenta
+$odiColour12: #b13198; // purple
 
 
 
@@ -82,8 +80,8 @@ p {
 
     a:hover {
     text-decoration: none;
-    border-bottom: 1px solid $odiOrangeDark;
-    color: $odiOrangeDark;
+    border-bottom: 1px solid $odiRed;
+    color: $odiRed;
     }
 
 }
@@ -445,6 +443,7 @@ background: url(divider.png);
 }
 
 // Colour classes for the modules
+.module-colour-0 { background-color: $odiGrey; }
 .module-colour-1 { background-color: $odiColour1; }
 .module-colour-2 { background-color: $odiColour2; }
 .module-colour-3 { background-color: $odiColour3; }
@@ -457,10 +456,6 @@ background: url(divider.png);
 .module-colour-10 { background-color: $odiColour10; }
 .module-colour-11 { background-color: $odiColour11; }
 .module-colour-12 { background-color: $odiColour12; }
-.module-colour-13 { background-color: $odiColour13; }
-.module-colour-14 { background-color: $odiColour14; }
-.module-colour-15 { background-color: $odiColour15; }
-.module-colour-16 { background-color: $odiColour16; }
 
 // Module with background image
 .module-image-background {
