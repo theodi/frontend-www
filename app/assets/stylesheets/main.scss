@@ -433,7 +433,7 @@ hr.heavy {
 .module-subheading {
 
     font-size: 21px;
-    padding-left: 23px;
+    padding-left: 25px;
     padding-right: 25px;
 
 }
@@ -529,28 +529,50 @@ hr.heavy {
 
     .home-module > div {
 
-        // Two columns
-        min-height: 455px;
+        height: 440px;
+        width: 274px;
 
-        @media (min-width: 992px) {
-
-            // Three columns
-            min-height: 455px;
-
+        a {
+	        position: relative;
+	        padding-top: 300px;
+	        display: block;
+	        height: 100%; // makes whole block clickable
         }
 
-        @media (min-width: 1200px) {
-
-            // Three smaller columns
-            min-height: 485px;
-
+        img {
+        	position: absolute;
+        	top: -8px;
+        	left: 18px;
         }
 
-        @media (max-width: 767px) {
+        .module-heading {
+        	font-size: 27px;
+        	font-weight: 300;
+        	margin-bottom: 6px;
+        	padding-left: 18px;
+        	padding-right: 18px;
+        }
 
-            // Less than tablet portrait - one column
-            min-height: 0;
+        .module-subheading {
+        	font-size: 15px;
+        	font-weight: 300;
+        	margin-bottom: 0;
+        	padding-left: 0px;
+        	padding-right: 0px;
+        	margin-left: 18px;
+        	margin-right: 18px;
+        	whitespace: nowrap;
+        	overflow: hidden;
+        	text-overflow: ellipsis;
+        }
 
+        .category {
+        	font-size: 15px;
+        	font-weight: 300;
+        	text-transform: none;
+        	font-style: italic;
+        	padding-left: 18px;
+        	padding-right: 18px;
         }
 
     }
