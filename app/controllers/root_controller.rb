@@ -12,7 +12,12 @@ class RootController < ApplicationController
       @section = params[:section].parameterize
       @artefacts = content_api.sorted_by(params[:section], "curated").results
       @title = params[:section].humanize.capitalize
-      render "list/list.html"
+      begin
+        # Use a specific template if present
+        render "list/#{params[:section]}"
+      rescue
+        render "list/list"
+      end
     else
       super
     end
