@@ -7,7 +7,7 @@
 	  <li class="home-module">
         <div class="module module-light module-colour-<%= team[:colour] %>">
             <a href="<%= team_article_path(person.slug) %>">
-                <%= image_tag person.details.square, size: "180x180", alt: person.title %>
+                <%= image_tag person.details.square, height: "180", alt: person.title %>
                 <h1 class="module-heading"><%= person.title %></h1>
                 <p class="module-subheading"><%= person.details.role %></p>
                 <span class="category"><%= team[:name] %></span>
