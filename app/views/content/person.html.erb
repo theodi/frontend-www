@@ -1,13 +1,14 @@
 <% content_for :title, [@publication.honorific_prefix, @publication.title, @publication.honorific_suffix].join(" ") %>
 
-<div class='row-fluid'>
-	<div class='span8'>
-	  
-	  <h2><%= @publication.subtitle %></h2>
-	  
-	  <%= attachment @publication.image, false, :class => 'leader-image' %>
-	  
-	  <%= @publication.description.html_safe %>
-	  
-	</div>
+<div class="article-main">
+  <article class="article-body">
+	<h2><%= @publication.role %></h2>
+    <%= @publication.description.html_safe %>
+  </article>
 </div>
+
+<aside class="article-sidebar">
+    <div class="module img-module module-colour-3">
+	    <%= image_tag @publication.square, width: "310", alt: @publication.title %>
+    </div>
+</aside>
