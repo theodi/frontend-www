@@ -406,6 +406,12 @@ hr.heavy {
 
     min-height: 220px;
 
+    > a {
+    	display: block;
+    	position: absolute;
+    	height: 100%;
+    }
+
     a {
         color: #000;
         &:hover {
@@ -477,6 +483,22 @@ hr.heavy {
 .module-colour-10 { background-color: $odiColour10; }
 .module-colour-11 { background-color: $odiColour11; }
 .module-colour-12 { background-color: $odiColour12; }
+
+.module.module-highlight { 
+	background-color: $odiGrey; 
+	&.module-colour-1:hover { background-color: $odiColour1; }
+	&.module-colour-2:hover { background-color: $odiColour2; }
+	&.module-colour-3:hover { background-color: $odiColour3; }
+	&.module-colour-4:hover { background-color: $odiColour4; }
+	&.module-colour-5:hover { background-color: $odiColour5; }
+	&.module-colour-6:hover { background-color: $odiColour6; }
+	&.module-colour-7:hover { background-color: $odiColour7; }
+	&.module-colour-8:hover { background-color: $odiColour8; }
+	&.module-colour-9:hover { background-color: $odiColour9; }
+	&.module-colour-10:hover { background-color: $odiColour10; }
+	&.module-colour-11:hover { background-color: $odiColour11; }
+	&.module-colour-12:hover { background-color: $odiColour12; }
+}
 
 // Module with background image
 .module-image-background {
