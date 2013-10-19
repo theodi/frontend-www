@@ -5,7 +5,7 @@
       <h2><%= @publication.title %></h2>
       <div class="article-meta">
           <span class="date"><%= @publication.created %></span> by
-          <%= link_to @publication.author["name"], "/team/" + @publication.author["slug"], :class => "author" %>
+          <%= link_to @publication.author["name"], team_article_path(@publication.author["slug"]), :class => "author" %>
       </div>
       
       <%= @publication.content.html_safe %>
