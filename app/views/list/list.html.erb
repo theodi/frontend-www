@@ -1,10 +1,24 @@
 <% content_for :title, @title %>
+<ul class="grid effect-2" id="grid2">
 	<% @artefacts.each do |artefact| %>
-  	<div class="home-module">
-      <div class="module">
-          <h2><%= artefact.title %></h2>
-          <p>Example of a text block would go here</p>
-          <%= link_to "See more", send("#{@section}_article_path", artefact.slug), :class => "btn btn-primary" %>
-      </div>
-    </div>
+		<li class="home-module">
+		  <div class="module module-light module-colour-<%= (artefact.title.length % 12) + 1 %>">
+		  	<a href="<%= send("#{@section}_article_path", artefact.slug) %>">
+		      <h1 class="module-heading"><%= artefact.title %></h1>
+		      <!-- <p>Example of a text block would go here</p> -->
+		    </a>
+		  </div>
+		</li>
 	<% end %>
+</div>
+
+<% content_for :extra_javascript do %>
+  <!-- Masonry and its required scripts -->
+  <script src="assets/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/masonry.pkgd.min.js"></script>
+  <script src="assets/classie.js"></script>
+  <script src="assets/AnimOnScroll.js"></script>
+
+  <!-- Layout (Masonry initialisation etc.) -->
+  <script src="assets/layout.js"></script>
+<% end %>
