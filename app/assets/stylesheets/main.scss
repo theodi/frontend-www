@@ -218,6 +218,21 @@ hr.heavy {
     }
 }
 
+.main-nav {
+	> li:hover {
+		> a {
+			background: #181818;
+			color: #fff;
+			.caret {
+				border-top-color: $odiOrange;
+			}
+		}
+		.dropdown-menu {
+			display: block;
+		}
+	}
+}
+
 /*------------------------------------*\
     FOOTER
 \*------------------------------------*/
@@ -589,6 +604,10 @@ hr.heavy {
 .article-main {
     @extend .col-md-8;
     padding-right: 70px;
+
+    img {
+    	max-width: 100%;
+    }
 }
 
 .article-sidebar {
