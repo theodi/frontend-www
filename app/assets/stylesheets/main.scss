@@ -218,6 +218,21 @@ hr.heavy {
     }
 }
 
+.main-nav {
+	> li:hover {
+		> a {
+			background: #181818;
+			color: #fff;
+			.caret {
+				border-top-color: $odiOrange;
+			}
+		}
+		.dropdown-menu {
+			display: block;
+		}
+	}
+}
+
 /*------------------------------------*\
     FOOTER
 \*------------------------------------*/
