@@ -458,6 +458,9 @@ hr.heavy {
     line-height: 38px;
     margin-bottom: 20px;
     margin-top: 0;
+    max-height: 152px; // four lines
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
@@ -629,6 +632,12 @@ hr.heavy {
 
 .article-sidebar {
     @extend .col-md-4;
+
+    iframe {
+    	width: 100%;
+    	margin-bottom: 20px;
+    	min-height: 220px;
+    }
 }
 
 .article-full {

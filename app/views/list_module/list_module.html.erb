@@ -1,5 +1,5 @@
 <% content_for :title, @title %>
-<div class="module module-light module-colour-<%= (@section.length % 12) + 1 %>">
+<div class="module module-light module-colour-<%= (@section.scan(/./).map { |x| x.ord }).reduce(:+) % 12 + 1 %>">
 	<h1 class="module-heading">
 		<a href="<%= send("#{@section}_article_path", @artefacts[0].slug) %>" target="_top">
 			<%= @artefacts[0].title %>
