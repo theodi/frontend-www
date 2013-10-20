@@ -1,7 +1,7 @@
 Www::Application.routes.draw do
   root :to => 'root#index'
   
-  [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :procurement, :start_ups, :nodes,
+  [:blog, :news, :jobs, :team, :case_studies, :courses, :course_instances, :creative_works, :procurement, :start_ups, :nodes,
     :consultation_responses, :guides].each do |section|
     section_slug = section.to_s.dasherize
     get "#{section_slug}", as: "#{section}_section", to: "root##{section}_list", :section => section_slug
@@ -16,6 +16,8 @@ Www::Application.routes.draw do
     get "#{slug}", as: "#{section}_section", to: 'root#section', section: slug 
   end
   
+  get "courses/:slug/:date", as: 'course_instance', to: 'root#course_instance'
+
   get ":slug", as: "page", to: 'root#page'
 
 end
