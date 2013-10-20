@@ -7,7 +7,9 @@
         <% date = DateTime.parse(artefact.created_at) %>
         <p class="date"><%= date.strftime("#{date.day.ordinalize} %B %Y") %></p>
         <p class="meta"><%= artefact.details.author.name %></p>
-        <p class="more"><%= link_to "See more", send("#{@section}_article_path", artefact.slug), :class => "btn btn-primary btn-lg" %></p>
+    </div>
+    <div class="list-aside">
+        <p class="more"><%= link_to "See more", send("#{@section}_article_path", artefact.slug), :class => "btn btn-primary" %></p>
 
     </div>
   </div>

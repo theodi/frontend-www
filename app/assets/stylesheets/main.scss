@@ -786,14 +786,13 @@ table {
     @extend .col-md-8;
 
     margin-bottom: 20px;
-    float: none;
 
 }
 
 .list-aside {
 
     // One third of the page
-    @extend .col-md-4;
+    @extend .col-md-2;
 }
 
 .list-item {
@@ -806,19 +805,18 @@ table {
     }
 
     .list-aside {
-    	position: absolute;
-	    float: none;
-	    right: 0;
 
-	    .date, .meta, .more {
-	    	position: absolute;
-	    }
+	    .date, .meta { 
+				font-size: 15px;
+		    font-weight: 300;
+		    line-height: 20px;
+		    margin-bottom: 0;
+ 	    }
 
-	    .date, .meta { font-size: 20px; }
+ 	    .more {
+ 	    	
+ 	    }
 
-	    .date { bottom: 80px; }
-	    .meta { bottom: 40px; }
-	    .more { bottom: 0px; }
     }
 
 }
