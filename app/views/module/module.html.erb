@@ -1,0 +1,9 @@
+<% content_for :title, @publication.title %>
+<div class="module module-light module-colour-<%= (@section.length % 12) + 1 %>">
+	<a href="<%= send("#{@section}_article_path", @publication.slug) %>" target="_top">
+		<h1 class="module-heading"><%= @publication.title %></h1>
+	</a>
+	<a href="/<%= @section %>" target="_top">
+		<p class="category"><%= @section %></p>
+	</a>
+</div>
