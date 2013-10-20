@@ -121,22 +121,14 @@ ul, ol {
 
 }
 
-
-
-hr.heavy {
-border: 0;
-height: 5px;
-background: url('divider.png');
-}
-
-hr.heavy {
-
+hr {
+	clear: both;
+	&.heavy {
     border: 0;
     height: 5px;
     background: url('divider.png');
-    clear: both;
-
- }
+ 	}
+}
 
 
 /*------------------------------------*\
@@ -794,6 +786,7 @@ table {
     @extend .col-md-8;
 
     margin-bottom: 20px;
+    float: none;
 
 }
 
@@ -801,7 +794,6 @@ table {
 
     // One third of the page
     @extend .col-md-4;
-
 }
 
 .list-item {
@@ -813,11 +805,21 @@ table {
 
     }
 
-    .date { font-size: 20px; }
+    .list-aside {
+    	position: absolute;
+	    float: none;
+	    right: 0;
 
-    .date, .meta { margin-bottom: 5px; }
+	    .date, .meta, .more {
+	    	position: absolute;
+	    }
 
-    .more { margin-top: 20px; }
+	    .date, .meta { font-size: 20px; }
+
+	    .date { bottom: 80px; }
+	    .meta { bottom: 40px; }
+	    .more { bottom: 0px; }
+    }
 
 }
 
