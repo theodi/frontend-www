@@ -401,7 +401,7 @@ hr.heavy {
 
     color: #000;
     font-weight: bold;
-    padding: 25px 0 27px 0;
+    padding: 25px 25px 27px 25px;
     margin-bottom: 20px;
     position: relative;
 
@@ -418,8 +418,6 @@ hr.heavy {
 
         font-size: 14px;
         text-transform: uppercase;
-        padding-left: 25px;
-        padding-right: 25px;
         position: absolute;
         bottom: 0;
 
@@ -429,10 +427,26 @@ hr.heavy {
     img {
 
         display: block;
-        margin: 0 auto 20px;
-        max-width: 100%;
+        margin: 0 auto 40px;
+        max-width: 60%;
         max-height: 60%;
 
+    }
+
+    .attribution {
+			font-size: 7px;
+			font-weight: 200;
+			position: absolute;
+			bottom: 0;
+			right: 25px;
+			transform: rotate(90deg);
+			transform-origin: 100% 80% 0;
+			-webkit-transform: rotate(90deg);
+			-webkit-transform-origin: 100% 80% 0;
+			-ms-transform: rotate(90deg);
+			-ms-transform-origin: 100% 80% 0;
+			-moz-transform: rotate(90deg);
+			-moz-transform-origin: 100% 80% 0;
     }
 
 }
@@ -444,16 +458,12 @@ hr.heavy {
     line-height: 38px;
     margin-bottom: 20px;
     margin-top: 0;
-    padding-left: 25px;
-    padding-right: 25px;
 
 }
 
 .module-subheading {
 
     font-size: 21px;
-    padding-left: 25px;
-    padding-right: 25px;
 
 }
 
@@ -521,7 +531,6 @@ hr.heavy {
 
 }
 
-
 /*------------------------------------*\
     PEOPLE MODULES
 \*------------------------------------*/
@@ -550,10 +559,12 @@ hr.heavy {
 
         height: 440px;
         width: 274px;
+        padding-left: 0;
+        padding-right: 0;
 
         a {
 	        position: relative;
-	        padding-top: 300px;
+	        padding-top: 275px;
 	        display: block;
 	        height: 100%; // makes whole block clickable
         }
@@ -562,6 +573,8 @@ hr.heavy {
         	position: absolute;
         	top: -8px;
         	left: 18px;
+        	max-width: 100%;
+        	max-height: 100%;
         }
 
         .module-heading {
