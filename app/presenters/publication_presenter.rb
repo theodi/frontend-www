@@ -15,7 +15,7 @@ class PublicationPresenter
     :body, :subtitle, :featured, :image, :honorific_prefix, 
     :honorific_suffix, :affiliation, :role, :description, :url,
     :telephone, :email, :twitter, :linkedin, :github, :content,
-    :region, :level, :status, :square
+    :region, :level, :status
   ]
 
   PASS_THROUGH_KEYS.each do |key|
@@ -29,7 +29,7 @@ class PublicationPresenter
       details[key.to_s] if details
     end
   end
-
+    
   def format
     @artefact["format"]
   end
@@ -40,6 +40,10 @@ class PublicationPresenter
 
   def created
     DateTime.parse(@artefact["created_at"]).strftime("%Y-%m-%d")
+  end
+  
+  def square_image
+    @artefact['details']['image']['versions']['square']
   end
 
   def widget?
