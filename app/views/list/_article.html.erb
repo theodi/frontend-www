@@ -1,7 +1,9 @@
 <div class="list-item">
     <div class="list-body">
-        <h2><%= artefact.title %></h2>
-        <p><%= artefact.details.excerpt %></p>
+        <a href="<%= send("#{@section}_article_path", artefact.slug) %>">
+            <h2><%= artefact.title %></h2>
+            <p><%= artefact.details.excerpt %></p>
+        </a>
     </div>
     <div class="list-aside">
         <% date = DateTime.parse(artefact.created_at) %>

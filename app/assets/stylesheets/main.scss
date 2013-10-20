@@ -787,6 +787,13 @@ table {
 
     margin-bottom: 20px;
 
+    a {
+    	color: black;
+    	&:hover {
+    		text-decoration: none;
+    	}
+    }
+
 }
 
 .list-aside {
@@ -814,7 +821,7 @@ table {
  	    }
 
  	    .more {
- 	    	
+
  	    }
 
     }
