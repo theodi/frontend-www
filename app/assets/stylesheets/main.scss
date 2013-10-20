@@ -135,7 +135,10 @@ hr {
     BUTTONS
 \*------------------------------------*/
 
-
+.btn {
+	border-radius: 0;
+	box-shadow: none;
+}
 
 /*------------------------------------*\
     HEADER
@@ -820,8 +823,8 @@ table {
 		    margin-bottom: 0;
  	    }
 
- 	    .more {
-
+ 	    .more .btn {
+ 	    	height: 40px;
  	    }
 
     }
