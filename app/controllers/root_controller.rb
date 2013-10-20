@@ -9,15 +9,7 @@ class RootController < ApplicationController
   
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list$/
-      @section = params[:section].parameterize
-      @artefacts = content_api.sorted_by(params[:section], "curated").results
-      @title = params[:section].humanize.capitalize
-      begin
-        # Use a specific template if present
-        render "list/#{params[:section]}"
-      rescue
-        render "list/list"
-      end
+      list(params)
     else
       super
     end
@@ -109,6 +101,20 @@ class RootController < ApplicationController
       format.js do
         render "badges/#{@publication.format}", :layout => nil
       end
+    end
+  end
+  
+  protected
+  
+  def list(params)
+    @section = params[:section].parameterize
+    @artefacts = content_api.sorted_by(params[:section], "date").results
+    @title = params[:section].humanize.capitalize
+    begin
+      # Use a specific template if present
+      render "list/#{params[:section]}"
+    rescue
+      render "list/list"
     end
   end
 
