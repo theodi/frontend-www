@@ -108,6 +108,11 @@ class RootController < ApplicationController
     end
   end
   
+  def team_module_list
+    @section = 'team'
+    render "module_list/people", :layout => 'minimal'
+  end
+
   protected
   
   def list(params)

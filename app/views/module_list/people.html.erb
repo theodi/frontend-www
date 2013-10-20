@@ -1,0 +1,12 @@
+<% content_for :title, @title %>
+<div class="module img-module module-light module-colour-<%= (@section.length % 12) + 1 %>">
+	<a href="/<%= @section %>" target="_top">
+	    <%= image_tag "team.png", alt: "Team" %>
+		<p class="category">
+				<%= @section %>
+		</p>
+	</a>
+</div>
+<p class="attribution">
+	<a href="http://thenounproject.com/noun/team/#icon-No8185" target="_blank">Team</a> designed by <a href="http://thenounproject.com/shanemilleryeah" target="_blank">Shane Miller</a> from The Noun Project
+</p>
