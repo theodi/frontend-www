@@ -8,8 +8,8 @@ end
 class RootController < ApplicationController
   
   def action_missing(name, *args, &block)
-    if name.to_s =~ /^(.*)_module_list$/
-      module_list(params)
+    if name.to_s =~ /^(.*)_list_module$/
+      list_module(params)
     elsif name.to_s =~ /^(.*)_list$/
       list(params)
     elsif name.to_s =~ /^(.*)_module$/
@@ -108,9 +108,9 @@ class RootController < ApplicationController
     end
   end
   
-  def team_module_list
+  def team_list_module
     @section = 'team'
-    render "module_list/people", :layout => 'minimal'
+    render "list_module/people", :layout => 'minimal'
   end
 
   protected
@@ -127,15 +127,15 @@ class RootController < ApplicationController
     end
   end
 
-  def module_list(params)
+  def list_module(params)
     @section = params[:section].parameterize
     @artefacts = content_api.sorted_by(params[:section], "date").results
     @title = params[:section].humanize.capitalize
     begin
       # Use a specific template if present
-      render "module_list/#{params[:section]}", :layout => "minimal"
+      render "list_module/#{params[:section]}", :layout => "minimal"
     rescue
-      render "module_list/module_list", :layout => "minimal"
+      render "list_module/list_module", :layout => "minimal"
     end
   end
 
