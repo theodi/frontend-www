@@ -28,4 +28,9 @@ module ApplicationHelper
     [title, byline_link, license].select{|x| !x.blank?}.join('. ').html_safe
   end
 
+  def parse_date(iso8601)
+    year, month, day = iso8601.match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})/).captures
+    Time.new(year, month, day)
+  end
+
 end
