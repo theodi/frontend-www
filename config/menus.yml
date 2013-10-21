@@ -40,6 +40,12 @@
      title: "Nodes"
      link: "/nodes"
     -
+     title: "Challenge series"
+     link: "/challenge-series"
+    -
+     title: "Projects"
+     link: "/projects"
+    -
      title: "Consultation responses"
      link: "/consultation-responses"
  - 
@@ -47,8 +53,8 @@
   link: "/learning"
   items:
    -
-    title: "Post-graduate certificate"
-    link: "/pg-certificate"
+    title: "Courses"
+    link: "/courses"
    -
     title: "Friday lunchtime lectures"
     link: "/lunchtime-lectures"
@@ -60,7 +66,7 @@
     link: "/case-studies"
  - 
   title: "What's happening"
-  link: "/whats-happening"
+  link: "/events"
  - 
   title: "News"
   link: "/news"
