@@ -8,5 +8,17 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require main
  */
+
+@import "main";
+
+.course-sidebar {
+  @extend .article-sidebar;
+  padding: 0;
+  margin: 0;
+  
+  h3 {
+    margin: 0 0 17px 0;
+    font-size: 28px;
+  }
+}
