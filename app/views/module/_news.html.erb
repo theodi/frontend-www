@@ -3,11 +3,7 @@
 <div class="module module-light module-highlight module-colour-<%= (publication.slug.length % 12) + 1 %>">  
 	<a href="<%= send("#{section}_article_path", publication.slug) %>" target="_top">
 		<h1 class="module-heading"><%= publication.title %></h1>
-	</a>
-  <div class="article-meta">
-      <%= link_to publication.details.author.name, team_article_path(publication.details.author.slug), :class => "author" %>
-  </div>
-	<a href="/<%= section %>" target="_top">
+	    <p class="module-subheading"><%= publication.details.author.name %></p>
 		<p class="category"><%= section %></p>
 	</a>
 </div>

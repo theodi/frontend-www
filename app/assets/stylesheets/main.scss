@@ -451,10 +451,6 @@ hr {
 
 }
 
-.listing .module {
-	min-height: 160px;
-}
-
 .module-heading {
 
     font-weight: bold;
@@ -465,15 +461,25 @@ hr {
 
 }
 
-.listing .module-heading {
-	font-size: 22px;
-	line-height: 27px;
-}
-
 .module-subheading {
 
     font-size: 21px;
 
+}
+
+.listing {
+	.module {
+		min-height: 150px;
+	}
+	.module-heading {
+		font-size: 22px;
+		line-height: 27px;
+	}
+	.module-subheading {
+		font-size: 18px;
+		font-weight: normal;
+		margin-bottom: 25px;
+	}
 }
 
 .module-light,
