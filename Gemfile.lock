@@ -55,6 +55,9 @@ GEM
     activesupport (3.2.14)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    airbrake (3.1.14)
+      builder
+      json
     arel (3.0.2)
     builder (3.0.4)
     coffee-rails (3.2.2)
@@ -154,6 +157,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   coffee-rails (~> 3.2.1)
   dotenv-rails
   foreman
