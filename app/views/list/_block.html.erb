@@ -1,0 +1,8 @@
+<li class="home-module">
+  <div class="module module-light module-colour-<%= (artefact.title.length % 12) + 1 %>">
+  	<a href="<%= send("#{@section.gsub('-', '_')}_article_path", artefact.slug) %>">
+      <h1 class="module-heading"><%= artefact.title %></h1>
+      <!-- <p>Example of a text block would go here</p> -->
+    </a>
+  </div>
+</li>

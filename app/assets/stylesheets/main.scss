@@ -396,10 +396,17 @@ hr {
 
     color: #000;
     font-weight: bold;
-    padding: 25px 0 27px 0;
+    padding: 25px 25px 27px 25px;
     margin-bottom: 20px;
+    position: relative;
 
     min-height: 220px;
+
+    > a {
+    	display: block;
+    	position: absolute;
+    	height: 100%;
+    }
 
     a {
         color: #000;
@@ -412,8 +419,8 @@ hr {
 
         font-size: 14px;
         text-transform: uppercase;
-        padding-left: 25px;
-        padding-right: 25px;
+        position: absolute;
+        bottom: 0;
 
     }
 
@@ -421,9 +428,26 @@ hr {
     img {
 
         display: block;
-        margin: 0 auto 20px;
-        max-width: 100%;
+        margin: 0 auto 40px;
+        max-width: 60%;
+        max-height: 60%;
 
+    }
+
+    .attribution {
+			font-size: 7px;
+			font-weight: 200;
+			position: absolute;
+			bottom: 0;
+			right: 25px;
+			transform: rotate(90deg);
+			transform-origin: 100% 80% 0;
+			-webkit-transform: rotate(90deg);
+			-webkit-transform-origin: 100% 80% 0;
+			-ms-transform: rotate(90deg);
+			-ms-transform-origin: 100% 80% 0;
+			-moz-transform: rotate(90deg);
+			-moz-transform-origin: 100% 80% 0;
     }
 
 }
@@ -435,16 +459,15 @@ hr {
     line-height: 38px;
     margin-bottom: 20px;
     margin-top: 0;
-    padding-left: 25px;
-    padding-right: 25px;
+    max-height: 152px; // four lines
+    overflow: hidden;
+    text-overflow: ellipsis;
 
 }
 
 .module-subheading {
 
     font-size: 21px;
-    padding-left: 25px;
-    padding-right: 25px;
 
 }
 
@@ -472,6 +495,22 @@ hr {
 .module-colour-10 { background-color: $odiColour10; }
 .module-colour-11 { background-color: $odiColour11; }
 .module-colour-12 { background-color: $odiColour12; }
+
+.module.module-highlight { 
+	background-color: $odiGrey; 
+	&.module-colour-1:hover { background-color: $odiColour1; }
+	&.module-colour-2:hover { background-color: $odiColour2; }
+	&.module-colour-3:hover { background-color: $odiColour3; }
+	&.module-colour-4:hover { background-color: $odiColour4; }
+	&.module-colour-5:hover { background-color: $odiColour5; }
+	&.module-colour-6:hover { background-color: $odiColour6; }
+	&.module-colour-7:hover { background-color: $odiColour7; }
+	&.module-colour-8:hover { background-color: $odiColour8; }
+	&.module-colour-9:hover { background-color: $odiColour9; }
+	&.module-colour-10:hover { background-color: $odiColour10; }
+	&.module-colour-11:hover { background-color: $odiColour11; }
+	&.module-colour-12:hover { background-color: $odiColour12; }
+}
 
 // Module with background image
 .module-image-background {
@@ -512,7 +551,6 @@ hr {
 
 }
 
-
 /*------------------------------------*\
     PEOPLE MODULES
 \*------------------------------------*/
@@ -541,10 +579,12 @@ hr {
 
         height: 440px;
         width: 274px;
+        padding-left: 0;
+        padding-right: 0;
 
         a {
 	        position: relative;
-	        padding-top: 300px;
+	        padding-top: 275px;
 	        display: block;
 	        height: 100%; // makes whole block clickable
         }
@@ -553,6 +593,8 @@ hr {
         	position: absolute;
         	top: -8px;
         	left: 18px;
+        	max-width: 100%;
+        	max-height: 100%;
         }
 
         .module-heading {
@@ -607,6 +649,12 @@ hr {
 
 .article-sidebar {
     @extend .col-md-4;
+
+    iframe {
+    	width: 100%;
+    	margin-bottom: 20px;
+    	min-height: 220px;
+    }
 }
 
 .article-full {

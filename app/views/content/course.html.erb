@@ -1,3 +1,21 @@
 <% content_for :title, @publication.title %>
 
-<%= @publication.description.html_safe %>
+<div class="article-main">
+	<div class="article-body">
+		<%= render :partial => 'content/course', :object => @publication %>
+	</div>
+</div>
+
+<aside class="article-sidebar">
+	<% @instances.sort_by { |instance| instance.details.date }.each do |instance| %>
+		<% date = parse_date(instance.details.date) %>
+		<% if date >= Time.now %>
+			<div class="module module-light module-colour-<%= date.day % 12 + 1 %>">
+				<a href="<%= course_instance_path(@publication.slug, instance.details.date[0..9]) %>">
+					<h3 class="module-heading"><%= date.strftime("%A %d %B %Y") %></h3>
+					<p class="category">Courses</p>
+				</a>
+			</div>
+		<% end %>
+	<% end %>
+</aside>
