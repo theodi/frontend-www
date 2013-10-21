@@ -32,5 +32,9 @@ module ApplicationHelper
     year, month, day = iso8601.match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})/).captures
     Time.new(year, month, day)
   end
+  
+  def menus
+    $menus ||= YAML.load_file("#{Rails.root.to_s}/config/menus.yml")
+  end
 
 end

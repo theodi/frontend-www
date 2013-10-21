@@ -43,7 +43,6 @@
           <div class="container">
             <div class="pull-right">
               <ul class="nav navbar-nav main-nav">
-                <% menus = YAML.load_file("#{Rails.root.to_s}/config/menus.yml") %>
                 <% menus.each do |menu| %>
                     <li class="dropdown">
                         <a href="<%= menu['link'] %>">
