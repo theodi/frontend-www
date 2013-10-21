@@ -1,5 +1,4 @@
 home:
-    title: "Welcome"
     hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
     hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
     links:
