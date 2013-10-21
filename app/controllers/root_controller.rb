@@ -14,6 +14,8 @@ class RootController < ApplicationController
       list(params)
     elsif name.to_s =~ /^(.*)_module$/
       _module(params)
+    elsif name.to_s =~ /^(.*)_article$/
+      article(params)
     else
       super
     end
@@ -68,30 +70,6 @@ class RootController < ApplicationController
       render "content/page-#{params[:slug]}"
     rescue
       render "content/page"
-    end
-  end
-
-  def article
-    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
-                  fetch_artefact(params[:slug], params[:edition], nil, nil)
-
-    # If the content type or tag doesn't match the slug, return 404
-    if artefact['format'] != params[:section].singularize && 
-        artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
-      raise ActionController::RoutingError.new('Not Found') 
-    end
-
-    @publication = PublicationPresenter.new(artefact)
-    if params[:section] == 'courses'
-      @instances = content_api.sorted_by('course_instance', 'date').results.delete_if { |course| course.details.course != params[:slug] }
-    end
-    respond_to do |format|
-      format.html do
-        render "content/#{@publication.format}"
-      end
-      format.json do
-        render :json => @publication.to_json
-      end
     end
   end
 
@@ -179,6 +157,32 @@ class RootController < ApplicationController
     rescue
       render "module/module", :layout => "minimal"
     end
+  end
+  
+  def article(params)
+    @publication = fetch_article(params[:slug], params[:edition])
+    
+    respond_to do |format|
+      format.html do
+        render "content/#{@publication.format}"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+  
+  def fetch_article(slug, edition)
+    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
+                  fetch_artefact(slug, edition, nil, nil)
+
+    # If the content type or tag doesn't match the slug, return 404
+    if artefact['format'] != params[:section].singularize && 
+        artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
+      raise ActionController::RoutingError.new('Not Found') 
+    end
+
+    PublicationPresenter.new(artefact)
   end
 
 end
