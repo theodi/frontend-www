@@ -1,5 +1,5 @@
 <% content_for :title, @title %>
-<ul class="grid effect-2" id="grid2">
+<ul class="grid effect-2 listing" id="grid2">
 	<% @artefacts.each do |artefact| %>
 		<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
 	<% end %>

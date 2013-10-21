@@ -121,29 +121,24 @@ ul, ol {
 
 }
 
-
-
-hr.heavy {
-border: 0;
-height: 5px;
-background: url('divider.png');
-}
-
-hr.heavy {
-
+hr {
+	clear: both;
+	&.heavy {
     border: 0;
     height: 5px;
     background: url('divider.png');
-    clear: both;
-
- }
+ 	}
+}
 
 
 /*------------------------------------*\
     BUTTONS
 \*------------------------------------*/
 
-
+.btn {
+	border-radius: 0;
+	box-shadow: none;
+}
 
 /*------------------------------------*\
     HEADER
@@ -409,7 +404,6 @@ hr.heavy {
 
     > a {
     	display: block;
-    	position: absolute;
     	height: 100%;
     }
 
@@ -464,9 +458,6 @@ hr.heavy {
     line-height: 38px;
     margin-bottom: 20px;
     margin-top: 0;
-    max-height: 152px; // four lines
-    overflow: hidden;
-    text-overflow: ellipsis;
 
 }
 
@@ -474,6 +465,21 @@ hr.heavy {
 
     font-size: 21px;
 
+}
+
+.listing {
+	.module {
+		min-height: 150px;
+	}
+	.module-heading {
+		font-size: 22px;
+		line-height: 27px;
+	}
+	.module-subheading {
+		font-size: 18px;
+		font-weight: normal;
+		margin-bottom: 25px;
+	}
 }
 
 .module-light,
@@ -843,13 +849,19 @@ table {
 
     margin-bottom: 20px;
 
+    a {
+    	color: black;
+    	&:hover {
+    		text-decoration: none;
+    	}
+    }
+
 }
 
 .list-aside {
 
     // One third of the page
-    @extend .col-md-4;
-
+    @extend .col-md-2;
 }
 
 .list-item {
@@ -861,11 +873,20 @@ table {
 
     }
 
-    .date { font-size: 20px; }
+    .list-aside {
 
-    .date, .meta { margin-bottom: 5px; }
+	    .date, .meta { 
+				font-size: 15px;
+		    font-weight: 300;
+		    line-height: 20px;
+		    margin-bottom: 0;
+ 	    }
 
-    .more { margin-top: 20px; }
+ 	    .more .btn {
+ 	    	height: 40px;
+ 	    }
+
+    }
 
 }
 
