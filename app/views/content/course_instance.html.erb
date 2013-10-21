@@ -2,8 +2,7 @@
 
 <div class="article-main">
 	<div class="article-body">
-		<h2><%= parse_date(@publication.date).strftime("%A %d %B %Y") %></h2>
-		<%= render :partial => 'content/course', :object => @course %>
+		<%= render :partial => 'content/course', :locals => { :course => @course, :title => @title } %>
 	</div>
 </div>
 
