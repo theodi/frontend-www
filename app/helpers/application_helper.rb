@@ -27,5 +27,8 @@ module ApplicationHelper
     license = Odlifier.translate(asset['license'], nil)
     [title, byline_link, license].select{|x| !x.blank?}.join('. ').html_safe
   end
-
+  
+  def menus
+    $menus ||= YAML.load_file("#{Rails.root.to_s}/config/menus.yml")
+  end
 end
