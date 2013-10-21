@@ -1,21 +1,25 @@
-<% content_for :title, @publication.title %>
+<% content_for :title, "Courses" %>
 
 <div class="article-main">
 	<div class="article-body">
-		<%= render :partial => 'content/course', :object => @publication %>
+		<%= render :partial => 'content/course', :locals => { :course => @publication, :title => @publication.title } %>
 	</div>
 </div>
 
-<aside class="article-sidebar">
-	<% @instances.sort_by { |instance| instance.details.date }.each do |instance| %>
-		<% date = parse_date(instance.details.date) %>
-		<% if date >= Time.now %>
-			<div class="module module-light module-colour-<%= date.day % 12 + 1 %>">
-				<a href="<%= course_instance_path(@publication.slug, instance.details.date[0..9]) %>">
-					<h3 class="module-heading"><%= date.strftime("%A %d %B %Y") %></h3>
-					<p class="category">Courses</p>
-				</a>
-			</div>
-		<% end %>
+<aside class="course-sidebar">
+  <h3>Upcoming dates</h3>
+  
+	<% @instances.each do |instance| %>
+		<% date = DateTime.parse(instance.details.date) %>
+		<div class="module module-light module-colour-<%= date.day % 12 + 1 %>">
+			<a href="<%= course_instance_path(@publication.slug, instance.details.date[0..9]) %>">
+				<h1 class="module-heading"><%= date.strftime("%A %d %B %Y") %></h>
+			</a>
+			<p class="category">Courses</p>
+		</div>
+	<% end %>
+		
+	<% if @instances.count == 0 %>
+	  <p>Sorry, there are no upcoming dates for this course at the moment.</p>
 	<% end %>
 </aside>

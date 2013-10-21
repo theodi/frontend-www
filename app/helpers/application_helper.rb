@@ -27,10 +27,17 @@ module ApplicationHelper
     license = Odlifier.translate(asset['license'], nil)
     [title, byline_link, license].select{|x| !x.blank?}.join('. ').html_safe
   end
-
-  def parse_date(iso8601)
-    year, month, day = iso8601.match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})/).captures
-    Time.new(year, month, day)
+  
+  def menus
+    $menus ||= YAML.load_file("#{Rails.root.to_s}/config/menus.yml")
   end
-
+  
+  def author(publication)
+    if publication.author['tag_ids'].include?("team")
+      link_to publication.author["name"], team_article_path(publication.author["slug"]), :class => "author"
+    else
+      content_tag :span, publication.author["name"], :class => "author"
+    end
+  end
+  
 end

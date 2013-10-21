@@ -1,0 +1,76 @@
+ -
+  title: "About"
+  link: "/about"
+  items:
+   -
+    title: "About the ODI"
+    link: "/about-us"
+   -
+    title: "People"
+    link: "/team"
+   -
+    title: "Jobs"
+    link: "/jobs"
+   -
+     title: "Procurement"
+     link: "/procurement"
+   -
+     title: "Data as culture"
+     link: "/culture"
+   -
+     title: "Space"
+     link: "/space"
+   -
+     title: "Dashboards"
+     link: "http://dashboards.theodi.org/"
+ - 
+   title: "Get involved"
+   link: "/get-involved"
+   items:
+    -
+     title: "Membership"
+     link: "/join-us"
+    -
+     title: "Start-ups"
+     link: "/start-ups"
+    -
+     title: "Open Data Certificates"
+     link: "https://certificates.theodi.org/"
+    -
+     title: "Nodes"
+     link: "/nodes"
+    -
+     title: "Challenge series"
+     link: "/challenge-series"
+    -
+     title: "Projects"
+     link: "/projects"
+    -
+     title: "Consultation responses"
+     link: "/consultation-responses"
+ - 
+  title: "Learning"
+  link: "/learning"
+  items:
+   -
+    title: "Courses"
+    link: "/courses"
+   -
+    title: "Friday lunchtime lectures"
+    link: "/lunchtime-lectures"
+   - 
+    title: "Guides"
+    link: "/guides"
+   - 
+    title: "Case studies"
+    link: "/case-studies"
+ - 
+  title: "What's happening"
+  link: "/events"
+ - 
+  title: "News"
+  link: "/news"
+  items:
+    -
+      title: "Newsroom"
+      link: "/news"

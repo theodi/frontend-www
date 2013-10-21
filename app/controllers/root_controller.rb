@@ -14,6 +14,8 @@ class RootController < ApplicationController
       list(params)
     elsif name.to_s =~ /^(.*)_module$/
       _module(params)
+    elsif name.to_s =~ /^(.*)_article$/
+      article(params)
     else
       super
     end
@@ -71,42 +73,30 @@ class RootController < ApplicationController
     end
   end
 
-  def article
-    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
-                  fetch_artefact(params[:slug], params[:edition], nil, nil)
-
-    # If the content type or tag doesn't match the slug, return 404
-    if artefact['format'] != params[:section].singularize && 
-        artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
-      raise ActionController::RoutingError.new('Not Found') 
-    end
-
-    @publication = PublicationPresenter.new(artefact)
-    if params[:section] == 'courses'
-      @instances = content_api.sorted_by('course_instance', 'date').results.delete_if { |course| course.details.course != params[:slug] }
-    end
+  def course_instance
+    slug = "#{params[:slug]}-#{params[:date]}"
+    @publication = fetch_article(slug, params[:edition], "course_instance")
+    @course = fetch_article(@publication.course, params[:edition], "courses")
+    @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
     respond_to do |format|
       format.html do
-        render "content/#{@publication.format}"
+        render "content/course_instance"
       end
       format.json do
         render :json => @publication.to_json
       end
     end
   end
-
-  def course_instance
-    slug = "#{params[:slug]}-#{params[:date]}"
-    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
-                  fetch_artefact(slug, params[:edition], nil, nil)
-    @publication = PublicationPresenter.new(artefact)
-    course_slug = @publication.course
-    course = ArtefactRetriever.new(content_api, Rails.logger, statsd).
-                  fetch_artefact(course_slug, params[:edition], nil, nil)
-    @course = PublicationPresenter.new(course)
+  
+  def courses_article
+    @publication = fetch_article(params[:slug], params[:edition], "courses")
+    @instances = content_api.sorted_by('course_instance', 'date').results.delete_if { 
+                  |course| course.details.course != params[:slug] || DateTime.parse(course.details.date) < Time.now }
+    @instances.sort_by! { |instance| instance.details.date }
+    
     respond_to do |format|
       format.html do
-        render "content/course_instance"
+        render "content/course"
       end
       format.json do
         render :json => @publication.to_json
@@ -139,7 +129,12 @@ class RootController < ApplicationController
   
   def list(params)
     @section = params[:section].parameterize
-    @artefacts = content_api.sorted_by(params[:section], "date").results
+    @artefacts = content_api.sorted_by(params[:section].singularize, "date").results
+    # Merge blog into news section
+    if params[:section] == 'news'
+      @artefacts += content_api.sorted_by('blog', "date").results
+      @artefacts.sort_by!{|x| x.created_at}.reverse!
+    end
     @title = params[:section].humanize.capitalize
     begin
       # Use a specific template if present
@@ -179,6 +174,32 @@ class RootController < ApplicationController
     rescue
       render "module/module", :layout => "minimal"
     end
+  end
+  
+  def article(params)
+    @publication = fetch_article(params[:slug], params[:edition], params[:section])
+    
+    respond_to do |format|
+      format.html do
+        render "content/#{@publication.format}"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+  
+  def fetch_article(slug, edition, section)
+    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
+                  fetch_artefact(slug, edition, nil, nil)
+
+    # If the content type or tag doesn't match the slug, return 404
+    if artefact['format'] != section.singularize && 
+        artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
+      raise ActionController::RoutingError.new('Not Found') 
+    end
+
+    PublicationPresenter.new(artefact)
   end
 
 end

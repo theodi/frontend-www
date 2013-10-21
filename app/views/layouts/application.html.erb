@@ -43,45 +43,23 @@
           <div class="container">
             <div class="pull-right">
               <ul class="nav navbar-nav main-nav">
-                <li class="dropdown active">
-                    <a href="/about">About <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/about">About the ODI</a></li>
-                        <li><a href="/team">People</a></li>
-                        <li><a href="/jobs">Jobs</a></li>
-                        <li><a href="/procurement">Procurement</a></li>
-                        <li><a href="/culture">Data as Culture</a></li>
-                        <li><a href="/space">Space</a></li>
-                        <li><a href="http://dashboards.theodi.org/">Dashboards</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="/get-involved">Get involved <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/membership">Membership</a></li>
-                        <li><a href="/start-ups">Start-ups</a></li>
-                        <li><a href="https://certificates.theodi.org/">Open Data Certificates</a></li>
-                        <li><a href="/nodes">Nodes</a></li>
-                        <li><a href="/consultation-responses">Consultation Responses</a></li>
-                        <!--<li><a href="#">ODI on the web</a></li>-->
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="/learning">Learning <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/pg-certificate">Post-Graduate Certficate</a></li>
-                        <li><a href="/lunchtime-lectures">Friday Lunchtime Lectures</a></li>
-                        <li><a href="/guides">Guides</a></li>
-                        <li><a href="/case-studies">Case Studies</a></li>
-                    </ul>
-                </li>
-                <li><a href="/whats-happening">What's happening</a></li>
-                <li class="dropdown">
-                    <a href="/news">News <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/news">Newsroom</a></li>
-                    </ul>
-                </li>
+                <% menus.each do |menu| %>
+                    <li class="dropdown">
+                        <a href="<%= menu['link'] %>">
+                            <%= menu['title'] %>
+                            <% if menu['items'] %>
+                             <b class="caret"></b>
+                            <% end %>
+                         </a>
+                         <% if menu['items'] %>
+                            <ul class="dropdown-menu">
+                                <% menu['items'].each do |item| %>
+                                    <li><a href="<%= item['link'] %>"><%= item['title'] %></a></li>
+                                <% end %>
+                            </ul>
+                        <% end %>
+                    </li>
+                <% end %>
               </ul>
             </div>
           </div>
