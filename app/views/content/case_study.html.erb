@@ -1,3 +1,5 @@
-<% content_for :title, @publication.title %>
+<% content_for :title, "Case Studies" %>
+
+<h2><%= @publication.title %></h2>
 
 <% @publication.content.html_safe %>

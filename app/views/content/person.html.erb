@@ -1,8 +1,9 @@
-<% content_for :title, [@publication.honorific_prefix, @publication.title, @publication.honorific_suffix].join(" ") %>
+<% content_for :title, "Team" %>
 
 <div class="article-main">
-  <article class="article-body">
-	<h2><%= @publication.role %></h2>
+  <article class="people-body">
+    <h2><%= [@publication.honorific_prefix, @publication.title, @publication.honorific_suffix].join(" ") %></h2>
+	  <h3><%= @publication.role %></h3>
     <%= @publication.description.html_safe %>
   </article>
 </div>

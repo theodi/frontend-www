@@ -1,7 +1,8 @@
-<% content_for :title, @publication.title %>
+<% content_for :title, "Startups" %>
 
 <div class="article-full">
   <article class="article-body">
+    <h2><%= @publication.title %></h2>
     <%= @publication.description.html_safe %>
   </article>
 </div>
