@@ -129,7 +129,7 @@ class RootController < ApplicationController
   
   def list(params)
     @section = params[:section].parameterize
-    @artefacts = content_api.sorted_by(params[:section], "date").results
+    @artefacts = content_api.sorted_by(params[:section].singularize, "date").results
     @title = params[:section].humanize.capitalize
     begin
       # Use a specific template if present
