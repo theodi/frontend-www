@@ -2,7 +2,7 @@
 <ul class="grid effect-2" id="grid2">
 	<% @artefacts.each do |artefact| %>
 		<li class="home-module">
-		  <div class="module module-light module-colour-<%= (artefact.title.length % 12) + 1 %>">
+		  <div class="module module-light module-highlight module-colour-<%= (artefact.title.length % 12) + 1 %>">
 		  	<a href="<%= send("#{@section}_article_path", artefact.slug) %>">
 		      <h1 class="module-heading"><%= artefact.title %></h1>
 		      <!-- <p>Example of a text block would go here</p> -->
