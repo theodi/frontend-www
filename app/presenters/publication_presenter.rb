@@ -15,7 +15,7 @@ class PublicationPresenter
     :body, :subtitle, :featured, :image, :honorific_prefix, 
     :honorific_suffix, :affiliation, :role, :description, :url,
     :telephone, :email, :twitter, :linkedin, :github, :content,
-    :region, :level, :status, :course, :date
+    :region, :level, :status, :course, :date, :square
   ]
 
   PASS_THROUGH_KEYS.each do |key|
@@ -43,7 +43,11 @@ class PublicationPresenter
   end
   
   def square_image
-    @artefact['details']['image']['versions']['square']
+    begin
+      @artefact['details']['image']['versions']['square']
+    rescue
+      @artefact['details']['square'] || @artefact['square'] || '/assets/person-placeholder.png'
+    end
   end
 
   def widget?

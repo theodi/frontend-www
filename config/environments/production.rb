@@ -46,7 +46,7 @@ Www::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( imagesloaded.pkgd.min.js masonry.pkgd.min.js classie.js AnimOnScroll.js layout.js badge.css )
+  config.assets.precompile += %w( imagesloaded.pkgd.min.js masonry.pkgd.min.js classie.js AnimOnScroll.js layout.js badge.css jquery.browser.js jquery.iframe-auto-height.min.js iframe-auto-height.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
