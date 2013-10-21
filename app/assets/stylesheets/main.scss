@@ -439,11 +439,19 @@ hr {
 
     }
 
-    &.module-image-foreground img {
-    	margin-left: -25px;
-    	max-width: none;
-    	max-height: none;
-    }
+    &.module-image-foreground {
+
+    	.module-heading {
+    		text-align: center;
+    	}
+
+	    img {
+	    	margin-left: -25px;
+	    	max-width: none;
+	    	max-height: none;
+	    }
+	    
+	  }
 
     &.module-image-fullbleed {
     	padding: 0;
