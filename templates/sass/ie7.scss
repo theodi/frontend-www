@@ -1,0 +1,32 @@
+// Make text within hero blocks from displaying outside it
+.article-hero {
+
+    .hero { position: relative; }
+
+    .hero-label { left: 0; }
+
+}
+
+// Masonry not present below IE8, so float the blocks left
+.home-module { float: left; }
+
+// Two columns
+.home-module { width: 48%; }
+
+// Three columns
+@media (min-width: 992px) {
+
+    .home-module {
+
+        width: 31.33%;
+
+    }
+
+}
+
+// One column
+@media (max-width: 767px) {
+
+    //.home-module { width: 31.33%; }
+
+}

@@ -1,0 +1,25 @@
+/* line 4, ../sass/ie7.scss */
+.article-hero .hero {
+  position: relative;
+}
+/* line 6, ../sass/ie7.scss */
+.article-hero .hero-label {
+  left: 0;
+}
+
+/* line 11, ../sass/ie7.scss */
+.home-module {
+  float: left;
+}
+
+/* line 14, ../sass/ie7.scss */
+.home-module {
+  width: 48%;
+}
+
+@media (min-width: 992px) {
+  /* line 19, ../sass/ie7.scss */
+  .home-module {
+    width: 31.33%;
+  }
+}
