@@ -1,13 +1,13 @@
 Www::Application.routes.draw do
   root :to => 'root#index'
   
-  [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :procurement, :start_up, :nodes, :consultation_responses, :guides].each do |section|
+  [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :procurement, :start_ups, :nodes, :consultation_responses, :guides].each do |section|
     section_slug = section.to_s.dasherize
     get "#{section_slug}", as: "#{section}_section", to: "root##{section}_list", :section => section_slug
 
     get "#{section_slug}/module", as: "#{section}_list_module", to: "root##{section}_list_module", :section => section_slug
 
-    get "#{section_slug}/:slug", as: "#{section}_article", to: 'root#article', :section => section_slug
+    get "#{section_slug}/:slug", as: "#{section}_article", to: "root##{section}_article", :section => section_slug
 
     get "#{section_slug}/:slug/module", as: "#{section}_module", to: "root##{section}_module", :section => section_slug
 
