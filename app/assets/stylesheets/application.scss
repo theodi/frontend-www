@@ -22,3 +22,11 @@
     font-size: 28px;
   }
 }
+
+.people-body{
+  @extend .article-body;
+  h3 {
+    margin: 0 0 11px 0;
+  }
+  
+}
