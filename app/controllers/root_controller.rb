@@ -140,6 +140,11 @@ class RootController < ApplicationController
   def list(params)
     @section = params[:section].parameterize
     @artefacts = content_api.sorted_by(params[:section], "date").results
+    # Merge blog into news section
+    if params[:section] == 'news'
+      @artefacts += content_api.sorted_by('blog', "date").results
+      @artefacts.sort_by!{|x| x.created_at}.reverse!
+    end
     @title = params[:section].humanize.capitalize
     begin
       # Use a specific template if present
