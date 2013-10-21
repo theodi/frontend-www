@@ -446,9 +446,13 @@ hr {
     		text-align: center;
     	}
 
+    	div.image {
+    		margin-left: -25px;
+    		margin-right: -25px;
+    	}
+
 	    img {
-	    	margin-left: -25px;
-	    	max-width: none;
+	    	max-width: 100%;
 	    	max-height: none;
 	    }
 

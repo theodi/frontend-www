@@ -40,7 +40,9 @@
         <div class="module module-light module-colour-<%= link['colour'] %><%= ' module-image-foreground' if link['image'] && link['title'] %><%= ' module-image-fullbleed' if link['image'] && !link['title'] %>">
             <a href="<%= link['link'] %>">
                 <% if link['image'] %>
-                  <img src="<%= link['image'] %>">
+                  <div class="image">
+                    <img src="<%= link['image'] %>">
+                  </div>
                 <% end %>
                 <% if link['title'] %>
                   <h1 class="module-heading"><%= link['title'] %></h1>
