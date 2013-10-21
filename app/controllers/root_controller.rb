@@ -8,8 +8,12 @@ end
 class RootController < ApplicationController
   
   def action_missing(name, *args, &block)
-    if name.to_s =~ /^(.*)_list$/
+    if name.to_s =~ /^(.*)_list_module$/
+      list_module(params)
+    elsif name.to_s =~ /^(.*)_list$/
       list(params)
+    elsif name.to_s =~ /^(.*)_module$/
+      _module(params)
     else
       super
     end
@@ -126,6 +130,11 @@ class RootController < ApplicationController
     end
   end
   
+  def team_list_module
+    @section = 'team'
+    render "list_module/people", :layout => 'minimal'
+  end
+
   protected
   
   def list(params)
@@ -137,6 +146,38 @@ class RootController < ApplicationController
       render "list/#{params[:section]}"
     rescue
       render "list/list"
+    end
+  end
+
+  def list_module(params)
+    @section = params[:section].parameterize
+    @artefacts = content_api.sorted_by(params[:section], "date").results
+    @title = params[:section].humanize.capitalize
+    begin
+      # Use a specific template if present
+      render "list_module/#{params[:section]}", :layout => "minimal"
+    rescue
+      render "list_module/list_module", :layout => "minimal"
+    end
+  end
+
+  def _module(params)
+    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
+                  fetch_artefact(params[:slug], params[:edition], nil, nil)
+
+    # If the content type or tag doesn't match the slug, return 404
+    if artefact['format'] != params[:section].singularize && 
+        artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
+      raise ActionController::RoutingError.new('Not Found') 
+    end
+
+    @section = params[:section].parameterize
+    @publication = PublicationPresenter.new(artefact)
+    begin
+      # Use a specific template if present
+      render "module/#{params[:section]}", :layout => "minimal"
+    rescue
+      render "module/module", :layout => "minimal"
     end
   end
 
