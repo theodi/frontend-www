@@ -3,6 +3,10 @@ home:
     hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
     links:
       -
+        frame: "/news/module"
+      -
+        frame: "/blog/module"
+      -
         title: "News"
         text: "Here is some text"
         link: "/news"

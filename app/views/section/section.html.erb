@@ -18,28 +18,25 @@
 </section>
 <% end %>
 
-<% if @section['title'] %>
+<ul class="grid effect-2" id="grid2">
 
-  <ul class="grid effect-2" id="grid2">
+    <% @section['links'].each do |link| %>
 
-      <% @section['links'].each do |link| %>
-
-      <li class="home-module">
-          <div class="module module-light module-colour-<%= link['colour'] %>">
-              <a href="<%= link['link'] %>">
-                  <h1 class="module-heading"><%= link['title'] %></h1>
-                  <p class="module-subheading"><%= link['text'] %></p>
-              </a>
-          </div>
-      </li>
-      
+    <li class="home-module">
+      <% if link['frame'] %>
+        <iframe seamless scrolling='no' src="<%= link['frame'] %>"></iframe>
+      <% elsif %>
+        <div class="module module-light module-colour-<%= link['colour'] %>">
+            <a href="<%= link['link'] %>">
+                <h1 class="module-heading"><%= link['title'] %></h1>
+                <p class="module-subheading"><%= link['text'] %></p>
+            </a>
+        </div>
       <% end %>
 
-  </ul>
-
-<% elsif %>
+    </li>
     
-  <ul class="grid effect-2" id="grid2">
+    <% end %>
 
   <li class="home-module">
       <div class="module module-light module-colour-10">
@@ -196,7 +193,6 @@
   </li>
 
   </ul>
-<% end %>
 
 
 <%= render :partial => "list/masonry" %>
