@@ -404,7 +404,6 @@ hr {
 
     > a {
     	display: block;
-    	position: absolute;
     	height: 100%;
     }
 
@@ -459,10 +458,12 @@ hr {
     line-height: 38px;
     margin-bottom: 20px;
     margin-top: 0;
-    max-height: 152px; // four lines
-    overflow: hidden;
-    text-overflow: ellipsis;
 
+}
+
+.listing .module-heading {
+	font-size: 22px;
+	line-height: 27px;
 }
 
 .module-subheading {
