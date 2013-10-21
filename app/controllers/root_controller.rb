@@ -74,8 +74,9 @@ class RootController < ApplicationController
   end
 
   def course_instance
-    @publication = fetch_article(params[:slug], params[:edition])
-    @course = fetch_article(course_slug, params[:edition])
+    slug = "#{params[:slug]}-#{params[:date]}"
+    @publication = fetch_article(slug, params[:edition], "course_instance")
+    @course = fetch_article(@publication.course, params[:edition], "courses")
     @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
     respond_to do |format|
       format.html do
@@ -88,7 +89,7 @@ class RootController < ApplicationController
   end
   
   def courses_article
-    @publication = fetch_article(params[:slug], params[:edition])
+    @publication = fetch_article(params[:slug], params[:edition], "courses")
     @instances = content_api.sorted_by('course_instance', 'date').results.delete_if { 
                   |course| course.details.course != params[:slug] || DateTime.parse(course.details.date) < Time.now }
     @instances.sort_by! { |instance| instance.details.date }
@@ -171,7 +172,7 @@ class RootController < ApplicationController
   end
   
   def article(params)
-    @publication = fetch_article(params[:slug], params[:edition])
+    @publication = fetch_article(params[:slug], params[:edition], params[:section])
     
     respond_to do |format|
       format.html do
@@ -183,12 +184,12 @@ class RootController < ApplicationController
     end
   end
   
-  def fetch_article(slug, edition)
+  def fetch_article(slug, edition, section)
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
                   fetch_artefact(slug, edition, nil, nil)
 
     # If the content type or tag doesn't match the slug, return 404
-    if artefact['format'] != params[:section].singularize && 
+    if artefact['format'] != section.singularize && 
         artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
       raise ActionController::RoutingError.new('Not Found') 
     end
