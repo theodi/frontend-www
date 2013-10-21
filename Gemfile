@@ -36,6 +36,10 @@ end
 gem 'jquery-rails'
 gem 'odlifier', github: 'theodi/odlifier'
 
+group :production do
+  gem 'airbrake'
+end
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

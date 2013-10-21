@@ -75,7 +75,7 @@ p {
     line-height: 26px;
     margin-bottom: 20px;
 
-    
+
     a {
         @include transition(all 0.5s);
     }
@@ -271,6 +271,78 @@ hr.heavy {
         text-overflow: ellipsis;
         padding-bottom: 0.1em;
     }
+}
+
+/*------------------------------------*\
+    HOMEPAGE
+\*------------------------------------*/
+
+.home-opener {
+
+    // Two columns
+
+    // Even out gaps above and below the homepage's opening text block
+    margin-top: 20px;
+    margin-bottom: -25px;
+
+    &.article-main {
+
+        width: 50%;
+        float: left;
+        padding-right: 20px;
+
+    }
+
+    &.article-sidebar {
+
+        width: 50%;
+        float: left;
+        padding-left: 8px;
+        padding-right: 16px;
+
+    }
+
+    @media (min-width: 992px) {
+
+        // Three columns
+
+        &.article-main { width: 66.66667%; }
+
+        &.article-sidebar {
+
+            padding-left: 4px;
+            padding-right: 16px;
+            width: 33.33333%;
+
+        }
+
+    }
+
+    @media (max-width: 767px) {
+
+        // One column
+
+        &.article-main {
+
+            width: auto;
+            float: none;
+            padding-left: 15px;
+            padding-right: 15px;
+
+        }
+
+        &.article-sidebar {
+
+            width: auto;
+            float: none;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-top: 50px;
+
+        }
+
+    }
+
 }
 
 

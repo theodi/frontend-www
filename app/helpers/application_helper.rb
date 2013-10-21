@@ -31,4 +31,13 @@ module ApplicationHelper
   def menus
     $menus ||= YAML.load_file("#{Rails.root.to_s}/config/menus.yml")
   end
+  
+  def author(publication)
+    if publication.author['tag_ids'].include?("team")
+      link_to publication.author["name"], team_article_path(publication.author["slug"]), :class => "author"
+    else
+      content_tag :span, publication.author["name"], :class => "author"
+    end
+  end
+  
 end
