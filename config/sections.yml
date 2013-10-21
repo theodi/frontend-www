@@ -21,16 +21,16 @@ home:
       -
         frame: "/blog/module"
       -
+        frame: "/courses/module"
+      -
         title: "Open Data Challenge Series"
         image: "/assets/white_spikey.png"
         link: "/challenge-series"
         colour: 9
       -
-        frame: "/courses/module"
-      -
         title: "Dashboards"
         link: "http://dashboards.theodi.org/"
-        colour: 7
+        colour: 3
 about:
     title: "About"
     hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"

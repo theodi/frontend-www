@@ -4,6 +4,13 @@ $(document).ready(function () {
 		animate: true,
 		callback: function (callbackObject) { 
 			$('.grid').masonry();
-		}
+		},
+		triggerFunctions: [
+			function (resizeFunction, iframe) {
+				$(window).resize(function () {
+					resizeFunction(iframe);
+				});
+			}
+		]
 	});
 });
