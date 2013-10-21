@@ -1,7 +1,13 @@
-<% content_for :title, @publication.title %>
+<% content_for :title, "Jobs" %>
+
+<h2><%= @publication.title %></h2>
 
 <div class="article-main">
   <article class="article-body">
     <%= @publication.description.html_safe %>
   </article>
 </div>
+
+<aside class="article-sidebar">
+    <%= render :partial => "list_module/people" %>
+</aside>

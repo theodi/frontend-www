@@ -1,0 +1,18 @@
+<% content_for :title, "Courses" %>
+
+<div class="article-main">
+	<div class="article-body">
+		<%= render :partial => 'content/course', :locals => { :course => @course, :title => @title } %>
+	</div>
+</div>
+
+<aside class="course-sidebar">
+    <div class="module module-light module-colour-4">
+        <h4 class="module-heading">
+        	<a href="<%= courses_article_path(@course.slug) %>">
+        		<%= @course.title %>
+        	</a>
+        </h4>
+        <p class="category">Courses</p>
+    </div>
+</aside>

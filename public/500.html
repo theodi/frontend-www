@@ -1,25 +1,130 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
+  <title>Open Data Institute | Error</title>
+  <link rel="stylesheet" href="/assets/main.css?body=1" type="text/css" media="all">
+  <link rel="stylesheet" href="/assets/application.css?body=1" type="text/css" media="all">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="javascripts/html5shiv.js"></script>
+    <script src="javascripts/respond.min.js"></script>
+  <![endif]-->
 </head>
 
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
-  </div>
-</body>
+    <header class="site-header">
+        <div class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/"><img src="/assets/logo-footer.png" alt="The ODI" id="odi-logo"></a>
+            </div>
+            <!--
+            <form class="navbar-form navbar-left">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search ODI"/>
+                  <input type="submit" value="Go" class="btn"/>
+                </div>
+              </div>
+            </form>
+            -->
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/contact">Contact us</a></li>
+              <!-- <li><a href="#about">Sign in</a></li> -->
+            </ul>
+          </div>
+        </div>
+
+        <div class="navbar navbar-static-top">
+          <div class="container">
+            <div class="pull-right">
+              <ul class="nav navbar-nav main-nav">
+                <li class="dropdown active">
+                    <a href="/about">About <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/about">About the ODI</a></li>
+                        <li><a href="/team">People</a></li>
+                        <li><a href="/jobs">Jobs</a></li>
+                        <li><a href="/procurement">Procurement</a></li>
+                        <li><a href="/culture">Data as Culture</a></li>
+                        <li><a href="/space">Space</a></li>
+                        <li><a href="http://dashboards.theodi.org/">Dashboards</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/get-involved">Get involved <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/membership">Membership</a></li>
+                        <li><a href="/start-ups">Start-ups</a></li>
+                        <li><a href="https://certificates.theodi.org/">Open Data Certificates</a></li>
+                        <li><a href="/nodes">Nodes</a></li>
+                        <li><a href="/consultation-responses">Consultation Responses</a></li>
+                        <!--<li><a href="#">ODI on the web</a></li>-->
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="/learning">Learning <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/pg-certificate">Post-Graduate Certficate</a></li>
+                        <li><a href="/lunchtime-lectures">Friday Lunchtime Lectures</a></li>
+                        <li><a href="/guides">Guides</a></li>
+                        <li><a href="/case-studies">Case Studies</a></li>
+                    </ul>
+                </li>
+                <li><a href="/whats-happening">What's happening</a></li>
+                <li class="dropdown">
+                    <a href="/news">News <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/news">Newsroom</a></li>
+                    </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </header> <!-- /site-header -->
+
+    <header class="page-title">
+        <div class="container">
+            <h1>Error</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+          <p style="margin-left: 15px">Sorry, an error means we can't show you this page.</p>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 footer-content">
+                    <h1 class="footer-logo"><a href="http://www.theodi.org">Open Data Institute</a></h1>
+                    <p><a href="http://www.theodi.org/contact">Open Data Institute, 65 Clifton Street, London EC2A 4JE</a></p>
+                    <p><a href="mailto:info@theodi.org">info@theodi.org</a> Company <a href="http://opencorporates.com/companies/gb/08030289">08030289</a> 
+                        <span>VAT</span><span>143 7796 80</span>
+                    </p>
+                    <p class="license">
+                        <a href="http://creativecommons.org/licenses/by-sa/2.0/uk/deed.en_GB" rel="license">
+                          <img src="/assets/cc.png" alt="Creative Commons Licence" width="80" height="15">
+                        </a>
+                    </p>
+                </div>
+                <div class="col-md-4 footer-nav">
+                    <nav>
+                        <ul class="pull-right list-inline">
+                            <li><a href="/terms-of-use">Terms of use</a></li>
+                            <li><a href="/privacy-policy">Privacy policy</a></li>
+                            <li><a href="/cookie-policy">Cookie policy</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+  </body>
 </html>

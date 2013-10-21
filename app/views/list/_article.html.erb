@@ -1,15 +1,19 @@
 <div class="list-item">
     <div class="list-body">
-        <h2><%= artefact.title %></h2>
-        <p><%= artefact.details.excerpt %></p>
+        <a href="<%= send("#{@section}_article_path", artefact.slug) %>">
+            <h2><%= artefact.title %></h2>
+            <p><%= artefact.details.excerpt %></p>
+        </a>
     </div>
     <div class="list-aside">
         <% date = DateTime.parse(artefact.created_at) %>
         <p class="date"><%= date.strftime("#{date.day.ordinalize} %B %Y") %></p>
         <p class="meta"><%= artefact.details.author.name %></p>
-        <p class="more"><%= link_to "See more", send("#{@section}_article_path", artefact.slug), :class => "btn btn-primary btn-lg" %></p>
+    </div>
+    <div class="list-aside">
+        <p class="more"><%= link_to "See more", send("#{@section}_article_path", artefact.slug), :class => "btn btn-primary" %></p>
 
     </div>
   </div>
   
-  <hr class="heavy">
+  <hr>
