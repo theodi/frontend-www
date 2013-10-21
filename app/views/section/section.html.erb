@@ -1,7 +1,7 @@
 <% content_for :title, @section['title'] %>
 
 <% content_for :hero do %>
-<section class="article-hero">
+<section class="article-hero<%= ' within-header' unless @section['title'] %>">
     <div class="container">
         <div class="row">
             <div class="hero" style="background-color:#eb1976">
