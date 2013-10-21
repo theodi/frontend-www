@@ -1,4 +1,9 @@
 
 $(document).ready(function () {
-	$('iframe').iframeAutoHeight({debug: true});
+	$('iframe').iframeAutoHeight({
+		animate: true,
+		callback: function (callbackObject) { 
+			$('.grid').masonry();
+		}
+	});
 });

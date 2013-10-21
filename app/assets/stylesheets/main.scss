@@ -348,7 +348,8 @@ hr {
     iframe {
     	width: 100%;
     	margin-bottom: 20px;
-    	min-height: 220px;
+    	min-height: 150px;
+    	border: none;
     }
 
 }
@@ -450,7 +451,7 @@ hr {
 	    	max-width: none;
 	    	max-height: none;
 	    }
-	    
+
 	  }
 
     &.module-image-fullbleed {
@@ -493,6 +494,10 @@ hr {
 
     font-size: 21px;
 
+}
+
+.embedded .module {
+	margin-bottom: 0;
 }
 
 .listing {
