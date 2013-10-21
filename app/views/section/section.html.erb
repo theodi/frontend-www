@@ -18,21 +18,185 @@
 </section>
 <% end %>
 
-<ul class="grid effect-2" id="grid2">
-    
-    <% @section['links'].each do |link| %>
+<% if @section['title'] %>
 
-    <li class="home-module">
-        <div class="module module-light module-colour-<%= link['colour'] %>">
-            <a href="<%= link['link'] %>">
-                <h1 class="module-heading"><%= link['title'] %></h1>
-                <p class="module-subheading"><%= link['text'] %></p>
-            </a>
-        </div>
-    </li>
-    
-    <% end %>
+  <ul class="grid effect-2" id="grid2">
 
-</ul>
+      <% @section['links'].each do |link| %>
+
+      <li class="home-module">
+          <div class="module module-light module-colour-<%= link['colour'] %>">
+              <a href="<%= link['link'] %>">
+                  <h1 class="module-heading"><%= link['title'] %></h1>
+                  <p class="module-subheading"><%= link['text'] %></p>
+              </a>
+          </div>
+      </li>
+      
+      <% end %>
+
+  </ul>
+
+<% elsif %>
+    
+  <ul class="grid effect-2" id="grid2">
+
+  <li class="home-module">
+      <div class="module module-light module-colour-10">
+          <a href="#">
+              <h1 class="module-heading">About the ODI</h1>
+              <p class="module-subheading">Example of a text block would go here</p>
+          </a>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-light module-colour-12">
+          <a href="#">
+              <h1 class="module-heading">Our Space</h1>
+              <p class="module-subheading">Example of a text block would go here</p>
+          </a>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-dark§ module-colour-3">
+          <a href="#">
+              <h1 class="module-heading">Data as Culture Intro</h1>
+              <p class="module-subheading">Example of a text block would go here</p>
+          </a>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-light module-colour-6">
+          <a href="#">
+              <h1 class="module-heading">FAQ info</h1>
+              <p class="module-subheading">Example of a text block would go here</p>
+          </a>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-dark module-colour-7">
+          <a href="#">
+              <h1 class="module-heading">Press Inquiries</h1>
+              <p class="module-subheading">Example of a text block would go here</p>
+          </a>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-light module-colour-2">
+          <a href="#">
+              <h1 class="module-heading">Contact us</h1>
+              <p class="module-subheading">Example of a text block would go here</p>
+          </a>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-light module-colour-10">
+          <a href="#">
+              <h1 class="module-heading">I have classes of module-light for white text, and module-colour-10 for a blue background</h1>
+          </a>
+          <p class="category">Category</p>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-dark module-colour-5">
+          <a href="#">
+              <h1 class="module-heading">I have classes of module-dark for black text, and module-colour-5 for a dark green background</h1>
+          </a>
+          <p class="category">Category</p>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-light module-colour-10 module-image-background" style="background-image: url(/assets/red_spikey.png)">
+          <a href="#">
+              <h1 class="module-heading">Background image</h1>
+          </a>
+          <p class="category">Category</p>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-dark module-colour-4 module-image-foreground">
+          <a href="#">
+              <img src="/assets/ODI_certs_logo.png">
+              <h1 class="module-heading">
+                  Foreground image
+              </h1>
+          </a>
+          <p class="category">Category</p>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-dark module-colour-2 module-image-fullbleed">
+          <a href="#">
+              <img src="/assets/come_join_us.png">
+          </a>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-light module-colour-4 module-image-background" style="background-image: url(/assets/green_roundy.png)">
+          <a href="#">
+              <h1 class="module-heading">Background image</h1>
+          </a>
+          <p class="category">Category</p>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-light module-colour-11 module-image-foreground">
+          <a href="#">
+              <img src="/assets/white_radiation.png">
+              <h1 class="module-heading">
+                  Foreground image
+              </h1>
+          </a>
+          <p class="category">Category</p>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-light module-colour-5 module-image-foreground">
+          <a href="#">
+              <img src="/assets/white_spikey.png">
+              <h1 class="module-heading">
+                  Foreground image
+              </h1>
+          </a>
+          <p class="category">Category</p>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-dark module-colour-2 module-image-fullbleed">
+          <a href="#">
+              <img src="/assets/red_come_join_us.png">
+          </a>
+      </div>
+  </li>
+
+  <li class="home-module">
+      <div class="module module-dark module-colour-8 module-image-foreground">
+          <a href="#">
+              <img src="/assets/ODI_certs_logo.png">
+              <h1 class="module-heading">
+                  Foreground image
+              </h1>
+          </a>
+          <p class="category">Category</p>
+      </div>
+  </li>
+
+  </ul>
+<% end %>
+
 
 <%= render :partial => "list/masonry" %>
