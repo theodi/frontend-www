@@ -82,9 +82,31 @@ class RootController < ApplicationController
     end
 
     @publication = PublicationPresenter.new(artefact)
+    if params[:section] == 'courses'
+      @instances = content_api.sorted_by('course_instance', 'date').results.delete_if { |course| course.details.course != params[:slug] }
+    end
     respond_to do |format|
       format.html do
         render "content/#{@publication.format}"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+
+  def course_instance
+    slug = "#{params[:slug]}-#{params[:date]}"
+    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
+                  fetch_artefact(slug, params[:edition], nil, nil)
+    @publication = PublicationPresenter.new(artefact)
+    course_slug = @publication.course
+    course = ArtefactRetriever.new(content_api, Rails.logger, statsd).
+                  fetch_artefact(course_slug, params[:edition], nil, nil)
+    @course = PublicationPresenter.new(course)
+    respond_to do |format|
+      format.html do
+        render "content/course_instance"
       end
       format.json do
         render :json => @publication.to_json
