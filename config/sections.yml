@@ -1,3 +1,33 @@
+home:
+    title: "Welcome"
+    hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
+    hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
+    links:
+      -
+        title: "News"
+        text: "Here is some text"
+        link: "/news"
+        colour: 12
+      -
+        title: "Open Data Certificates"
+        text: "Here is some text"
+        link: "https://certificates.theodi.org/"
+        colour: 10
+      -
+        title: "Courses"
+        text: "Here is some text"
+        link: "/courses"
+        colour: 4
+      -
+        title: "Challenge series"
+        text: "Here is some text"
+        link: "/challenge-series"
+        colour: 9
+      -
+        title: "Dashboards"
+        text: "Here is some text"
+        link: "http://dashboards.theodi.org/"
+        colour: 7
 about:
     title: "About"
     hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
