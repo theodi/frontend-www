@@ -74,14 +74,8 @@ class RootController < ApplicationController
   end
 
   def course_instance
-    slug = "#{params[:slug]}-#{params[:date]}"
-    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
-                  fetch_artefact(slug, params[:edition], nil, nil)
-    @publication = PublicationPresenter.new(artefact)
-    course_slug = @publication.course
-    course = ArtefactRetriever.new(content_api, Rails.logger, statsd).
-                  fetch_artefact(course_slug, params[:edition], nil, nil)
-    @course = PublicationPresenter.new(course)
+    @publication = fetch_article(params[:slug], params[:edition])
+    @course = fetch_article(course_slug, params[:edition])
     @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
     respond_to do |format|
       format.html do
