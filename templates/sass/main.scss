@@ -38,7 +38,7 @@ body {
     font-size: 18px;
 }
 
-
+.mobile-only { display: none; }
 
 /*------------------------------------*\
     TYPOGRAPHY
@@ -1310,15 +1310,77 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
         }
     }
 
-    .navbar-inverse {
-        li {
-            display: inline-block;
-        }
-    }
-
     .navbar .pull-right {
         float: left;
         width: 100%;
+    }
+
+    // Restore any mobile-only elements
+    .mobile-only { display: block; }
+
+    .navbar-inverse {
+
+        li {
+
+            // NOTE: disabled while Search and Sign In removed
+            //display: inline-block;
+
+        }
+
+        // Hide upper nav elements like Contact Us
+        .navbar-nav { display: none; }
+
+    }
+
+    // Match padding on main nav items to subnav items
+    .navbar-inverse .navbar-nav > li > a {
+
+        padding-top: 7px;
+        padding-bottom: 7px;
+
+    }
+
+    // Restore the lower nav items
+    .mobile-only .navbar-nav {
+
+        display: block;
+
+    }
+
+    // Make white secondary nav black with orange hovers
+    .navbar-nav > li > a {
+
+        background: #1b1b1b;
+        color: #fff;
+        padding-top: 7px;
+        padding-bottom: 7px;
+
+        &:hover {
+
+            background: $odiOrange;
+
+            .caret { border-top-color: #000; }
+
+        }
+
+    }
+
+    // Orange background, black arrows for open nav items
+    .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+
+        background: $odiOrange;
+
+        .caret { border-top-color: #000; }
+
+    }
+
+    // Remove separators from dropdown nav items
+    .dropdown-menu {
+
+        padding-bottom: 5px;
+
+        > li > a { border-bottom: none; }
+
     }
 
 }
@@ -1361,7 +1423,3 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
 
 
 }
-
-
-
-
