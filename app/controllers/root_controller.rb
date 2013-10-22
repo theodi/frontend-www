@@ -56,6 +56,13 @@ class RootController < ApplicationController
     render "list/people.html"
   end
 
+  def case_studies_list
+    @section = params[:section].parameterize
+    @artefacts = content_api.sorted_by('case_study', 'curated').results
+    @title = "Case Studies"
+    render "list/list"
+  end
+
   def section
     sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
     @section = sections[params[:section]]
