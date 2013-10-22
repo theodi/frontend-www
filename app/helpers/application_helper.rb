@@ -43,7 +43,7 @@ module ApplicationHelper
   def module_block(section, publication)
   	begin
   		render :partial => "module/#{section}", :locals => { :section => section, :publication => publication }
-    rescue
+    rescue ActionView::MissingTemplate
   	  render :partial => 'module/block', :locals => { :section => section, :publication => publication }
   	end
   end
