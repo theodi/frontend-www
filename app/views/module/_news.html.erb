@@ -1,6 +1,6 @@
 <% section = 'blog' if publication.tag_ids.include?('blog') %>
 
-<div class="module module-light module-highlight module-colour-<%= (publication.slug.length % 12) + 1 %>">  
+<div class="module module-light module-highlight-<%= section == 'blog' ? '3' : '1' %> module-colour-<%= (publication.slug.length % 12) + 1 %>">  
 	<a href="<%= send("#{section}_article_path", publication.slug) %>" target="_top">
 		<h1 class="module-heading"><%= publication.title %></h1>
 	    <p class="module-subheading"><%= publication.details.author.name %></p>
