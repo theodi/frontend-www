@@ -6,7 +6,7 @@ Www::Application.routes.draw do
     get "#{item['url']}", as: "#{item['slug'].gsub('-','_')}_page", to: 'root#page', :slug => item['slug']
   end
   
-  [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :procurement, :start_ups, :nodes, :consultation_responses, :guides].each do |section|
+  [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides].each do |section|
     section_slug = section.to_s.dasherize
     get "#{section_slug}", as: "#{section}_section", to: "root##{section}_list", :section => section_slug
 
