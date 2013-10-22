@@ -51,7 +51,12 @@ class RootController < ApplicationController
         :colour => 8
       },
     }
-    @teams.map { |team,hash| hash[:people] = content_api.sorted_by(team.to_s, "curated").results }
+    people = []
+    @teams.map do |team,hash|
+      members = content_api.sorted_by(team.to_s, "curated").results.delete_if { |member| people.include?(member.slug) }
+      people += members.map { |member| member.slug }
+      hash[:people] = members
+    end
     @title = "Team"
     render "list/people.html"
   end
