@@ -73,6 +73,12 @@ p {
     line-height: 26px;
     margin-bottom: 20px;
 
+    @media (max-width:767px) {
+
+        font-size: 16px;
+
+    }
+
 
     a {
         @include transition(all 0.5s);
@@ -229,7 +235,7 @@ hr {
             }
         }
         .dropdown-menu {
-            display: block;
+            //display: block;
         }
     }
 
@@ -298,7 +304,15 @@ hr {
         white-space: nowrap;
         text-overflow: ellipsis;
         padding-bottom: 0.1em;
+
+        @media (max-width:767px) {
+
+            margin: 2px 0 0;
+            font-size: 30px;
+
+        }
     }
+
 }
 
 /*------------------------------------*\
@@ -501,6 +515,12 @@ hr {
 
     min-height: 220px;
 
+    @media (max-width:767px) {
+
+        min-height: 0;
+
+    }
+
     > a {
         display: block;
         height: 100%;
@@ -517,10 +537,6 @@ hr {
 
         font-size: 14px;
         text-transform: uppercase;
-        position: absolute;
-        bottom: 0;
-        margin-top: 15px;
-        margin-bottom: 20px;
 
     }
 
@@ -586,11 +602,27 @@ hr {
     margin-bottom: 20px;
     margin-top: 0;
 
+    @media (max-width:767px) {
+
+        font-size:  25px;
+        margin-bottom: 10px;
+        line-height: 30px;
+
+    }
+
 }
 
 .module-subheading {
 
     font-size: 21px;
+
+    @media (max-width:767px) {
+
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 23px;
+
+    }
 
 }
 
@@ -724,11 +756,37 @@ hr {
         padding-left: 0;
         padding-right: 0;
 
+        @media (max-width: 992px) {
+
+            width: auto;
+
+            img {
+
+                left: 0;
+                right: 0;
+
+            }
+
+        }
+
+        @media (max-width:767px) {
+
+            height: auto;
+
+        }
+
         a {
             position: relative;
             padding-top: 275px;
             display: block;
             height: 100%; // makes whole block clickable
+
+            @media (max-width:767px) {
+
+                padding-top: 0;
+
+            }
+
         }
 
         img {
@@ -737,10 +795,18 @@ hr {
             left: 18px;
             max-width: 100%;
             max-height: 100%;
+
+            @media (max-width:767px) {
+
+                position: static;
+                margin-bottom: 20px;
+
+            }
+
         }
 
         .module-heading {
-            font-size: 27px;
+            font-size: 26px;
             font-weight: 300;
             margin-bottom: 6px;
             padding-left: 18px;
@@ -767,7 +833,17 @@ hr {
             font-style: italic;
             padding-left: 18px;
             padding-right: 18px;
-            margin-bottom: 0;
+            position: absolute;
+            bottom: 0;
+
+            @media (max-width:767px) {
+
+                position: static;
+                display: block;
+                margin-top: 5px;
+
+            }
+
         }
 
     }
@@ -950,7 +1026,17 @@ hr {
     }
 
     // Line top of articles up with top of sidebar
-    h2 { margin-top: 0; }
+    h2 {
+
+        margin-top: 0;
+
+        @media (max-width:767px) {
+
+            font-size: 25px;
+
+        }
+
+    }
 
 }
 
