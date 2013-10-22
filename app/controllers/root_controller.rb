@@ -56,6 +56,13 @@ class RootController < ApplicationController
     render "list/people.html"
   end
 
+  def case_studies_list
+    @section = params[:section].parameterize
+    @artefacts = content_api.sorted_by('case_study', 'curated').results
+    @title = "Case Studies"
+    render "list/list"
+  end
+
   def section
     sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
     @section = sections[params[:section]]
@@ -106,6 +113,32 @@ class RootController < ApplicationController
       end
     end
   end
+  
+  def case_studies_article
+    @publication = fetch_article(params[:slug], params[:edition], "case_study")
+    
+    respond_to do |format|
+      format.html do
+        render "content/case_study"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+  
+  def consultation_responses_article
+    @publication = fetch_article(params[:slug], params[:edition], "consultation-response")
+    
+    respond_to do |format|
+      format.html do
+        render "content/consultation_response"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
 
   def badge
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
@@ -146,7 +179,7 @@ class RootController < ApplicationController
       @hero_image = '/assets/news_hero.jpg'
     end
     @artefacts.sort_by!{|x| x.created_at}.reverse!
-    @title = params[:section].humanize.capitalize
+    @title = params[:section].gsub('-', ' ').humanize.capitalize
     begin
       # Use a specific template if present
       render "list/#{params[:section]}"
