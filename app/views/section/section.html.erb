@@ -6,12 +6,14 @@
         <div class="row">
             <div class="hero" style="background-color:#eb1976">
                 <img src="<%= @section['hero_image'] %>" />
-                <div class="hero-label">
-                    <div class="annotation">
-                        <span class="type">image:</span>
-                        <%= @section['hero_text'].html_safe %>
-                    </div>
-                </div>
+                <% if @section['hero_text'] %>
+                  <div class="hero-label">
+                      <div class="annotation">
+                          <span class="type">image:</span>
+                          <%= @section['hero_text'].html_safe %>
+                      </div>
+                  </div>
+                <% end %>
             </div>
         </div>
     </div>

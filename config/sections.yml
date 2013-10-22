@@ -33,8 +33,7 @@ home:
         colour: 3
 about:
     title: "About"
-    hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
-    hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
+    hero_image: "/assets/about_hero.jpg"
     links:
      -
       title: "About the ODI"
@@ -68,8 +67,7 @@ about:
        colour: 0
 get-involved:
      title: "Get Involved"
-     hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
-     hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
+     hero_image: "/assets/getinvolved_hero.jpg"
      links:
       -
        title: "Membership intro"
@@ -88,8 +86,7 @@ get-involved:
        colour: 3
 learning:
     title: "Learning"
-    hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
-    hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
+    hero_image: "/assets/learn_hero.jpg"
     links:
      -
       title: "Upcoming Courses"
@@ -113,8 +110,7 @@ learning:
       colour: 0
 whats-happening:
     title: "What's Happening?"
-    hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
-    hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
+    hero_image: "/assets/whatshappening_hero.jpg"
     links:
      -
       title: "Upcoming Events"
@@ -141,3 +137,15 @@ whats-happening:
       text: "Here is some text"
       link: "/hire"
       colour: 7
+newsroom:
+    title: "Newsroom"
+    hero_image: "/assets/news_hero.jpg"
+    links:
+     -
+      title: "News & Blogs"
+      link: "/news"
+      colour: 10
+     -
+      title: "Assets"
+      link: "/news/assets"
+      colour: 0
