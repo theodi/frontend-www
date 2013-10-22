@@ -234,12 +234,37 @@ hr {
                 border-top-color: $odiOrange;
             }
         }
-        .dropdown-menu {
-            //display: block;
+
+        @media (min-width:1025px) {
+
+            // At sizes greater than 1024px, enable hovering on the nav
+            .dropdown-menu {
+
+                display: block;
+
+            }
+
         }
+
     }
 
-    > li.last:hover {
+    > li {
+
+        @media (min-width:1025px) {
+
+            // At sizes greater than 1024px, enable hovering on the nav
+            .dropdown-menu {
+
+                // Hide duplicate nav links
+                .duplicate { display: none; }
+
+            }
+
+        }
+
+    }
+
+    > li.last {
 
         .dropdown-menu {
 
@@ -861,6 +886,12 @@ hr {
     @extend .col-md-8;
     padding-right: 70px;
 
+    @media (max-width:767px) {
+
+        padding-right: 15px;
+
+    }
+
     img {
         max-width: 100%;
     }
@@ -958,12 +989,19 @@ hr {
     }
 
     @media (max-width:767px) {
+
         .headline {
-            font-size: 55px;
-            line-height: 60px;
+
+            line-height: 50px;
             padding: 55px 30px 67px 30px;
             min-height: 0;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 38px;
+
         }
+
     }
 
 }
