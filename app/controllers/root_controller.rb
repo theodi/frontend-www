@@ -127,6 +127,13 @@ class RootController < ApplicationController
     @section = 'team'
     render "list_module/people", :layout => 'minimal'
   end
+  
+  def courses_list_module
+    @artefact = content_api.upcoming("course_instance", "date")
+    @course = fetch_article(@artefact.details.course, nil, "courses")
+    @title = "Courses"
+    render "list_module/courses", :layout => "minimal"
+  end
 
   protected
   
