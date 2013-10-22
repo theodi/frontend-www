@@ -42,3 +42,11 @@ if ($('#grid-people').length) {
     });
 
 }
+
+// Remove Masonry effects on mobile
+// This may need revisiting on a wider range of devices (performance tests etc.)
+if (screen.width <= 1024) {
+
+    $('.grid').removeClass('effect-2').find('li').css('opacity', '1');
+
+}
