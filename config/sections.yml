@@ -137,15 +137,3 @@ whats-happening:
       text: "Here is some text"
       link: "/hire"
       colour: 7
-newsroom:
-    title: "Newsroom"
-    hero_image: "/assets/news_hero.jpg"
-    links:
-     -
-      title: "News & Blogs"
-      link: "/news"
-      colour: 10
-     -
-      title: "Assets"
-      link: "/news/assets"
-      colour: 0
