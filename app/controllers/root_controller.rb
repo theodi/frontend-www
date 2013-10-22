@@ -68,6 +68,12 @@ class RootController < ApplicationController
     render "list/list"
   end
 
+  def culture_collection
+    @section = 'culture'
+    @artefacts = content_api.sorted_by('creative_work', 'curated').results
+    render "list/culture"
+  end
+
   def section
     sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
     @section = sections[params[:section]]
@@ -138,6 +144,19 @@ class RootController < ApplicationController
     respond_to do |format|
       format.html do
         render "content/consultation_response"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+
+  def culture_article
+    @publication = fetch_article(params[:slug], params[:edition], "creative_work")
+    
+    respond_to do |format|
+      format.html do
+        render "content/culture"
       end
       format.json do
         render :json => @publication.to_json

@@ -1,0 +1,19 @@
+<% content_for :title, "Data as culture" %>
+
+<div class ="article-main">
+	<div class="article-body">
+	  <h2><%= @publication.title %></h2>
+	  <%= @publication.description.html_safe %>
+	</div>
+</div>
+
+<% square_image = @publication.square_image %>
+<% if square_image %>
+	<aside class="article-sidebar">
+		<div class="module module-light module-image-fullbleed">
+			<a href="<%= @publication.image['web_url'] %>">
+				<%= image_tag @publication.square_image, alt: @publication.title %>
+			</a>
+		</div>
+	</aside>
+<% end %>
