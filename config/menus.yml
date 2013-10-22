@@ -66,11 +66,11 @@
     link: "/case-studies"
  - 
   title: "What's happening"
-  link: "/events"
+  link: "/whats-happening"
  - 
   title: "News"
   link: "/news"
   items:
     -
       title: "Newsroom"
-      link: "/news"
+      link: "/newsroom"

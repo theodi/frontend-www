@@ -127,15 +127,23 @@ class RootController < ApplicationController
     @section = 'team'
     render "list_module/people", :layout => 'minimal'
   end
+  
+  def courses_list_module
+    @artefact = content_api.upcoming("course_instance", "date")
+    @course = fetch_article(@artefact.details.course, nil, "courses")
+    @title = "Courses"
+    render "list_module/courses", :layout => "minimal"
+  end
 
   protected
   
   def list(params)
     @section = params[:section].parameterize
-    @artefacts = content_api.with_tag(params[:section].singularize.gsub('-', '_')).results
+    @artefacts = content_api.with_tag(params[:section].singularize).results
     # Merge blog into news section
     if params[:section] == 'news'
       @artefacts += content_api.with_tag('blog').results
+      @hero_image = '/assets/news_hero.jpg'
     end
     @artefacts.sort_by!{|x| x.created_at}.reverse!
     @title = params[:section].humanize.capitalize
@@ -149,7 +157,7 @@ class RootController < ApplicationController
 
   def list_module(params)
     @section = params[:section].parameterize
-    @artefacts = content_api.sorted_by(params[:section].gsub('-', '_'), "date").results
+    @artefact = content_api.latest("tag", params[:section])
     @title = params[:section].humanize.capitalize
     begin
       # Use a specific template if present
@@ -160,17 +168,8 @@ class RootController < ApplicationController
   end
 
   def _module(params)
-    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
-                  fetch_artefact(params[:slug], params[:edition], nil, nil)
-
-    # If the content type or tag doesn't match the slug, return 404
-    if artefact['format'] != params[:section].singularize && 
-        artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
-      raise ActionController::RoutingError.new('Not Found') 
-    end
-
+    @publication = fetch_article(params[:slug], nil, params[:section])
     @section = params[:section].parameterize
-    @publication = PublicationPresenter.new(artefact)
     begin
       # Use a specific template if present
       render "module/#{params[:section]}", :layout => "minimal"
