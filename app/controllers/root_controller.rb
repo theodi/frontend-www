@@ -23,6 +23,9 @@ class RootController < ApplicationController
 
   def index
     @title = "Welcome"
+    sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
+    @section = sections['home']
+    render "section/section"
   end
   
   def team_list

@@ -345,6 +345,13 @@ hr {
 
     }
 
+    iframe {
+    	width: 100%;
+    	margin-bottom: 20px;
+    	min-height: 150px;
+    	border: none;
+    }
+
 }
 
 
@@ -428,10 +435,36 @@ hr {
 
         display: block;
         margin: 0 auto 40px;
-        max-width: 60%;
         max-height: 60%;
+        max-width: 60%;
 
     }
+
+    &.module-image-foreground {
+
+    	.module-heading {
+    		text-align: center;
+    	}
+
+    	div.image {
+    		margin-left: -25px;
+    		margin-right: -25px;
+    	}
+
+	    img {
+	    	max-width: 100%;
+	    	max-height: none;
+	    }
+
+	  }
+
+    &.module-image-fullbleed {
+    	padding: 0;
+    	img {
+	    	max-width: none;
+	    	max-height: none;
+	    }
+	  }
 
     .attribution {
 			font-size: 7px;
@@ -465,6 +498,10 @@ hr {
 
     font-size: 21px;
 
+}
+
+.embedded .module {
+	margin-bottom: 0;
 }
 
 .listing {
