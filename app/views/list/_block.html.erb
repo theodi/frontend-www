@@ -1,7 +1,3 @@
 <li class="home-module">
-	<% begin %>
-		<%= render :partial => "module/#{@section}", :locals => { section: @section, publication: artefact } %>
-	<% rescue %>
-		<%= render :partial => 'module/block', :locals => { section: @section, publication: artefact } %>
-	<% end %>
+  <%= module_block @section, artefact %>
 </li>
