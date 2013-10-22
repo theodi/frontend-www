@@ -165,7 +165,7 @@ class RootController < ApplicationController
 
   def culture_article
     @publication = fetch_article(params[:slug], params[:edition], "creative_work")
-    
+    @artist = fetch_article(@publication.artist, params[:edition], 'person')
     respond_to do |format|
       format.html do
         render "content/culture"
