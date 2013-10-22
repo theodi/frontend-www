@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-	$('iframe').iframeAutoHeight({
+	$('.article-sidebar iframe, .grid iframe').iframeAutoHeight({
 		animate: true,
 		callback: function (callbackObject) { 
 			$('.grid').masonry();
