@@ -113,6 +113,32 @@ class RootController < ApplicationController
       end
     end
   end
+  
+  def case_studies_article
+    @publication = fetch_article(params[:slug], params[:edition], "case_study")
+    
+    respond_to do |format|
+      format.html do
+        render "content/case_study"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+  
+  def consultation_responses_article
+    @publication = fetch_article(params[:slug], params[:edition], "consultation-response")
+    
+    respond_to do |format|
+      format.html do
+        render "content/consultation_response"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
 
   def badge
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
