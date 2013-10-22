@@ -3,6 +3,6 @@
 		<h1 class="module-heading"><%= publication.title %></h1>
 	</a>
 	<a href="/<%= section %>" target="_top">
-		<p class="category"><%= section %></p>
+		<p class="category"><%= section.gsub('-', ' ') %></p>
 	</a>
 </div>

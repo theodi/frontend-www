@@ -153,7 +153,7 @@ class RootController < ApplicationController
       @hero_image = '/assets/news_hero.jpg'
     end
     @artefacts.sort_by!{|x| x.created_at}.reverse!
-    @title = params[:section].humanize.capitalize
+    @title = params[:section].gsub('-', ' ').humanize.capitalize
     begin
       # Use a specific template if present
       render "list/#{params[:section]}"
