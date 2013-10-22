@@ -20,9 +20,6 @@
   url: "membership"
   slug: "join-us"
 -
-  url: "culture"
-  slug: "culture"
--
   url: "culture/about"
   slug: "about"
 -

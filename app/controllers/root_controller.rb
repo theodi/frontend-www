@@ -68,6 +68,18 @@ class RootController < ApplicationController
     render "list/list"
   end
 
+  def culture_list
+    @publication = fetch_article('culture', params[:edition], 'article')
+    respond_to do |format|
+      format.html do
+        render "content/culture_page"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+
   def culture_collection
     @section = 'culture'
     @artefacts = content_api.sorted_by('creative_work', 'curated').results
