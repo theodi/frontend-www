@@ -66,11 +66,13 @@
         </div>
     </header> <!-- /site-header -->
 
-    <header class="page-title">
-        <div class="container">
-            <h1><%= yield :title %></h1>
-        </div>
-    </header>
+    <% if content_for?(:title) %>
+      <header class="page-title">
+          <div class="container">
+              <h1><%= yield :title %></h1>
+          </div>
+      </header>
+    <% end %>
     
     <%= yield :hero %>
 
@@ -109,6 +111,9 @@
     </footer>
 
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "jquery.browser" %>
+    <%= javascript_include_tag "jquery.iframe-auto-height" %>
+    <%= javascript_include_tag "iframe-auto-height" %>
     <%= yield :extra_javascript %>
 
   </body>

@@ -23,6 +23,9 @@ class RootController < ApplicationController
 
   def index
     @title = "Welcome"
+    sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
+    @section = sections['home']
+    render "section/section"
   end
   
   def team_list
@@ -129,12 +132,12 @@ class RootController < ApplicationController
   
   def list(params)
     @section = params[:section].parameterize
-    @artefacts = content_api.sorted_by(params[:section].singularize, "date").results
+    @artefacts = content_api.with_tag(params[:section].singularize).results
     # Merge blog into news section
     if params[:section] == 'news'
-      @artefacts += content_api.sorted_by('blog', "date").results
-      @artefacts.sort_by!{|x| x.created_at}.reverse!
+      @artefacts += content_api.with_tag('blog').results
     end
+    @artefacts.sort_by!{|x| x.created_at}.reverse!
     @title = params[:section].humanize.capitalize
     begin
       # Use a specific template if present

@@ -1,7 +1,7 @@
 <% content_for :title, @section['title'] %>
 
 <% content_for :hero do %>
-<section class="article-hero">
+<section class="article-hero<%= ' within-header' unless @section['title'] %>">
     <div class="container">
         <div class="row">
             <div class="hero" style="background-color:#eb1976">
@@ -19,29 +19,45 @@
 <% end %>
 
 <ul class="grid effect-2" id="grid2">
-    
+
     <% @section['links'].each do |link| %>
 
     <li class="home-module">
-        <div class="module module-light module-colour-<%= link['colour'] %>">
+      <% if link['frame'] %>
+        <iframe seamless scrolling='no' src="<%= link['frame'] %>"></iframe>
+      <% elsif link['background_image'] %>
+        <div class="module module-light module-image-background module-colour-<%= link['colour'] %>" style="background-image: url(<%= link['background_image'] %>)">
             <a href="<%= link['link'] %>">
-                <h1 class="module-heading"><%= link['title'] %></h1>
-                <p class="module-subheading"><%= link['text'] %></p>
+                <% if link['title'] %>
+                  <h1 class="module-heading"><%= link['title'] %></h1>
+                <% end %>
+                <% if link['text'] %>
+                  <p class="module-subheading"><%= link['text'] %></p>
+                <% end %>
             </a>
         </div>
+      <% else %>
+        <div class="module module-light module-colour-<%= link['colour'] %><%= ' module-image-foreground' if link['image'] && link['title'] %><%= ' module-image-fullbleed' if link['image'] && !link['title'] %>">
+            <a href="<%= link['link'] %>">
+                <% if link['image'] %>
+                  <div class="image">
+                    <img src="<%= link['image'] %>">
+                  </div>
+                <% end %>
+                <% if link['title'] %>
+                  <h1 class="module-heading"><%= link['title'] %></h1>
+                <% end %>
+                <% if link['text'] %>
+                  <p class="module-subheading"><%= link['text'] %></p>
+                <% end %>
+            </a>
+        </div>
+      <% end %>
+
     </li>
     
     <% end %>
+  </ul>
 
-</ul>
 
-<% content_for :extra_javascript do %>
-  <!-- Masonry and its required scripts -->
-  <script src="assets/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/masonry.pkgd.min.js"></script>
-  <script src="assets/classie.js"></script>
-  <script src="assets/AnimOnScroll.js"></script>
-
-  <!-- Layout (Masonry initialisation etc.) -->
-  <script src="assets/layout.js"></script>
-<% end %>
+<%= render :partial => "list/masonry" %>
