@@ -4,6 +4,7 @@
 	<a href="<%= send("#{section}_article_path", publication.slug) %>" target="_top">
 		<h1 class="module-heading"><%= publication.title %></h1>
 	    <p class="module-subheading"><%= publication.details.author.name %></p>
+	    <p class="module-meta"><%= DateTime.parse(publication.updated_at).strftime('%-d %B %Y') %></p>
 		<p class="category"><%= section %></p>
 	</a>
 </div>
