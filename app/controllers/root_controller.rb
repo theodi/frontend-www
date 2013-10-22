@@ -149,7 +149,7 @@ class RootController < ApplicationController
 
   def list_module(params)
     @section = params[:section].parameterize
-    @artefacts = content_api.sorted_by(params[:section], "date").results
+    @artefact = content_api.latest("tag", params[:section])
     @title = params[:section].humanize.capitalize
     begin
       # Use a specific template if present
