@@ -1,5 +1,4 @@
-<% section = @section == 'blog' ? 'news' : @section %>
 <% content_for :title, @title %>
 <div class="listing">
-  <%= module_block section, @artefact %>
+  <%= module_block @section, @artefact %>
 </div>
