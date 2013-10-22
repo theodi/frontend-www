@@ -2,8 +2,8 @@
 <% content_for :title, @title %>
 <div class="listing">
 	<% begin %>
-		<%= render :partial => "module/#{section}", :locals => { :section => section, :publication => @artefacts[0] } %>
+		<%= render :partial => "module/#{section}", :locals => { :section => section, :publication => @artefact } %>
 	<% rescue %>
-		<%= render :partial => 'module/block', :locals => { :section => section, :publication => @artefacts[0] } %>
+		<%= render :partial => 'module/block', :locals => { :section => section, :publication => @artefact } %>
 	<% end %>
 </div>
