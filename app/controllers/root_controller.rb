@@ -132,7 +132,7 @@ class RootController < ApplicationController
   
   def list(params)
     @section = params[:section].parameterize
-    @artefacts = content_api.with_tag(params[:section].singularize).results
+    @artefacts = content_api.with_tag(params[:section].singularize.gsub('-', '_')).results
     # Merge blog into news section
     if params[:section] == 'news'
       @artefacts += content_api.with_tag('blog').results
@@ -149,7 +149,7 @@ class RootController < ApplicationController
 
   def list_module(params)
     @section = params[:section].parameterize
-    @artefacts = content_api.sorted_by(params[:section], "date").results
+    @artefacts = content_api.sorted_by(params[:section].gsub('-', '_'), "date").results
     @title = params[:section].humanize.capitalize
     begin
       # Use a specific template if present
