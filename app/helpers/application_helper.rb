@@ -40,4 +40,12 @@ module ApplicationHelper
     end
   end
   
+  def module_block(section, publication)
+  	begin
+  		render :partial => "module/#{section}", :locals => { :section => section, :publication => publication }
+    rescue
+  	  render :partial => 'module/block', :locals => { :section => section, :publication => publication }
+  	end
+  end
+  
 end
