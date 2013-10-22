@@ -19,7 +19,7 @@ Www::Application.routes.draw do
     get "#{section_slug}/:slug/badge", as: "#{section}_badge", to: 'root#badge', :section => section_slug
   end  
   
-  [:about, :get_involved, :learning, :whats_happening, :newsroom].each do |section|
+  [:about, :get_involved, :learning, :whats_happening].each do |section|
     slug = section.to_s.dasherize
     get "#{slug}", as: "#{section}_section", to: 'root#section', section: slug 
   end

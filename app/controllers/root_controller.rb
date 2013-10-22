@@ -136,6 +136,7 @@ class RootController < ApplicationController
     # Merge blog into news section
     if params[:section] == 'news'
       @artefacts += content_api.with_tag('blog').results
+      @hero_image = '/assets/news_hero.jpg'
     end
     @artefacts.sort_by!{|x| x.created_at}.reverse!
     @title = params[:section].humanize.capitalize

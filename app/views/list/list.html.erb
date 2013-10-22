@@ -1,4 +1,13 @@
 <% content_for :title, @title %>
+
+<% content_for :hero do %>
+	<% if @hero_image %>
+		<section class="article-hero">
+			<%= render :partial => "section/hero", :locals => { :hero_image => @hero_image, :hero_text => @hero_text } %>
+		</section>
+	<% end %>
+<% end %>
+
 <ul class="grid effect-2 listing" id="grid2">
 	<% @artefacts.each do |artefact| %>
 		<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
