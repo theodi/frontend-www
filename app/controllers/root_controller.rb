@@ -167,17 +167,8 @@ class RootController < ApplicationController
   end
 
   def _module(params)
-    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
-                  fetch_artefact(params[:slug], params[:edition], nil, nil)
-
-    # If the content type or tag doesn't match the slug, return 404
-    if artefact['format'] != params[:section].singularize && 
-        artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
-      raise ActionController::RoutingError.new('Not Found') 
-    end
-
+    @publication = fetch_article(params[:slug], nil, params[:section])
     @section = params[:section].parameterize
-    @publication = PublicationPresenter.new(artefact)
     begin
       # Use a specific template if present
       render "module/#{params[:section]}", :layout => "minimal"
