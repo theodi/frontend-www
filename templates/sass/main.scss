@@ -1301,6 +1301,9 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
 @media (max-width: 767px) {
 
     .site-header {
+
+        margin-bottom: 20px;
+
         .navbar-form {
             margin-bottom: 0;
             margin-top: 0;
@@ -1308,6 +1311,7 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
         .navbar-nav {
             margin: 0 -15px;
         }
+
     }
 
     .navbar .pull-right {
@@ -1353,7 +1357,7 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
         background: #1b1b1b;
         color: #fff;
         padding-top: 7px;
-        padding-bottom: 7px;
+        padding-bottom: 8px;
 
         &:hover {
 
