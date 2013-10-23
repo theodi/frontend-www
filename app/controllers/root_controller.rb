@@ -68,6 +68,24 @@ class RootController < ApplicationController
     render "list/list"
   end
 
+  def culture_list
+    @publication = fetch_article('culture', params[:edition], 'article')
+    respond_to do |format|
+      format.html do
+        render "content/culture_page"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+
+  def culture_collection
+    @section = 'culture'
+    @artefacts = content_api.sorted_by('creative_work', 'curated').results
+    render "list/culture"
+  end
+
   def nodes_list
     @section = params[:section].parameterize
     @publication = fetch_article('about-nodes', params[:edition], "article")
@@ -156,6 +174,19 @@ class RootController < ApplicationController
     end
   end
 
+  def culture_article
+    @publication = fetch_article(params[:slug], params[:edition], "creative_work")
+    @artist = fetch_article(@publication.artist, params[:edition], 'person')
+    respond_to do |format|
+      format.html do
+        render "content/culture"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+
   def badge
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
                   fetch_artefact(params[:slug], params[:edition], nil, nil)
@@ -182,6 +213,13 @@ class RootController < ApplicationController
     @course = fetch_article(@artefact.details.course, nil, "courses")
     @title = "Courses"
     render "list_module/courses", :layout => "minimal"
+  end
+
+  def culture_list_module
+    @section = 'culture'
+    @artefact = content_api.latest('type', 'creative_work')
+    @title = "Culture"
+    render "list_module/list_module", :layout => "minimal"
   end
 
   protected
