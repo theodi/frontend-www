@@ -306,7 +306,11 @@ hr {
         &:hover {
             color: #fff;
             text-decoration: none;
+            border-bottom: none;
         }
+
+        @include transition(none);
+
     }
     p {
         font-size: 16px;
@@ -458,7 +462,12 @@ hr {
     width: 50%;
 
     // Create a gap between the masonry blocks
+    // IE11 was ignoring transparent border
+    // Try white, but that can show up overlapping blocks
+    // So finally use transparent white with 0 alpha if supported
     border-right: 15px solid transparent;
+    border-right: 15px solid #fff;
+    border-right: 15px solid rgba(255, 255, 255, 0);
 
     @media (min-width: 992px) {
 
