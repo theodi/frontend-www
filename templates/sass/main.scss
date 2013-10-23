@@ -178,7 +178,17 @@ hr {
 }
 
 .navbar-inverse li  {
+
     border-left: 1px solid #707070;
+
+    @media (max-width:767px) {
+
+        // Remove the grey border on upper nav links at mobile sizes
+        // NOTE: this might need to be reversed when Search and Sign In are restored
+        border-left: none;
+
+    }
+
 }
 
 .site-header {
