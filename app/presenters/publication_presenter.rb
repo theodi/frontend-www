@@ -16,7 +16,7 @@ class PublicationPresenter
     :honorific_suffix, :affiliation, :role, :description, :url,
     :telephone, :email, :twitter, :linkedin, :github, :content,
     :region, :level, :status, :course, :date, :square, :location,
-    :start_date, :end_date, :booking_url
+    :start_date, :end_date, :booking_url, :artist
   ]
 
   PASS_THROUGH_KEYS.each do |key|
@@ -43,11 +43,19 @@ class PublicationPresenter
     DateTime.parse(@artefact["created_at"]).strftime("%Y-%m-%d")
   end
   
+  def image
+    if @artefact['details']['image']
+      @artefact['details']['image']
+    elsif @artefact['details']['file'] && @artefact['details']['file']['content_type'] == 'image/jpeg'
+      @artefact['details']['file'] 
+    end
+  end
+
   def square_image
     begin
-      @artefact['details']['image']['versions']['square']
+      image['versions']['square']
     rescue
-      @artefact['details']['square'] || @artefact['square'] || '/assets/person-placeholder.png'
+      @artefact['details']['square'] || @artefact['square']
     end
   end
 

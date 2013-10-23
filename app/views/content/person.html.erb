@@ -9,7 +9,7 @@
 </div>
 
 <aside class="article-sidebar">
-    <div class="module img-module module-colour-3">
-	    <%= image_tag @publication.square_image, width: "310", alt: @publication.title %>
+    <div class="module module-image-fullbleed">
+	    <%= image_tag @publication.square_image || '/assets/person-placeholder.png', alt: @publication.title %>
     </div>
 </aside>
