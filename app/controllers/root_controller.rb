@@ -60,6 +60,15 @@ class RootController < ApplicationController
     @title = "Team"
     render "list/people.html"
   end
+  
+  def events_list
+    @section = params[:section].parameterize
+    @artefacts = content_api.with_tag(params[:section].singularize).results
+    @artefacts.reject!{|x| Date.parse(x.details.start_date) < Date.today}
+    @artefacts.sort_by!{|x| Date.parse(x.details.start_date)}
+    @title = params[:section].gsub('-', ' ').humanize.capitalize
+    render "list/list"
+  end
 
   def case_studies_list
     @section = params[:section].parameterize
