@@ -34,7 +34,16 @@ img { -ms-interpolation-mode: bicubic; }
 
     }
 
+    .people-team .home-module {
+
+        width: 31.33%;
+
+    }
+
 }
+
+// Bring team names back inside people blocks
+.people-team .category { position: static !important; }
 
 /*------------------------------------*\
     NAVIGATION
