@@ -10,7 +10,14 @@
                 <%= image_tag person.details.square, width: "238", alt: person.title %>
                 <h1 class="module-heading"><%= person.title %></h1>
                 <p class="module-subheading"><%= person.details.role %></p>
-                <span class="category"><%= team[:name] %></span>
+                <span class="category">
+                  <% tags = person.tag_ids.keep_if { |tag| @teams[tag.to_sym] } %>
+                  <% tags.each_index do |i| %>
+                    <% tag = tags[i].to_sym %>
+                    <%= @teams[tag][:name] %>
+                    <%= ' & ' if i < tags.length - 1 %>
+                  <% end %>
+                </span>
             </a>
         </div>
     </li>

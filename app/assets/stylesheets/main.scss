@@ -9,8 +9,9 @@
 $odiBlue: #00b7ff;
 $odiOrange: #ff6700;
 $odiRed: #d60303;
-$odiGrey: #999999;
+$odiGrey: #888888;
 $odiGreyDark: #333333;
+$odiGreyLight: #BBBBBB;
 
 // Colour variables, primarily for home modules
 $odiColour1: #D60303; // red
@@ -338,7 +339,7 @@ hr {
     padding: 10px 0;
 
     h1 {
-        margin: 10px 0;
+        margin: 2px 0 0;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -675,18 +676,22 @@ hr {
 }
 
 .listing {
-    .module {
-        min-height: 150px;
-    }
-    .module-heading {
-        font-size: 22px;
-        line-height: 27px;
-    }
-    .module-subheading {
-        font-size: 18px;
-        font-weight: normal;
-        margin-bottom: 25px;
-    }
+	.module {
+		min-height: 150px;
+	}
+	.module-heading {
+		font-size: 22px;
+		line-height: 27px;
+	}
+	.module-subheading {
+		font-size: 18px;
+		font-weight: normal;
+	}
+	.module-meta {
+		font-size: 20px;
+		font-weight: normal;
+		margin-bottom: 25px;
+	}
 }
 
 .module-light,
@@ -714,20 +719,24 @@ hr {
 .module-colour-11 { background-color: $odiColour11; }
 .module-colour-12 { background-color: $odiColour12; }
 
-.module.module-highlight {
-    background-color: $odiGrey;
-    &.module-colour-1:hover { background-color: $odiColour1; }
-    &.module-colour-2:hover { background-color: $odiColour2; }
-    &.module-colour-3:hover { background-color: $odiColour3; }
-    &.module-colour-4:hover { background-color: $odiColour4; }
-    &.module-colour-5:hover { background-color: $odiColour5; }
-    &.module-colour-6:hover { background-color: $odiColour6; }
-    &.module-colour-7:hover { background-color: $odiColour7; }
-    &.module-colour-8:hover { background-color: $odiColour8; }
-    &.module-colour-9:hover { background-color: $odiColour9; }
-    &.module-colour-10:hover { background-color: $odiColour10; }
-    &.module-colour-11:hover { background-color: $odiColour11; }
-    &.module-colour-12:hover { background-color: $odiColour12; }
+.module { 
+	&.module-highlight-1 { background-color: $odiGrey; }
+	&.module-highlight-2 { background-color: $odiGreyDark; }
+	&.module-highlight-3 { background-color: $odiGreyLight; }
+	&.module-highlight-1, &.module-highlight-2, &.module-highlight-3 {
+		&.module-colour-1:hover { background-color: $odiColour1; }
+		&.module-colour-2:hover { background-color: $odiColour2; }
+		&.module-colour-3:hover { background-color: $odiColour3; }
+		&.module-colour-4:hover { background-color: $odiColour4; }
+		&.module-colour-5:hover { background-color: $odiColour5; }
+		&.module-colour-6:hover { background-color: $odiColour6; }
+		&.module-colour-7:hover { background-color: $odiColour7; }
+		&.module-colour-8:hover { background-color: $odiColour8; }
+		&.module-colour-9:hover { background-color: $odiColour9; }
+		&.module-colour-10:hover { background-color: $odiColour10; }
+		&.module-colour-11:hover { background-color: $odiColour11; }
+		&.module-colour-12:hover { background-color: $odiColour12; }
+	}
 }
 
 // Module with background image

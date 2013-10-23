@@ -62,5 +62,11 @@ module Www
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Use GA middleware
+    if ENV['QUIRKAFLEEG_FRONTEND_ANALYTICS_KEY']
+      config.middleware.use("Rack::GoogleAnalytics", :tracker => ENV['QUIRKAFLEEG_FRONTEND_ANALYTICS_KEY'])
+    end    
+
   end
 end

@@ -2,19 +2,7 @@
 
 <% content_for :hero do %>
 <section class="article-hero<%= ' within-header' unless @section['title'] %>">
-    <div class="container">
-        <div class="row">
-            <div class="hero" style="background-color:#eb1976">
-                <img src="<%= @section['hero_image'] %>" />
-                <div class="hero-label">
-                    <div class="annotation">
-                        <span class="type">image:</span>
-                        <%= @section['hero_text'].html_safe %>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <%= render :partial => "section/hero", :locals => { :hero_image => @section['hero_image'], :hero_text => @section['hero_text'] } %>
 </section>
 <% end %>
 

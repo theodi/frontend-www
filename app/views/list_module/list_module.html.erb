@@ -1,9 +1,4 @@
-<% section = @section == 'blog' ? 'news' : @section %>
 <% content_for :title, @title %>
 <div class="listing">
-	<% begin %>
-		<%= render :partial => "module/#{section}", :locals => { :section => section, :publication => @artefacts[0] } %>
-	<% rescue %>
-		<%= render :partial => 'module/block', :locals => { :section => section, :publication => @artefacts[0] } %>
-	<% end %>
+  <%= module_block @section, @artefact %>
 </div>
