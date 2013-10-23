@@ -181,6 +181,13 @@ class RootController < ApplicationController
     @title = "Courses"
     render "list_module/courses", :layout => "minimal"
   end
+  
+  def events_list_module
+    @section = "events"
+    @artefact = content_api.upcoming("event", "start_date")
+    @title = "Events"
+    render "list_module/list_module", :layout => "minimal"
+  end
 
   protected
   
