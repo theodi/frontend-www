@@ -1,0 +1,23 @@
+<div class="navbar navbar-inverse navbar-static-top<%= ' mobile-only' if mobile %>">
+  <div class="container">
+    <% unless mobile %>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/"><%= image_tag('logo-footer.png', alt: "The ODI", id: "odi-logo") %></a>
+      </div>
+    <% end %>
+    <!--
+    <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search ODI"/>
+          <input type="submit" value="Go" class="btn"/>
+        </div>
+      </div>
+    </form>
+    -->
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/contact">Contact us</a></li>
+      <!-- <li><a href="#about">Sign in</a></li> -->
+    </ul>
+  </div>
+</div>
