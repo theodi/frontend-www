@@ -68,6 +68,17 @@ class RootController < ApplicationController
     render "list/list"
   end
 
+  def nodes_list
+    @section = params[:section].parameterize
+    @publication = fetch_article('about-nodes', params[:edition], "article")
+    begin
+      @artefacts = content_api.sorted_by('node', 'curated').results
+    rescue (GdsApi::HTTPNotFound)
+    end
+    @title = "Nodes"
+    render "list/nodes"
+  end
+
   def section
     sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
     @section = sections[params[:section]]
