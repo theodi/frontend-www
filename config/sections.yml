@@ -103,7 +103,7 @@ learning:
      -
       title: "Upcoming Friday Lecture"
       text: "Here is some text"
-      link: "/friday-lecture"
+      link: "/lunchtime-lectures"
       colour: 3
      - 
       title: "Library Intro"
