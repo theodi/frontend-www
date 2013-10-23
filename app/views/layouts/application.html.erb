@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
   <title>Open Data Institute | <%= yield :title %></title>
@@ -7,44 +7,31 @@
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= favicon_link_tag 'favicon.ico' %>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="javascripts/html5shiv.js"></script>
       <script src="javascripts/respond.min.js"></script>
     <![endif]-->
+    <!-- IE-only stylesheets -->
+    <!--[if lt IE 7]><link rel="stylesheet" href="stylesheets/ie6.css"><![endif]-->
+    <!--[if lte IE 7]><link rel="stylesheet" href="stylesheets/ie7.css"><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="stylesheets/ie8.css"><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie9.css"><![endif]-->
 </head>
 
 <body>
     <header class="site-header">
-        <div class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="/"><%= image_tag('logo-footer.png', alt: "The ODI", id: "odi-logo") %></a>
-            </div>
-            <!--
-            <form class="navbar-form navbar-left">
-              <div class="form-group">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search ODI"/>
-                  <input type="submit" value="Go" class="btn"/>
-                </div>
-              </div>
-            </form>
-            -->
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="/contact">Contact us</a></li>
-              <!-- <li><a href="#about">Sign in</a></li> -->
-            </ul>
-          </div>
-        </div>
+      <%= render :partial => 'layouts/navbar', :locals => { :mobile => false } %>
 
         <div class="navbar navbar-static-top">
           <div class="container">
             <div class="pull-right">
               <ul class="nav navbar-nav main-nav">
-                <% menus.each do |menu| %>
-                    <li class="dropdown">
+                <% menus.each_index do |i| %>
+                    <% menu = menus[i] %>
+                    <li class="dropdown<%= ' last' if i == menus.length - 1 %>">
                         <a href="<%= menu['link'] %>">
                             <%= menu['title'] %>
                             <% if menu['items'] %>
@@ -64,6 +51,8 @@
             </div>
           </div>
         </div>
+
+      <%= render :partial => 'layouts/navbar', :locals => { :mobile => true } %>
     </header> <!-- /site-header -->
 
     <% if content_for?(:title) %>

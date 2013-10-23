@@ -1,7 +1,12 @@
 Www::Application.routes.draw do
   root :to => 'root#index'
+
+  urlMaps = YAML.load_file("#{Rails.root.to_s}/config/url-mapping.yml")
+  urlMaps.each do |item|
+    get "#{item['url']}", as: "#{item['slug'].gsub('-','_')}_page", to: 'root#page', :slug => item['slug']
+  end
   
-  [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :procurement, :start_ups, :nodes, :consultation_responses, :guides].each do |section|
+  [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides].each do |section|
     section_slug = section.to_s.dasherize
     get "#{section_slug}", as: "#{section}_section", to: "root##{section}_list", :section => section_slug
 
@@ -14,7 +19,7 @@ Www::Application.routes.draw do
     get "#{section_slug}/:slug/badge", as: "#{section}_badge", to: 'root#badge', :section => section_slug
   end  
   
-  [:about, :get_involved, :learning, :whats_happening, :news].each do |section|
+  [:about, :get_involved, :learning, :whats_happening].each do |section|
     slug = section.to_s.dasherize
     get "#{slug}", as: "#{section}_section", to: 'root#section', section: slug 
   end

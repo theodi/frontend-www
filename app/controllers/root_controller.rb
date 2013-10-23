@@ -51,9 +51,21 @@ class RootController < ApplicationController
         :colour => 8
       },
     }
-    @teams.map { |team,hash| hash[:people] = content_api.sorted_by(team.to_s, "curated").results }
+    people = []
+    @teams.map do |team,hash|
+      members = content_api.sorted_by(team.to_s, "curated").results.delete_if { |member| people.include?(member.slug) }
+      people += members.map { |member| member.slug }
+      hash[:people] = members
+    end
     @title = "Team"
     render "list/people.html"
+  end
+
+  def case_studies_list
+    @section = params[:section].parameterize
+    @artefacts = content_api.sorted_by('case_study', 'curated').results
+    @title = "Case Studies"
+    render "list/list"
   end
 
   def section
@@ -106,6 +118,32 @@ class RootController < ApplicationController
       end
     end
   end
+  
+  def case_studies_article
+    @publication = fetch_article(params[:slug], params[:edition], "case_study")
+    
+    respond_to do |format|
+      format.html do
+        render "content/case_study"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
+  
+  def consultation_responses_article
+    @publication = fetch_article(params[:slug], params[:edition], "consultation-response")
+    
+    respond_to do |format|
+      format.html do
+        render "content/consultation_response"
+      end
+      format.json do
+        render :json => @publication.to_json
+      end
+    end
+  end
 
   def badge
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
@@ -127,6 +165,13 @@ class RootController < ApplicationController
     @section = 'team'
     render "list_module/people", :layout => 'minimal'
   end
+  
+  def courses_list_module
+    @artefact = content_api.upcoming("course_instance", "date")
+    @course = fetch_article(@artefact.details.course, nil, "courses")
+    @title = "Courses"
+    render "list_module/courses", :layout => "minimal"
+  end
 
   protected
   
@@ -136,9 +181,10 @@ class RootController < ApplicationController
     # Merge blog into news section
     if params[:section] == 'news'
       @artefacts += content_api.with_tag('blog').results
+      @hero_image = '/assets/news_hero.jpg'
     end
     @artefacts.sort_by!{|x| x.created_at}.reverse!
-    @title = params[:section].humanize.capitalize
+    @title = params[:section].gsub('-', ' ').humanize.capitalize
     begin
       # Use a specific template if present
       render "list/#{params[:section]}"
@@ -149,7 +195,7 @@ class RootController < ApplicationController
 
   def list_module(params)
     @section = params[:section].parameterize
-    @artefacts = content_api.sorted_by(params[:section], "date").results
+    @artefact = content_api.latest("tag", params[:section])
     @title = params[:section].humanize.capitalize
     begin
       # Use a specific template if present
@@ -160,17 +206,8 @@ class RootController < ApplicationController
   end
 
   def _module(params)
-    artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
-                  fetch_artefact(params[:slug], params[:edition], nil, nil)
-
-    # If the content type or tag doesn't match the slug, return 404
-    if artefact['format'] != params[:section].singularize && 
-        artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
-      raise ActionController::RoutingError.new('Not Found') 
-    end
-
+    @publication = fetch_article(params[:slug], nil, params[:section])
     @section = params[:section].parameterize
-    @publication = PublicationPresenter.new(artefact)
     begin
       # Use a specific template if present
       render "module/#{params[:section]}", :layout => "minimal"

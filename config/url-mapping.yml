@@ -1,0 +1,27 @@
+-
+  url: "challenge-series"
+  slug: "opendatachallengeseries"
+-
+  url: "challenge-series/dates"
+  slug: "odchallengeseriesdates"
+-
+  url: "challenge-series/leads"
+  slug: "odchallengeserieslead"
+-
+  url: "challenge-series/crime-and-justice"
+  slug: "crime-and-justice-series"
+-
+  url: "challenge-series/crime-and-justice/definition-day-minutes"
+  slug: "open-data-immersion-programme-crime-and-justice-challenge-definition-day-minutes"
+-
+  url: "challenge-series/energy-and-environment"
+  slug: "energy-and-environment-programme"
+-
+  url: "membership"
+  slug: "join-us"
+-
+  url: "culture/about"
+  slug: "about"
+-
+  url: "news/assets"
+  slug: "assets"

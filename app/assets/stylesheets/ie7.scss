@@ -1,0 +1,84 @@
+/*------------------------------------*\
+    GENERAL
+\*------------------------------------*/
+
+// Attempt to smooth resized images
+img { -ms-interpolation-mode: bicubic; }
+
+// Make text within hero blocks from displaying outside it
+.article-hero {
+
+    .hero { position: relative; }
+
+    .hero-label { left: 0; }
+
+}
+
+/*------------------------------------*\
+    MASONRY BLOCKS
+\*------------------------------------*/
+
+// Masonry not present below IE8, so float the blocks left
+.home-module { float: left; }
+
+// Two columns
+.home-module { width: 48%; }
+
+// Three columns
+@media (min-width: 992px) {
+
+    .home-module {
+
+        width: 31.33%;
+
+    }
+
+}
+
+// One column
+@media (max-width: 767px) {
+
+    //.home-module { width: 31.33%; }
+
+}
+
+/*------------------------------------*\
+    NAVIGATION
+\*------------------------------------*/
+
+// Form on main nav
+.site-header {
+
+    .navbar-form input {
+
+        &[type=text] {
+
+            border-bottom: 0;
+            height: auto;
+            padding-top: 5px;
+            padding-bottom: 8px;
+
+        }
+
+    }
+
+}
+
+/*------------------------------------*\
+    FOOTER
+\*------------------------------------*/
+
+// Get footer links back over to the right, but displaying in a vertical list
+.footer-nav {
+
+    width: 25% !important;
+    margin-right: 15px;
+
+    .list-inline > li {
+
+        display: block;
+        text-align: right;
+
+    }
+
+}
