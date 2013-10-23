@@ -9,6 +9,8 @@ gem 'rails', '3.2.14'
 gem 'foreman'
 gem 'thin'
 
+gem 'rack-google-analytics'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -39,7 +41,6 @@ gem 'odlifier', github: 'theodi/odlifier'
 group :production do
   gem 'airbrake'
 end
-
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
