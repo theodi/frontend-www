@@ -89,8 +89,8 @@ class RootController < ApplicationController
   end
 
   def course_instance
-    slug = "#{params[:slug]}-#{params[:date]}"
-    @publication = fetch_article(slug, params[:edition], "course_instance")
+    instance = content_api.course_instance(params[:date], params[:slug], params[:edition])
+    @publication = PublicationPresenter.new(instance)
     @course = fetch_article(@publication.course, params[:edition], "courses")
     @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
     respond_to do |format|
