@@ -15,7 +15,8 @@ class PublicationPresenter
     :body, :subtitle, :featured, :image, :honorific_prefix, 
     :honorific_suffix, :affiliation, :role, :description, :url,
     :telephone, :email, :twitter, :linkedin, :github, :content,
-    :region, :level, :status, :course, :date, :square, :artist
+    :region, :level, :status, :course, :date, :square, :location,
+    :start_date, :end_date, :booking_url, :artist
   ]
 
   PASS_THROUGH_KEYS.each do |key|
