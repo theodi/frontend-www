@@ -1,0 +1,36 @@
+/* line 5, ../sass/ie8.scss */
+.article-body figure {
+  margin-top: 7px;
+}
+
+/* line 12, ../sass/ie8.scss */
+.article-hero .headline {
+  padding: 50px 45px 70px 45px;
+  min-height: 0;
+}
+@media (min-width: 992px) {
+  /* line 12, ../sass/ie8.scss */
+  .article-hero .headline {
+    padding: 90px 45px 105px 45px;
+    min-height: 0;
+  }
+}
+@media (max-width: 979px) {
+  /* line 12, ../sass/ie8.scss */
+  .article-hero .headline {
+    padding: 50px 45px 70px 45px;
+    min-height: 0;
+  }
+}
+@media (max-width: 767px) {
+  /* line 12, ../sass/ie8.scss */
+  .article-hero .headline {
+    padding: 55px 45px 65px 45px;
+    min-height: 0;
+  }
+}
+
+/* line 47, ../sass/ie8.scss */
+.home-module {
+  width: 49.9%;
+}
