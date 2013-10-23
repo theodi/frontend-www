@@ -8679,111 +8679,119 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
     width: 100%;
   }
 }
+@media only screen and (device-width: 768px) and (orientation: portrait) {
+  /* line 1321, ../sass/main.scss */
+  .article-sidebar .module {
+    width: 47.75%;
+    float: left;
+    border-right: 20px solid #fff;
+  }
+}
 @media (max-width: 767px) {
-  /* line 1313, ../sass/main.scss */
+  /* line 1336, ../sass/main.scss */
   .site-header {
     margin-bottom: 20px;
   }
-  /* line 1317, ../sass/main.scss */
+  /* line 1340, ../sass/main.scss */
   .site-header .navbar-form {
     margin-bottom: 0;
     margin-top: 0;
   }
-  /* line 1321, ../sass/main.scss */
+  /* line 1344, ../sass/main.scss */
   .site-header .navbar-nav {
     margin: 0 -15px;
   }
 
-  /* line 1327, ../sass/main.scss */
+  /* line 1350, ../sass/main.scss */
   .navbar .pull-right {
     float: left;
     width: 100%;
   }
 
-  /* line 1333, ../sass/main.scss */
+  /* line 1356, ../sass/main.scss */
   .mobile-only {
     display: block;
   }
 
-  /* line 1345, ../sass/main.scss */
+  /* line 1368, ../sass/main.scss */
   .navbar-inverse .navbar-nav {
     display: none;
   }
 
-  /* line 1350, ../sass/main.scss */
+  /* line 1373, ../sass/main.scss */
   .navbar-inverse .navbar-nav > li > a {
     padding-top: 7px;
     padding-bottom: 7px;
   }
 
-  /* line 1358, ../sass/main.scss */
+  /* line 1381, ../sass/main.scss */
   .mobile-only .navbar-nav {
     display: block;
   }
 
-  /* line 1365, ../sass/main.scss */
+  /* line 1388, ../sass/main.scss */
   .navbar-nav > li > a {
     background: #1b1b1b;
     color: #fff;
     padding-top: 7px;
     padding-bottom: 8px;
   }
-  /* line 1372, ../sass/main.scss */
+  /* line 1395, ../sass/main.scss */
   .navbar-nav > li > a:hover {
     background: #ff6700;
   }
-  /* line 1376, ../sass/main.scss */
+  /* line 1399, ../sass/main.scss */
   .navbar-nav > li > a:hover .caret {
     border-top-color: #000;
   }
 
-  /* line 1383, ../sass/main.scss */
+  /* line 1406, ../sass/main.scss */
   .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     background: #ff6700;
   }
-  /* line 1387, ../sass/main.scss */
+  /* line 1410, ../sass/main.scss */
   .nav .open > a .caret, .nav .open > a:hover .caret, .nav .open > a:focus .caret {
     border-top-color: #000;
   }
 
-  /* line 1392, ../sass/main.scss */
+  /* line 1415, ../sass/main.scss */
   .dropdown-menu {
     padding-bottom: 5px;
   }
-  /* line 1396, ../sass/main.scss */
+  /* line 1419, ../sass/main.scss */
   .dropdown-menu > li > a {
     border-bottom: none;
   }
 }
 @media (max-width: 479px) {
   /* Header */
-  /* line 1407, ../sass/main.scss */
+  /* line 1430, ../sass/main.scss */
   .navbar-inverse .navbar-inner {
     border-bottom: 1px solid #707070;
   }
 
-  /* line 1411, ../sass/main.scss */
+  /* line 1434, ../sass/main.scss */
   .navbar .nav.pull-right {
     float: left;
     display: block;
     clear: both;
   }
 
-  /* line 1417, ../sass/main.scss */
+  /* line 1440, ../sass/main.scss */
   #topbar .navbar-inner {
     margin: 0 -15px;
   }
 
-  /* line 1422, ../sass/main.scss */
+  /* line 1445, ../sass/main.scss */
   #topbar ul li.search {
     float: left;
   }
-  /* line 1425, ../sass/main.scss */
+  /* line 1448, ../sass/main.scss */
   #topbar ul li a {
     padding: 15px;
   }
 
-  /* line 1431, ../sass/main.scss */
+  /* line 1454, ../sass/main.scss */
   #main-nav a {
     padding: 15px 15px 15px 0;
   }

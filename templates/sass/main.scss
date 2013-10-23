@@ -1308,6 +1308,29 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
     }
 }
 
+/*
+//
+// ***** Portrait iPad *****
+//
+*/
+@media only screen and (device-width : 768px) and (orientation : portrait) {
+
+    // Reduce any sidebar blocks to around 50% width and sit them side by side
+    .article-sidebar {
+
+        .module {
+
+            // Match to width of main column (which has a bit of right padding)
+            width: 47.75%;
+            float: left;
+            border-right: 20px solid #fff;
+
+        }
+
+    }
+
+}
+
 @media (max-width: 767px) {
 
     .site-header {
