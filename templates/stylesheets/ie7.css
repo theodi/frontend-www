@@ -28,8 +28,13 @@ img {
   width: 48%;
 }
 
+/* line 26, ../sass/ie7.scss */
+.people-team .home-module {
+  width: 48%;
+}
+
 @media (min-width: 992px) {
-  /* line 30, ../sass/ie7.scss */
+  /* line 31, ../sass/ie7.scss */
   .home-module {
     width: 31.33%;
   }
@@ -37,7 +42,7 @@ img {
 /*------------------------------------*\
     NAVIGATION
 \*------------------------------------*/
-/* line 54, ../sass/ie7.scss */
+/* line 48, ../sass/ie7.scss */
 .site-header .navbar-form input[type=text] {
   border-bottom: 0;
   height: auto;
@@ -45,15 +50,31 @@ img {
   padding-bottom: 8px;
 }
 
+/* line 62, ../sass/ie7.scss */
+.main-nav > li {
+  margin-top: -3px;
+}
+
+@media (max-width: 767px) {
+  /* line 67, ../sass/ie7.scss */
+  .navbar .container {
+    padding: 0;
+  }
+
+  /* line 68, ../sass/ie7.scss */
+  .navbar-nav {
+    padding: 0 15px;
+  }
+}
 /*------------------------------------*\
     FOOTER
 \*------------------------------------*/
-/* line 72, ../sass/ie7.scss */
+/* line 77, ../sass/ie7.scss */
 .footer-nav {
   width: 25% !important;
   margin-right: 15px;
 }
-/* line 77, ../sass/ie7.scss */
+/* line 82, ../sass/ie7.scss */
 .footer-nav .list-inline > li {
   display: block;
   text-align: right;

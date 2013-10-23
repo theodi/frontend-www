@@ -23,6 +23,7 @@ img { -ms-interpolation-mode: bicubic; }
 
 // Two columns
 .home-module { width: 48%; }
+.people-team .home-module { width: 48%; }
 
 // Three columns
 @media (min-width: 992px) {
@@ -32,13 +33,6 @@ img { -ms-interpolation-mode: bicubic; }
         width: 31.33%;
 
     }
-
-}
-
-// One column
-@media (max-width: 767px) {
-
-    //.home-module { width: 31.33%; }
 
 }
 
@@ -61,6 +55,17 @@ img { -ms-interpolation-mode: bicubic; }
         }
 
     }
+
+}
+
+// Close inexplicable gaps above nav items
+.main-nav > li { margin-top: -3px; }
+
+// Fix broken padding on the mobile nav
+@media (max-width:767px) {
+
+    .navbar .container { padding: 0; }
+    .navbar-nav { padding: 0 15px; }
 
 }
 
