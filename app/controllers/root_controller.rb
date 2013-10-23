@@ -60,6 +60,15 @@ class RootController < ApplicationController
     @title = "Team"
     render "list/people.html"
   end
+  
+  def events_list
+    @section = params[:section].parameterize
+    @artefacts = content_api.with_tag(params[:section].singularize).results
+    @artefacts.reject!{|x| Date.parse(x.details.start_date) < Date.today}
+    @artefacts.sort_by!{|x| Date.parse(x.details.start_date)}
+    @title = params[:section].gsub('-', ' ').humanize.capitalize
+    render "list/list"
+  end
 
   def case_studies_list
     @section = params[:section].parameterize
@@ -213,6 +222,13 @@ class RootController < ApplicationController
     @course = fetch_article(@artefact.details.course, nil, "courses")
     @title = "Courses"
     render "list_module/courses", :layout => "minimal"
+  end
+  
+  def events_list_module
+    @section = "events"
+    @artefact = content_api.upcoming("event", "start_date")
+    @title = "Events"
+    render "list_module/list_module", :layout => "minimal"
   end
 
   def culture_list_module
