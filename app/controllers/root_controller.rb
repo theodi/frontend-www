@@ -204,6 +204,13 @@ class RootController < ApplicationController
     render "list_module/courses", :layout => "minimal"
   end
 
+  def culture_list_module
+    @section = 'culture'
+    @artefact = content_api.latest('type', 'creative_work')
+    @title = "Culture"
+    render "list_module/list_module", :layout => "minimal"
+  end
+
   protected
   
   def list(params)
