@@ -9,7 +9,7 @@ class ArtefactRetriever
     self.logger = logger
     self.statsd = statsd
     self.supported_formats = supported_formats ||
-      %w{news person article people job case_study course course_instance timed_item node organization}
+      %w{news person article people job case_study course course_instance timed_item node organization event}
   end
 
   def fetch_artefact(slug, edition = nil, snac = nil, location = nil)
