@@ -31,7 +31,7 @@ home:
         title: "Dashboards"
         link: "http://dashboards.theodi.org/"
         colour: 3
-        
+      - 
         frame: "/events/module"
 about:
     title: "About"
