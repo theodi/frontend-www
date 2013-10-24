@@ -36,3 +36,32 @@
     font-size: 18px;
   }
 }
+
+.course-date, .course-location {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.course-meta {
+  padding-top: 12px;
+  margin-bottom: 0;
+  display: table;
+  width: 100%;
+  
+  .course-book {
+    text-align: right;
+  }
+  
+  div {
+    display: table-cell;
+    vertical-align: middle; 
+  }
+}
+
+.trainer-description {
+  margin-top: 20px;
+}
+
+.course-leaders {
+  margin-bottom: 12px;
+}
