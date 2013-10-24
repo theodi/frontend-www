@@ -1,12 +1,12 @@
 <% content_for :title, "Data as culture" %>
 
 <div class ="article-main">
-	<div class="article-body">
+	<article class="article-body">
 	  <h2><%= @publication.title %></h2>
 	  <%= @publication.description.html_safe %>
 	  <h3><%= @artist.title %></h3>
 	  <%= @artist.description.html_safe %>
-	</div>
+	</article>
 </div>
 
 <% square_image = @publication.square_image %>

@@ -1,7 +1,7 @@
 <% content_for :title, "Courses" %>
 
 <div class="article-main">
-	<div class="article-body">
+	<article class="article-body">
 		<h2><%= @course.title %></h2>
 		<h3 class="course-date"><%= Date.parse(@publication.date).strftime("%A %d %B %Y") %></h3>
 		<h3 class="course-location"><%= @publication.location %></h3>
@@ -36,7 +36,7 @@
 		      <%= trainer.description.html_safe %>
 		    </div>
 		  <% end %>
-	</div>
+	</article>
 </div>
 
 <aside class="course-sidebar">

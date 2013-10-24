@@ -1,6 +1,8 @@
 <% content_for :title, "Guides" %>
 
 <div class="article-full">
-  <h2><%= @publication.title %></h2>
-  <%= @publication.content.html_safe %>  
+	<article class="article-body">
+	  <h2><%= @publication.title %></h2>
+	  <%= @publication.content.html_safe %>  
+	</article>
 </div>
