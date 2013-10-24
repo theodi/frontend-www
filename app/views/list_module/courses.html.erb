@@ -4,8 +4,6 @@
   <div class="module module-light module-highlight module-colour-<%= (@artefact.slug.length % 12) + 1 %>">
   	<a href="<%= course_instance_path(@course.slug, @artefact.details.date[0..9]) %>" target="_top">
   		<h1 class="module-heading"><%= @course.title %><br /><%= date.strftime("%A %d %B %Y") %></h1>
-  	</a>
-  	<a href="/<%= @section %>" target="_top">
   		<p class="category"><%= @title %></p>
   	</a>
   </div>
