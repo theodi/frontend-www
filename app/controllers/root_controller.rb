@@ -67,22 +67,6 @@ class RootController < ApplicationController
       end
     end  
   end
-  
-  def events_list
-    @section = params[:section].parameterize
-    @artefacts = content_api.with_tag(params[:section].singularize).results
-    @artefacts.reject!{|x| Date.parse(x.details.start_date) < Date.today}
-    @artefacts.sort_by!{|x| Date.parse(x.details.start_date)}
-    @title = params[:section].gsub('-', ' ').humanize.capitalize
-    respond_to do |format|
-      format.html do
-        render "list/list"
-      end
-      format.json do
-        redirect_to "#{api_domain}/with_tag.json?tag=events"
-      end
-    end  
-  end
 
   def case_studies_list
     @section = params[:section].parameterize
@@ -116,13 +100,20 @@ class RootController < ApplicationController
     render "list/culture"
   end
 
-  def whats_happening
-    @section = 'whats_happening'
+  def events_list
+    @section = 'events'
     @artefacts = content_api.with_tag('event').results
     @artefacts += content_api.with_tag('course_instance').results
     @artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) < Date.today}
     @artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}
-    render "list/whats_happening"
+    respond_to do |format|
+      format.html do
+        render "list/events"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=events"
+      end
+    end  
   end
 
   def nodes_list
