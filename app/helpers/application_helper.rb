@@ -56,4 +56,8 @@ module ApplicationHelper
     end    
   end
   
+  def event_type(event)
+    event.tag_ids.first
+  end
+  
 end
