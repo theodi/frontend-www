@@ -1,11 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="hero">
+            <% if hero_link %>
+            <a href="<%= hero_link %>">
+            <% end %>
             <img src="<%= hero_image %>" />
+            <% if hero_link %>
+            </a>
+            <% end %>
             <% if hero_text %>
               <div class="hero-label">
                   <div class="annotation">
-                      <span class="type">image:</span>
                       <%= hero_text.html_safe %>
                   </div>
               </div>

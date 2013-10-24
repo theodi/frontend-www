@@ -1,115 +1,104 @@
 home:
-    hero_image: "http://odi-stg.whiteag5.tryingitout.co.uk/images/odi-mask2.jpg"
-    hero_text: "<p>ODI Event:</p><p>Open Data Hack Days</p>"
+    hero_image: "/assets/homepagehero_Hero.jpg"
+    hero_text: "<p>ODI Annual Summit</p><p>29th October 2013</p>"
+    hero_link: "http://summit.theodi.org"
     links:
       -
-        image: "/assets/come_join_us.png"
-        link: "/join-us"
+        image: "/assets/newmember_socrata_modules.jpg"
+        link: "http://directory.theodi.org/members"
         colour: 2
       -
         frame: "/news/module"
       -
-        title: "Open Data Certificates"
-        image: "/assets/ODI_certs_logo.png"
+        image: "/assets/odc_modules.jpg"
         link: "https://certificates.theodi.org/"
-        colour: 7
       -
-        title: "Lunchtime lectures"
-        background_image: "/assets/green_roundy.png"
-        link: "/lunchtime-lectures"
-        colour: 4
+        image: "/assets/node_module.jpg"
+        link: "/nodes"
       -
         frame: "/blog/module"
       -
         frame: "/courses/module"
       -
-        title: "Open Data Challenge Series"
-        image: "/assets/white_spikey.png"
-        link: "/challenge-series"
-        colour: 9
+        image: "/assets/opendatahistory_modules.jpg"
+        link: "#"
       -
-        title: "Dashboards"
-        link: "http://dashboards.theodi.org/"
-        colour: 3
+        image: "/assets/globalvoice_modules.jpg"
+        link: "#"
       - 
         frame: "/events/module"
+      -
+        image: "/assets/training&projects_module.jpg"
+        link: "/learning"
 about:
     title: "About"
     hero_image: "/assets/about_hero.jpg"
     links:
      -
-      title: "About the ODI"
-      text: "Here is some text"
+      image: "/assets/about_module.jpg"
       link: "/about-us"
-      colour: 10
      -
-      title: "Our space"
-      text: "Here is some text"
-      link: "/space"
-      colour: 0
+      image: "/assets/jobs_module.jpg"
+      link: "/jobs"
      -
-      title: "Data as culture"
-      text: "Here is some text"
+      image: "/assets/dataasculture_module1.jpg"
       link: "/culture"
-      colour: 3
      -
-       title: "FAQ"
-       text: "Here is some text"
+       image: "/assets/faq_module.jpg"
        link: "/faq"
-       colour: 0
      -
-       title: "Press Enquiries"
-       text: "Here is some text"
+       image: "/assets/people_module.jpg"
        link: "/newsroom"
-       colour: 7
      -
-       title: "Contact us"
-       text: "Here is some text"
+       image: "/assets/contactus_module.jpg"
        link: "/contact"
-       colour: 0
+     -
+       image: "/assets/press_module.jpg"
+       link: "#"
+     -
+       image: "/assets/procurement_modules.jpg"
+       link: "#"
 get-involved:
      title: "Get Involved"
      hero_image: "/assets/getinvolved_hero.jpg"
      links:
       -
-       title: "Membership intro"
-       text: "Here is some text"
+       image: "/assets/member_module.jpg"
        link: "/join-us"
-       colour: 10
       -
-       title: "Start-ups"
-       text: "Here is some text"
-       link: "/start-ups"
-       colour: 0
+       image: "/assets/node_module.jpg"
+       link: "/nodes"
       -
-       title: "ODI Challenge Series"
-       text: "Here is some text"
+       image: "/assets/odcs_modules.jpg"
        link: "/challenge-series"
-       colour: 3
+      -
+       image: "/assets/consultationresponses_modules.jpg"
+       link: "/consultation-responses"
+      -
+       image: "/assets/projects_modules.jpg"
+       link: "/projects"
+      -
+       image: "/assets/startup_module.jpg"
+       link: "/startups"
+      -
+       image: "/assets/certificates_module.jpg"
+       link: "http://certificates.theodi.org"
 learning:
     title: "Learning"
     hero_image: "/assets/learn_hero.jpg"
     links:
      -
-      title: "Upcoming Courses"
-      text: "Here is some text"
+      image: "/assets/courses_modules.jpg"
       link: "/courses"
-      colour: 10
      -
-      title: "Post-Grad Intro"
-      text: "Here is some text"
-      link: "/pg-certificate"
-      colour: 0
+      image: "/assets/casestudies_modules.jpg"
+      link: "/case-studies"
      -
-      title: "Upcoming Friday Lecture"
-      text: "Here is some text"
+      image: "/assets/fridaylunchtimelectures_module.jpg"
       link: "/lunchtime-lectures"
-      colour: 3
-     - 
-      title: "Library Intro"
-      text: "Here is some text"
-      link: "/library"
-      colour: 0
+     -
+      image: "/assets/guides_modules.jpg"
+      link: "/guides"
 whats-happening:
     title: "What's Happening?"
     hero_image: "/assets/whatshappening_hero.jpg"
