@@ -43,12 +43,10 @@
     <h3>Course</h3>
     
     <div class="module module-light module-colour-4">
-        <h4 class="module-heading">
-        	<a href="<%= courses_article_path(@course.slug) %>">
-        		<%= @course.title %>
-        	</a>
-        </h4>
-        <p class="category">Courses</p>
+        <a href="<%= courses_article_path(@course.slug) %>">
+        	<h4 class="module-heading"><%= @course.title %></h4>
+        	<p class="category">Course</p>
+        </a>
     </div>    
     
 </aside>

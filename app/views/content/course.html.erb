@@ -14,8 +14,8 @@
 		<div class="module module-light module-colour-<%= date.day % 12 + 1 %>">
 			<a href="<%= course_instance_path(@publication.slug, instance.details.date[0..9]) %>">
 				<h1 class="module-heading"><%= date.strftime("%A %d %B %Y") %></h>
+				<p class="category">Course</p>
 			</a>
-			<p class="category">Courses</p>
 		</div>
 	<% end %>
 		
