@@ -1,0 +1,91 @@
+/*------------------------------------*\
+    GENERAL
+\*------------------------------------*/
+/* line 6, ../sass/ie7.scss */
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* line 11, ../sass/ie7.scss */
+.article-hero .hero {
+  position: relative;
+}
+/* line 13, ../sass/ie7.scss */
+.article-hero .hero-label {
+  left: 0;
+}
+
+/*------------------------------------*\
+    MASONRY BLOCKS
+\*------------------------------------*/
+/* line 22, ../sass/ie7.scss */
+.home-module {
+  float: left;
+}
+
+/* line 25, ../sass/ie7.scss */
+.home-module {
+  width: 48%;
+}
+
+/* line 26, ../sass/ie7.scss */
+.people-team .home-module {
+  width: 48%;
+}
+
+@media (min-width: 992px) {
+  /* line 31, ../sass/ie7.scss */
+  .home-module {
+    width: 31.33%;
+  }
+
+  /* line 37, ../sass/ie7.scss */
+  .people-team .home-module {
+    width: 31.33%;
+  }
+}
+/* line 46, ../sass/ie7.scss */
+.people-team .category {
+  position: static !important;
+}
+
+/*------------------------------------*\
+    NAVIGATION
+\*------------------------------------*/
+/* line 57, ../sass/ie7.scss */
+.site-header .navbar-form input[type=text] {
+  border-bottom: 0;
+  height: auto;
+  padding-top: 5px;
+  padding-bottom: 8px;
+}
+
+/* line 71, ../sass/ie7.scss */
+.main-nav > li {
+  margin-top: -3px;
+}
+
+@media (max-width: 767px) {
+  /* line 76, ../sass/ie7.scss */
+  .navbar .container {
+    padding: 0;
+  }
+
+  /* line 77, ../sass/ie7.scss */
+  .navbar-nav {
+    padding: 0 15px;
+  }
+}
+/*------------------------------------*\
+    FOOTER
+\*------------------------------------*/
+/* line 86, ../sass/ie7.scss */
+.footer-nav {
+  width: 25% !important;
+  margin-right: 15px;
+}
+/* line 91, ../sass/ie7.scss */
+.footer-nav .list-inline > li {
+  display: block;
+  text-align: right;
+}

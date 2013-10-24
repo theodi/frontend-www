@@ -32,17 +32,17 @@
               <a class="navbar-brand" href="#"><img src="images/logo-footer.png" alt="The ODI" id="odi-logo"></a>
             </div>
             <div class="pull-right">
-              <form class="navbar-form navbar-left">
+              <!-- <form class="navbar-form navbar-left">
                 <div class="form-group">
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search ODI"/>
                     <input type="submit" value="Go" class="btn"/>
                   </div>
                 </div>
-              </form>
+              </form> -->
               <ul class="nav navbar-nav">
                 <li><a href="#">Contact us</a></li>
-                <li><a href="#about">Sign in</a></li>
+                <!-- <li><a href="#about">Sign in</a></li> -->
               </ul>
             </div>
           </div>
@@ -55,7 +55,7 @@
                 <li class="dropdown active">
                     <a data-toggle="dropdown" href="#">About <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li class="active"><a href="article.html">About the ODI</a></li>
+                        <li class="duplicate active"><a href="article.html">About the ODI</a></li>
                         <li><a href="#">People</a></li>
                         <li><a href="#">Jobs</a></li>
                         <li><a href="#">Procurement</a></li>
@@ -67,6 +67,7 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" href="#">Get involved <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li class="duplicate"><a href="#">Get involved with the ODI</a></li>
                         <li><a href="#">Membership</a></li>
                         <li><a href="#">Start-ups</a></li>
                         <li><a href="#">Open Data Certificates</a></li>
@@ -78,6 +79,7 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" href="#">Learning <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li class="duplicate"><a href="#">Learning with the ODI</a></li>
                         <li><a href="#">Post-Graduate Certficate</a></li>
                         <li><a href="#">Friday Lunchtime Lectures</a></li>
                         <li><a href="#">Guides</a></li>
@@ -88,6 +90,7 @@
                 <li class="dropdown last">
                     <a data-toggle="dropdown" href="#">News <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li class="duplicate"><a href="#">News from the ODI</a></li>
                         <li><a href="#">Newsroom</a></li>
                     </ul>
                 </li>
@@ -95,26 +98,43 @@
             </div>
           </div>
         </div>
+
+        <!-- Copy of top nav's search, Contact Us, Sign In - mobile only -->
+        <div class="navbar navbar-inverse navbar-static-top mobile-only">
+            <div class="container">
+            <!-- <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search ODI"/>
+                            <input type="submit" value="Go" class="btn"/>
+                        </div>
+                    </div>
+                </form> -->
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Contact us</a></li>
+                    <!-- <li><a href="#about">Sign in</a></li> -->
+                </ul>
+            </div>
+        </div>
+
     </header> <!-- /site-header -->
 
-    <section class="article-hero within-header" style="background-color:#40d7c3">
+    <section class="article-hero within-header">
         <div class="container">
-            <img src="images/odi-mask.png" alt="The ODI"/>
-            <div class="hero-label">
-                <div class="annotation">
-                    <span class="type">image:</span>
-                    <p>ODI Event:</p>
-                    <p>Open Data Hack Days</p>
+            <div class="row">
+                <div class="hero" style="background-color:#eb1976">
+                    <img src="images/odi-mask2.jpg" alt="The ODI"/>
+                    <div class="hero-label">
+                        <div class="annotation">
+                            <span class="type">image:</span>
+                            <p>ODI Event:</p>
+                            <p>Open Data Hack Days</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <header class="page-title">
-        <div class="container">
-            <h1>About the ODI</h1>
-        </div>
-    </header>
 
     <div class="container">
 
@@ -129,6 +149,7 @@
                             <h1 class="module-heading">About the ODI</h1>
                             <p class="module-subheading">Example of a text block would go here</p>
                         </a>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -138,6 +159,7 @@
                             <h1 class="module-heading">Our Space</h1>
                             <p class="module-subheading">Example of a text block would go here</p>
                         </a>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -147,15 +169,17 @@
                             <h1 class="module-heading">Data as Culture Intro</h1>
                             <p class="module-subheading">Example of a text block would go here</p>
                         </a>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
                 <li class="home-module">
-                    <div class="module module-light module-colour-5">
+                    <div class="module module-light module-colour-8">
                         <a href="#">
                             <h1 class="module-heading">FAQ info</h1>
                             <p class="module-subheading">Example of a text block would go here</p>
                         </a>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -165,6 +189,7 @@
                             <h1 class="module-heading">Press Inquiries</h1>
                             <p class="module-subheading">Example of a text block would go here</p>
                         </a>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -174,22 +199,9 @@
                             <h1 class="module-heading">Contact us</h1>
                             <p class="module-subheading">Example of a text block would go here</p>
                         </a>
+                        <span class="overlay"></span>
                     </div>
                 </li>
-
-            </ul>
-
-            <div class="article-full">
-                <article class="article-body">
-                    <h2>About The ODI</h2>
-                    <p>The Open Data Institute is catalysing the evolution of open data culture to create economic, environmental, and social value. It helps unlock supply, generates demand, creates and disseminates knowledge to address local and global issues.</p>
-
-                    <p>We convene world-class experts to collaborate, incubate, nurture and mentor new ideas, and promote innovation. We enable anyone to learn and engage with open data, and empower our teams to help others through professional coaching and mentoring.</p>
-                </article>
-            </div>
-
-            <!-- Lower blocks -->
-            <ul class="grid effect-2" id="grid2">
 
                 <li class="home-module">
                     <div class="module module-light module-colour-10">
@@ -197,6 +209,7 @@
                             <h1 class="module-heading">I have classes of module-light for white text, and module-colour-10 for a blue background</h1>
                         </a>
                         <span class="category">Category</span>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -206,6 +219,7 @@
                             <h1 class="module-heading">I have classes of module-dark for black text, and module-colour-5 for a dark green background</h1>
                         </a>
                         <span class="category">Category</span>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -215,6 +229,7 @@
                             <h1 class="module-heading">Background image</h1>
                         </a>
                         <span class="category">Category</span>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -227,6 +242,7 @@
                             </h1>
                         </a>
                         <span class="category">Category</span>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -235,6 +251,7 @@
                         <a href="#">
                             <img src="images/come_join_us.png">
                         </a>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -244,6 +261,7 @@
                             <h1 class="module-heading">Background image</h1>
                         </a>
                         <span class="category">Category</span>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -256,6 +274,7 @@
                             </h1>
                         </a>
                         <span class="category">Category</span>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -268,6 +287,7 @@
                             </h1>
                         </a>
                         <span class="category">Category</span>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -276,6 +296,7 @@
                         <a href="#">
                             <img src="images/red_come_join_us.png">
                         </a>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 
@@ -288,6 +309,7 @@
                             </h1>
                         </a>
                         <span class="category">Category</span>
+                        <span class="overlay"></span>
                     </div>
                 </li>
 

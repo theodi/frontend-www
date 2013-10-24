@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
     <title>The Open Data Institute</title>
@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="stylesheets/main.css">
 
     <!-- IE-only stylesheets -->
-    <!--[if lt IE 7]><link rel="stylesheet" href="stylesheets/ie6.css"><![endif]-->
-    <!--[if lte IE 7]><link rel="stylesheet" href="stylesheets/ie7.css"><![endif]-->
-    <!--[if lte IE 8]><link rel="stylesheet" href="stylesheets/ie8.css"><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie9.css"><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="stylesheets/ie8.css"><![endif]-->
+    <!--[if lte IE 7]><link rel="stylesheet" href="stylesheets/ie7.css"><![endif]-->
+    <!--[if lt IE 7]><link rel="stylesheet" href="stylesheets/ie6.css"><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,17 +32,17 @@
               <a class="navbar-brand" href="#"><img src="images/logo-footer.png" alt="The ODI" id="odi-logo"></a>
             </div>
             <div class="pull-right">
-              <form class="navbar-form navbar-left">
+              <!-- <form class="navbar-form navbar-left">
                 <div class="form-group">
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search ODI"/>
                     <input type="submit" value="Go" class="btn"/>
                   </div>
                 </div>
-              </form>
+              </form> -->
               <ul class="nav navbar-nav">
                 <li><a href="#">Contact us</a></li>
-                <li><a href="#about">Sign in</a></li>
+                <!-- <li><a href="#about">Sign in</a></li> -->
               </ul>
             </div>
           </div>
@@ -55,7 +55,7 @@
                 <li class="dropdown active">
                     <a data-toggle="dropdown" href="#">About <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li class="active"><a href="article.html">About the ODI</a></li>
+                        <li class="duplicate active"><a href="article.html">About the ODI</a></li>
                         <li><a href="#">People</a></li>
                         <li><a href="#">Jobs</a></li>
                         <li><a href="#">Procurement</a></li>
@@ -67,6 +67,7 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" href="#">Get involved <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li class="duplicate"><a href="#">Get involved with the ODI</a></li>
                         <li><a href="#">Membership</a></li>
                         <li><a href="#">Start-ups</a></li>
                         <li><a href="#">Open Data Certificates</a></li>
@@ -78,6 +79,7 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" href="#">Learning <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li class="duplicate"><a href="#">Learning with the ODI</a></li>
                         <li><a href="#">Post-Graduate Certficate</a></li>
                         <li><a href="#">Friday Lunchtime Lectures</a></li>
                         <li><a href="#">Guides</a></li>
@@ -85,9 +87,10 @@
                     </ul>
                 </li>
                 <li><a href="#">What's happening</a></li>
-                <li class="dropdown">
+                <li class="dropdown last">
                     <a data-toggle="dropdown" href="#">News <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li class="duplicate"><a href="#">News from the ODI</a></li>
                         <li><a href="#">Newsroom</a></li>
                     </ul>
                 </li>
@@ -95,6 +98,25 @@
             </div>
           </div>
         </div>
+
+        <!-- Copy of top nav's search, Contact Us, Sign In - mobile only -->
+        <div class="navbar navbar-inverse navbar-static-top mobile-only">
+            <div class="container">
+            <!-- <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search ODI"/>
+                            <input type="submit" value="Go" class="btn"/>
+                        </div>
+                    </div>
+                </form> -->
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Contact us</a></li>
+                    <!-- <li><a href="#about">Sign in</a></li> -->
+                </ul>
+            </div>
+        </div>
+
     </header> <!-- /site-header -->
 
     <section class="article-hero within-header">
@@ -149,7 +171,7 @@
                 </li>
 
                 <li class="home-module">
-                    <div class="module module-light module-colour-14">
+                    <div class="module module-light module-colour-8">
                         <a href="#">
                             <h1 class="module-heading">FAQ info</h1>
                             <p class="module-subheading">Example of a text block would go here</p>
@@ -194,7 +216,7 @@
                 </li>
 
                 <li class="home-module">
-                    <div class="module module-light module-colour-16 module-image-background" style="background-image: url(images/red_spikey.png)">
+                    <div class="module module-light module-colour-10 module-image-background" style="background-image: url(images/red_spikey.png)">
                         <a href="#">
                             <h1 class="module-heading">Background image</h1>
                         </a>

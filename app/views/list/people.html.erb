@@ -28,18 +28,3 @@
 </div>
 
 <%= render :partial => "list/masonry" %>
-
-<% content_for :extra_javascript do %>
-  <script>
-  // Grid on people page
-  if ($('#grid-people').length) {
-
-      new AnimOnScroll( document.getElementById('grid-people'), {
-          minDuration : 0.4,
-          maxDuration : 0.7,
-          viewportFactor : 0.2
-      });
-
-  }
-  </script>
-<% end %>

@@ -1,11 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 
 <head>
     <title>The Open Data Institute</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="stylesheets/main.css">
+
+    <!-- IE-only stylesheets -->
+    <!--[if lte IE 9]><link rel="stylesheet" href="stylesheets/ie9.css"><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="stylesheets/ie8.css"><![endif]-->
+    <!--[if lte IE 7]><link rel="stylesheet" href="stylesheets/ie7.css"><![endif]-->
+    <!--[if lt IE 7]><link rel="stylesheet" href="stylesheets/ie6.css"><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,17 +32,17 @@
               <a class="navbar-brand" href="#"><img src="images/logo-footer.png" alt="The ODI" id="odi-logo"></a>
             </div>
             <div class="pull-right">
-              <form class="navbar-form navbar-left">
+              <!-- <form class="navbar-form navbar-left">
                 <div class="form-group">
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search ODI"/>
                     <input type="submit" value="Go" class="btn"/>
                   </div>
                 </div>
-              </form>
+              </form> -->
               <ul class="nav navbar-nav">
                 <li><a href="#">Contact us</a></li>
-                <li><a href="#about">Sign in</a></li>
+                <!-- <li><a href="#about">Sign in</a></li> -->
               </ul>
             </div>
           </div>
@@ -79,7 +85,7 @@
                     </ul>
                 </li>
                 <li><a href="#">What's happening</a></li>
-                <li class="dropdown">
+                <li class="dropdown last">
                     <a data-toggle="dropdown" href="#">News <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Newsroom</a></li>
@@ -89,6 +95,25 @@
             </div>
           </div>
         </div>
+
+        <!-- Copy of top nav's search, Contact Us, Sign In - mobile only -->
+        <div class="navbar navbar-inverse navbar-static-top mobile-only">
+            <div class="container">
+            <!-- <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search ODI"/>
+                            <input type="submit" value="Go" class="btn"/>
+                        </div>
+                    </div>
+                </form> -->
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Contact us</a></li>
+                    <!-- <li><a href="#about">Sign in</a></li> -->
+                </ul>
+            </div>
+        </div>
+
     </header> <!-- /site-header -->
 
 
@@ -119,7 +144,7 @@
                 <ul class="grid effect-2" id="grid-people">
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-6">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/tbl.jpeg">
                                 <h1 class="module-heading">Sir Tim Berners-Lee</h1>
@@ -130,7 +155,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-6">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/shadbolt_0.jpg">
                                 <h1 class="module-heading">Sir Nigel Shadbolt</h1>
@@ -141,7 +166,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-6">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/gavinstarks_20120911a_bw_aquare_400px.jpg">
                                 <h1 class="module-heading">Gavin Starks</h1>
@@ -152,7 +177,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-6">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/rob_square_mono_400px.jpg">
                                 <h1 class="module-heading">Rob Bryan</h1>
@@ -163,7 +188,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-6">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/rogerhampson.jpg">
                                 <h1 class="module-heading">Roger Hampson</h1>
@@ -178,7 +203,7 @@
                     <!--  -->
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-16">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/gavinstarks_20120911a_bw_aquare_400px.jpg">
                                 <h1 class="module-heading">Gavin Starks</h1>
@@ -189,7 +214,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-16">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/jeni_tennison_grs_7892_square_monochrome_400x.jpg">
                                 <h1 class="module-heading">Jeni Tennison</h1>
@@ -200,7 +225,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-16">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/stuart_coleman_grs_7933_mono_square_400px.jpg">
                                 <h1 class="module-heading">Stuart Coleman</h1>
@@ -215,7 +240,7 @@
                     <!--  -->
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-10">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/stuart_coleman_grs_7933_mono_square_400px.jpg">
                                 <h1 class="module-heading">Stuart Coleman</h1>
@@ -226,7 +251,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-10">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/kathryn_corrick_sq_200px.jpg">
                                 <h1 class="module-heading">Kathryn Corrick</h1>
@@ -237,7 +262,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-10">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/dave_tarrant_grs_7908_square_mono_400px.jpg">
                                 <h1 class="module-heading">Dr David Tarrant</h1>
@@ -248,7 +273,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-10">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/richardstirling_0.jpg">
                                 <h1 class="module-heading">Richard Stirling</h1>
@@ -259,7 +284,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-10">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/Commercial_Andreacox.jpg">
                                 <h1 class="module-heading">Andrea Cox</h1>
@@ -270,7 +295,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-10">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/_MG_3741_web.jpg">
                                 <h1 class="module-heading">Carl Rodrigues</h1>
@@ -281,7 +306,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-10">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/362b6a6.jpg">
                                 <h1 class="module-heading">Phil Lang</h1>
@@ -296,7 +321,7 @@
                     <!--  -->
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-12">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/jeni_tennison_grs_7892_square_monochrome_400x.jpg">
                                 <h1 class="module-heading">Jeni Tennison</h1>
@@ -307,7 +332,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-12">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/sam.jpg">
                                 <h1 class="module-heading">Sam Pikesley</h1>
@@ -318,7 +343,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-12">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/james.jpg">
                                 <h1 class="module-heading">James Smith</h1>
@@ -329,7 +354,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-12">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/stuart.jpg">
                                 <h1 class="module-heading">Stuart Harrison</h1>
@@ -340,7 +365,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-12">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/tom_pic_bw.png">
                                 <h1 class="module-heading">Tom Heath</h1>
@@ -351,7 +376,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-12">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/6405153701_50d45f316d_o.jpg">
                                 <h1 class="module-heading">Ulrich Atz</h1>
@@ -366,7 +391,7 @@
                     <!--  -->
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-2">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/emma_thwaites_square_mono_400px.jpg">
                                 <h1 class="module-heading">Emma Thwaites</h1>
@@ -377,7 +402,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-2">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/jade_grs_7900_mono_square_400px.jpg">
                                 <h1 class="module-heading">Jade Croucher</h1>
@@ -388,7 +413,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-2">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/louise_burke_grs_8054_mono_square_400px.jpg">
                                 <h1 class="module-heading">Louise Burke</h1>
@@ -399,7 +424,7 @@
                     </li>
 
                     <li class="home-module">
-                        <div class="module module-light module-colour-2">
+                        <div class="module module-light module-colour-8">
                             <a href="#">
                                 <img src="images/people/michelle_square_mono_180px.jpg">
                                 <h1 class="module-heading">Michelle Prescott</h1>
