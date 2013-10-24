@@ -116,6 +116,15 @@ class RootController < ApplicationController
     render "list/culture"
   end
 
+  def whats_happening
+    @section = 'whats_happening'
+    @artefacts = content_api.with_tag('event').results
+    @artefacts += content_api.with_tag('course_instance').results
+    @artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) < Date.today}
+    @artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}
+    render "list/whats_happening"
+  end
+
   def nodes_list
     @section = params[:section].parameterize
     @publication = fetch_article('about-nodes', params[:edition], "article")

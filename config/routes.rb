@@ -7,6 +7,7 @@ Www::Application.routes.draw do
   end
   
   get "culture/collection", as: "culture_collection", to: 'root#culture_collection'
+  get "whats_happening", as: "whats_happening", to: 'root#whats_happening'
 
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|
     section_slug = section.to_s.dasherize
@@ -21,7 +22,7 @@ Www::Application.routes.draw do
     get "#{section_slug}/:slug/badge", as: "#{section}_badge", to: 'root#badge', :section => section_slug
   end  
   
-  [:about, :get_involved, :learning, :whats_happening].each do |section|
+  [:about, :get_involved, :learning].each do |section|
     slug = section.to_s.dasherize
     get "#{slug}", as: "#{section}_section", to: 'root#section', section: slug 
   end
