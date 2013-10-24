@@ -1,0 +1,6 @@
+<div class="module module-light module-highlight-1 module-colour-<%= (publication.slug.length % 12) + 1 %> module-event">
+	<a href="<%= course_instance_path(publication.details.course,Date.parse(publication.details.date).strftime("%Y-%m-%d")) %>" target="_top">
+		<h1 class="module-heading"><%= publication.title %></h1>
+		<p class="category">Course</p>
+	</a>
+</div>
