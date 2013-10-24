@@ -7,7 +7,7 @@ Www::Application.routes.draw do
   end
   
   get "culture/collection", as: "culture_collection", to: 'root#culture_collection'
-  get "whats_happening", as: "whats_happening", to: 'root#whats_happening'
+  get "whats-happening", as: "whats_happening", to: 'root#whats_happening'
 
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|
     section_slug = section.to_s.dasherize

@@ -99,6 +99,3 @@ learning:
      -
       image: "/assets/guides_modules.jpg"
       link: "/guides"
-whats-happening:
-    title: "What's Happening?"
-    hero_image: "/assets/whatshappening_hero.jpg"

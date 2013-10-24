@@ -1,0 +1,15 @@
+<% content_for :title, "What's happening?" %>
+
+<% content_for :hero do %>
+	<section class="article-hero">
+		<%= render :partial => "section/hero", :locals => { :hero_image => "/assets/whatshappening_hero.jpg", :hero_text => nil, :hero_link => nil } %>
+	</section>
+<% end %>
+
+<ul class="grid effect-2 listing" id="grid2">
+	<% @artefacts.each do |artefact| %>
+		<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
+	<% end %>
+</div>
+
+<%= render :partial => "list/masonry" %>
