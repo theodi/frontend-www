@@ -315,12 +315,16 @@ class RootController < ApplicationController
     end
   end
   
-  def article(params)
+  def article(params)    
     @publication = fetch_article(params[:slug], params[:edition], params[:section])
     
     respond_to do |format|
       format.html do
-        render "content/#{@publication.format}"
+        begin
+          render "content/#{params[:section]}"
+        rescue ActionView::MissingTemplate
+          render "content/#{@publication.format}"
+        end
       end
       format.json do
         redirect_to "#{api_domain}/#{params[:slug]}.json"
