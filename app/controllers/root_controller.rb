@@ -157,6 +157,7 @@ class RootController < ApplicationController
     instance = content_api.course_instance(params[:date], params[:slug], params[:edition])
     @publication = PublicationPresenter.new(instance)
     @course = fetch_article(@publication.course, params[:edition], "courses")
+    @trainers = @publication.details['trainers'].map { |t| fetch_article(t, nil, "people") unless t == "" }.reject{|p| p.nil?}
     @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
     respond_to do |format|
       format.html do
