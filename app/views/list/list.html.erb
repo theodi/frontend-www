@@ -3,7 +3,7 @@
 <% content_for :hero do %>
 	<% if @hero_image %>
 		<section class="article-hero">
-			<%= render :partial => "section/hero", :locals => { :hero_image => @hero_image, :hero_text => @hero_text } %>
+			<%= render :partial => "section/hero", :locals => { :hero_image => @hero_image, :hero_text => @hero_text, :hero_link => nil } %>
 		</section>
 	<% end %>
 <% end %>
