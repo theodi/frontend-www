@@ -31,6 +31,8 @@ home:
         title: "Dashboards"
         link: "http://dashboards.theodi.org/"
         colour: 3
+      - 
+        frame: "/events/module"
 about:
     title: "About"
     hero_image: "/assets/about_hero.jpg"
@@ -58,7 +60,7 @@ about:
      -
        title: "Press Enquiries"
        text: "Here is some text"
-       link: "/press"
+       link: "/newsroom"
        colour: 7
      -
        title: "Contact us"
@@ -101,7 +103,7 @@ learning:
      -
       title: "Upcoming Friday Lecture"
       text: "Here is some text"
-      link: "/friday-lecture"
+      link: "/lunchtime-lectures"
       colour: 3
      - 
       title: "Library Intro"

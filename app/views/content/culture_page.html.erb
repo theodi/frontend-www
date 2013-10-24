@@ -1,0 +1,25 @@
+<% content_for :title, "Data as culture" %>
+
+<div class="article-main">
+  <article class="article-body">
+    <%= @publication.content.html_safe %>
+  </article>
+</div>
+
+<aside class="article-sidebar">
+
+	<div class="module module-light module-colour-3">
+		<a href="/culture/collection">
+			<h1 class="module-heading">View the Collection</h1>
+			<p class="category">Culture</p>
+		</a>
+	</div>
+
+	<div class="module module-light module-colour-7">
+		<a href="/culture/about">
+			<h1 class="module-heading">Read the Curatorial Statement</h1>
+			<p class="category">Culture</p>
+		</a>
+	</div>
+
+</aside>

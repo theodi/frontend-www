@@ -58,14 +58,73 @@ class RootController < ApplicationController
       hash[:people] = members
     end
     @title = "Team"
-    render "list/people.html"
+    respond_to do |format|
+      format.html do
+        render "list/people"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=team"
+      end
+    end  
+  end
+  
+  def events_list
+    @section = params[:section].parameterize
+    @artefacts = content_api.with_tag(params[:section].singularize).results
+    @artefacts.reject!{|x| Date.parse(x.details.start_date) < Date.today}
+    @artefacts.sort_by!{|x| Date.parse(x.details.start_date)}
+    @title = params[:section].gsub('-', ' ').humanize.capitalize
+    respond_to do |format|
+      format.html do
+        render "list/list"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=events"
+      end
+    end  
   end
 
   def case_studies_list
     @section = params[:section].parameterize
     @artefacts = content_api.sorted_by('case_study', 'curated').results
     @title = "Case Studies"
-    render "list/list"
+    respond_to do |format|
+      format.html do
+        render "list/list"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=case_study"
+      end
+    end
+  end
+
+  def culture_list
+    @publication = fetch_article('culture', params[:edition], 'article')
+    respond_to do |format|
+      format.html do
+        render "content/culture_page"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=culture"
+      end
+    end
+  end
+
+  def culture_collection
+    @section = 'culture'
+    @artefacts = content_api.sorted_by('creative_work', 'curated').results
+    render "list/culture"
+  end
+
+  def nodes_list
+    @section = params[:section].parameterize
+    @publication = fetch_article('about-nodes', params[:edition], "article")
+    begin
+      @artefacts = content_api.sorted_by('node', 'curated').results
+    rescue (GdsApi::HTTPNotFound)
+    end
+    @title = "Nodes"
+    render "list/nodes"
   end
 
   def section
@@ -79,18 +138,24 @@ class RootController < ApplicationController
                   fetch_artefact(params[:slug], params[:edition], nil, nil)
 
     @publication = PublicationPresenter.new(artefact)
-
-    begin
-      # Use a specific template if present
-      render "content/page-#{params[:slug]}"
-    rescue
-      render "content/page"
+    respond_to do |format|
+      format.html do
+        begin
+          # Use a specific template if present
+          render "content/page-#{params[:slug]}.json"
+        rescue
+          render "content/page"
+        end
+      end
+      format.json do
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
+      end
     end
   end
 
   def course_instance
-    slug = "#{params[:slug]}-#{params[:date]}"
-    @publication = fetch_article(slug, params[:edition], "course_instance")
+    instance = content_api.course_instance(params[:date], params[:slug], params[:edition])
+    @publication = PublicationPresenter.new(instance)
     @course = fetch_article(@publication.course, params[:edition], "courses")
     @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
     respond_to do |format|
@@ -98,7 +163,7 @@ class RootController < ApplicationController
         render "content/course_instance"
       end
       format.json do
-        render :json => @publication.to_json
+        redirect_to "#{api_domain}/course-instance.json?date=#{params[:date]}&course=#{params[:slug]}.json"
       end
     end
   end
@@ -114,7 +179,7 @@ class RootController < ApplicationController
         render "content/course"
       end
       format.json do
-        render :json => @publication.to_json
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
       end
     end
   end
@@ -127,7 +192,7 @@ class RootController < ApplicationController
         render "content/case_study"
       end
       format.json do
-        render :json => @publication.to_json
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
       end
     end
   end
@@ -140,7 +205,20 @@ class RootController < ApplicationController
         render "content/consultation_response"
       end
       format.json do
-        render :json => @publication.to_json
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
+      end
+    end
+  end
+
+  def culture_article
+    @publication = fetch_article(params[:slug], params[:edition], "creative_work")
+    @artist = fetch_article(@publication.artist['slug'], params[:edition], 'person')
+    respond_to do |format|
+      format.html do
+        render "content/culture"
+      end
+      format.json do
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
       end
     end
   end
@@ -172,6 +250,20 @@ class RootController < ApplicationController
     @title = "Courses"
     render "list_module/courses", :layout => "minimal"
   end
+  
+  def events_list_module
+    @section = "events"
+    @artefact = content_api.upcoming("event", "start_date")
+    @title = "Events"
+    render "list_module/list_module", :layout => "minimal"
+  end
+
+  def culture_list_module
+    @section = 'culture'
+    @artefact = content_api.latest('type', 'creative_work')
+    @title = "Culture"
+    render "list_module/list_module", :layout => "minimal"
+  end
 
   protected
   
@@ -185,11 +277,18 @@ class RootController < ApplicationController
     end
     @artefacts.sort_by!{|x| x.created_at}.reverse!
     @title = params[:section].gsub('-', ' ').humanize.capitalize
-    begin
-      # Use a specific template if present
-      render "list/#{params[:section]}"
-    rescue
-      render "list/list"
+    respond_to do |format|
+      format.html do
+        begin
+          # Use a specific template if present
+          render "list/#{params[:section]}"
+        rescue
+          render "list/list"
+        end
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=#{params[:section].singularize}"
+      end
     end
   end
 
@@ -224,7 +323,7 @@ class RootController < ApplicationController
         render "content/#{@publication.format}"
       end
       format.json do
-        render :json => @publication.to_json
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
       end
     end
   end
@@ -240,6 +339,10 @@ class RootController < ApplicationController
     end
 
     PublicationPresenter.new(artefact)
+  end
+  
+  def api_domain
+    Plek.current.find("contentapi")
   end
 
 end
