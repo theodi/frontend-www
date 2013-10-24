@@ -2,11 +2,46 @@
 
 <div class="article-main">
 	<div class="article-body">
-		<%= render :partial => 'content/course', :locals => { :course => @course, :title => @title } %>
+		<h2><%= @course.title %></h2>
+		<h3 class="course-date"><%= Date.parse(@publication.date).strftime("%A %d %B %Y") %></h3>
+		<h3 class="course-location"><%= @publication.location %></h3>
+		
+		<div class="row course-meta">
+		  <div class="col-md-6">  
+		    <p><strong>Price:</strong> <%= @publication.price %></p>
+		  </div>
+		
+		  <div class="col-md-6">
+		    <p class="course-book">Book this course <%= link_to "Book now", @publication.url, :class => "btn btn-primary" %></p>
+		  </div>
+		</div>
+		
+		<%= @publication.description.html_safe %>
+		
+		<h3 class="course-leaders">Course Leader(s)</h3>
+		  <% @trainers.each do |trainer| %>
+		    <hr />
+		    
+		    <div class="row">
+		      <div class="col-md-4">
+		        <%= image_tag trainer.square_image || '/assets/person-placeholder.png', alt: trainer.title %>
+		      </div>
+		      <div class="col-md-6">
+		        <h3><%= trainer.title %></h3>
+		        <h4><%= trainer.role %></h4>
+		      </div>
+		    </div>
+
+		    <div class="trainer-description">
+		      <%= trainer.description.html_safe %>
+		    </div>
+		  <% end %>
 	</div>
 </div>
 
 <aside class="course-sidebar">
+    <h3>Course</h3>
+    
     <div class="module module-light module-colour-4">
         <h4 class="module-heading">
         	<a href="<%= courses_article_path(@course.slug) %>">
@@ -14,5 +49,6 @@
         	</a>
         </h4>
         <p class="category">Courses</p>
-    </div>
+    </div>    
+    
 </aside>
