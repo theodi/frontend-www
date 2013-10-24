@@ -19,12 +19,12 @@ home:
         frame: "/blog/module"
       -
         frame: "/courses/module"
-      -
-        image: "/assets/opendatahistory_modules.jpg"
-        link: "#"
+#      -
+#        image: "/assets/opendatahistory_modules.jpg"
+#        link: "#"
       -
         image: "/assets/globalvoice_modules.jpg"
-        link: "#"
+        link: "http://summit.theodi.org"
       - 
         frame: "/events/module"
       -
@@ -48,16 +48,16 @@ about:
        link: "/faq"
      -
        image: "/assets/people_module.jpg"
-       link: "/newsroom"
+       link: "/team"
      -
        image: "/assets/contactus_module.jpg"
        link: "/contact"
      -
        image: "/assets/press_module.jpg"
-       link: "#"
+       link: "/newsroom"
      -
        image: "/assets/procurement_modules.jpg"
-       link: "#"
+       link: "/procurement"
 get-involved:
      title: "Get Involved"
      hero_image: "/assets/getinvolved_hero.jpg"
@@ -79,7 +79,7 @@ get-involved:
        link: "/projects"
       -
        image: "/assets/startup_module.jpg"
-       link: "/startups"
+       link: "/start-ups"
       -
        image: "/assets/certificates_module.jpg"
        link: "http://certificates.theodi.org"
