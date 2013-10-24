@@ -1,10 +1,13 @@
+<!-- BEGIN OPEN DATA NODE BADGE -->
 <div class='open-data-node'>
   <style>@import url(http://<%= request.host_with_port %><%= asset_path 'badge.css' %>);</style>
   <%= link_to image_tag("http://#{request.host_with_port}#{image_path 'node-80px.png'}"), @publication.web_url %>
   <ul class='open-data-node-details'>
-    <li><span><%= @publication.title  %></span></li>
-    <li><span><%= @publication.region %></span></li>
-    <li><span><%= @publication.level  %></span></li>
-    <li><span><%= @publication.status %></span></li>
+    <li class="open-data-node-title"><%= @publication.title  %></li>
+    <li class="open-data-node-type"><span>Open Data Institute node</span></li>
+    <li class="open-data-node-level"><span>level <%= %w(zero one two three)[@publication.level.to_i]  %></span></li>
+    <li class="open-data-node-status"><span>active</span></li>
+    <li class="open-data-node-status"><span>joined <%= @publication.created %></span></li>
   </ul>
 </div>
+<!-- END OPEN DATA NODE BADGE -->
