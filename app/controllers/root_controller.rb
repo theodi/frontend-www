@@ -7,6 +7,8 @@ end
 
 class RootController < ApplicationController
   
+  before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
+  
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list_module$/
       list_module(params)
