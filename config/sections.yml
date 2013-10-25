@@ -2,19 +2,22 @@ home:
     hero_image: "/assets/homepagehero_Hero.jpg"
     hero_text: "<p>ODI Annual Summit</p><p>29th October 2013</p>"
     hero_link: "http://summit.theodi.org"
+    hero_alt: "ODI Summit"
     links:
       -
         image: "/assets/newmember_socrata_modules.jpg"
         link: "http://directory.theodi.org/members"
-        colour: 2
+        alt: "Socrata: Our newest member"
       -
         frame: "/news/module"
       -
         image: "/assets/odc_modules.jpg"
         link: "https://certificates.theodi.org/"
+        alt: "Open Data Certificates"
       -
         image: "/assets/node_module.jpg"
         link: "/nodes"
+        alt: "ODI Nodes"
       -
         frame: "/blog/module"
       -
@@ -25,74 +28,97 @@ home:
       -
         image: "/assets/globalvoice_modules.jpg"
         link: "http://summit.theodi.org"
+        alt: "Global voices at the ODI Summit"
       - 
         frame: "/events/module"
       -
         image: "/assets/training&projects_module.jpg"
         link: "/learning"
+        alt: "Training and projects"
 about:
     title: "About"
     hero_image: "/assets/about_hero.jpg"
+    alt: "Knowlege for Everyone"
     links:
      -
       image: "/assets/about_module.jpg"
       link: "/about-us"
+      alt: "Who are we? What do we do?"
      -
       image: "/assets/jobs_module.jpg"
       link: "/jobs"
+      alt: "Jobs: Join the ODI"
      -
       image: "/assets/dataasculture_module1.jpg"
       link: "/culture"
+      alt: "Data as culture"
      -
        image: "/assets/faq_module.jpg"
        link: "/faq"
+       alt: "Frequently Asked Questions"
      -
        image: "/assets/people_module.jpg"
        link: "/team"
+       alt: "ODI People"
      -
        image: "/assets/contactus_module.jpg"
        link: "/contact"
+       alt: "Contact us"
      -
        image: "/assets/press_module.jpg"
        link: "/newsroom"
+       alt: "Press - enquire within"
      -
        image: "/assets/procurement_modules.jpg"
        link: "/procurement"
+       alt: "Procurement"
 get-involved:
      title: "Get Involved"
      hero_image: "/assets/getinvolved_hero.jpg"
+     alt: "Get involved"
      links:
       -
        image: "/assets/member_module.jpg"
        link: "/join-us"
+       alt: "Join us - become an ODI member"
       -
        image: "/assets/node_module.jpg"
        link: "/nodes"
+       alt: "ODI nodes"
       -
        image: "/assets/odcs_modules.jpg"
        link: "/challenge-series"
+       alt: "Open Data Challenge Series"
       -
        image: "/assets/consultationresponses_modules.jpg"
        link: "/consultation-responses"
+       alt: "Consultation Responses"
       -
        image: "/assets/startup_module.jpg"
        link: "/start-ups"
+       alt: "Startups"
       -
        image: "/assets/certificates_module.jpg"
        link: "http://certificates.theodi.org"
+       alt: "Open Data Certificates"
 learning:
     title: "Learning"
     hero_image: "/assets/learn_hero.jpg"
+    alt: "Learn"
     links:
      -
       image: "/assets/courses_modules.jpg"
       link: "/courses"
+      alt: "Courses"
      -
       image: "/assets/casestudies_modules.jpg"
       link: "/case-studies"
+      alt: "Case studies"
      -
       image: "/assets/fridaylunchtimelectures_module.jpg"
       link: "/lunchtime-lectures"
+      alt: "Friday Lunchtime Lectures"
      -
       image: "/assets/guides_modules.jpg"
       link: "/guides"
+      alt: "Guides"
