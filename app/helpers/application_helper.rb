@@ -56,4 +56,12 @@ module ApplicationHelper
     end    
   end
   
+  def event_type(event)    
+    url_map = {
+      "open-data-challenge-series" => "challenge-series"
+    }
+    x = event.tag_ids.first
+    url_map[x] || x
+  end
+  
 end
