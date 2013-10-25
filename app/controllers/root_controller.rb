@@ -187,7 +187,7 @@ class RootController < ApplicationController
         render "content/course_instance"
       end
       format.json do
-        redirect_to "#{api_domain}/course-instance.json?date=#{params[:date]}&course=#{params[:slug]}.json"
+        redirect_to "#{api_domain}/course-instance.json?date=#{params[:date]}&course=#{params[:slug]}"
       end
     end
   end
