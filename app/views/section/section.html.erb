@@ -2,7 +2,7 @@
 
 <% content_for :hero do %>
 <section class="article-hero<%= ' within-header' unless @section['title'] %>">
-  <%= render :partial => "section/hero", :locals => { :hero_image => @section['hero_image'], :hero_text => @section['hero_text'], :hero_link => @section['hero_link'] } %>
+  <%= render :partial => "section/hero", :locals => { :hero_image => @section['hero_image'], :hero_text => @section['hero_text'], :hero_link => @section['hero_link'], :hero_alt => @section['hero_alt'] } %>
 </section>
 <% end %>
 
