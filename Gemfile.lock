@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/theodi/alternate-rails.git
+  revision: a5e9b1d0cc80e5015c3035d1e00e4ac38f660082
+  specs:
+    alternate_rails (0.0.1)
+      rails (~> 3.2.13)
+
+GIT
   remote: git://github.com/theodi/gds-api-adapters.git
   revision: 3efa1415a93443a5f2f7303b4054f2304879b716
   specs:
@@ -159,6 +166,7 @@ PLATFORMS
 
 DEPENDENCIES
   airbrake
+  alternate_rails!
   coffee-rails (~> 3.2.1)
   dotenv-rails
   foreman
