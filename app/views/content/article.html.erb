@@ -1,4 +1,6 @@
-<% content_for :title, "News" %>
+<% content_for :title do %>
+  <a href="<%= news_section_path %>">News</a>
+<% end %>
 
 <div class="article-main">
     <article class="article-body">

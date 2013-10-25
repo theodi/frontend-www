@@ -1,4 +1,6 @@
-<% content_for :title, "Case Studies" %>
+<% content_for :title do %>
+  <a href="<%= case_studies_section_path %>">Case Studies</a>
+<% end %>
 
 <div class="article-full">
     <article class="article-body">
