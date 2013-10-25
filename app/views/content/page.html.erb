@@ -2,6 +2,6 @@
 
 <div class="article-full">
   <article class="article-body">
-    <%= @publication.content.html_safe %>
+    <%= @publication.content.try(:html_safe) %>
   </article>
 </div>
