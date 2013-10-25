@@ -8,14 +8,8 @@
 		<h3 class="course-date"><%= Date.parse(@publication.date).strftime("%A %d %B %Y") %></h3>
 		<h3 class="course-location"><%= @publication.location %></h3>
 		
-		<div class="row course-meta">
-		  <div class="col-md-6">  
-		    <p><strong>Price:</strong> <%= @publication.price %></p>
-		  </div>
-		
-		  <div class="col-md-6">
-		    <p class="course-book">Book this course <%= link_to "Book now", @publication.url, :class => "btn btn-primary" %></p>
-		  </div>
+		<div class="course-meta">
+			<p><strong>Price:</strong> <%= @publication.price %> <%= link_to "Book now", @publication.url, :class => "btn btn-primary" %></p>
 		</div>
 		
 		<%= @publication.description.html_safe %>
@@ -47,6 +41,13 @@
     <div class="module module-light module-colour-4">
         <a href="<%= courses_article_path(@course.slug) %>">
         	<h4 class="module-heading"><%= @course.title %></h4>
+        	<p class="category">Course</p>
+        </a>
+    </div>    
+    
+    <div class="module module-light module-colour-11">
+        <a href="<%= courses_section_path %>">
+        	<h4 class="module-heading">Other Courses</h4>
         	<p class="category">Course</p>
         </a>
     </div>    
