@@ -12,79 +12,123 @@
     <script src="javascripts/html5shiv.js"></script>
     <script src="javascripts/respond.min.js"></script>
   <![endif]-->
+    <!-- IE-only stylesheets -->
+    <!--[if lte IE 9]><link href="/assets/ie9.css?body=1" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if lte IE 8]><link href="/assets/ie8.css?body=1" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if lte IE 7]><link href="/assets/ie7.css?body=1" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if lt IE 7]><link href="/assets/ie6.css?body=1" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
 </head>
 
 <body>
     <header class="site-header">
-        <div class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="/"><img src="/assets/logo-footer.png" alt="The ODI" id="odi-logo"></a>
-            </div>
-            <!--
-            <form class="navbar-form navbar-left">
-              <div class="form-group">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search ODI"/>
-                  <input type="submit" value="Go" class="btn"/>
-                </div>
-              </div>
-            </form>
-            -->
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="/contact">Contact us</a></li>
-              <!-- <li><a href="#about">Sign in</a></li> -->
-            </ul>
-          </div>
+      <div class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/"><img alt="The ODI" id="odi-logo" src="/assets/logo-footer.png" /></a>
+      </div>
+    <!--
+    <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search ODI"/>
+          <input type="submit" value="Go" class="btn"/>
         </div>
+      </div>
+    </form>
+    -->
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/contact">Contact us</a></li>
+      <!-- <li><a href="#about">Sign in</a></li> -->
+    </ul>
+  </div>
+</div>
+
 
         <div class="navbar navbar-static-top">
           <div class="container">
             <div class="pull-right">
               <ul class="nav navbar-nav main-nav">
-                <li class="dropdown active">
-                    <a href="/about">About <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/about">About the ODI</a></li>
-                        <li><a href="/team">People</a></li>
-                        <li><a href="/jobs">Jobs</a></li>
-                        <li><a href="/procurement">Procurement</a></li>
-                        <li><a href="/culture">Data as Culture</a></li>
-                        <li><a href="/space">Space</a></li>
-                        <li><a href="http://dashboards.theodi.org/">Dashboards</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="/get-involved">Get involved <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/membership">Membership</a></li>
-                        <li><a href="/start-ups">Start-ups</a></li>
-                        <li><a href="https://certificates.theodi.org/">Open Data Certificates</a></li>
-                        <li><a href="/nodes">Nodes</a></li>
-                        <li><a href="/consultation-responses">Consultation Responses</a></li>
-                        <!--<li><a href="#">ODI on the web</a></li>-->
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="/learning">Learning <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/pg-certificate">Post-Graduate Certficate</a></li>
-                        <li><a href="/lunchtime-lectures">Friday Lunchtime Lectures</a></li>
-                        <li><a href="/guides">Guides</a></li>
-                        <li><a href="/case-studies">Case Studies</a></li>
-                    </ul>
-                </li>
-                <li><a href="/whats-happening">What's happening</a></li>
-                <li class="dropdown">
-                    <a href="/news">News <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/news">Newsroom</a></li>
-                    </ul>
-                </li>
+                    <li class="dropdown">
+                        <a href="/about">
+                            About
+                             <b class="caret"></b>
+                         </a>
+                            <ul class="dropdown-menu">
+                                    <li><a href="/about-us">About the ODI</a></li>
+                                    <li><a href="/team">People</a></li>
+                                    <li><a href="/jobs">Jobs</a></li>
+                                    <li><a href="/procurement">Procurement</a></li>
+                                    <li><a href="/culture">Data as culture</a></li>
+                                    <li><a href="/space">Space</a></li>
+                                    <li><a href="http://dashboards.theodi.org/">Dashboards</a></li>
+                            </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/get-involved">
+                            Get involved
+                             <b class="caret"></b>
+                         </a>
+                            <ul class="dropdown-menu">
+                                    <li><a href="/join-us">Membership</a></li>
+                                    <li><a href="http://directory.theodi.org/members">Our members</a></li>
+                                    <li><a href="/start-ups">Start-ups</a></li>
+                                    <li><a href="https://certificates.theodi.org/">Open Data Certificates</a></li>
+                                    <li><a href="/nodes">Nodes</a></li>
+                                    <li><a href="/challenge-series">Challenge series</a></li>
+                                    <li><a href="/projects">Projects</a></li>
+                                    <li><a href="/consultation-responses">Consultation responses</a></li>
+                            </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/learning">
+                            Learning
+                             <b class="caret"></b>
+                         </a>
+                            <ul class="dropdown-menu">
+                                    <li><a href="/courses">Courses</a></li>
+                                    <li><a href="/lunchtime-lectures">Friday lunchtime lectures</a></li>
+                                    <li><a href="/guides">Guides</a></li>
+                                    <li><a href="/case-studies">Case studies</a></li>
+                            </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/events">
+                            What&#x27;s happening
+                         </a>
+                    </li>
+                    <li class="dropdown last">
+                        <a href="/news">
+                            News
+                             <b class="caret"></b>
+                         </a>
+                            <ul class="dropdown-menu">
+                                    <li><a href="/newsroom">Newsroom</a></li>
+                            </ul>
+                    </li>
               </ul>
             </div>
           </div>
         </div>
+
+      <div class="navbar navbar-inverse navbar-static-top mobile-only">
+  <div class="container">
+    <!--
+    <form class="navbar-form navbar-left">
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search ODI"/>
+          <input type="submit" value="Go" class="btn"/>
+        </div>
+      </div>
+    </form>
+    -->
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/contact">Contact us</a></li>
+      <!-- <li><a href="#about">Sign in</a></li> -->
+    </ul>
+  </div>
+</div>
+
     </header> <!-- /site-header -->
 
     <header class="page-title">
