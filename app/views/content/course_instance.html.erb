@@ -12,6 +12,8 @@
 			<p><strong>Price:</strong> <%= @publication.price %> <%= link_to "Book now", @publication.url, :class => "btn btn-primary" %></p>
 		</div>
 		
+		<%= @course.description.html_safe %>
+
 		<%= @publication.description.html_safe %>
 		
 		<h3 class="course-leaders">Course Leader(s)</h3>
