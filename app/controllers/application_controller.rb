@@ -15,4 +15,19 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  
+  def event_type(event)    
+    url_map = {
+      "open-data-challenge-series" => "challenge-series"
+    }
+    x = event.tag_ids.first
+    url_map[x] || x
+  end
+  helper_method :event_type
+  
+  def event_path(event)
+  	send("#{event_type(event).pluralize.gsub('-', '_')}_article_path", event.slug)
+  end
+  helper_method :event_path 
+  
 end

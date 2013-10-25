@@ -1,5 +1,5 @@
 <div class="module module-light module-highlight-1 module-colour-<%= (publication.slug.length % 12) + 1 %> module-event">
-	<a href="<%= send("#{event_type(publication).pluralize.gsub('-', '_')}_article_path", publication.slug) %>" target="_top">
+	<a href="<%= event_path(publication) %>" target="_top">
 		<h1 class="module-heading"><%= publication.title %><br /><span class="date"><%= Date.parse(publication.details.start_date).strftime("%A %d %B %Y") %><br/>at <%= DateTime.parse(publication.details.start_date).strftime("%l:%M%p") %></span></h1>
 		<p class="category"><%= event_type(publication).gsub('-', ' ') %></p>
 	</a>

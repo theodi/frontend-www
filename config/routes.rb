@@ -24,15 +24,15 @@ Www::Application.routes.draw do
   [:lunchtime_lectures, :meetups, :research_afternoons, :challenge_series, :roundtables, :workshops, :networking_events, :panel_discussions].each do |event_type|
     section_slug = event_type.to_s.dasherize
     
-    get "#{section_slug}", as: "#{event_type}_section", to: "root#events_list", :section => "events"
+    get "#{section_slug}", as: "#{event_type}_section", to: "root#events_list", :section => "events", :event_type => event_type
 
-    get "#{section_slug}/module", as: "#{event_type}_list_module", to: "root#events_list_module", :section => "events"
+    get "#{section_slug}/module", as: "#{event_type}_list_module", to: "root#events_list_module", :section => "events", :event_type => event_type
 
-    get "#{section_slug}/:slug", as: "#{event_type}_article", to: "root#events_article", :section => "events"
+    get "#{section_slug}/:slug", as: "#{event_type}_article", to: "root#events_article", :section => "events", :event_type => event_type
 
-    get "#{section_slug}/:slug/module", as: "#{event_type}_module", to: "root#events_module", :section => "events"
+    get "#{section_slug}/:slug/module", as: "#{event_type}_module", to: "root#events_module", :section => "events", :event_type => event_type
     
-    get "#{section_slug}/:slug/badge", as: "#{event_type}_badge", to: 'root#badge', :section => "events"
+    get "#{section_slug}/:slug/badge", as: "#{event_type}_badge", to: 'root#badge', :section => "events", :event_type => event_type
   end
   
   [:about, :get_involved, :learning].each do |section|
