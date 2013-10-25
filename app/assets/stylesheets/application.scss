@@ -65,3 +65,54 @@
 .course-leaders {
   margin-bottom: 12px;
 }
+
+#juvia_comments {
+  .juvia-field {
+    @extend .form-group;
+    input, textarea {
+      @extend .form-control;
+      border-radius: 4px;
+    }
+    .juvia-help {
+      @extend .help-block;
+    }
+  }
+  .juvia-submit-button input, .juvia-submitting-button input {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+  .juvia-submitting-button input {
+    opacity: 0.5;
+  }
+  .juvia-comment {
+    margin-bottom: 25px;
+    .juvia-metadata {
+      background: $odiBlue;
+      color: #fff;
+      position: relative;
+    }
+    .juvia-avatar {
+      float: left;
+      padding: 0 15px 0 0;
+      background-color: #fff;
+    }
+    .juvia-author {
+      padding: 5px;
+      margin-left: 84px;
+    }
+    .juvia-creation-date {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 12px;
+    }
+    .juvia-comment-content {
+      width: 100%;
+      padding: 15px 0 0 84px;
+    }
+    .juvia-reply-to-comment {
+      text-align: right;
+      font-size: 14px;
+    }
+  }
+}
