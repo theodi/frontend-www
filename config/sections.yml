@@ -75,9 +75,6 @@ get-involved:
        image: "/assets/consultationresponses_modules.jpg"
        link: "/consultation-responses"
       -
-       image: "/assets/projects_modules.jpg"
-       link: "/projects"
-      -
        image: "/assets/startup_module.jpg"
        link: "/start-ups"
       -
