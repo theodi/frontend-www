@@ -6,6 +6,7 @@ Www::Application.routes.draw do
     get "#{item['url']}", as: "#{item['slug'].gsub('-','_')}_page", to: 'root#page', :slug => item['slug']
   end
   
+  get "newsletters", as: "newsletters", to: 'root#newsletters'
   get "culture/collection", as: "culture_collection", to: 'root#culture_collection'
 
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|

@@ -163,6 +163,10 @@ class RootController < ApplicationController
     end
   end
 
+  def newsletters
+    render "content/newsletters"
+  end
+
   def course_instance
     instance = content_api.course_instance(params[:date], params[:slug], params[:edition])
     @publication = PublicationPresenter.new(instance)
