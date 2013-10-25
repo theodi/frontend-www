@@ -33,7 +33,7 @@
                 <% menus.each_index do |i| %>
                     <% menu = menus[i] %>
                     <li class="dropdown<%= ' last' if i == menus.length - 1 %>">
-                        <a href="<%= menu['link'] %>" <% if menu['items'] %> data-toggle="dropdown" <% end %>>
+                        <a href="<%= menu['link'] %>" <% if menu['items'] %> data-target="#" data-toggle="dropdown" <% end %>>
                             <%= menu['title'] %>
                             <% if menu['items'] %>
                              <b class="caret"></b>
