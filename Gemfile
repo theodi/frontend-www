@@ -22,6 +22,7 @@ gem 'gds-api-adapters', :github => 'theodi/gds-api-adapters'
 gem 'dotenv-rails'
 
 gem 'juvia_rails', github: 'theodi/juvia_rails'
+gem 'alternate_rails', github: 'theodi/alternate-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

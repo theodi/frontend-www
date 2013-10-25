@@ -7,6 +7,8 @@ end
 
 class RootController < ApplicationController
   
+  before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
+  
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list_module$/
       list_module(params)
@@ -89,7 +91,7 @@ class RootController < ApplicationController
         render "content/culture_page"
       end
       format.json do
-        redirect_to "#{api_domain}/with_tag.json?tag=culture"
+        redirect_to "#{api_domain}/culture.json"
       end
     end
   end
@@ -97,7 +99,14 @@ class RootController < ApplicationController
   def culture_collection
     @section = 'culture'
     @artefacts = content_api.sorted_by('creative_work', 'curated').results
-    render "list/culture"
+    respond_to do |format|
+      format.html do
+        render "list/culture"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=creative_work"
+      end
+    end
   end
 
   def events_article
@@ -178,7 +187,7 @@ class RootController < ApplicationController
         render "content/course_instance"
       end
       format.json do
-        redirect_to "#{api_domain}/course-instance.json?date=#{params[:date]}&course=#{params[:slug]}.json"
+        redirect_to "#{api_domain}/course-instance.json?date=#{params[:date]}&course=#{params[:slug]}"
       end
     end
   end
