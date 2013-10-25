@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   
+  before_filter :cache_control
+  
+  def cache_control
+    expires_in 3.hours
+  end
+  
   def content_api
     content_api ||= GdsApi::ContentApi.new(
       Plek.current.find("contentapi"),
