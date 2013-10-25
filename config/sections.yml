@@ -27,7 +27,7 @@ home:
 #        link: "#"
       -
         image: "/assets/globalvoice_modules.jpg"
-        link: "http://summit.theodi.org"
+        link: "http://summit.theodi.org/speakers/"
         alt: "Global voices at the ODI Summit"
       - 
         frame: "/events/module"
