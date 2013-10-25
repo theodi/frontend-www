@@ -6,7 +6,7 @@ home:
     links:
       -
         image: "/assets/newmember_socrata_modules.jpg"
-        link: "http://directory.theodi.org/members"
+        link: "news/a-bigger-and-better-introducing-our-newest-members"
         alt: "Socrata: Our newest member"
       -
         frame: "/news/module"
