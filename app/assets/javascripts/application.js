@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require modernizr.custom
 //= require bootstrap/bootstrap-dropdown
+
+$('a[data-toggle=dropdown]').click(function() {
+	if ($(this).next('.dropdown-menu').css('display') == "block") {
+		window.location.href = this.href;
+	}
+})
