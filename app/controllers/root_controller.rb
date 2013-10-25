@@ -100,6 +100,16 @@ class RootController < ApplicationController
     render "list/culture"
   end
 
+  def events_article
+    if params[:event_type]
+      article(params)
+    else
+      event = ArtefactRetriever.new(content_api, Rails.logger, statsd).fetch_artefact(params[:slug], params[:edition], nil, nil)
+      raise ActionController::RoutingError.new('Not Found') if event.nil?
+    	redirect_to event_path(event)
+    end
+  end
+
   def events_list
     @section = 'events'
     @artefacts = content_api.with_tag('event').results
