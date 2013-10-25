@@ -21,6 +21,9 @@
      title: "Space"
      link: "/space"
    -
+     title: "FAQ"
+     link: "/faq"
+   -
      title: "Dashboards"
      link: "http://dashboards.theodi.org/"
  - 
