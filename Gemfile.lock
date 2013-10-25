@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: git://github.com/theodi/juvia_rails.git
-  revision: 2540d3926223979ac4b77a4d2ae8d14ae8ebd90a
+  revision: 804cccff11bf5757ffdcf47034e4566ff067c4bb
   specs:
     juvia_rails (0.0.1)
       rails (~> 3.2.1)
