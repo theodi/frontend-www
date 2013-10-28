@@ -4,7 +4,7 @@
 
 <div class ="article-full">
 	<article class="article-body">
-	  <h2><%= @publication.title %> <%= "(beta)" if @publication.beta %></h2>
+	  <h2><%= node_title @publication %></h2>
   
     <%= image_tag(@publication.logo['web_url'], :class => 'node-logo') %>
     

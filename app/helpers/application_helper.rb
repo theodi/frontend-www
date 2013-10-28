@@ -62,5 +62,15 @@ module ApplicationHelper
     c = Country[iso_code]
     c ? c.name : nil
   end
+
+  def node_title(publication)
+    str = "ODI ".html_safe
+    if publication.level == "comms"
+      str += "Comms Link - "
+    end
+    str += publication.title
+    str += " (beta)" if @publication.beta
+    str
+  end
   
 end
