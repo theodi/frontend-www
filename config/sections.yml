@@ -35,6 +35,11 @@ home:
         image: "/assets/training&projects_module.jpg"
         link: "/learning"
         alt: "Training and projects"
+      -
+        title: Introducing Open Data Partnership for Development
+        text: GLOBAL PROJECTS
+        link: /odp4d
+        colour: 2
 about:
     title: "About"
     hero_image: "/assets/about_hero.jpg"
