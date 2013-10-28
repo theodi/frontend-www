@@ -5,9 +5,9 @@
   <ul class='open-data-node-details'>
     <li class="open-data-node-title"><%= @publication.title  %></li>
     <li class="open-data-node-type"><span>Open Data Institute node</span></li>
-    <li class="open-data-node-level"><span>level <%= %w(zero one two three)[@publication.level.to_i]  %></span></li>
+    <li class="open-data-node-level"><span>level: <%= t(@publication.level) %></span></li>
     <li class="open-data-node-status"><span>active</span></li>
-    <li class="open-data-node-status"><span>joined <%= @publication.created %></span></li>
+    <li class="open-data-node-status"><span>joined <%= Date.parse(@publication.created).strftime("%e %b %Y") %></span></li>
   </ul>
 </div>
 <!-- END OPEN DATA NODE BADGE -->
