@@ -3,6 +3,6 @@
 
 en:
   hello: "Hello world"
-  country: "Country"
-  city: "City/Region"
-  comms: "Communications"
+  country: "country"
+  city: "city"
+  comms: "communications"
