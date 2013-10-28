@@ -62,5 +62,25 @@ module ApplicationHelper
     c = Country[iso_code]
     c ? c.name : nil
   end
+
+  def node_title(publication)
+    str = "ODI ".html_safe
+    if publication.level == "comms"
+      str += "Comms Link - "
+    end
+    str += publication.title
+    str += " (beta)" if publication.beta
+    str
+  end
+  
+  def node_subtitle(publication)
+    if publication.level != "country"
+      parts = [publication.host, publication.area, country(publication.region)]
+      parts.reject!{|x| x.nil? || x.blank?}
+      parts.join(', ')
+    else
+      nil
+    end
+  end
   
 end
