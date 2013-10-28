@@ -9,7 +9,12 @@
     <%= image_tag(@publication.logo['web_url'], :class => 'node-logo') %>
     
     <p>
-      <%= [@publication.area, country(@publication.details["region"])].join(', ') %>
+      <% if @publication.level == 'comms' %>
+        <%= @publication.area %>,
+      <% end %>
+      <% if @publication.level != 'country' %>
+        <%= country(@publication.details["region"]) %>
+      <% end %>
     </p>  
     
     <p>
