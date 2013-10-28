@@ -6,6 +6,8 @@
 	<article class="article-body">
 	  <h2><%= @publication.title %> <%= "(beta)" if @publication.beta %></h2>
     
+    <%= attachment(@publication.logo) %>
+    
     <p>
       <%= [@publication.area, country(@publication.details["region"])].join(', ') %>
     </p>  
