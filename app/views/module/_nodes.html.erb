@@ -1,5 +1,5 @@
-<div class="module module-light module-highlight-1 module-colour-<%= (publication.slug.length % 12) + 1 %> node-<%= publication.details.level %>">
-	<a href="<%= send("#{section.gsub('-', '_')}_article_path", publication.slug) %>" target="_top">
+<div class="module module-light module-highlight-1 module-colour-<%= (publication.slug.length % 12) + 1 %>">
+	<a href="<%= send("#{section.gsub('-', '_')}_article_path", publication.slug) %>" target="_top" class="node-<%= publication.details.level %>">
     <p class='module-subheading'>ODI</p>
 		<h1 class="module-heading"><%= publication.title %></h1>
     <p class='module-subheading'><%= publication.details.beta ? "Beta" : country(publication.details.region) %></p>
