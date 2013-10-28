@@ -5,8 +5,8 @@
 <div class ="article-main">
 	<article class="article-body">
 	  <h2><%= @publication.title %> <%= "(beta)" if @publication.beta %></h2>
-    
-    <%= attachment(@publication.logo) %>
+  
+    <%= image_tag(@publication.logo['web_url'], :class => 'node-logo') %>
     
     <p>
       <%= [@publication.area, country(@publication.details["region"])].join(', ') %>
