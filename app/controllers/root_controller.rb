@@ -140,6 +140,11 @@ class RootController < ApplicationController
     @publication = fetch_article('about-nodes', params[:edition], "article")
     begin
       @artefacts = content_api.sorted_by('node', 'curated').results
+      levels = {"country" => 0, "city" => 1, "comms" => 2}
+      @artefacts.sort do |a,b|
+        comp = (levels[a.level] <=> levels[b.level])
+        comp.zero? ? (a.title <=> b.title) : comp
+      end
     rescue (GdsApi::HTTPNotFound)
     end
     @title = "Nodes"
