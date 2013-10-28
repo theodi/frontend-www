@@ -48,7 +48,7 @@ Www::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile += %w( imagesloaded.pkgd.min.js masonry.pkgd.min.js classie.js AnimOnScroll.js 
                                   layout.js badge.css jquery.browser.js jquery.iframe-auto-height.js 
-                                  iframe-auto-height.js ie9.css ie8.css ie7.css ie6.css )
+                                  iframe-auto-height.js ie9.css ie8.css ie7.css ie6.css respond.min.js html5shiv.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
