@@ -7,7 +7,7 @@
 	  <h2><%= @publication.title %> <%= "(beta)" if @publication.beta %></h2>
     
     <p>
-      <%= [@publication.area, @publication.region].join(', ') %>
+      <%= [@publication.area, country(@publication.details["region"])].join(', ') %>
     </p>  
     
     <p>

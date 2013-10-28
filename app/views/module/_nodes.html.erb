@@ -2,7 +2,8 @@
 	<a href="<%= send("#{section.gsub('-', '_')}_article_path", publication.slug) %>" target="_top">
     <p class='module-subheading'>ODI</p>
 		<h1 class="module-heading"><%= publication.title %></h1>
-    <p class='module-subheading'><%= publication.details.beta ? "Beta" : publication.details.region %></p>
+    <%= publication.details %>
+    <p class='module-subheading'><%= publication.details.beta ? "Beta" : country(publication.details.region) %></p>
 		<p class="category">Node</p>
 	</a>
 </div>
