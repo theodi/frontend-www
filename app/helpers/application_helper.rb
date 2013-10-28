@@ -69,8 +69,18 @@ module ApplicationHelper
       str += "Comms Link - "
     end
     str += publication.title
-    str += " (beta)" if @publication.beta
+    str += " (beta)" if publication.beta
     str
+  end
+  
+  def node_subtitle(publication)
+    if publication.level != "country"
+      parts = [publication.host, publication.area, country(publication.region)]
+      parts.reject!{|x| x.nil? || x.blank?}
+      parts.join(', ')
+    else
+      nil
+    end
   end
   
 end
