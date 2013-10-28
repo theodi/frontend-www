@@ -11,7 +11,7 @@
     </p>  
     
     <p>
-      Joined: <%= Date.parse(@publication.join_date).strftime("%e %B %Y") %>
+      <%= "Joined: " + Date.parse(@publication.join_date).strftime("%e %B %Y") rescue nil %>
     </p>
     
     <div>
@@ -21,10 +21,10 @@
     <h3>Get in Touch:</h3>
     
     <ul>
-    <%= content_tag :li, "Phone Number: #{@publication.telephone}" if @publication.telephone %>
-    <%= content_tag :li, "Email Address: ".html_safe+mail_to(@publication.email) if @publication.email %>
-    <%= content_tag :li, "Twitter: ".html_safe+link_to("@".html_safe+@publication.twitter, "http://twitter.com/"+@publication.twitter) if @publication.twitter %>
-    <%= content_tag :li, "Linkedin: ".html_safe+link_to(@publication.linkedin, @publication.linkedin) if @publication.linkedin %>
+    <%= content_tag :li, "Phone Number: #{@publication.telephone}" if @publication.telephone.present? %>
+    <%= content_tag :li, "Email Address: ".html_safe+mail_to(@publication.email) if @publication.email.present? %>
+    <%= content_tag :li, "Twitter: ".html_safe+link_to("@".html_safe+@publication.twitter, "http://twitter.com/"+@publication.twitter) if @publication.twitter.present? %>
+    <%= content_tag :li, "Linkedin: ".html_safe+link_to(@publication.linkedin, @publication.linkedin) if @publication.linkedin.present? %>
     </ul>
     
 	</article>
