@@ -1527,3 +1527,32 @@ label, select, button, input[type="button"], input[type="reset"], input[type="su
 
 
 }
+
+
+/* Nodes */
+
+a.node-country, a.node-city, a.node-comms {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-opacity: 0.9;
+}
+
+a.node-country {
+  background-image: image-url('node-country.png');
+}
+
+a.node-city {
+  background-image: image-url('node-city.png');
+}
+
+a.node-comms {
+  background-image: image-url('node-comms.png');
+}
+
+img.node-logo {
+  float: right;
+  width: 250px;
+  margin-left: 20px;
+}
+
