@@ -24,6 +24,8 @@ gem 'dotenv-rails'
 gem 'juvia_rails', github: 'theodi/juvia_rails'
 gem 'alternate_rails', github: 'theodi/alternate-rails'
 
+gem 'countries'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
