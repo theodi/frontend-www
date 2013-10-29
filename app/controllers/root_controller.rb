@@ -142,7 +142,7 @@ class RootController < ApplicationController
       @artefacts = content_api.sorted_by('node', 'curated').results
       levels = {"country" => 0, "city" => 1, "comms" => 2}
       @artefacts.sort! do |a,b|
-        comp = (levels[a.level] <=> levels[b.level])
+        comp = (levels[a.details.level] <=> levels[b.details.level])
         comp.zero? ? (a.title <=> b.title) : comp
       end
     rescue (GdsApi::HTTPNotFound)
