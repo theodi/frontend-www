@@ -141,7 +141,7 @@ class RootController < ApplicationController
     begin
       @artefacts = content_api.sorted_by('node', 'curated').results
       levels = {"country" => 0, "city" => 1, "comms" => 2}
-      @artefacts.sort do |a,b|
+      @artefacts.sort! do |a,b|
         comp = (levels[a.level] <=> levels[b.level])
         comp.zero? ? (a.title <=> b.title) : comp
       end
