@@ -154,8 +154,23 @@ hr {
     HEADER
 \*------------------------------------*/
 
-/* shouldn't be necessary in future boostrap - https://github.com/twbs/bootstrap/issues/9382 */
+// Collapsible nav
+.navbar-collapse {
 
+    padding-left: 0;
+    padding-right: 0;
+    border-top: none;
+
+    // Bootstrap seems to give this menu a maximum height
+    // Remove this, otherwise lower menu items can get cut off
+    max-height: none;
+
+}
+
+// Button to trigger that
+.navbar-toggle { margin-top: 12px; }
+
+/* shouldn't be necessary in future boostrap - https://github.com/twbs/bootstrap/issues/9382 */
 .navbar-form {
     margin-bottom: 13px;
     margin-top: 13px;
