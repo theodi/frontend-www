@@ -116,3 +116,19 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  #juvia_comments {
+    .juvia-comment {
+      .juvia-author {
+        padding-bottom: 0;
+      }
+      .juvia-creation-date {
+        position: relative;
+        left: 10px;
+        top: 0;
+        padding: 5px;
+      }
+    }
+  }
+}
