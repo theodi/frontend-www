@@ -8,6 +8,7 @@ end
 class RootController < ApplicationController
   
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
+  before_filter(:only => [:news_list, :jobs_list, :events_list]) { alternate_formats [:atom, :json] }
   
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list_module$/
@@ -131,6 +132,9 @@ class RootController < ApplicationController
       end
       format.json do
         redirect_to "#{api_domain}/with_tag.json?tag=events"
+      end
+      format.atom do
+        render "list/feed", :layout => false
       end
     end  
   end
@@ -317,6 +321,9 @@ class RootController < ApplicationController
       end
       format.json do
         redirect_to "#{api_domain}/with_tag.json?tag=#{params[:section].singularize}"
+      end
+      format.atom do
+        render "list/feed", :layout => false
       end
     end
   end
