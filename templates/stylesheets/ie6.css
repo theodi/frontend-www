@@ -26,12 +26,12 @@ img {
   color: #fff;
   text-decoration: none;
 }
-/* line 33, ../sass/ie6.scss */
+/* line 32, ../sass/ie6.scss */
 .navbar-inverse a:hover, .navbar-inverse a:focus {
   text-decoration: none;
   background: #ff6700;
 }
-/* line 42, ../sass/ie6.scss */
+/* line 41, ../sass/ie6.scss */
 .navbar-inverse .nav.navbar-nav {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -68,73 +68,94 @@ img {
   display: none;
 }
 
-/* line 82, ../sass/ie6.scss */
+/* line 83, ../sass/ie6.scss */
 .main-nav {
   width: 400px;
 }
-/* line 86, ../sass/ie6.scss */
+/* line 87, ../sass/ie6.scss */
 .main-nav li {
-  display: block;
-  float: none;
   background: none;
 }
-/* line 97, ../sass/ie6.scss */
+/* line 94, ../sass/ie6.scss */
+.main-nav > li {
+  display: block;
+  float: none;
+}
+/* line 102, ../sass/ie6.scss */
 .main-nav a {
   display: block;
   padding: 5px 20px 0px 20px;
   height: 30px;
 }
-/* line 103, ../sass/ie6.scss */
+/* line 108, ../sass/ie6.scss */
 .main-nav a:hover {
   text-decoration: none;
 }
-/* line 108, ../sass/ie6.scss */
+/* line 113, ../sass/ie6.scss */
 .main-nav .dropdown-menu {
   display: block;
   position: static;
   border: none;
 }
-/* line 114, ../sass/ie6.scss */
+/* line 119, ../sass/ie6.scss */
 .main-nav .dropdown-menu a {
   margin-left: 15px;
 }
 
-/* line 125, ../sass/ie6.scss */
+/* line 131, ../sass/ie6.scss */
+.article-main.home-opener, .article-sidebar.home-opener {
+  width: auto;
+  float: none;
+  margin: 0 10px 25px 0;
+  padding: 0 15px;
+}
+
+/* line 140, ../sass/ie6.scss */
 .article-hero.within-header {
   margin-top: 0;
 }
 
-/* line 131, ../sass/ie6.scss */
+/* line 146, ../sass/ie6.scss */
 .article-hero img {
   width: 100%;
 }
 
-/* line 139, ../sass/ie6.scss */
+/* line 154, ../sass/ie6.scss */
 .module img, .png {
   position: relative;
   behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none", this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')", this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''), this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')", this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
 }
 
-/* line 151, ../sass/ie6.scss */
+/* line 167, ../sass/ie6.scss */
+.module-light a:hover {
+  color: #fff;
+}
+
+/* line 173, ../sass/ie6.scss */
+.module-dark a:hover {
+  color: #000;
+}
+
+/* line 179, ../sass/ie6.scss */
 .site-footer {
   clear: both;
   padding-top: 20px;
 }
 
-/* line 159, ../sass/ie6.scss */
+/* line 187, ../sass/ie6.scss */
 .footer-content, .footer-nav {
   float: none !important;
   background: #000;
   width: auto !important;
 }
 
-/* line 167, ../sass/ie6.scss */
+/* line 195, ../sass/ie6.scss */
 .footer-nav .pull-right {
   float: none !important;
   margin-left: 0 !important;
   padding-left: 0 !important;
 }
-/* line 173, ../sass/ie6.scss */
+/* line 201, ../sass/ie6.scss */
 .footer-nav .pull-right li {
   display: block;
 }

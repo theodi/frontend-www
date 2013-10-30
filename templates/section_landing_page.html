@@ -15,8 +15,12 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="javascripts/html5shiv.js"></script>
-      <script src="javascripts/respond.min.js"></script>
+    <script src="javascripts/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Respond.js in IE7 and IE8 only -->
+    <!--[if (IE 7)|(IE 8)]>
+    <script src="javascripts/respond.min.js"></script>
     <![endif]-->
 
     <!-- Modernizr to detect CSS transitions etc., for Masonry animations -->
@@ -180,7 +184,7 @@
                 </li>
 
                 <li class="home-module">
-                    <div class="module module-dark§ module-colour-3">
+                    <div class="module module-dark module-colour-3">
                         <a href="#">
                             <h1 class="module-heading">Data as Culture Intro</h1>
                             <p class="module-subheading">Example of a text block would go here</p>
@@ -368,7 +372,10 @@
 
     <!-- Bootstrap JS -->
     <script src="javascripts/bootstrap-dropdown.js"></script>
+    <!-- No collapsible nav in IE6 -->
+    <!--[if gt IE 7]><!-->
     <script src="javascripts/bootstrap-collapse.js"></script>
+    <!--<![endif]-->
 
     <!-- Masonry and its required scripts -->
     <!-- Don't load these on IE 7 or below -->

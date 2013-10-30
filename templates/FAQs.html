@@ -15,9 +15,17 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="javascripts/html5shiv.js"></script>
-      <script src="javascripts/respond.min.js"></script>
+    <script src="javascripts/html5shiv.js"></script>
     <![endif]-->
+
+    <!-- Respond.js in IE7 and IE8 only -->
+    <!--[if (IE 7)|(IE 8)]>
+    <script src="javascripts/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Modernizr to detect CSS transitions etc., for Masonry animations -->
+    <script src="javascripts/modernizr.custom.js"></script>
+
 </head>
 
 <body>
@@ -51,9 +59,9 @@
 
                 <!-- Sign in form -->
 
-                <li class="dropdown dropdown-menu-button">
+                <!-- <li class="dropdown dropdown-menu-button">
 
-                    <!-- <a href="#" data-toggle="dropdown">Sign in</a> -->
+                    <a href="#" data-toggle="dropdown">Sign in</a>
 
                     <div class="sign_in_form_container dropdown-menu" id="login">
 
@@ -98,7 +106,7 @@
 
                     </div>
 
-                </li>
+                </li> -->
 
               </ul>
             </div>
@@ -274,16 +282,25 @@
 
     <!-- Bootstrap JS -->
     <script src="javascripts/bootstrap-dropdown.js"></script>
+
+    <!-- No collapsible nav in IE6 -->
+    <!--[if gt IE 7]><!-->
     <script src="javascripts/bootstrap-collapse.js"></script>
+    <!--<![endif]-->
 
     <!-- Masonry and its required scripts -->
+    <!-- Don't load these on IE 7 or below -->
+    <!--[if gt IE 7]><!-->
     <script src="javascripts/imagesloaded.pkgd.min.js"></script>
     <script src="javascripts/masonry.pkgd.min.js"></script>
     <script src="javascripts/classie.js"></script>
     <script src="javascripts/AnimOnScroll.js"></script>
+    <!--<![endif]-->
 
     <!-- Layout (Masonry initialisation etc.) -->
+    <!--[if gt IE 7]><!-->
     <script src="javascripts/layout.js"></script>
+    <!--<![endif]-->
 
 </body>
 </html>

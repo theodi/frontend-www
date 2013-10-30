@@ -23,7 +23,6 @@ img {
     zoom: 1;
 
     a {
-
         padding: 10px 35px 13px;
         display: inline-block;
         line-height: 49px;
@@ -41,6 +40,7 @@ img {
 
     .nav.navbar-nav {
 
+        // Right links in upper nav
         margin-top: 0px;
         margin-bottom: 0px;
 
@@ -79,18 +79,23 @@ img {
 .navbar-collapse { display: block; }
 .navbar-toggle { display: none; }
 
+// Target second nav (white) not first (black)
 .main-nav {
 
     width: 400px;
 
     li {
 
+        // Get rid of the blue background that appears FOR NO REASON!!!
+        background: none;
+
+    }
+
+    > li {
+
         // Fix nav stepping issue
         display: block;
         float: none;
-
-        // Get rid of the blue background that appears FOR NO REASON!!!
-        background: none;
 
     }
 
@@ -122,6 +127,16 @@ img {
 
 }
 
+// Homepage text intro
+.article-main.home-opener, .article-sidebar.home-opener {
+
+    width: auto;
+    float: none;
+    margin: 0 10px 25px 0;
+    padding: 0 15px;
+
+}
+
 .article-hero.within-header {
 
     margin-top: 0;
@@ -145,6 +160,19 @@ img {
     this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''),
     this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')",
     this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
+
+}
+
+// Get rid of strange grey text hovers in modules
+.module-light a:hover {
+
+    color: #fff;
+
+}
+
+.module-dark a:hover {
+
+    color: #000;
 
 }
 
