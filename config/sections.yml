@@ -1,5 +1,5 @@
 home:
-    hero_image: "/assets/homepagehero_Hero.jpg"
+    hero_image: "/assets/about_hero.jpg"
     hero_text: "<p>ODI Annual Summit</p><p>29th October 2013</p>"
     hero_link: "http://summit.theodi.org"
     hero_alt: "ODI Summit"
