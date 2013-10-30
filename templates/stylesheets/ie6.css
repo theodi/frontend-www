@@ -120,42 +120,49 @@ img {
   width: 100%;
 }
 
-/* line 154, ../sass/ie6.scss */
+/* line 153, ../sass/ie6.scss */
+.hero-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* line 162, ../sass/ie6.scss */
 .module img, .png {
   position: relative;
   behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none", this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')", this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''), this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')", this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
 }
 
-/* line 167, ../sass/ie6.scss */
+/* line 175, ../sass/ie6.scss */
 .module-light a:hover {
   color: #fff;
 }
 
-/* line 173, ../sass/ie6.scss */
+/* line 181, ../sass/ie6.scss */
 .module-dark a:hover {
   color: #000;
 }
 
-/* line 179, ../sass/ie6.scss */
+/* line 187, ../sass/ie6.scss */
 .site-footer {
   clear: both;
   padding-top: 20px;
 }
 
-/* line 187, ../sass/ie6.scss */
+/* line 195, ../sass/ie6.scss */
 .footer-content, .footer-nav {
   float: none !important;
   background: #000;
   width: auto !important;
 }
 
-/* line 195, ../sass/ie6.scss */
+/* line 203, ../sass/ie6.scss */
 .footer-nav .pull-right {
   float: none !important;
   margin-left: 0 !important;
   padding-left: 0 !important;
 }
-/* line 201, ../sass/ie6.scss */
+/* line 209, ../sass/ie6.scss */
 .footer-nav .pull-right li {
   display: block;
 }
