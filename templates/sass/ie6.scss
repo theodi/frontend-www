@@ -1,0 +1,162 @@
+// Try to smooth out scaled images
+img {
+
+    -ms-interpolation-mode: bicubic;
+
+}
+
+// Fix transparent PNGs (just in the modules for now)
+.module img, .png {
+
+    // NOTE: this requires a transparent GIF in your images folder!
+    position: relative;
+    behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none",
+    this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')",
+    this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''),
+    this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')",
+    this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
+
+}
+
+.navbar-brand {
+
+    // No extra left/right padding around top logo
+    padding-left: 0;
+    padding-right: 0;
+
+}
+
+.navbar-inverse {
+
+    // Enough height to actually show the top nav
+    height: 64px;
+
+    a {
+
+        padding: 10px 20px 13px;
+        display: inline-block;
+        line-height: 40px;
+        color: #fff;
+        text-decoration: none;
+
+        &:hover, &:focus {
+
+            text-decoration: none;
+            background: #ff6700;
+
+        }
+
+    }
+
+}
+
+.caret {
+
+    // Arrows are messing up the text alignment, remove them
+    display: none;
+
+}
+
+.navbar-static-top {
+
+    // Without this the hero block vanishes - ?!??!?!??!!??!??!??!?!!!??!
+    height: 64px;
+
+    // Not right-aligned any more
+    .pull-right { float: none; }
+
+    // Fix gap above nav
+    margin-top: 10px;
+
+    // Add gap below
+    margin-bottom: 25px;
+
+}
+
+.main-nav {
+
+    width: 400px;
+
+    li {
+
+        // Fix nav stepping issue
+        display: block;
+        float: none;
+
+        // Get rid of the blue background that appears FOR NO REASON!!!
+        background: none;
+
+    }
+
+    a {
+
+        display: block;
+        padding: 5px 20px 0px 20px;
+        height: 30px;
+
+        &:hover { text-decoration: none; }
+
+    }
+
+    // Dropdown menus just visible all the time now
+    .dropdown-menu {
+
+        display: block;
+        position: static;
+        border: none;
+
+        a {
+
+            // Indent subnav items a bit
+            margin-left: 15px;
+
+        }
+
+    }
+
+}
+
+.article-hero.within-header {
+
+    margin-top: 0;
+
+}
+
+.article-hero img {
+
+    // Hero images not being constrained by screen width so just set them to 100%
+    width: 100%;
+
+}
+
+.site-footer {
+
+    // Make sure footer clears the pages content
+    clear: both;
+    padding-top: 20px;
+
+}
+
+.footer-content, .footer-nav {
+
+    float: none !important;
+    background: #000;
+    width: auto !important;
+
+}
+
+.footer-nav .pull-right {
+
+    float: none !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+
+    li {
+
+        display: block;
+
+    }
+
+}
+
+
