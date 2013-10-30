@@ -3,23 +3,17 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 9, ../sass/ie6.scss */
-.module img, .png {
-  position: relative;
-  behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none", this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')", this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''), this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')", this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
-}
-
-/* line 21, ../sass/ie6.scss */
+/* line 8, ../sass/ie6.scss */
 .navbar-brand {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 29, ../sass/ie6.scss */
+/* line 16, ../sass/ie6.scss */
 .navbar-inverse {
   height: 64px;
 }
-/* line 34, ../sass/ie6.scss */
+/* line 21, ../sass/ie6.scss */
 .navbar-inverse a {
   padding: 10px 20px 13px;
   display: inline-block;
@@ -27,67 +21,73 @@ img {
   color: #fff;
   text-decoration: none;
 }
-/* line 42, ../sass/ie6.scss */
+/* line 29, ../sass/ie6.scss */
 .navbar-inverse a:hover, .navbar-inverse a:focus {
   text-decoration: none;
   background: #ff6700;
 }
 
-/* line 53, ../sass/ie6.scss */
+/* line 40, ../sass/ie6.scss */
 .caret {
   display: none;
 }
 
-/* line 60, ../sass/ie6.scss */
+/* line 47, ../sass/ie6.scss */
 .navbar-static-top {
   height: 64px;
   margin-top: 10px;
   margin-bottom: 25px;
 }
-/* line 66, ../sass/ie6.scss */
+/* line 53, ../sass/ie6.scss */
 .navbar-static-top .pull-right {
   float: none;
 }
 
-/* line 76, ../sass/ie6.scss */
+/* line 63, ../sass/ie6.scss */
 .main-nav {
   width: 400px;
 }
-/* line 80, ../sass/ie6.scss */
+/* line 67, ../sass/ie6.scss */
 .main-nav li {
   display: block;
   float: none;
   background: none;
 }
-/* line 91, ../sass/ie6.scss */
+/* line 78, ../sass/ie6.scss */
 .main-nav a {
   display: block;
   padding: 5px 20px 0px 20px;
   height: 30px;
 }
-/* line 97, ../sass/ie6.scss */
+/* line 84, ../sass/ie6.scss */
 .main-nav a:hover {
   text-decoration: none;
 }
-/* line 102, ../sass/ie6.scss */
+/* line 89, ../sass/ie6.scss */
 .main-nav .dropdown-menu {
   display: block;
   position: static;
   border: none;
 }
-/* line 108, ../sass/ie6.scss */
+/* line 95, ../sass/ie6.scss */
 .main-nav .dropdown-menu a {
   margin-left: 15px;
 }
 
-/* line 119, ../sass/ie6.scss */
+/* line 106, ../sass/ie6.scss */
 .article-hero.within-header {
   margin-top: 0;
 }
 
-/* line 125, ../sass/ie6.scss */
+/* line 112, ../sass/ie6.scss */
 .article-hero img {
   width: 100%;
+}
+
+/* line 120, ../sass/ie6.scss */
+.module img, .png {
+  position: relative;
+  behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none", this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')", this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''), this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')", this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
 }
 
 /* line 132, ../sass/ie6.scss */

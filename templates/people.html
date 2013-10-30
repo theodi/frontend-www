@@ -492,13 +492,18 @@
     <script src="javascripts/bootstrap-collapse.js"></script>
 
     <!-- Masonry and its required scripts -->
+    <!-- Don't load these on IE 7 or below -->
+    <!--[if gt IE 7]><!-->
     <script src="javascripts/imagesloaded.pkgd.min.js"></script>
     <script src="javascripts/masonry.pkgd.min.js"></script>
     <script src="javascripts/classie.js"></script>
     <script src="javascripts/AnimOnScroll.js"></script>
+    <!--<![endif]-->
 
     <!-- Layout (Masonry initialisation etc.) -->
+    <!--[if gt IE 7]><!-->
     <script src="javascripts/layout.js"></script>
+    <!--<![endif]-->
 
   </body>
 </html>
