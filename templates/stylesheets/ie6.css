@@ -1,115 +1,140 @@
-/* line 2, ../sass/ie6.scss */
+/* line 3, ../sass/ie6.scss */
+body {
+  width: 1003px;
+}
+
+/* line 6, ../sass/ie6.scss */
 img {
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 8, ../sass/ie6.scss */
+/* line 12, ../sass/ie6.scss */
 .navbar-brand {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-/* line 16, ../sass/ie6.scss */
+/* line 20, ../sass/ie6.scss */
 .navbar-inverse {
-  height: 64px;
+  zoom: 1;
 }
-/* line 21, ../sass/ie6.scss */
+/* line 25, ../sass/ie6.scss */
 .navbar-inverse a {
-  padding: 10px 20px 13px;
+  padding: 10px 35px 13px;
   display: inline-block;
-  line-height: 40px;
+  line-height: 49px;
   color: #fff;
   text-decoration: none;
 }
-/* line 29, ../sass/ie6.scss */
+/* line 33, ../sass/ie6.scss */
 .navbar-inverse a:hover, .navbar-inverse a:focus {
   text-decoration: none;
   background: #ff6700;
 }
+/* line 42, ../sass/ie6.scss */
+.navbar-inverse .nav.navbar-nav {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
-/* line 40, ../sass/ie6.scss */
+/* line 52, ../sass/ie6.scss */
+#odi-logo {
+  height: auto;
+}
+
+/* line 54, ../sass/ie6.scss */
 .caret {
   display: none;
 }
 
-/* line 47, ../sass/ie6.scss */
-.navbar-static-top {
+/* line 62, ../sass/ie6.scss */
+.navbar-collapse .navbar-static-top {
   height: 64px;
   margin-top: 10px;
   margin-bottom: 25px;
 }
-/* line 53, ../sass/ie6.scss */
-.navbar-static-top .pull-right {
+/* line 68, ../sass/ie6.scss */
+.navbar-collapse .navbar-static-top .pull-right {
   float: none;
 }
 
-/* line 63, ../sass/ie6.scss */
+/* line 79, ../sass/ie6.scss */
+.navbar-collapse {
+  display: block;
+}
+
+/* line 80, ../sass/ie6.scss */
+.navbar-toggle {
+  display: none;
+}
+
+/* line 82, ../sass/ie6.scss */
 .main-nav {
   width: 400px;
 }
-/* line 67, ../sass/ie6.scss */
+/* line 86, ../sass/ie6.scss */
 .main-nav li {
   display: block;
   float: none;
   background: none;
 }
-/* line 78, ../sass/ie6.scss */
+/* line 97, ../sass/ie6.scss */
 .main-nav a {
   display: block;
   padding: 5px 20px 0px 20px;
   height: 30px;
 }
-/* line 84, ../sass/ie6.scss */
+/* line 103, ../sass/ie6.scss */
 .main-nav a:hover {
   text-decoration: none;
 }
-/* line 89, ../sass/ie6.scss */
+/* line 108, ../sass/ie6.scss */
 .main-nav .dropdown-menu {
   display: block;
   position: static;
   border: none;
 }
-/* line 95, ../sass/ie6.scss */
+/* line 114, ../sass/ie6.scss */
 .main-nav .dropdown-menu a {
   margin-left: 15px;
 }
 
-/* line 106, ../sass/ie6.scss */
+/* line 125, ../sass/ie6.scss */
 .article-hero.within-header {
   margin-top: 0;
 }
 
-/* line 112, ../sass/ie6.scss */
+/* line 131, ../sass/ie6.scss */
 .article-hero img {
   width: 100%;
 }
 
-/* line 120, ../sass/ie6.scss */
+/* line 139, ../sass/ie6.scss */
 .module img, .png {
   position: relative;
   behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none", this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')", this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''), this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')", this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
 }
 
-/* line 132, ../sass/ie6.scss */
+/* line 151, ../sass/ie6.scss */
 .site-footer {
   clear: both;
   padding-top: 20px;
 }
 
-/* line 140, ../sass/ie6.scss */
+/* line 159, ../sass/ie6.scss */
 .footer-content, .footer-nav {
   float: none !important;
   background: #000;
   width: auto !important;
 }
 
-/* line 148, ../sass/ie6.scss */
+/* line 167, ../sass/ie6.scss */
 .footer-nav .pull-right {
   float: none !important;
   margin-left: 0 !important;
   padding-left: 0 !important;
 }
-/* line 154, ../sass/ie6.scss */
+/* line 173, ../sass/ie6.scss */
 .footer-nav .pull-right li {
   display: block;
 }

@@ -1,3 +1,7 @@
+// Make sure the page doesn't get below "desktop" width
+// In IE6 1024px minus scrollbar equals 1003px
+body { width: 1003px; }
+
 // Try to smooth out scaled images
 img {
 
@@ -8,21 +12,21 @@ img {
 .navbar-brand {
 
     // No extra left/right padding around top logo
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 
 }
 
 .navbar-inverse {
 
-    // Enough height to actually show the top nav
-    height: 64px;
+    // Show the top nav (hasLayout bug?)
+    zoom: 1;
 
     a {
 
-        padding: 10px 20px 13px;
+        padding: 10px 35px 13px;
         display: inline-block;
-        line-height: 40px;
+        line-height: 49px;
         color: #fff;
         text-decoration: none;
 
@@ -35,7 +39,17 @@ img {
 
     }
 
+    .nav.navbar-nav {
+
+        margin-top: 0px;
+        margin-bottom: 0px;
+
+    }
+
 }
+
+// Display main logo at full size to try to reduce pixellation
+#odi-logo { height: auto; }
 
 .caret {
 
@@ -44,7 +58,8 @@ img {
 
 }
 
-.navbar-static-top {
+// Target second nav (white) not first (black)
+.navbar-collapse .navbar-static-top {
 
     // Without this the hero block vanishes - ?!??!?!??!!??!??!??!?!!!??!
     height: 64px;
@@ -59,6 +74,10 @@ img {
     margin-bottom: 25px;
 
 }
+
+// Respond.js removed, so no media queries, no remove toggleable nav
+.navbar-collapse { display: block; }
+.navbar-toggle { display: none; }
 
 .main-nav {
 
