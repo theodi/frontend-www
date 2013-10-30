@@ -132,6 +132,9 @@ class RootController < ApplicationController
       format.json do
         redirect_to "#{api_domain}/with_tag.json?tag=events"
       end
+      format.atom do
+        render "list/feed", :layout => false
+      end
     end  
   end
 
@@ -312,6 +315,9 @@ class RootController < ApplicationController
       end
       format.json do
         redirect_to "#{api_domain}/with_tag.json?tag=#{params[:section].singularize}"
+      end
+      format.atom do
+        render "list/feed", :layout => false
       end
     end
   end
