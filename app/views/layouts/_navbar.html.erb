@@ -2,6 +2,14 @@
   <div class="container">
     <% unless mobile %>
       <div class="navbar-header">
+        
+       <!-- Mobile nav toggle -->
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+       </button>
+        
         <a class="navbar-brand" href="/"><%= image_tag('logo-footer.png', alt: "The ODI", id: "odi-logo") %></a>
       </div>
     <% end %>
