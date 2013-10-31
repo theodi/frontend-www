@@ -13,8 +13,16 @@
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <%= javascript_include_tag "html5shiv.js" %>
+    <![endif]-->
+    
+    <!-- Respond.js in IE7 and IE8 only -->
+    <!--[if (IE 7)|(IE 8)]>
       <%= javascript_include_tag "respond.min.js" %>
     <![endif]-->
+    
+    <!-- Modernizr to detect CSS transitions etc., for Masonry animations -->
+    <%= javascript_include_tag "modernizr.custom.js" %>
+    
     <!-- IE-only stylesheets -->
     <!--[if lte IE 9]><%= stylesheet_link_tag "ie9.css" %><![endif]-->
     <!--[if lte IE 8]><%= stylesheet_link_tag "ie8.css" %><![endif]-->
