@@ -111,16 +111,20 @@
             </div>
         </div>
     </footer>
-
+    
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "jquery.browser" %>
-    <%= javascript_include_tag "jquery.iframe-auto-height" %>
-    <%= javascript_include_tag "iframe-auto-height" %>
     
     <!-- No collapsible nav in IE6 -->
     <!--[if gt IE 7]><!-->
     <%= javascript_include_tag "bootstrap/bootstrap-collapse.js" %>
     <!--<![endif]-->
+
+    <!-- Masonry and its required scripts -->
+    <!-- Don't load these on IE 7 or below -->
+    <!--[if gt IE 7]><!-->
+    <%= javascript_include_tag "masonry.js" %>
+    <!--<![endif]-->
+
     <%= yield :extra_javascript %>
 
   </body>
