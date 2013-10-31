@@ -1,8 +1,8 @@
 home:
-    hero_image: "/assets/homepagehero_Hero.jpg"
-    hero_text: "<p>ODI Annual Summit</p><p>29th October 2013</p>"
-    hero_link: "http://summit.theodi.org"
-    hero_alt: "ODI Summit"
+    hero_image: "/assets/about_hero.jpg"
+    hero_text: "<p>The Open Data Institute</p>"
+    hero_link: "http://theodi.org/about"
+    hero_alt: "Knowledge for everyone"
     links:
       -
         image: "/assets/newmember_socrata_modules.jpg"
