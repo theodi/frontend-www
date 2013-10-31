@@ -47,7 +47,7 @@ Www::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile += %w( layout.js badge.css ie9.css ie8.css ie7.css ie6.css respond.min.js html5shiv.js
-                                  bootstrap/bootstrap-dropdown.js modernizr.custom.js masonry.js )
+                                  bootstrap/bootstrap-collapse.js modernizr.custom.js masonry.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
