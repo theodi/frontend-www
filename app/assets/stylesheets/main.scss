@@ -783,6 +783,11 @@ hr {
 .module-colour-11 { background-color: $odiColour11; }
 .module-colour-12 { background-color: $odiColour12; }
 
+// Smooth out colour changes on the blocks' hovers
+.module {
+    @include transition(background-color 0.3s ease);
+}
+
 .module { 
 	&.module-highlight-1 { background-color: $odiGrey; }
 	&.module-highlight-2 { background-color: $odiGreyDark; }
