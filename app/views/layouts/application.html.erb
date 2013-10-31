@@ -13,8 +13,16 @@
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <%= javascript_include_tag "html5shiv.js" %>
+    <![endif]-->
+    
+    <!-- Respond.js in IE7 and IE8 only -->
+    <!--[if (IE 7)|(IE 8)]>
       <%= javascript_include_tag "respond.min.js" %>
     <![endif]-->
+    
+    <!-- Modernizr to detect CSS transitions etc., for Masonry animations -->
+    <%= javascript_include_tag "modernizr.custom.js" %>
+    
     <!-- IE-only stylesheets -->
     <!--[if lte IE 9]><%= stylesheet_link_tag "ie9.css" %><![endif]-->
     <!--[if lte IE 8]><%= stylesheet_link_tag "ie8.css" %><![endif]-->
@@ -25,7 +33,8 @@
 <body>
     <header class="site-header">
       <%= render :partial => 'layouts/navbar', :locals => { :mobile => false } %>
-
+      
+      <div class="collapse navbar-collapse">        
         <div class="navbar navbar-static-top">
           <div class="container">
             <div class="pull-right">
@@ -52,8 +61,11 @@
             </div>
           </div>
         </div>
+        
+        <%= render :partial => 'layouts/navbar', :locals => { :mobile => true } %>
+        
+      </div>
 
-      <%= render :partial => 'layouts/navbar', :locals => { :mobile => true } %>
     </header> <!-- /site-header -->
 
     <% if content_for?(:title) %>
@@ -99,11 +111,20 @@
             </div>
         </div>
     </footer>
-
+    
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "jquery.browser" %>
-    <%= javascript_include_tag "jquery.iframe-auto-height" %>
-    <%= javascript_include_tag "iframe-auto-height" %>
+    
+    <!-- No collapsible nav in IE6 -->
+    <!--[if gt IE 7]><!-->
+    <%= javascript_include_tag "bootstrap/bootstrap-collapse.js" %>
+    <!--<![endif]-->
+
+    <!-- Masonry and its required scripts -->
+    <!-- Don't load these on IE 7 or below -->
+    <!--[if gt IE 7]><!-->
+    <%= javascript_include_tag "masonry.js" %>
+    <!--<![endif]-->
+
     <%= yield :extra_javascript %>
 
   </body>

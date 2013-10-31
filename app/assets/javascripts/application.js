@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require modernizr.custom
-//= require bootstrap/bootstrap-dropdown
+//= require jquery.browser
+//= require jquery.iframe-auto-height
+//= require iframe-auto-height
+//= require bootstrap/bootstrap-dropdown.js
 
 $('a[data-toggle=dropdown]').click(function() {
 	if ($(this).next('.dropdown-menu').css('display') == "block") {
