@@ -1171,6 +1171,20 @@ hr {
         }
 
     }
+    
+    h2, h3 {
+      clear: none;
+    }
+    
+    .pull-right {
+      margin-left: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .pull-left {
+      margin-right: 10px;
+      margin-bottom: 15px;
+    }
 
 }
 
