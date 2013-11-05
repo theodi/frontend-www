@@ -2,9 +2,6 @@ require 'gds_api/helpers'
 require 'gds_api/content_api'
 require 'artefact_retriever'
 
-class RecordNotFound < StandardError
-end
-
 class RootController < ApplicationController
   
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }

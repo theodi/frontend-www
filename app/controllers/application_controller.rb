@@ -1,3 +1,6 @@
+class RecordNotFound < StandardError
+end
+
 class ApplicationController < ActionController::Base
 
   protect_from_forgery
@@ -7,7 +10,34 @@ class ApplicationController < ActionController::Base
   def cache_control
     expires_in 3.hours
   end
-  
+
+  if Rails.env.production?   
+    
+    rescue_from GdsApi::TimedOutException, with: :error_500
+    rescue_from GdsApi::EndpointNotFound, with: :error_500
+    rescue_from GdsApi::HTTPErrorResponse, with: :error_500
+    rescue_from ArtefactRetriever::RecordArchived, with: :error_410
+    rescue_from ArtefactRetriever::UnsupportedArtefactFormat, with: :error_404
+    rescue_from RecordNotFound, with: :error_404
+
+    def error_404; error 404; end
+    def error_410; error 410; end
+    def error_500(e); error(500, e); end
+    def error_503(e); error(503, e); end
+
+    def error(status_code, exception = nil)
+      if exception && ENV['QUIRKAFLEEG_AIRBRAKE_KEY']
+        notify_airbrake(ex)
+      end
+      respond_to do |format|
+        format.html { render status: status_code, file: "public/#{status_code}.html", layout: nil  }
+        format.json { render status: status_code, json: { status: status_code } }
+      end
+    end
+
+  end
+
+
   def content_api
     content_api ||= GdsApi::ContentApi.new(
       Plek.current.find("contentapi"),
