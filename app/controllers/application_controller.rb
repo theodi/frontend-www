@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
     def error(status_code, exception = nil)
       if exception && ENV['QUIRKAFLEEG_AIRBRAKE_KEY']
-        notify_airbrake(ex)
+        notify_airbrake(exception)
       end
       respond_to do |format|
         format.html { render status: status_code, file: "public/#{status_code}.html", layout: nil  }
