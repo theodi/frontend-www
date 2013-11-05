@@ -182,7 +182,12 @@ class RootController < ApplicationController
   end
 
   def course_instance
-    instance = content_api.course_instance(params[:date], params[:slug], params[:edition])
+    # Parse date to check validity
+    date = Date.parse(params[:date]) rescue nil
+    raise RecordNotFound if date.nil?
+    # Get instance
+    instance = content_api.course_instance(date.strftime("%Y-%m-%d"), params[:slug], params[:edition])
+    
     @publication = PublicationPresenter.new(instance)
     @course = fetch_article(@publication.course, params[:edition], "courses")
     @trainers = @publication.details['trainers'].map { |t| fetch_article(t, nil, "people") unless t == "" }.reject{|p| p.nil?}
