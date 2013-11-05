@@ -1,6 +1,5 @@
 require 'gds_api/helpers'
 require 'gds_api/content_api'
-require 'artefact_retriever'
 
 class RootController < ApplicationController
   
