@@ -44,7 +44,7 @@ gem 'odlifier', github: 'theodi/odlifier'
 group :production do
   gem 'airbrake'
   gem 'webmock'
-  gem 'mocha'
+  gem 'mocha', :require => false
 end
 
 group :test do
