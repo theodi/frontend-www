@@ -1,3 +1,5 @@
+require 'artefact_retriever'
+
 class RecordNotFound < StandardError
 end
 
@@ -11,7 +13,7 @@ class ApplicationController < ActionController::Base
     expires_in 3.hours
   end
 
-  if Rails.env.production?   
+  unless Rails.env.development?
     
     rescue_from GdsApi::TimedOutException, with: :error_500
     rescue_from GdsApi::EndpointNotFound, with: :error_500
