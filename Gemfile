@@ -43,6 +43,8 @@ gem 'odlifier', github: 'theodi/odlifier'
 
 group :production do
   gem 'airbrake'
+  gem 'webmock'
+  gem 'mocha'
 end
 
 # To use ActiveModel has_secure_password
