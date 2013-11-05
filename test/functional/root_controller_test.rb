@@ -23,5 +23,14 @@ class RootControllerTest < ActionController::TestCase
     assert_response :not_found
   end
   
+  test "course instances without trainers should render OK" do
+    stub_request(:get, "http://contentapi.dev/course-instance.json?course=open-data-practice&date=2013-04-08").
+      to_return(:status => 200, :body => load_fixture('open-data-practice-2013-04-08.json'), :headers => {})
+    stub_request(:get, "http://contentapi.dev/open-data-practice.json").
+        to_return(:status => 200, :body => load_fixture('open-data-practice.json'), :headers => {})
+    get :course_instance, :slug => 'open-data-practice', :date => '2013-04-08'
+    assert_response :ok
+  end    
+  
 end
   
