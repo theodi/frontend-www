@@ -47,6 +47,10 @@ group :production do
   gem 'mocha'
 end
 
+group :test do
+  gem 'simplecov-rcov'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
