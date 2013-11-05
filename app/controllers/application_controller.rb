@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
     rescue_from ArtefactRetriever::RecordArchived, with: :error_410
     rescue_from ArtefactRetriever::UnsupportedArtefactFormat, with: :error_404
     rescue_from RecordNotFound, with: :error_404
+    rescue_from GdsApi::HTTPNotFound, with: :error_404
 
     def error_404; error 404; end
     def error_410; error 410; end
