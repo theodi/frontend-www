@@ -32,5 +32,12 @@ class RootControllerTest < ActionController::TestCase
     assert_response :ok
   end    
   
+  test "Handles nil code response from content API with a proper 500 page" do
+    GdsApi::HTTPErrorResponse.any_instance.expects(:code).at_least_once.returns(nil)
+    GdsApi::ContentApi.any_instance.expects(:artefact).raises(GdsApi::HTTPErrorResponse, '')
+    get :page, :slug => 'broken'
+    assert_response 500
+  end    
+
 end
   
