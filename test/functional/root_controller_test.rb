@@ -30,7 +30,16 @@ class RootControllerTest < ActionController::TestCase
         to_return(:status => 200, :body => load_fixture('open-data-practice.json'), :headers => {})
     get :course_instance, :slug => 'open-data-practice', :date => '2013-04-08'
     assert_response :ok
-  end    
+  end
+
+  test "past events should return correct title" do
+    stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
+      to_return(:status => 200, :body => load_fixture('friday-lunchtime-lecture-how-politicians-lie-with-data.json'), :headers => {})
+    get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
+        :section=>"events", :event_type=>:lunchtime_lectures
+  
+    assert_not_match /More information and to book your place/, response.body.squish
+  end
   
   test "Handles nil code response from content API with a proper 500 page" do
     GdsApi::HTTPErrorResponse.any_instance.expects(:code).at_least_once.returns(nil)
