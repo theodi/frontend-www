@@ -14,6 +14,8 @@
 	  <p><%= @publication.location %></p>
 	  <%= @publication.description.html_safe %>
 	  
-	  <p><%= link_to "More information and to book your place", @publication.booking_url if @publication.booking_url %></p>
+	   <% if @publication.end_date.to_date > DateTime.now %>
+	    <p><%= link_to "More information and to book your place", @publication.booking_url if @publication.booking_url %></p>
+	    <% end %>
 	</article>
 </div>
