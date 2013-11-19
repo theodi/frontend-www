@@ -5,6 +5,10 @@ home:
     hero_alt: "Knowledge for everyone"
     links:
       -
+        image: "/assets/annualreport_module.jpg"
+        Alt: "ODI's First Year: Annual Report"
+        link: "/odis-first-year-annual-report"
+      -
         image: "/assets/newmember_socrata_modules.jpg"
         link: "news/a-bigger-and-better-introducing-our-newest-members"
         alt: "Socrata: Our newest member"
@@ -15,13 +19,9 @@ home:
         link: "https://certificates.theodi.org/"
         alt: "Open Data Certificates"
       -
-      image: "/assets/latest_lunchtime_lecture_module.jpg"
+        image: "/assets/latest_lunchtimes_lecture_module.png"
         link: "http://theodi.org/lunchtime-lectures/friday-lunchtime-lecture-how-politicians-lie-with-data"
         alt: "Latest Lunchtime Lecture"
-      -
-      image: "/assets/jobs_module.jpg"
-      link: "/jobs"
-      alt: "Jobs: Join the ODI"
       -
         image: "/assets/node_module.jpg"
         link: "/nodes"
@@ -57,10 +57,6 @@ about:
       image: "/assets/about_module.jpg"
       link: "/about-us"
       alt: "Who are we? What do we do?"
-     -
-         image: "/assets/annualreport_module.jpg"
-        link: "/nodes"
-        alt: "ODI Annual Report 2013"
      -
       image: "/assets/jobs_module.jpg"
       link: "/jobs"
