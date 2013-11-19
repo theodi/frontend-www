@@ -4,15 +4,17 @@ xml.feed :xmlns => "http://www.w3.org/2005/Atom", "xmlns:dc" => "http://purl.org
   xml.updated DateTime.parse(@artefacts.first.updated_at) rescue DateTime.now
   xml.id request.original_url
   xml.link :href => request.original_url, :rel => "self"
-  @artefacts.each do |item|
-    xml.entry do
-      xml.link :href => send("#{@section.gsub('-', '_')}_article_path", item.slug, :only_path => false)
-      xml.title item.title, :type => 'html'
-      xml.content item.details.excerpt, :type => 'html'
-      xml.updated DateTime.parse(item.created_at).rfc3339
-      xml.id send("#{@section.gsub('-', '_')}_article_path", item.slug, :only_path => false)
-      xml.author do |author|
-        author.name (item.details.author||item.author).name rescue nil
+  if @artefacts
+    @artefacts.each do |item|
+      xml.entry do
+        xml.link :href => send("#{@section.gsub('-', '_')}_article_path", item.slug, :only_path => false)
+        xml.title item.title, :type => 'html'
+        xml.content item.details.excerpt, :type => 'html'
+        xml.updated DateTime.parse(item.created_at).rfc3339
+        xml.id send("#{@section.gsub('-', '_')}_article_path", item.slug, :only_path => false)
+        xml.author do |author|
+          author.name (item.details.author||item.author).name rescue nil
+        end
       end
     end
   end
