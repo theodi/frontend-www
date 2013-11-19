@@ -151,6 +151,12 @@ class RootController < ApplicationController
     render "list/nodes"
   end
 
+  def nodes_article
+    @section = 'news'
+    @news_artefacts = news_artefacts(node: 'something')
+    article(params)
+  end
+
   def section
     sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
     @section = sections[params[:section]]

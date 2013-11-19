@@ -29,5 +29,18 @@
     <%= content_tag :li, "Linkedin: ".html_safe+link_to(@publication.linkedin, @publication.linkedin) if @publication.linkedin.present? %>
     </ul>
     
+    
+    <% unless @news_artefacts.nil? %>
+      <h3>News</h3>
+      
+    	<ul class="grid effect-2 listing" id="grid2">
+    		<% @news_artefacts.each do |artefact| %>
+    			<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
+    		<% end %>
+    	</div>
+
+    	<%= render :partial => "list/masonry" %>
+    <% end %>
+    
 	</article>
 </div>
