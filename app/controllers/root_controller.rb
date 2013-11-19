@@ -153,7 +153,7 @@ class RootController < ApplicationController
 
   def nodes_article
     @section = 'news'
-    @news_artefacts = news_artefacts(node: 'something')
+    @news_artefacts = news_artefacts(node: params[:slug])
     article(params)
   end
 
@@ -336,7 +336,7 @@ class RootController < ApplicationController
   end
 
   def news_artefacts(options = {})
-    artefacts = content_api.with_tag('news').results + content_api.with_tag('blog').results
+    artefacts = content_api.with_tag('news', options).results + content_api.with_tag('blog', options).results
     artefacts.sort_by!{|x| x.created_at}.reverse!
     artefacts
   end

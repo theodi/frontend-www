@@ -7,9 +7,10 @@ GIT
 
 GIT
   remote: git://github.com/theodi/gds-api-adapters.git
-  revision: 3efa1415a93443a5f2f7303b4054f2304879b716
+  revision: 74ff4be040c7450846fce8a389f64feeb9efb061
   specs:
     gds-api-adapters (7.5.0)
+      activesupport (~> 3.2.14)
       link_header
       lrucache (~> 0.1.1)
       null_logger
@@ -116,7 +117,7 @@ GEM
     multi_json (1.8.2)
     multi_xml (0.5.5)
     null_logger (0.0.1)
-    plek (1.4.0)
+    plek (1.5.0)
     polyglot (0.3.3)
     pry (0.9.12.3)
       coderay (~> 1.0)
