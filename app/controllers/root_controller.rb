@@ -154,7 +154,21 @@ class RootController < ApplicationController
   def nodes_article
     @section = 'news'
     @news_artefacts = news_artefacts(node: params[:slug])
-    article(params)
+    @publication = fetch_article(params[:slug], params[:edition], params[:section])
+    
+    respond_to do |format|
+      format.html do
+        render "content/node"
+      end
+      format.json do
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
+      end
+      format.atom do
+        @artefacts = @news_artefacts
+        @title = "ODI Node News for #{@publication.title}"
+        render "list/feed"
+      end
+    end
   end
 
   def section
