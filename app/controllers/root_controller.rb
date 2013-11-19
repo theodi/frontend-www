@@ -299,17 +299,17 @@ class RootController < ApplicationController
     render "list_module/list_module", :layout => "minimal"
   end
 
+  def news_list
+    @artefacts = news_artefacts
+    @hero_image = '/assets/news_hero.jpg'
+    list(params)
+  end
+
   protected
   
   def list(params)
     @section = params[:section].parameterize
-    @artefacts = content_api.with_tag(params[:section].singularize).results
-    # Merge blog into news section
-    if params[:section] == 'news'
-      @artefacts += content_api.with_tag('blog').results
-      @hero_image = '/assets/news_hero.jpg'
-    end
-    @artefacts.sort_by!{|x| x.created_at}.reverse!
+    @artefacts ||= content_api.with_tag(params[:section].singularize).results
     @title = params[:section].gsub('-', ' ').humanize.capitalize
     respond_to do |format|
       format.html do
@@ -327,6 +327,12 @@ class RootController < ApplicationController
         render "list/feed", :layout => false
       end
     end
+  end
+
+  def news_artefacts(options = {})
+    artefacts = content_api.with_tag('news').results + content_api.with_tag('blog').results
+    artefacts.sort_by!{|x| x.created_at}.reverse!
+    artefacts
   end
 
   def list_module(params)
