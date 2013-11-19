@@ -7,7 +7,12 @@ xml.feed :xmlns => "http://www.w3.org/2005/Atom", "xmlns:dc" => "http://purl.org
   if @artefacts
     @artefacts.each do |item|
       xml.entry do
-        xml.link :href => send("#{@section.gsub('-', '_')}_article_path", item.slug, :only_path => false)
+        if item.tag_ids.include?('blog')
+          section = 'blog' 
+        else
+          section = @section
+        end
+        xml.link :href => send("#{section.gsub('-', '_')}_article_path", item.slug, :only_path => false)
         xml.title item.title, :type => 'html'
         xml.content item.details.excerpt, :type => 'html'
         xml.updated DateTime.parse(item.created_at).rfc3339
