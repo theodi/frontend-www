@@ -1,0 +1,168 @@
+/* line 3, ../sass/ie6.scss */
+body {
+  width: 1003px;
+}
+
+/* line 6, ../sass/ie6.scss */
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/* line 12, ../sass/ie6.scss */
+.navbar-brand {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* line 20, ../sass/ie6.scss */
+.navbar-inverse {
+  zoom: 1;
+}
+/* line 25, ../sass/ie6.scss */
+.navbar-inverse a {
+  padding: 10px 35px 13px;
+  display: inline-block;
+  line-height: 49px;
+  color: #fff;
+  text-decoration: none;
+}
+/* line 32, ../sass/ie6.scss */
+.navbar-inverse a:hover, .navbar-inverse a:focus {
+  text-decoration: none;
+  background: #ff6700;
+}
+/* line 41, ../sass/ie6.scss */
+.navbar-inverse .nav.navbar-nav {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/* line 52, ../sass/ie6.scss */
+#odi-logo {
+  height: auto;
+}
+
+/* line 54, ../sass/ie6.scss */
+.caret {
+  display: none;
+}
+
+/* line 62, ../sass/ie6.scss */
+.navbar-collapse .navbar-static-top {
+  height: 64px;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+/* line 68, ../sass/ie6.scss */
+.navbar-collapse .navbar-static-top .pull-right {
+  float: none;
+}
+
+/* line 79, ../sass/ie6.scss */
+.navbar-collapse {
+  display: block;
+}
+
+/* line 80, ../sass/ie6.scss */
+.navbar-toggle {
+  display: none;
+}
+
+/* line 83, ../sass/ie6.scss */
+.main-nav {
+  width: 400px;
+}
+/* line 87, ../sass/ie6.scss */
+.main-nav li {
+  background: none;
+}
+/* line 94, ../sass/ie6.scss */
+.main-nav > li {
+  display: block;
+  float: none;
+}
+/* line 102, ../sass/ie6.scss */
+.main-nav a {
+  display: block;
+  padding: 5px 20px 0px 20px;
+  height: 30px;
+}
+/* line 108, ../sass/ie6.scss */
+.main-nav a:hover {
+  text-decoration: none;
+}
+/* line 113, ../sass/ie6.scss */
+.main-nav .dropdown-menu {
+  display: block;
+  position: static;
+  border: none;
+}
+/* line 119, ../sass/ie6.scss */
+.main-nav .dropdown-menu a {
+  margin-left: 15px;
+}
+
+/* line 131, ../sass/ie6.scss */
+.article-main.home-opener, .article-sidebar.home-opener {
+  width: auto;
+  float: none;
+  margin: 0 10px 25px 0;
+  padding: 0 15px;
+}
+
+/* line 140, ../sass/ie6.scss */
+.article-hero.within-header {
+  margin-top: 0;
+}
+
+/* line 146, ../sass/ie6.scss */
+.article-hero img {
+  width: 100%;
+}
+
+/* line 153, ../sass/ie6.scss */
+.hero-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* line 162, ../sass/ie6.scss */
+.module img, .png {
+  position: relative;
+  behavior: expression((this.runtimeStyle.behavior="none")&&(this.pngSet?this.pngSet=true:(this.nodeName == "IMG" && this.src.toLowerCase().indexOf('.png')>-1?(this.runtimeStyle.backgroundImage = "none", this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.src + "', sizingMethod='image')", this.src = "images/transparent.gif"):(this.origBg = this.origBg? this.origBg :this.currentStyle.backgroundImage.toString().replace('url("','').replace('")',''), this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='crop')", this.runtimeStyle.backgroundImage = "none")),this.pngSet=true));
+}
+
+/* line 175, ../sass/ie6.scss */
+.module-light a:hover {
+  color: #fff;
+}
+
+/* line 181, ../sass/ie6.scss */
+.module-dark a:hover {
+  color: #000;
+}
+
+/* line 187, ../sass/ie6.scss */
+.site-footer {
+  clear: both;
+  padding-top: 20px;
+}
+
+/* line 195, ../sass/ie6.scss */
+.footer-content, .footer-nav {
+  float: none !important;
+  background: #000;
+  width: auto !important;
+}
+
+/* line 203, ../sass/ie6.scss */
+.footer-nav .pull-right {
+  float: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+/* line 209, ../sass/ie6.scss */
+.footer-nav .pull-right li {
+  display: block;
+}

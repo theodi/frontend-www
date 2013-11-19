@@ -12,11 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require modernizr.custom
-//= require bootstrap/bootstrap-dropdown
+//= require jquery.browser
+//= require jquery.iframe-auto-height
+//= require iframe-auto-height
+//= require bootstrap/bootstrap-dropdown.js
+//= require bootstrap/bootstrap-modal.js
 
 $('a[data-toggle=dropdown]').click(function() {
 	if ($(this).next('.dropdown-menu').css('display') == "block") {
 		window.location.href = this.href;
 	}
+});
+
+$("#odi-logo").on("contextmenu",function(e){
+    e.preventDefault()
+    e.stopPropagation()
+    $('#getLogo').modal()
+    return false
 });

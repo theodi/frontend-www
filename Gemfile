@@ -45,6 +45,13 @@ group :production do
   gem 'airbrake'
 end
 
+group :test do
+  gem 'simplecov-rcov'
+  gem 'webmock'
+  gem 'mocha', :require => false
+  gem 'pry'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

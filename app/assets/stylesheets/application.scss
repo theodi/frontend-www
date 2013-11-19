@@ -117,6 +117,20 @@
   }
 }
 
+.modal-content {
+  border-radius: 0;
+  
+  .modal-header {
+    background-color: $odiBlue;
+    color: #fff;
+    
+    .close {
+      opacity: 0.4;
+      filter: alpha(opacity=40);
+    }
+  }
+}
+
 @media (max-width: 767px) {
   #juvia_comments {
     .juvia-comment {

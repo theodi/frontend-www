@@ -15,9 +15,17 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="javascripts/html5shiv.js"></script>
-      <script src="javascripts/respond.min.js"></script>
+    <script src="javascripts/html5shiv.js"></script>
     <![endif]-->
+
+    <!-- Respond.js in IE7 and IE8 only -->
+    <!--[if (IE 7)|(IE 8)]>
+    <script src="javascripts/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Modernizr to detect CSS transitions etc., for Masonry animations -->
+    <script src="javascripts/modernizr.custom.js"></script>
+
 </head>
 
 <body>
@@ -25,7 +33,16 @@
         <div class="navbar navbar-inverse navbar-static-top">
           <div class="container">
             <div class="navbar-header">
-              <a class="navbar-brand" href="#"><img src="images/logo-footer.png" alt="The ODI" id="odi-logo"></a>
+
+                <!-- Mobile nav toggle -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="#"><img src="images/logo-footer.png" alt="The ODI" id="odi-logo"></a>
+
             </div>
             <div class="pull-right">
               <!-- <form class="navbar-form navbar-left">
@@ -44,71 +61,76 @@
           </div>
         </div>
 
-        <div class="navbar navbar-static-top">
-          <div class="container">
-            <div class="pull-right">
-              <ul class="nav navbar-nav main-nav">
-                <li class="dropdown active">
-                    <a data-toggle="dropdown" href="#">About <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li class="active"><a href="article.html">About the ODI</a></li>
-                        <li><a href="#">People</a></li>
-                        <li><a href="#">Jobs</a></li>
-                        <li><a href="#">Procurement</a></li>
-                        <li><a href="#">Data as Culture</a></li>
-                        <li><a href="#">Space</a></li>
-                        <li><a href="#">Dashboards</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a data-toggle="dropdown" href="#">Get involved <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Membership</a></li>
-                        <li><a href="#">Start-ups</a></li>
-                        <li><a href="#">Open Data Certificates</a></li>
-                        <li><a href="#">Nodes</a></li>
-                        <li><a href="#">Consultation Response</a></li>
-                        <li><a href="#">ODI on the web</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a data-toggle="dropdown" href="#">Learning <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Post-Graduate Certficate</a></li>
-                        <li><a href="#">Friday Lunchtime Lectures</a></li>
-                        <li><a href="#">Guides</a></li>
-                        <li><a href="#">Case Studies</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">What's happening</a></li>
-                <li class="dropdown last">
-                    <a data-toggle="dropdown" href="#">News <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Newsroom</a></li>
-                    </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <!-- This div contains everything in the nav that will collapse on mobile -->
+        <div class="collapse navbar-collapse">
 
-        <!-- Copy of top nav's search, Contact Us, Sign In - mobile only -->
-        <div class="navbar navbar-inverse navbar-static-top mobile-only">
-            <div class="container">
-            <!-- <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search ODI"/>
-                            <input type="submit" value="Go" class="btn"/>
-                        </div>
-                    </div>
-                </form> -->
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Contact us</a></li>
-                    <!-- <li><a href="#about">Sign in</a></li> -->
-                </ul>
+            <div class="navbar navbar-static-top">
+              <div class="container">
+                <div class="pull-right">
+                  <ul class="nav navbar-nav main-nav">
+                    <li class="dropdown active">
+                        <a data-toggle="dropdown" href="#">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="active"><a href="article.html">About the ODI</a></li>
+                            <li><a href="#">People</a></li>
+                            <li><a href="#">Jobs</a></li>
+                            <li><a href="#">Procurement</a></li>
+                            <li><a href="#">Data as Culture</a></li>
+                            <li><a href="#">Space</a></li>
+                            <li><a href="#">Dashboards</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" href="#">Get involved <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Membership</a></li>
+                            <li><a href="#">Start-ups</a></li>
+                            <li><a href="#">Open Data Certificates</a></li>
+                            <li><a href="#">Nodes</a></li>
+                            <li><a href="#">Consultation Response</a></li>
+                            <li><a href="#">ODI on the web</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" href="#">Learning <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Post-Graduate Certficate</a></li>
+                            <li><a href="#">Friday Lunchtime Lectures</a></li>
+                            <li><a href="#">Guides</a></li>
+                            <li><a href="#">Case Studies</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">What's happening</a></li>
+                    <li class="dropdown last">
+                        <a data-toggle="dropdown" href="#">News <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Newsroom</a></li>
+                        </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-        </div>
+
+            <!-- Copy of top nav's search, Contact Us, Sign In - mobile only -->
+            <div class="navbar navbar-inverse navbar-static-top mobile-only">
+                <div class="container">
+                <!-- <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search ODI"/>
+                                <input type="submit" value="Go" class="btn"/>
+                            </div>
+                        </div>
+                    </form> -->
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Contact us</a></li>
+                        <!-- <li><a href="#about">Sign in</a></li> -->
+                    </ul>
+                </div>
+            </div>
+
+        </div><!-- /collapsible nav -->
 
     </header> <!-- /site-header -->
 
@@ -234,8 +256,28 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//code.jquery.com/jquery.js"></script>
+
     <!-- Bootstrap JS -->
     <script src="javascripts/bootstrap-dropdown.js"></script>
+
+    <!-- No collapsible nav in IE6 -->
+    <!--[if gt IE 7]><!-->
+    <script src="javascripts/bootstrap-collapse.js"></script>
+    <!--<![endif]-->
+
+    <!-- Masonry and its required scripts -->
+    <!-- Don't load these on IE 7 or below -->
+    <!--[if gt IE 7]><!-->
+    <script src="javascripts/imagesloaded.pkgd.min.js"></script>
+    <script src="javascripts/masonry.pkgd.min.js"></script>
+    <script src="javascripts/classie.js"></script>
+    <script src="javascripts/AnimOnScroll.js"></script>
+    <!--<![endif]-->
+
+    <!-- Layout (Masonry initialisation etc.) -->
+    <!--[if gt IE 7]><!-->
+    <script src="javascripts/layout.js"></script>
+    <!--<![endif]-->
 
 </body>
 </html>

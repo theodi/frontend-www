@@ -154,6 +154,21 @@ hr {
     HEADER
 \*------------------------------------*/
 
+// Collapsible nav
+.navbar-collapse {
+  padding-left: 0;
+  padding-right: 0;
+  border-top: none;
+  
+  // Bootstrap seems to give this menu a maximum height
+  // Remove this, otherwise lower menu items can get cut off
+  
+  max-height: none;
+}
+
+// Button to trigger that
+.navbar-toggle { margin-top: 12px; }
+
 /* shouldn't be necessary in future boostrap - https://github.com/twbs/bootstrap/issues/9382 */
 
 .navbar-form {
@@ -768,6 +783,11 @@ hr {
 .module-colour-11 { background-color: $odiColour11; }
 .module-colour-12 { background-color: $odiColour12; }
 
+// Smooth out colour changes on the blocks' hovers
+.module {
+    @include transition(background-color 0.3s ease);
+}
+
 .module { 
 	&.module-highlight-1 { background-color: $odiGrey; }
 	&.module-highlight-2 { background-color: $odiGreyDark; }
@@ -1150,6 +1170,20 @@ hr {
 
         }
 
+    }
+    
+    h2, h3 {
+      clear: none;
+    }
+    
+    .pull-right {
+      margin-left: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .pull-left {
+      margin-right: 10px;
+      margin-bottom: 15px;
     }
 
 }

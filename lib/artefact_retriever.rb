@@ -26,7 +26,7 @@ class ArtefactRetriever
   rescue GdsApi::HTTPErrorResponse => e
     if e.code == 410
       raise RecordArchived
-    elsif e.code >= 500
+    elsif e.code.nil? || e.code >= 500
       statsd.increment("content_api_error")
     end
     raise

@@ -7,21 +7,25 @@
 \*------------------------------------*/
 
 $odiBlue: #00b7ff;
+$odiBlueDark: #2254f4;
+$odiBlueLight: #08def9;
 $odiOrange: #ff6700;
+$odiYellow: #F9BC26;
 $odiRed: #d60303;
-$odiGrey: #999999;
+$odiGrey: #888888;
 $odiGreyDark: #333333;
+$odiGreyLight: #BBBBBB;
 
 // Colour variables, primarily for home modules
 $odiColour1: #D60303; // red
 $odiColour2: $odiOrange; // orange
-$odiColour3: #F9BC26; // yellow
+$odiColour3: $odiYellow; // yellow
 $odiColour4: #67EF67; //light green
 $odiColour5: #0DBC37; // med green
 $odiColour6: #1dd3a7; // turquoise
-$odiColour7: #2254f4; // dark blue
+$odiColour7: $odiBlueDark; // dark blue
 $odiColour8: $odiBlue;
-$odiColour9: #08def9; // light blue
+$odiColour9: $odiBlueLight; // light blue
 $odiColour10: #ef3aab; // pink
 $odiColour11: #e6007c; // magenta
 $odiColour12: #b13198; // purple
@@ -150,8 +154,23 @@ hr {
     HEADER
 \*------------------------------------*/
 
-/* shouldn't be necessary in future boostrap - https://github.com/twbs/bootstrap/issues/9382 */
+// Collapsible nav
+.navbar-collapse {
 
+    padding-left: 0;
+    padding-right: 0;
+    border-top: none;
+
+    // Bootstrap seems to give this menu a maximum height
+    // Remove this, otherwise lower menu items can get cut off
+    max-height: none;
+
+}
+
+// Button to trigger that
+.navbar-toggle { margin-top: 12px; }
+
+/* shouldn't be necessary in future boostrap - https://github.com/twbs/bootstrap/issues/9382 */
 .navbar-form {
     margin-bottom: 13px;
     margin-top: 13px;
@@ -757,20 +776,31 @@ hr {
 .module-colour-11 { background-color: $odiColour11; }
 .module-colour-12 { background-color: $odiColour12; }
 
-.module.module-highlight {
-    background-color: $odiGrey;
-    &.module-colour-1:hover { background-color: $odiColour1; }
-    &.module-colour-2:hover { background-color: $odiColour2; }
-    &.module-colour-3:hover { background-color: $odiColour3; }
-    &.module-colour-4:hover { background-color: $odiColour4; }
-    &.module-colour-5:hover { background-color: $odiColour5; }
-    &.module-colour-6:hover { background-color: $odiColour6; }
-    &.module-colour-7:hover { background-color: $odiColour7; }
-    &.module-colour-8:hover { background-color: $odiColour8; }
-    &.module-colour-9:hover { background-color: $odiColour9; }
-    &.module-colour-10:hover { background-color: $odiColour10; }
-    &.module-colour-11:hover { background-color: $odiColour11; }
-    &.module-colour-12:hover { background-color: $odiColour12; }
+// Smooth out colour changes on the blocks' hovers
+.module {
+
+    @include transition(background-color 0.3s ease);
+
+}
+
+.module {
+    &.module-highlight-1 { background-color: $odiGrey; }
+    &.module-highlight-2 { background-color: $odiGreyDark; }
+    &.module-highlight-3 { background-color: $odiGreyLight; }
+    &.module-highlight-1, &.module-highlight-2, &.module-highlight-3 {
+        &.module-colour-1:hover { background-color: $odiColour1; }
+        &.module-colour-2:hover { background-color: $odiColour2; }
+        &.module-colour-3:hover { background-color: $odiColour3; }
+        &.module-colour-4:hover { background-color: $odiColour4; }
+        &.module-colour-5:hover { background-color: $odiColour5; }
+        &.module-colour-6:hover { background-color: $odiColour6; }
+        &.module-colour-7:hover { background-color: $odiColour7; }
+        &.module-colour-8:hover { background-color: $odiColour8; }
+        &.module-colour-9:hover { background-color: $odiColour9; }
+        &.module-colour-10:hover { background-color: $odiColour10; }
+        &.module-colour-11:hover { background-color: $odiColour11; }
+        &.module-colour-12:hover { background-color: $odiColour12; }
+    }
 }
 
 // Module with background image

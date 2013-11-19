@@ -12,6 +12,9 @@
     title: "Jobs"
     link: "/jobs"
    -
+    title: "Annual Report"
+    link: "/odis-first-year-annual-report"
+   -
      title: "Procurement"
      link: "/procurement"
    -
@@ -37,7 +40,7 @@
      title: "Our members"
      link: "http://directory.theodi.org/members"
     -
-     title: "Start-ups"
+     title: "Startups"
      link: "/start-ups"
     -
      title: "Research"
@@ -78,5 +81,5 @@
   link: "/news"
   items:
     -
-      title: "Newsroom"
+      title: "Media assets"
       link: "/newsroom"
