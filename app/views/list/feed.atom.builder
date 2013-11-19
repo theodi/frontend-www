@@ -1,7 +1,7 @@
 xml.instruct! :xml, :version => "1.0" 
 xml.feed :xmlns => "http://www.w3.org/2005/Atom", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
   xml.title @title
-  xml.updated DateTime.parse(@artefacts.first.updated_at)
+  xml.updated DateTime.parse(@artefacts.first.updated_at) rescue DateTime.now
   xml.id request.original_url
   xml.link :href => request.original_url, :rel => "self"
   @artefacts.each do |item|
