@@ -4,7 +4,7 @@ require 'gds_api/content_api'
 class RootController < ApplicationController
   
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
-  before_filter(:only => [:news_list, :jobs_list, :events_list]) { alternate_formats [:atom, :json] }
+  before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article]) { alternate_formats [:atom, :json] }
   
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list_module$/
@@ -154,7 +154,21 @@ class RootController < ApplicationController
   def nodes_article
     @section = 'news'
     @news_artefacts = news_artefacts(node: params[:slug])
-    article(params)
+    @publication = fetch_article(params[:slug], params[:edition], params[:section])
+    
+    respond_to do |format|
+      format.html do
+        render "content/node"
+      end
+      format.json do
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
+      end
+      format.atom do
+        @artefacts = @news_artefacts
+        @title = "ODI Node News for #{@publication.title}"
+        render "list/feed"
+      end
+    end
   end
 
   def section
