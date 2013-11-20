@@ -170,6 +170,10 @@ class RootController < ApplicationController
       end
     end
   end
+  
+  def start_ups_list
+    list(params)
+  end
 
   def section
     sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
