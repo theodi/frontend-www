@@ -1,0 +1,9 @@
+<h2><%= publication.title %></h2>
+<h3><%= date_range DateTime.parse(publication.start_date), DateTime.parse(publication.end_date) %></h3>
+
+<p><%= publication.location %></p>
+<%= publication.description.html_safe %>
+
+<% if upcoming_event? %>
+  <p><%= link_to "More information and to book your place", publication.booking_url if publication.booking_url %></p>
+<% end %>
