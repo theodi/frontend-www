@@ -57,6 +57,10 @@ module ApplicationHelper
      "#{from_date.strftime("%A %d %B %Y")} #{from_date.strftime("%l:%M%P")} - #{until_date.strftime("%A %d %B %Y")} #{until_date.strftime("%l:%M%P")}"
     end    
   end
+  
+  def upcoming_event?
+    @publication.end_date.to_date > DateTime.now
+  end
 
   def country(iso_code)
     c = Country[iso_code]
