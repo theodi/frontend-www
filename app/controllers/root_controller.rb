@@ -172,7 +172,7 @@ class RootController < ApplicationController
   end
   
   def start_ups_list
-    @publication = fetch_article('start-ups', params[:edition], "article")
+    @publication = fetch_article('start-ups', params[:edition], "article") rescue nil
     list(params)
   end
 
