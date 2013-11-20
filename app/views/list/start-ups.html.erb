@@ -1,0 +1,17 @@
+<% content_for :title, "Startups" %>
+
+<% unless @publication.nil? %>
+  <div class="article-full">
+    <article class="article-body">
+      <%= @publication.content.html_safe %>
+    </article>
+  </div>
+<% end %>
+
+<ul class="grid effect-2 listing" id="grid2">
+	<% @artefacts.each do |artefact| %>
+		<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
+	<% end %>
+</div>
+
+<%= render :partial => "list/masonry" %>

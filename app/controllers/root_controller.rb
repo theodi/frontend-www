@@ -170,6 +170,11 @@ class RootController < ApplicationController
       end
     end
   end
+  
+  def start_ups_list
+    @publication = fetch_article('start-ups', params[:edition], "article") rescue nil
+    list(params)
+  end
 
   def section
     sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
