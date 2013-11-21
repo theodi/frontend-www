@@ -23,10 +23,6 @@ home:
         link: "http://theodi.org/lunchtime-lectures/friday-lunchtime-lecture-how-politicians-lie-with-data"
         alt: "Latest Lunchtime Lecture"
       -
-        image: "/assets/jobs_module.jpg"
-        link: "/jobs"
-        alt: "Jobs: Join the ODI"
-      -
         image: "/assets/node_module.jpg"
         link: "/nodes"
         alt: "ODI Nodes"
