@@ -173,6 +173,26 @@ class RootController < ApplicationController
     end
   end
   
+
+  def start_ups_article
+    @section = 'news'
+    @news_artefacts = news_artefacts(organization_name: params[:slug])
+    @publication = fetch_article(params[:slug], params[:edition], params[:section])
+    
+    respond_to do |format|
+      format.html do
+        render "content/organization"
+      end
+      format.json do
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
+      end
+      format.atom do
+        @artefacts = @news_artefacts
+        @title = "ODI Start-Up News for #{@publication.title}"
+        render "list/feed"
+      end
+    end
+  end
   def start_ups_list
     @publication = fetch_article('start-ups', params[:edition], "article") rescue nil
     list(params)
