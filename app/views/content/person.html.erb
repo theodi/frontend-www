@@ -15,3 +15,16 @@
 	    <%= image_tag @publication.square_image || '/assets/person-placeholder.png', alt: @publication.title %>
     </div>
 </aside>
+
+<% unless @news_artefacts.empty? %>
+  <h3>News</h3>
+  
+	<ul class="grid effect-2 listing" id="grid2">
+		<% @news_artefacts.each do |artefact| %>
+			<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
+		<% end %>
+	</div>
+
+	<%= render :partial => "list/masonry" %>
+<% end %>
+
