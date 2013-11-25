@@ -447,6 +447,7 @@ class RootController < ApplicationController
   def fetch_article(slug, edition, section)
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
                   fetch_artefact(slug, edition, nil, nil)
+    content_for :page_title, artefact.title
 
     # If the content type or tag doesn't match the slug, return 404
     if artefact['format'] != section.singularize && 
