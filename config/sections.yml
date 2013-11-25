@@ -19,9 +19,9 @@ home:
         link: "https://certificates.theodi.org/"
         alt: "Open Data Certificates"
       -
-        image: "/assets/latest_lunchtime_lecture_module.png"
-        link: "http://theodi.org/lunchtime-lectures/friday-lunchtime-lecture-how-politicians-lie-with-data"
-        alt: "Latest Lunchtime Lecture"
+        image: "/assets/20131125_burnthedigitalpaper_module.jpg"
+        link: "http://theodi.org/lunchtime-lectures/friday-lunchtime-lecture-burn-the-digital-paper-a-call-to-arms"
+        alt: "Latest Lunchtime Lecture: Burn the Digital Paper: A call to arms."
       -
         image: "/assets/node_module.jpg"
         link: "/nodes"
