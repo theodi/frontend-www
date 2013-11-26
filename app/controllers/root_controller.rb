@@ -4,7 +4,7 @@ require 'gds_api/content_api'
 class RootController < ApplicationController
   
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
-  before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article]) { alternate_formats [:atom, :json] }
+  before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article, :team_article]) { alternate_formats [:atom, :json] }
   
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list_module$/
