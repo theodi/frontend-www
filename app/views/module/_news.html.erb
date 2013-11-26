@@ -5,6 +5,9 @@
 		<h1 class="module-heading"><%= publication.title %></h1>
 	    <p class="module-subheading"><%= (publication.details.author||publication.author).name %></p>
 	    <p class="module-meta"><%= DateTime.parse(publication.created_at).strftime('%-d %B %Y') %></p>
+	    <% unless publication.details.nodes.nil? || publication.details.nodes.empty? %>
+        <p class="module-subheading"><%= node_names(publication).join("<br/>").html_safe %></p>
+      <% end %>
 		<p class="category"><%= section %></p>
 	</a>
 </div>
