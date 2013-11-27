@@ -72,7 +72,7 @@ module ApplicationHelper
     if publication.level == "comms"
       str += "Comms Link - "
     end
-    str += publication.title
+    str += publication.title || publication.name
     str += " (beta)" if publication.beta
     str
   end
@@ -85,6 +85,10 @@ module ApplicationHelper
     else
       nil
     end
+  end
+
+  def node_names(publication)
+    publication.details.nodes.map{|x| node_title(x) }
   end
   
 end
