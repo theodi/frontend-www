@@ -253,7 +253,11 @@ class RootController < ApplicationController
   end
 
   def newsletters
-    render "content/newsletters"
+    respond_to do |format|
+      format.html do
+        render "content/newsletters"
+      end
+    end
   end
 
   def course_instance
