@@ -28,6 +28,8 @@ gem 'countries'
 
 gem 'content_for_in_controllers'
 
+gem 'jbuilder'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
