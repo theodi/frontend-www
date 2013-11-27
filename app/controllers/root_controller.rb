@@ -150,7 +150,14 @@ class RootController < ApplicationController
     rescue (GdsApi::HTTPNotFound)
     end
     @title = "Nodes"
-    render "list/nodes"
+    respond_to do |format|
+      format.html do
+        render "list/nodes"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=node"
+      end
+    end
   end
 
   def nodes_article
