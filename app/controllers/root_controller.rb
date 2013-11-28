@@ -150,7 +150,14 @@ class RootController < ApplicationController
     rescue (GdsApi::HTTPNotFound)
     end
     @title = "Nodes"
-    render "list/nodes"
+    respond_to do |format|
+      format.html do
+        render "list/nodes"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=node"
+      end
+    end
   end
 
   def nodes_article
@@ -246,7 +253,11 @@ class RootController < ApplicationController
   end
 
   def newsletters
-    render "content/newsletters"
+    respond_to do |format|
+      format.html do
+        render "content/newsletters"
+      end
+    end
   end
 
   def course_instance
@@ -447,6 +458,7 @@ class RootController < ApplicationController
   def fetch_article(slug, edition, section)
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
                   fetch_artefact(slug, edition, nil, nil)
+    content_for :page_title, artefact.title
 
     # If the content type or tag doesn't match the slug, return 404
     if artefact['format'] != section.singularize && 
