@@ -18,6 +18,7 @@ gem 'statsd-ruby', '1.0.0', :require => 'statsd'
 
 gem 'sqlite3'
 gem 'gds-api-adapters', :github => 'theodi/gds-api-adapters'
+gem 'slimmer'
 
 gem 'dotenv-rails'
 

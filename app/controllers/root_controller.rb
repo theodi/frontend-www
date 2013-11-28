@@ -2,6 +2,7 @@ require 'gds_api/helpers'
 require 'gds_api/content_api'
 
 class RootController < ApplicationController
+  slimmer_template :wrapper
   
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
   before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article, :team_article]) { alternate_formats [:atom, :json] }
