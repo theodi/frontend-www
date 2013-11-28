@@ -11,6 +11,7 @@
  */
 
 @import "main";
+@import "font-awesome";
 
 .course-sidebar {
   @extend .article-sidebar;
@@ -146,3 +147,24 @@
     }
   }
 }
+
+// Social icons
+
+#social {
+  margin-top: 16px;
+
+  a {
+    display: inline;
+    padding: 0 2px;
+  }
+
+  .fa-twitter {
+    color: #4099FF;
+  }
+  
+  .fa-linkedin-square {
+    color: #4875B4;
+  }
+
+}
+
