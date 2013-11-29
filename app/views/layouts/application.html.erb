@@ -1,5 +1,5 @@
 <head>
-  <title>Open Data Institute | <%= strip_tags(yield :title).strip %><%= " | " + yield(:page_title) if content_for?(:page_title) %></title>
+  <title>Open Data Institute <%= strip_tags('| ' + yield(:title)).strip if yield(:title).present? %><%= " | " + yield(:page_title) if content_for?(:page_title) %></title>
   <%= alternate_auto_discovery_link_tags %>
 </head>
 
