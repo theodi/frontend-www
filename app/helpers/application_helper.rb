@@ -55,7 +55,7 @@ module ApplicationHelper
   end
   
   def upcoming_event?
-    @publication.end_date.to_date > DateTime.now
+    @publication.end_date.to_datetime > DateTime.now
   end
 
   def country(iso_code)
