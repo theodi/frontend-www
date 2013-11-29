@@ -387,7 +387,7 @@ class RootController < ApplicationController
 
   def news_list
     @artefacts = news_artefacts
-    @hero_image = '/assets/news_hero.jpg'
+    @hero_image = 'news_hero.jpg'
     list(params)
   end
 
