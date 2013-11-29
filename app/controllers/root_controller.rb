@@ -268,8 +268,8 @@ class RootController < ApplicationController
     instance = content_api.course_instance(date.strftime("%Y-%m-%d"), params[:slug], params[:edition])
     
     @publication = PublicationPresenter.new(instance)
-    @course = fetch_article(@publication.course, params[:edition], "courses")
-    @trainers = @publication.details['trainers'] ? @publication.details['trainers'].map { |t| fetch_article(t, nil, "people") unless t == "" }.reject{|p| p.nil?} : []
+    @course = fetch_article(@publication.course, params[:edition], "courses", false)
+    @trainers = @publication.details['trainers'] ? @publication.details['trainers'].map { |t| fetch_article(t, nil, "people", false) unless t == "" }.reject{|p| p.nil?} : []
     @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
     respond_to do |format|
       format.html do
@@ -455,10 +455,13 @@ class RootController < ApplicationController
     end
   end
   
-  def fetch_article(slug, edition, section)
+  def fetch_article(slug, edition, section, set_title = true)
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
                   fetch_artefact(slug, edition, nil, nil)
-    content_for :page_title, artefact.title
+    
+    if set_title
+      content_for :page_title, artefact.title
+    end
 
     # If the content type or tag doesn't match the slug, return 404
     if artefact['format'] != section.singularize && 
