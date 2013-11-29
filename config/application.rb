@@ -59,6 +59,7 @@ module Www
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.action_controller.asset_host = Plek.current.find("static")
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
