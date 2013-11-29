@@ -271,6 +271,9 @@ class RootController < ApplicationController
     @course = fetch_article(@publication.course, params[:edition], "courses", false)
     @trainers = @publication.details['trainers'] ? @publication.details['trainers'].map { |t| fetch_article(t, nil, "people", false) unless t == "" }.reject{|p| p.nil?} : []
     @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
+    
+    content_for :page_title, @title
+    
     respond_to do |format|
       format.html do
         render "content/course_instance"
