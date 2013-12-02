@@ -38,7 +38,7 @@ class RootControllerTest < ActionController::TestCase
     get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
         :section=>"events", :event_type=>:lunchtime_lectures
   
-    assert_not_match /More information and to book your place/, response.body.squish
+    assert_match /<h1> <a href="\/events">Previous Events<\/a> <\/h1>/, response.body.squish
   end
   
   test "past events should return not show the booking link" do
@@ -47,7 +47,7 @@ class RootControllerTest < ActionController::TestCase
     get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
         :section=>"events", :event_type=>:lunchtime_lectures
   
-    assert_match /<h1> <a href="\/events">Previous Events<\/a> <\/h1>/, response.body.squish
+    assert_not_match /More information and to book your place/, response.body.squish
   end
   
   test "Handles nil code response from content API with a proper 500 page" do

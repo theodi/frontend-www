@@ -2,6 +2,7 @@ require 'gds_api/helpers'
 require 'gds_api/content_api'
 
 class RootController < ApplicationController
+  slimmer_template :www
   
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
   before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article, :team_article]) { alternate_formats [:atom, :json] }
@@ -150,7 +151,14 @@ class RootController < ApplicationController
     rescue (GdsApi::HTTPNotFound)
     end
     @title = "Nodes"
-    render "list/nodes"
+    respond_to do |format|
+      format.html do
+        render "list/nodes"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=node"
+      end
+    end
   end
 
   def nodes_article
@@ -246,7 +254,11 @@ class RootController < ApplicationController
   end
 
   def newsletters
-    render "content/newsletters"
+    respond_to do |format|
+      format.html do
+        render "content/newsletters"
+      end
+    end
   end
 
   def course_instance
@@ -257,9 +269,12 @@ class RootController < ApplicationController
     instance = content_api.course_instance(date.strftime("%Y-%m-%d"), params[:slug], params[:edition])
     
     @publication = PublicationPresenter.new(instance)
-    @course = fetch_article(@publication.course, params[:edition], "courses")
-    @trainers = @publication.details['trainers'] ? @publication.details['trainers'].map { |t| fetch_article(t, nil, "people") unless t == "" }.reject{|p| p.nil?} : []
+    @course = fetch_article(@publication.course, params[:edition], "courses", false)
+    @trainers = @publication.details['trainers'] ? @publication.details['trainers'].map { |t| fetch_article(t, nil, "people", false) unless t == "" }.reject{|p| p.nil?} : []
     @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
+    
+    content_for :page_title, @title
+    
     respond_to do |format|
       format.html do
         render "content/course_instance"
@@ -333,43 +348,49 @@ class RootController < ApplicationController
     raise RecordNotFound unless @publication.widget?
     respond_to do |format|
       format.html do
-        render "badges/#{@publication.format}", :layout => "embedded"
+        slimmer_template "embedded"
+        render "badges/#{@publication.format}"
       end
       format.js do
-        render "badges/#{@publication.format}", :layout => nil
+        slimmer_template nil
+        render "badges/#{@publication.format}"
       end
     end
   end
   
   def team_list_module
     @section = 'team'
-    render "list_module/people", :layout => 'minimal'
+    slimmer_template "minimal"
+    render "list_module/people"
   end
   
   def courses_list_module
     @artefact = content_api.upcoming("course_instance", "date")
     @course = fetch_article(@artefact.details.course, nil, "courses")
     @title = "Courses"
-    render "list_module/courses", :layout => "minimal"
+    slimmer_template "minimal"
+    render "list_module/courses"
   end
   
   def events_list_module
     @section = "events"
     @artefact = content_api.upcoming("event", "start_date")
     @title = "Events"
-    render "list_module/list_module", :layout => "minimal"
+    slimmer_template "minimal"
+    render "list_module/list_module"
   end
 
   def culture_list_module
     @section = 'culture'
     @artefact = content_api.latest('type', 'creative_work')
     @title = "Culture"
-    render "list_module/list_module", :layout => "minimal"
+    slimmer_template "minimal"
+    render "list_module/list_module"
   end
 
   def news_list
     @artefacts = news_artefacts
-    @hero_image = '/assets/news_hero.jpg'
+    @hero_image = 'news_hero.jpg'
     list(params)
   end
 
@@ -392,7 +413,8 @@ class RootController < ApplicationController
         redirect_to "#{api_domain}/with_tag.json?tag=#{params[:section].singularize}"
       end
       format.atom do
-        render "list/feed", :layout => false
+        slimmer_template nil
+        render "list/feed"
       end
     end
   end
@@ -407,22 +429,24 @@ class RootController < ApplicationController
     @section = params[:section].parameterize
     @artefact = content_api.latest("tag", params[:section])
     @title = params[:section].humanize.capitalize
+    slimmer_template "minimal"
     begin
       # Use a specific template if present
-      render "list_module/#{params[:section]}", :layout => "minimal"
+      render "list_module/#{params[:section]}"
     rescue
-      render "list_module/list_module", :layout => "minimal"
+      render "list_module/list_module"
     end
   end
 
   def _module(params)
     @publication = fetch_article(params[:slug], nil, params[:section])
     @section = params[:section].parameterize
+    slimmer_template "minimal"
     begin
       # Use a specific template if present
-      render "module/#{params[:section]}", :layout => "minimal"
+      render "module/#{params[:section]}"
     rescue
-      render "module/module", :layout => "minimal"
+      render "module/module"
     end
   end
   
@@ -444,10 +468,13 @@ class RootController < ApplicationController
     end
   end
   
-  def fetch_article(slug, edition, section)
+  def fetch_article(slug, edition, section, set_title = true)
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
                   fetch_artefact(slug, edition, nil, nil)
-    content_for :page_title, artefact.title
+    
+    if set_title
+      content_for :page_title, artefact.title
+    end
 
     # If the content type or tag doesn't match the slug, return 404
     if artefact['format'] != section.singularize && 
