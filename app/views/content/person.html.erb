@@ -12,7 +12,7 @@
 
 <aside class="article-sidebar">
     <div class="module module-image-fullbleed">
-	    <%= image_tag @publication.square_image || '/assets/person-placeholder.png', alt: @publication.title %>
+	    <%= image_tag @publication.square_image || 'person-placeholder.png', alt: @publication.title %>
       <div id="social">
         <%= content_tag(:a ,fa_icon("linkedin-square 2x"), :href => @publication.linkedin, :title => "LinkedIn") unless @publication.linkedin.blank? %>
         <%= content_tag(:a , fa_icon("github 2x"), :href => @publication.github, :title => "Github") unless @publication.github.blank? %>

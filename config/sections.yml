@@ -1,29 +1,29 @@
 home:
-    hero_image: "/assets/about_hero.jpg"
+    hero_image: "about_hero.jpg"
     hero_text: "<p>The Open Data Institute</p>"
     hero_link: "http://theodi.org/about"
     hero_alt: "Knowledge for everyone"
     links:
       -
-        image: "/assets/annualreport_module.jpg"
+        image: "annualreport_module.jpg"
         Alt: "ODI's First Year: Annual Report"
         link: "/odis-first-year-annual-report"
       -
-        image: "/assets/newmember_socrata_modules.jpg"
+        image: "newmember_socrata_modules.jpg"
         link: "news/a-bigger-and-better-introducing-our-newest-members"
         alt: "Socrata: Our newest member"
       -
         frame: "/news/module"
       -
-        image: "/assets/odc_modules.jpg"
+        image: "odc_modules.jpg"
         link: "https://certificates.theodi.org/"
         alt: "Open Data Certificates"
       -
-        image: "/assets/20131125_burnthedigitalpaper_module.jpg"
+        image: "20131125_burnthedigitalpaper_module.jpg"
         link: "http://theodi.org/lunchtime-lectures/friday-lunchtime-lecture-burn-the-digital-paper-a-call-to-arms"
         alt: "Latest Lunchtime Lecture: Burn the Digital Paper: A call to arms."
       -
-        image: "/assets/node_module.jpg"
+        image: "node_module.jpg"
         link: "/nodes"
         alt: "ODI Nodes"
       -
@@ -31,16 +31,16 @@ home:
       -
         frame: "/courses/module"
 #      -
-#        image: "/assets/opendatahistory_modules.jpg"
+#        image: "opendatahistory_modules.jpg"
 #        link: "#"
       -
-        image: "/assets/globalvoice_modules.jpg"
+        image: "globalvoice_modules.jpg"
         link: "http://summit.theodi.org/speakers/"
         alt: "Global voices at the ODI Summit"
       - 
         frame: "/events/module"
       -
-        image: "/assets/training&projects_module.jpg"
+        image: "training&projects_module.jpg"
         link: "/learning"
         alt: "Training and projects"
       -
@@ -50,92 +50,92 @@ home:
         colour: 2
 about:
     title: "About"
-    hero_image: "/assets/about_hero.jpg"
+    hero_image: "about_hero.jpg"
     alt: "Knowlege for Everyone"
     links:
      -
-       image: "/assets/about_module.jpg"
+       image: "about_module.jpg"
        link: "/about-us"
        alt: "Who are we? What do we do?"
      -
-       image: "/assets/annualreport_module.jpg"
+       image: "annualreport_module.jpg"
        link: "/odis-first-year-annual-report"
        alt: "ODI Annual Report 2013"
      -
-       image: "/assets/jobs_module.jpg"
+       image: "jobs_module.jpg"
        link: "/jobs"
        alt: "Jobs: Join the ODI"
      -
-       image: "/assets/dataasculture_module1.jpg"
+       image: "dataasculture_module1.jpg"
        link: "/culture"
        alt: "Data as culture"
      -
-       image: "/assets/faq_module.jpg"
+       image: "faq_module.jpg"
        link: "/faq"
        alt: "Frequently Asked Questions"
      -
-       image: "/assets/people_module.jpg"
+       image: "people_module.jpg"
        link: "/team"
        alt: "ODI People"
      -
-       image: "/assets/contactus_module.jpg"
+       image: "contactus_module.jpg"
        link: "/contact"
        alt: "Contact us"
      -
-       image: "/assets/press_module.jpg"
+       image: "press_module.jpg"
        link: "/newsroom"
        alt: "Press - enquire within"
      -
-       image: "/assets/procurement_modules.jpg"
+       image: "procurement_modules.jpg"
        link: "/procurement"
        alt: "Procurement"
 get-involved:
      title: "Get Involved"
-     hero_image: "/assets/getinvolved_hero.jpg"
+     hero_image: "getinvolved_hero.jpg"
      alt: "Get involved"
      links:
       -
-       image: "/assets/member_module.jpg"
+       image: "member_module.jpg"
        link: "/join-us"
        alt: "Join us - become an ODI member"
       -
-       image: "/assets/node_module.jpg"
+       image: "node_module.jpg"
        link: "/nodes"
        alt: "ODI nodes"
       -
-       image: "/assets/odcs_modules.jpg"
+       image: "odcs_modules.jpg"
        link: "/challenge-series"
        alt: "Open Data Challenge Series"
       -
-       image: "/assets/consultationresponses_modules.jpg"
+       image: "consultationresponses_modules.jpg"
        link: "/consultation-responses"
        alt: "Consultation Responses"
       -
-       image: "/assets/startup_module.jpg"
+       image: "startup_module.jpg"
        link: "/start-ups"
        alt: "Startups"
       -
-       image: "/assets/certificates_module.jpg"
+       image: "certificates_module.jpg"
        link: "http://certificates.theodi.org"
        alt: "Open Data Certificates"
 learning:
     title: "Learning"
-    hero_image: "/assets/learn_hero.jpg"
+    hero_image: "learn_hero.jpg"
     alt: "Learn"
     links:
      -
-      image: "/assets/courses_modules.jpg"
+      image: "courses_modules.jpg"
       link: "/courses"
       alt: "Courses"
      -
-      image: "/assets/casestudies_modules.jpg"
+      image: "casestudies_modules.jpg"
       link: "/case-studies"
       alt: "Case studies"
      -
-      image: "/assets/fridaylunchtimelectures_module.jpg"
+      image: "fridaylunchtimelectures_module.jpg"
       link: "/lunchtime-lectures"
       alt: "Friday Lunchtime Lectures"
      -
-      image: "/assets/guides_modules.jpg"
+      image: "guides_modules.jpg"
       link: "/guides"
       alt: "Guides"

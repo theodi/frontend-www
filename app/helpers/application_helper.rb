@@ -28,10 +28,6 @@ module ApplicationHelper
     [title, byline_link, license].select{|x| !x.blank?}.join('. ').html_safe
   end
   
-  def menus
-    $menus ||= YAML.load_file("#{Rails.root.to_s}/config/menus.yml")
-  end
-  
   def author(publication)
     if publication.author
       if publication.author['tag_ids'].include?("team")
