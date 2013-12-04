@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
         notify_airbrake(exception)
       end
       respond_to do |format|
-        format.html { render status: status_code, file: "public/#{status_code}.html", layout: nil  }
+        format.html { render status: status_code, text: "", layout: nil  }
         format.json { render status: status_code, json: { status: status_code } }
       end
     end
