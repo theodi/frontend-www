@@ -361,7 +361,7 @@ class RootController < ApplicationController
   def team_list_module
     @section = 'team'
     slimmer_template "minimal"
-    render "list_module/people"
+    render "list_module/people", layout: 'minimal'
   end
   
   def courses_list_module
@@ -369,7 +369,7 @@ class RootController < ApplicationController
     @course = fetch_article(@artefact.details.course, nil, "courses")
     @title = "Courses"
     slimmer_template "minimal"
-    render "list_module/courses"
+    render "list_module/courses", layout: 'minimal'
   end
   
   def events_list_module
@@ -377,7 +377,7 @@ class RootController < ApplicationController
     @artefact = content_api.upcoming("event", "start_date")
     @title = "Events"
     slimmer_template "minimal"
-    render "list_module/list_module"
+    render "list_module/list_module", layout: 'minimal'
   end
 
   def culture_list_module
@@ -385,7 +385,7 @@ class RootController < ApplicationController
     @artefact = content_api.latest('type', 'creative_work')
     @title = "Culture"
     slimmer_template "minimal"
-    render "list_module/list_module"
+    render "list_module/list_module", layout: 'minimal'
   end
 
   def news_list
@@ -432,9 +432,9 @@ class RootController < ApplicationController
     slimmer_template "minimal"
     begin
       # Use a specific template if present
-      render "list_module/#{params[:section]}"
+      render "list_module/#{params[:section]}", layout: 'minimal'
     rescue
-      render "list_module/list_module"
+      render "list_module/list_module", layout: 'minimal'
     end
   end
 
@@ -444,9 +444,9 @@ class RootController < ApplicationController
     slimmer_template "minimal"
     begin
       # Use a specific template if present
-      render "module/#{params[:section]}"
+      render "module/#{params[:section]}", layout: 'minimal'
     rescue
-      render "module/module"
+      render "module/module", layout: 'minimal'
     end
   end
   
