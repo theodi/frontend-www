@@ -7,10 +7,10 @@ GIT
 
 GIT
   remote: git://github.com/theodi/gds-api-adapters.git
-  revision: 74ff4be040c7450846fce8a389f64feeb9efb061
+  revision: cae3a08d8e6932f5f37fe889aadd78be897778fc
   specs:
     gds-api-adapters (7.5.0)
-      activesupport (~> 3.2.14)
+      activesupport
       link_header
       lrucache (~> 0.1.1)
       null_logger
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: git://github.com/theodi/odlifier.git
-  revision: 00bc05b1935cbc8c5fe56339904b3abdd50a2d98
+  revision: c5fadc804338f9671f8c5ead9687bc250e6d021e
   specs:
     odlifier (0.0.1)
       httparty
@@ -106,7 +106,7 @@ GEM
       multi_json (>= 1.2.0)
     journey (1.0.4)
     json (1.8.1)
-    link_header (0.0.7)
+    link_header (0.0.8)
     lrucache (0.1.4)
       PriorityQueue (~> 0.1.2)
     mail (2.5.4)
@@ -168,7 +168,7 @@ GEM
     simplecov-html (0.8.0)
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
-    slimmer (3.23.0)
+    slimmer (3.24.0)
       json
       lrucache (~> 0.1.3)
       nokogiri (~> 1.5.0)
