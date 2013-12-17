@@ -19,9 +19,9 @@ home:
         link: "https://certificates.theodi.org/"
         alt: "Open Data Certificates"
       -
-        image: "20131125_burnthedigitalpaper_module.jpg"
-        link: "http://theodi.org/lunchtime-lectures/friday-lunchtime-lecture-burn-the-digital-paper-a-call-to-arms"
-        alt: "Latest Lunchtime Lecture: Burn the Digital Paper: A call to arms."
+        image: "20131213_lessonsfromworkingiwthopendata_module.jpg"
+        link: "http://theodi.org/lunchtime-lectures/friday-lunchtime-lecture-five-lessons-from-a-decade-working-with-open-data"
+        alt: "Latest Lunchtime Lecture: Five lessons from a decade working with open data"
       -
         image: "node_module.jpg"
         link: "/nodes"
