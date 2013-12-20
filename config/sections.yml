@@ -9,9 +9,9 @@ home:
         Alt: "ODI's First Year: Annual Report"
         link: "/odis-first-year-annual-report"
       -
-        image: "newmember_socrata_modules.jpg"
-        link: "news/a-bigger-and-better-introducing-our-newest-members"
-        alt: "Socrata: Our newest member"
+        image: "20131220_odcs_education.jpg"
+        link: "http://theodi.org/education-open-data-challenge-series"
+        alt: "Open Data Challenge Series: Education"
       -
         frame: "/news/module"
       -
