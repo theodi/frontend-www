@@ -55,7 +55,29 @@ class RootControllerTest < ActionController::TestCase
     GdsApi::ContentApi.any_instance.expects(:artefact).raises(GdsApi::HTTPErrorResponse, '')
     get :page, :slug => 'broken'
     assert_response 500
-  end    
+  end
+  
+  test "upcoming lectures should show the livestream iframe if livestream is set to true" do
+    Timecop.freeze(Time.parse("2013-11-14T13:00:00+00:00"))
+    stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
+      to_return(:status => 200, :body => load_fixture('lecture-with-livestream.json'), :headers => {})
+    get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
+        :section=>"events", :event_type => :lunchtime_lectures
+        
+    assert_match /Live stream/, response.body
+    Timecop.return
+  end
+  
+  test "upcoming lectures should not show the livestream iframe if livestream is set to false" do
+    Timecop.freeze(Time.parse("2013-11-14T13:00:00+00:00"))
+    stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
+      to_return(:status => 200, :body => load_fixture('lecture-no-livestream.json'), :headers => {})
+    get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
+        :section=>"events", :event_type => :lunchtime_lectures
+        
+    assert_not_match /Live stream/, response.body
+    Timecop.return
+  end
 
 end
   

@@ -6,13 +6,13 @@
   <% end %>
 <% end %>
 
-<div class="<%= upcoming_event? ? 'article-main' : 'article-full' %>">
+<div class="<%= upcoming_event? && @publication.livestream == "true" ? 'article-main' : 'article-full' %>">
 	<article class="article-body">
     <%= render :partial => 'content/event', :locals => { :publication => @publication } %>
 	</article>
 </div>
 
-<% if upcoming_event? %>
+<% if upcoming_event? && @publication.livestream == "true" %>
   <aside class="article-sidebar">
     <h3>Live stream</h3>
     <p>Begins at <%= DateTime.parse(@publication.start_date).strftime("%A %d %B %Y at %l:%M%P") %></p>
