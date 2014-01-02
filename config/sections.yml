@@ -33,11 +33,11 @@ home:
 #      -
 #        image: "opendatahistory_modules.jpg"
 #        link: "#"
-      -
+#     -
 #        image: "globalvoice_modules.jpg"
 #       link: "http://summit.theodi.org/speakers/"
 #      alt: "Global voices at the ODI Summit"
-      - 
+#      - 
         frame: "/events/module"
       -
         image: "training&projects_module.jpg"
