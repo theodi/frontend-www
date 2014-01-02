@@ -30,10 +30,7 @@ home:
         frame: "/blog/module"
       -
         frame: "/courses/module"
-#      -
-#        image: "opendatahistory_modules.jpg"
-#        link: "#"
-     - 
+      - 
         frame: "/events/module"
       -
         image: "training&projects_module.jpg"
