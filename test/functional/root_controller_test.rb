@@ -91,6 +91,15 @@ class RootControllerTest < ActionController::TestCase
     xml = Nokogiri::XML(response.body)
     assert_equal "<p>Ahead of <a rel=\"external\" href=\"http://summit.theodi.org/\">our Summit</a> in London on 29 October, we're delighted to be announcing two new members; London-based <a rel=\"external\" href=\"http://www.ratesetter.com\">RateSetter</a>, and Seattle's <a rel=\"external\" href=\"http://www.socrata.com\">Socrata</a>. They take our membership to 45, and are testimony to the international appeal and multi-sector influence that we are forging.</p>", xml.xpath("//xmlns:entry/xmlns:content").text
   end
+  
+  test "Jobs list shows message if no jobs are listed" do
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=job").
+      to_return(:status => 200, :body => load_fixture('no-jobs.json'), :headers => {})
+      
+    get :jobs_list, :section => "jobs"
+    
+    assert_match /Sorry there are no jobs currently listed. We regularly add new jobs, so keep checking back, or subscribe to our <a href="\/jobs.atom">atom feed<\/a>/, response.body
+  end
 
 end
   
