@@ -9,6 +9,7 @@ require 'rails/test_help'
 require 'test/unit'
 require 'mocha/setup'
 require 'webmock/test_unit'
+require 'timecop'
 WebMock.disable_net_connect!(:allow_localhost => true)
 
 require 'gds_api/test_helpers/content_api'
