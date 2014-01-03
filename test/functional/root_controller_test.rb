@@ -78,6 +78,19 @@ class RootControllerTest < ActionController::TestCase
     assert_not_match /Live stream/, response.body
     Timecop.return
   end
+  
+  test "Atom feeds should return full text feed" do
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=news&whole_body=true").
+      to_return(:status => 200, :body => load_fixture('full-text-news.json'), :headers => {})      
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=blog&whole_body=true").
+      to_return(:status => 200, :body => '{"total":47,"start_index":1,"page_size":47,"current_page":1,"pages":1,"_response_info":{"status":"ok","links":[]},"description":"","results": []}', :headers => {})
+    
+    
+    get :news_list, :format => 'atom', :section=>"news"
+    
+    xml = Nokogiri::XML(response.body)
+    assert_equal "<p>Ahead of <a rel=\"external\" href=\"http://summit.theodi.org/\">our Summit</a> in London on 29 October, we're delighted to be announcing two new members; London-based <a rel=\"external\" href=\"http://www.ratesetter.com\">RateSetter</a>, and Seattle's <a rel=\"external\" href=\"http://www.socrata.com\">Socrata</a>. They take our membership to 45, and are testimony to the international appeal and multi-sector influence that we are forging.</p>", xml.xpath("//xmlns:entry/xmlns:content").text
+  end
 
 end
   
