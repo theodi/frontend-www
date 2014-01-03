@@ -14,7 +14,8 @@ xml.feed :xmlns => "http://www.w3.org/2005/Atom", "xmlns:dc" => "http://purl.org
         end
         xml.link :href => send("#{section.gsub('-', '_')}_article_path", item.slug, :only_path => false)
         xml.title item.title, :type => 'html'
-        xml.content item.details.excerpt, :type => 'html'
+        xml.content item.details.body, :type => 'html'
+        xml.summary item.details.excerpt, :type => 'html'
         xml.updated DateTime.parse(item.created_at).rfc3339
         xml.id send("#{@section.gsub('-', '_')}_article_path", item.slug, :only_path => false)
         xml.author do |author|
