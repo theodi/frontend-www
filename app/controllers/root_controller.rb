@@ -388,7 +388,11 @@ class RootController < ApplicationController
   end
 
   def news_list
-    @artefacts = news_artefacts
+    options = {}
+    if params[:format] == "atom"
+      options["whole_body"] = true
+    end
+    @artefacts = news_artefacts(options)
     @hero_image = 'news_hero.jpg'
     list(params)
   end
@@ -397,7 +401,11 @@ class RootController < ApplicationController
   
   def list(params)
     @section = params[:section].parameterize
-    @artefacts ||= content_api.with_tag(params[:section].singularize).results
+    options = {}
+    if params[:format] == "atom"
+      options["whole_body"] = true
+    end
+    @artefacts ||= content_api.with_tag(params[:section].singularize, options).results
     @title = params[:section].gsub('-', ' ').humanize.capitalize
     respond_to do |format|
       format.html do
