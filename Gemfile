@@ -73,3 +73,5 @@ end
 
 # To use debugger
 # gem 'debugger'
+
+gem "newrelic_rpm"
