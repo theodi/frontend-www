@@ -5,9 +5,9 @@ home:
     hero_alt: "Knowledge for everyone"
     links:
       -
-        image: "annualreport_module.jpg"
-        Alt: "ODI's First Year: Annual Report"
-        link: "/odis-first-year-annual-report"
+        image: "20140113_odifutures_food.jpg"
+        link: "http://theodi.org/research-afternoons/show-me-the-future-of-food-and-open-data"
+        alt: "Show me the future of Open Data and... Food"
       -
         image: "20131220_odcs_education.jpg"
         link: "http://theodi.org/education-open-data-challenge-series"
@@ -19,9 +19,13 @@ home:
         link: "https://certificates.theodi.org/"
         alt: "Open Data Certificates"
       -
-        image: "20131213_lessonsfromworkingiwthopendata_module.jpg"
-        link: "http://theodi.org/lunchtime-lectures/friday-lunchtime-lecture-five-lessons-from-a-decade-working-with-open-data"
-        alt: "Latest Lunchtime Lecture: Five lessons from a decade working with open data"
+        image: "annualreport_module.jpg"
+        Alt: "ODI's First Year: Annual Report"
+        link: "/odis-first-year-annual-report"
+      -
+        image: "20140113_odifriday_opensteetmap.jpg"
+        link: "http://theodi.org/lunchtime-lectures/friday-lunchtime-lecture-typhoon-crisis-mapping-with-openstreetmap"
+        alt: "Latest Lunchtime Lecture: Typhoon Crisis Mapping with OpenStreetMap"
       -
         image: "node_module.jpg"
         link: "/nodes"
