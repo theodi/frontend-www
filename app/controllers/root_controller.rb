@@ -134,6 +134,23 @@ class RootController < ApplicationController
       end
     end  
   end
+  
+  def previous_events
+    @section = 'events'
+    @artefacts = get_events(:previous)
+    @title = "Previous Events"
+    respond_to do |format|
+      format.html do
+        render "list/list"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=events"
+      end
+      format.atom do
+        render "list/feed", :layout => false
+      end
+    end
+  end
 
   def nodes_list
     @section = params[:section].parameterize
