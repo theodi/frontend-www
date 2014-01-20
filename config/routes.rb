@@ -8,6 +8,8 @@ Www::Application.routes.draw do
   
   get "newsletters", as: "newsletters", to: 'root#newsletters'
   get "culture/collection", as: "culture_collection", to: 'root#culture_collection'
+  get "events/previous", as: "previous_events_section", to: "root#previous_events"
+  
 
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|
     section_slug = section.to_s.dasherize
@@ -44,5 +46,5 @@ Www::Application.routes.draw do
   get "courses/:slug/:date", as: 'course_instance', to: 'root#course_instance'
 
   get ":slug", as: "page", to: 'root#page'
-
+  
 end
