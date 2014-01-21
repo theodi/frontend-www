@@ -1,0 +1,25 @@
+<% content_for :title, @title %>
+
+<% content_for :hero do %>
+	<% if @hero_image %>
+		<section class="article-hero">
+			<%= render :partial => "section/hero", :locals => { :hero_image => @hero_image, :hero_text => @hero_text, :hero_link => nil, :hero_alt => @title  } %>
+		</section>
+	<% end %>
+<% end %>
+
+<div class="article-full">
+  <article class="article-body">
+    <%= @publication.content.try(:html_safe) %>
+  </article>
+</div>
+
+<h2>Upcoming lectures</h2>
+
+<%= render :partial => "list/list", :locals => { :artefacts => @upcoming } %>
+
+<h2>Previous lectures</h2>
+
+<%= render :partial => "list/list", :locals => { :artefacts => @previous } %>
+
+<%= render :partial => "list/masonry" %>
