@@ -109,7 +109,7 @@ class RootController < ApplicationController
 
   def events_article
     if params[:event_type]
-      @section = "lunchtime-lectures" if params[:event_type] == "lunchtime_lectures"
+      @section = "lunchtime-lectures" if params[:event_type] == :lunchtime_lectures
       article(params)    
     else
       event = ArtefactRetriever.new(content_api, Rails.logger, statsd).fetch_artefact(params[:slug], params[:edition], nil, nil)
