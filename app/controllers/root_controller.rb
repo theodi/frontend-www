@@ -109,8 +109,8 @@ class RootController < ApplicationController
 
   def events_article
     if params[:event_type]
-      @section = "lunchtime-lectures" if params[:event_type] == :lunchtime_lectures
-      article(params)    
+      @section = "lunchtime-lectures" if params[:event_type].to_sym == :lunchtime_lectures
+      article(@section, params)    
     else
       event = ArtefactRetriever.new(content_api, Rails.logger, statsd).fetch_artefact(params[:slug], params[:edition], nil, nil)
       raise ActionController::RoutingError.new('Not Found') if event.nil?
@@ -491,14 +491,14 @@ class RootController < ApplicationController
     end
   end
   
-  def article(params)
-    @section ||= params[:section]
+  def article(section, params)
+    section ||= params[:section]
     @publication = fetch_article(params[:slug], params[:edition], params[:section])
     
     respond_to do |format|
       format.html do
         begin
-          render "content/#{@section}"
+          render "content/#{section}"
         rescue ActionView::MissingTemplate
           render "content/#{@publication.format}"
         end
