@@ -120,7 +120,7 @@ class RootController < ApplicationController
 
   def events_list
     @section = 'events'
-    @artefacts = get_events(:upcoming)
+    @artefacts = collect_events(['event', 'course_instance'], :upcoming)
     @title = "What's happening?"
     respond_to do |format|
       format.html do
@@ -137,7 +137,7 @@ class RootController < ApplicationController
   
   def previous_events
     @section = 'events'
-    @artefacts = get_events(:previous)
+    @artefacts = collect_events(['event', 'course_instance'], :previous)
     @title = "Previous Events"
     respond_to do |format|
       format.html do
@@ -507,15 +507,22 @@ class RootController < ApplicationController
     PublicationPresenter.new(artefact)
   end
   
-  def get_events(type)
-    artefacts = content_api.with_tag('event').results
-    artefacts += content_api.with_tag('course_instance').results
+  def collect_events(tags, type)
+    artefacts = collect_artefacts(tags)
     if type == :previous
       artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) > Date.today}
       artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}.reverse!
-    else
+    elsif type == :upcoming
       artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) < Date.today}
       artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}
+    end
+    return artefacts
+  end
+  
+  def collect_artefacts(tags)
+    artefacts = []
+    tags.each do |tag|
+      artefacts += content_api.with_tag(tag).results
     end
     return artefacts
   end
