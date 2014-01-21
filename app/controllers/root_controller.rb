@@ -135,6 +135,25 @@ class RootController < ApplicationController
     end  
   end
   
+  def lunchtime_lectures
+    @section = 'lunchtime-lectures'
+    @upcoming = collect_events(['lunchtime-lecture'], :upcoming)
+    @previous = collect_events(['lunchtime-lecture'], :previous)
+    @title = "Lunchtime Lectures"
+    @publication = fetch_article("lunchtime-lectures", nil, "article")
+    respond_to do |format|
+      format.html do
+        render "list/lunchtime-lectures"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=events"
+      end
+      format.atom do
+        render "list/feed", :layout => false
+      end
+    end  
+  end
+  
   def previous_events
     @section = 'events'
     @artefacts = collect_events(['event', 'course_instance'], :previous)
