@@ -2,7 +2,7 @@
   <% if @publication.end_date.to_datetime >= DateTime.now %>
     <a href="<%= events_section_path %>">Events</a>
   <% else %>
-    <a href="<%= events_section_path %>">Previous Events</a>
+    <a href="<%= previous_events_section_path %>">Previous Events</a>
   <% end %>
 <% end %>
 

@@ -120,10 +120,8 @@ class RootController < ApplicationController
 
   def events_list
     @section = 'events'
-    @artefacts = content_api.with_tag('event').results
-    @artefacts += content_api.with_tag('course_instance').results
-    @artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) < Date.today}
-    @artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}
+    @artefacts = get_events(:upcoming)
+    @title = "What's happening?"
     respond_to do |format|
       format.html do
         render "list/events"
@@ -135,6 +133,23 @@ class RootController < ApplicationController
         render "list/feed", :layout => false
       end
     end  
+  end
+  
+  def previous_events
+    @section = 'events'
+    @artefacts = get_events(:previous)
+    @title = "Previous Events"
+    respond_to do |format|
+      format.html do
+        render "list/list"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=events"
+      end
+      format.atom do
+        render "list/feed", :layout => false
+      end
+    end
   end
 
   def nodes_list
@@ -490,6 +505,19 @@ class RootController < ApplicationController
     end
 
     PublicationPresenter.new(artefact)
+  end
+  
+  def get_events(type)
+    artefacts = content_api.with_tag('event').results
+    artefacts += content_api.with_tag('course_instance').results
+    if type == :previous
+      artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) > Date.today}
+      artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}.reverse!
+    else
+      artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) < Date.today}
+      artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}
+    end
+    return artefacts
   end
   
   def api_domain
