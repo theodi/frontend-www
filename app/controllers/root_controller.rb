@@ -491,7 +491,7 @@ class RootController < ApplicationController
     end
   end
   
-  def article(section, params)
+  def article(section = nil, params)
     section ||= params[:section]
     @publication = fetch_article(params[:slug], params[:edition], params[:section])
     
