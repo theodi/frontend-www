@@ -109,8 +109,8 @@ class RootController < ApplicationController
 
   def events_article
     if params[:event_type]
-      @section = "lunchtime-lectures" if params[:event_type] == "lunchtime_lectures"
-      article(params)    
+      @section = "lunchtime-lectures" if params[:event_type].to_sym == :lunchtime_lectures
+      article(@section, params)    
     else
       event = ArtefactRetriever.new(content_api, Rails.logger, statsd).fetch_artefact(params[:slug], params[:edition], nil, nil)
       raise ActionController::RoutingError.new('Not Found') if event.nil?
@@ -120,7 +120,7 @@ class RootController < ApplicationController
 
   def events_list
     @section = 'events'
-    @artefacts = get_events(:upcoming)
+    @artefacts = collect_events(['event', 'course_instance'], :upcoming)
     @title = "What's happening?"
     respond_to do |format|
       format.html do
@@ -135,9 +135,28 @@ class RootController < ApplicationController
     end  
   end
   
+  def lunchtime_lectures
+    @section = 'lunchtime-lectures'
+    @upcoming = collect_events(['lunchtime-lecture'], :upcoming)
+    @previous = collect_events(['lunchtime-lecture'], :previous)
+    @title = "Lunchtime Lectures"
+    @publication = fetch_article("lunchtime-lectures", nil, "article")
+    respond_to do |format|
+      format.html do
+        render "list/lunchtime-lectures"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=events"
+      end
+      format.atom do
+        render "list/feed", :layout => false
+      end
+    end  
+  end
+  
   def previous_events
     @section = 'events'
-    @artefacts = get_events(:previous)
+    @artefacts = collect_events(['event', 'course_instance'], :previous)
     @title = "Previous Events"
     respond_to do |format|
       format.html do
@@ -472,14 +491,14 @@ class RootController < ApplicationController
     end
   end
   
-  def article(params)
-    @section ||= params[:section]
+  def article(section, params)
+    section ||= params[:section]
     @publication = fetch_article(params[:slug], params[:edition], params[:section])
     
     respond_to do |format|
       format.html do
         begin
-          render "content/#{@section}"
+          render "content/#{section}"
         rescue ActionView::MissingTemplate
           render "content/#{@publication.format}"
         end
@@ -507,15 +526,22 @@ class RootController < ApplicationController
     PublicationPresenter.new(artefact)
   end
   
-  def get_events(type)
-    artefacts = content_api.with_tag('event').results
-    artefacts += content_api.with_tag('course_instance').results
+  def collect_events(tags, type)
+    artefacts = collect_artefacts(tags)
     if type == :previous
       artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) > Date.today}
       artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}.reverse!
-    else
+    elsif type == :upcoming
       artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) < Date.today}
       artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}
+    end
+    return artefacts
+  end
+  
+  def collect_artefacts(tags)
+    artefacts = []
+    tags.each do |tag|
+      artefacts += content_api.with_tag(tag).results
     end
     return artefacts
   end

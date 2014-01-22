@@ -34,12 +34,21 @@ class RootControllerTest < ActionController::TestCase
 
   test "past events should return correct title" do
     stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
+      to_return(:status => 200, :body => load_fixture('show-me-the-future-of-food-and-open-data.json'), :headers => {})
+    get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
+        :section=>"events", :event_type=>:event
+  
+    assert_match /<h1> <a href="\/events\/previous">Previous Events<\/a> <\/h1>/, response.body.squish
+  end
+ 
+  test "lunchtime lectures should have correct title" do
+    stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
       to_return(:status => 200, :body => load_fixture('friday-lunchtime-lecture-how-politicians-lie-with-data.json'), :headers => {})
     get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
         :section=>"events", :event_type=>:lunchtime_lectures
   
-    assert_match /<h1> <a href="\/events">Previous Events<\/a> <\/h1>/, response.body.squish
-  end
+    assert_match /<h1> <a href="\/lunchtime-lectures">Lunchtime Lectures<\/a> <\/h1>/, response.body.squish
+  end   
   
   test "past events should return not show the booking link" do
     stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
