@@ -1,15 +1,29 @@
-<% content_for :title, "What's happening?" %>
+<% content_for :title, @title %>
 
 <% content_for :hero do %>
-	<section class="article-hero">
-		<%= render :partial => "section/hero", :locals => { :hero_image => "whatshappening_hero.jpg", :hero_text => nil, :hero_link => nil, :hero_alt => "What's happening?" } %>
-	</section>
+	<% if @hero_image %>
+		<section class="article-hero">
+			<%= render :partial => "section/hero", :locals => { :hero_image => "whatshappening_hero.jpg", :hero_text => nil, :hero_link => nil, :hero_alt => "What's happening?" } %>
+		</section>
+	<% end %>	
+<% end %>
+
+<% if @featured.length > 0 %>
+	<h2>Featured</h2>
+	
+	<ul class="grid effect-2 listing" id="grid2">
+		<% @featured.each do |artefact| %>
+			<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
+		<% end %>
+	</ul>
+	
+	<h2>All Events</h2>
 <% end %>
 
 <ul class="grid effect-2 listing" id="grid2">
 	<% @artefacts.each do |artefact| %>
 		<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
 	<% end %>
-</div>
+</ul>
 
 <%= render :partial => "list/masonry" %>

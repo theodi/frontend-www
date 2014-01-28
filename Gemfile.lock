@@ -80,6 +80,12 @@ GEM
     content_for_in_controllers (0.0.2)
     countries (0.9.3)
       currencies (~> 0.4.2)
+    coveralls (0.7.0)
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      term-ansicolor
+      thor
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
     currencies (0.4.2)
@@ -187,6 +193,8 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.8)
     statsd-ruby (1.0.0)
+    term-ansicolor (1.2.2)
+      tins (~> 0.8)
     thin (1.6.1)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -194,6 +202,7 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     timecop (0.7.1)
+    tins (0.13.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -214,6 +223,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   content_for_in_controllers
   countries
+  coveralls
   dotenv-rails
   font-awesome-rails
   foreman
