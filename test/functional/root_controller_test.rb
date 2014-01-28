@@ -142,5 +142,65 @@ class RootControllerTest < ActionController::TestCase
     assert_match /Sorry there are no jobs currently listed. We regularly add new jobs, so keep checking back, or subscribe to our <a href="\/jobs.atom">atom feed<\/a>/, response.body
   end
 
+  test "should get previous events page with old events" do
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=event").
+      to_return(:status => 200, :body => load_fixture('events.json'), :headers => {})
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=course_instance").
+      to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
+
+    get :previous_events, :section=>"events"
+    
+    assert_match /Friday lunchtime lecture/, response.body
+
+    html = Nokogiri::HTML(response.body)    
+    assert_equal nil, html.css(".hero img").first
+        
+  end
+  test "should get featured events on previous events" do
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=event").
+      to_return(:status => 200, :body => load_fixture('events-with-featured.json'), :headers => {})
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=course_instance").
+      to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
+
+    get :previous_events, :section=>"events"
+    
+    assert_match /Featured/, response.body
+    assert_match /All Events/, response.body
+  end
+  
+  test "should get featured events on events page" do
+    Timecop.freeze( Time.parse("2014-01-14T13:00:00+00:00") )
+      
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=event").
+      to_return(:status => 200, :body => load_fixture('events-with-featured.json'), :headers => {})
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=course_instance").
+      to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
+
+    get :events_list, :section=>"events"
+    
+    assert_match /Featured/, response.body
+    assert_match /All Events/, response.body
+    
+    Timecop.return
+  end
+
+  test "should get events page with forthcoming events" do
+    Timecop.freeze( Time.parse("2014-01-14T13:00:00+00:00") )
+      
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=event").
+      to_return(:status => 200, :body => load_fixture('events.json'), :headers => {})
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=course_instance").
+      to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
+
+    get :events_list, :section=>"events"
+    
+    assert_match /Friday lunchtime lecture/, response.body
+    
+    html = Nokogiri::HTML(response.body)    
+    assert_equal "http://static.dev/assets/whatshappening_hero.jpg", html.css(".hero img").first[:src]
+    Timecop.return
+  end
+  
+  
 end
   
