@@ -30,6 +30,13 @@ class RootControllerTest < ActionController::TestCase
     assert_match /module-colour-2/, modules[2].css('div')[0][:class]
     assert_equal "http://theodi.org/odp4d", modules[2].css('a')[0][:href]
   end
+  
+  test "should get about page" do
+    stub_request(:get, "http://contentapi.dev/section.json?id=about").
+      to_return(:status => 200, :body => load_fixture('homepage.json'), :headers => {})
+      
+    get :section, :section => "about"
+    assert_response :ok
   end
   
   test "course instances should load correctly" do

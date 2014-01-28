@@ -259,8 +259,8 @@ class RootController < ApplicationController
   end
 
   def section
-    sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
-    @section = sections[params[:section]]
+    @section = content_api.section(params[:section])
+    @title = @section['title']
     render "section/section"
   end
 
