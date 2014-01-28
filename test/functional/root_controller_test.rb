@@ -3,8 +3,33 @@ require 'test_helper'
 class RootControllerTest < ActionController::TestCase
   
   test "should get index" do
+    stub_request(:get, "http://contentapi.dev/section.json?id=index").
+      to_return(:status => 200, :body => load_fixture('homepage.json'), :headers => {})
+      
     get :index
     assert_response :ok
+    
+    page = Nokogiri::HTML(response.body)
+    
+    assert_equal "http://www.example.com", page.css('.hero a')[0][:href]
+    assert_equal "http://bd7a65e2cb448908f934-86a50c88e47af9e1fb58ce0672b5a500.r32.cf3.rackcdn.com/uploads/assets/e7/86/52e78659d0d4624a8c000063/about_hero.jpg", page.css('.hero img')[0][:src]
+    assert_match /The Open Data Institute/, page.css('.hero .hero-label')[0].text
+    
+    modules = page.css('.home-module')
+    
+    assert_equal 3, modules.count
+    
+    assert_equal "Show me the future of Open Data and... Food", modules[0].css('img')[0][:alt]
+    assert_equal "http://bd7a65e2cb448908f934-86a50c88e47af9e1fb58ce0672b5a500.r32.cf3.rackcdn.com/uploads/assets/e6/63/52e663b81f986a2ef000006e/20140113_odifutures_food.jpg", modules[0].css('img')[0][:src]
+    assert_equal "http://theodi.org/research-afternoons/show-me-the-future-of-food-and-open-data", modules[0].css('a')[0][:href]
+    
+    assert_equal "news/module", modules[1].css('iframe')[0][:src]
+    
+    assert_match /Introducing Open Data Partnership for Development/, modules[2].css('.module-heading')[0].text
+    assert_match /GLOBAL PROJECTS/, modules[2].css('.module-subheading')[0].text
+    assert_match /module-colour-2/, modules[2].css('div')[0][:class]
+    assert_equal "http://theodi.org/odp4d", modules[2].css('a')[0][:href]
+  end
   end
   
   test "course instances should load correctly" do

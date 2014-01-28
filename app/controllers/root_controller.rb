@@ -22,9 +22,7 @@ class RootController < ApplicationController
   end
 
   def index
-    @title = "Welcome"
-    sections = YAML.load_file("#{Rails.root.to_s}/config/sections.yml")
-    @section = sections['home']
+    @section = content_api.section("index")
     render "section/section"
   end
   

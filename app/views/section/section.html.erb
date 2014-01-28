@@ -1,42 +1,34 @@
-<% content_for :title, @section['title'] %>
+<% content_for :title, @title %>
 
 <% content_for :hero do %>
-<section class="article-hero<%= ' within-header' unless @section['title'] %>">
-  <%= render :partial => "section/hero", :locals => { :hero_image => @section['hero_image'], :hero_text => @section['hero_text'], :hero_link => @section['hero_link'], :hero_alt => @section['hero_alt'] } %>
+<section class="article-hero<%= ' within-header' unless @title %>">
+  <%= render :partial => "section/hero", :locals => { :hero_image => @section['hero'], :hero_text => @section['description'], :hero_link => @section['link'], :hero_alt => @section['description'] } %>
 </section>
 <% end %>
 
 <ul class="grid effect-2" id="grid2">
 
-    <% @section['links'].each do |link| %>
+    <% @section['modules'].each do |m| %>
 
     <li class="home-module">
-      <% if link['frame'] %>
-        <iframe seamless scrolling='no' src="<%= link['frame'] %>"></iframe>
-      <% elsif link['background_image'] %>
-        <div class="module module-light module-image-background module-colour-<%= link['colour'] %>" style="background-image: url(<%= link['background_image'] %>)">
-            <a href="<%= link['link'] %>">
-                <% if link['title'] %>
-                  <h1 class="module-heading"><%= link['title'] %></h1>
-                <% end %>
-                <% if link['text'] %>
-                  <p class="module-subheading"><%= link['text'] %></p>
-                <% end %>
+      <% if m['type'] == "Frame" %>
+        <iframe seamless scrolling='no' src="<%= m['frame'] %>/module"></iframe>
+      <% elsif m['type'] == "Image" %>
+        <div class="module module-light module-colour- module-image-fullbleed">
+          <div class="image">
+            <a href="<%= m['link'] %>">
+              <%= image_tag m['image'], :alt => m['title'] %>
             </a>
+          </div>
         </div>
       <% else %>
-        <div class="module module-light module-colour-<%= link['colour'] %><%= ' module-image-foreground' if link['image'] && link['title'] %><%= ' module-image-fullbleed' if link['image'] && !link['title'] %>">
-            <a href="<%= link['link'] %>">
-                <% if link['image'] %>
-                  <div class="image">
-                    <%= image_tag link['image'], :alt => link['alt'] %>
-                  </div>
+        <div class="module module-light module-colour-<%= m['colour'] %>">
+            <a href="<%= m['link'] %>">
+                <% if m['title'] && m['type'] == "Text" %>
+                  <h1 class="module-heading"><%= m['title'] %></h1>
                 <% end %>
-                <% if link['title'] %>
-                  <h1 class="module-heading"><%= link['title'] %></h1>
-                <% end %>
-                <% if link['text'] %>
-                  <p class="module-subheading"><%= link['text'] %></p>
+                <% if m['text'] && m['type'] == "Text" %>
+                  <p class="module-subheading"><%= m['text'] %></p>
                 <% end %>
             </a>
         </div>
