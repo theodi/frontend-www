@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/theodi/gds-api-adapters.git
-  revision: cae3a08d8e6932f5f37fe889aadd78be897778fc
+  revision: c5a8017a7f8115b5d3d2b8c39d71e72d19a9ed21
   specs:
     gds-api-adapters (7.5.0)
       activesupport
