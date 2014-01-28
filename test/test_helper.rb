@@ -1,7 +1,11 @@
 require 'simplecov'
 require 'simplecov-rcov'
+require 'coveralls'
+
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start 'rails'
+
+Coveralls.wear!
 
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)

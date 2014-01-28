@@ -57,6 +57,7 @@ group :test do
   gem 'mocha', :require => false
   gem 'pry'
   gem 'timecop'
+  gem 'coveralls', :require => false
 end
 
 # To use ActiveModel has_secure_password
