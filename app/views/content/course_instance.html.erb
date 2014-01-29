@@ -5,7 +5,7 @@
 <div class="article-main">
 	<article class="article-body">
 		<h2><%= @course.title %></h2>
-		<h3 class="course-date"><%= Date.parse(@publication.date).strftime("%A %d %B %Y") %></h3>
+		<h3 class="course-date"><%= date_range DateTime.parse(@publication.date), DateTime.parse(@publication.end_date) %></h3>
 		<h3 class="course-location"><%= @publication.location %></h3>
 		
 		<div class="course-meta">
