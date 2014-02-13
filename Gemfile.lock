@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/theodi/alternate-rails.git
-  revision: a5e9b1d0cc80e5015c3035d1e00e4ac38f660082
+  revision: 17c8e8295f46a5e51915fd1eef329eabe1b2a426
   specs:
     alternate_rails (0.0.1)
       rails (~> 3.2.13)
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: git://github.com/theodi/odlifier.git
-  revision: 0200c462fe85edd4ed991d289eb9001912409b5b
+  revision: 0ce21d2fe105961a76f4b0cbd48052166c12ffb1
   specs:
     odlifier (0.0.1)
       httparty
@@ -125,7 +125,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.8.4)
     multi_xml (0.5.5)
-    newrelic_rpm (3.7.1.188)
+    newrelic_rpm (3.7.2.192)
     nokogiri (1.5.11)
     null_logger (0.0.1)
     plek (1.5.0)
@@ -193,8 +193,8 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.8)
     statsd-ruby (1.0.0)
-    term-ansicolor (1.2.2)
-      tins (~> 0.8)
+    term-ansicolor (1.3.0)
+      tins (~> 1.0)
     thin (1.6.1)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
@@ -202,7 +202,7 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     timecop (0.7.1)
-    tins (0.13.2)
+    tins (1.0.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
