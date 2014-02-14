@@ -5,7 +5,7 @@ class RootController < ApplicationController
   slimmer_template :www
   
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
-  before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article, :team_article, :courses_article]) { alternate_formats [:atom, :json] }
+  before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article, :team_article, :courses_article, :lunchtime_lectures]) { alternate_formats [:atom, :json] }
   
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list_module$/
@@ -149,6 +149,7 @@ class RootController < ApplicationController
         redirect_to "#{api_domain}/with_tag.json?tag=events"
       end
       format.atom do
+        @artefacts = instance_variable_get("@#{params[:type]}") || @upcoming
         render "list/feed", :layout => false
       end
     end  

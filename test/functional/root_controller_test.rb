@@ -130,6 +130,67 @@ class RootControllerTest < ActionController::TestCase
     assert_response 500
   end
   
+  test "lunchtime lectures should have an atom feed" do
+    stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      to_return(:status => 200, :body => load_fixture('lunchtime-lectures-intro.json'), :headers => {})
+      
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=lunchtime-lecture").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      to_return(:status => 200, :body => load_fixture('lunchtime-lectures.json'), :headers => {})
+      
+    get :lunchtime_lectures
+    
+    assert_response :ok
+    page = Nokogiri::HTML(response.body)
+    
+    assert_equal "/lunchtime-lectures.atom", page.css('head link')[0][:href]
+  end
+  
+  test "lunchtime lectures atom feed should return the correct stuff" do
+    Timecop.freeze(Time.parse("2013-12-22T13:00:00+00:00"))
+
+    stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      to_return(:status => 200, :body => load_fixture('lunchtime-lectures-intro.json'), :headers => {})
+      
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=lunchtime-lecture").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      to_return(:status => 200, :body => load_fixture('lunchtime-lectures.json'), :headers => {})
+
+    get :lunchtime_lectures, :format => 'atom'
+    
+    assert_response :ok
+      
+    page = Nokogiri::XML(response.body)
+        
+    assert_equal 5, page.css("entry").count
+    
+    Timecop.return
+  end
+  
+  test "previous lunchtime lectures atom feed should return the correct stuff" do
+    Timecop.freeze(Time.parse("2013-12-22T13:00:00+00:00"))
+
+    stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      to_return(:status => 200, :body => load_fixture('lunchtime-lectures-intro.json'), :headers => {})
+      
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=lunchtime-lecture").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      to_return(:status => 200, :body => load_fixture('lunchtime-lectures.json'), :headers => {})
+
+    get :lunchtime_lectures, :format => 'atom', :type => 'previous'
+    
+    assert_response :ok
+      
+    page = Nokogiri::XML(response.body)
+        
+    assert_equal 7, page.css("entry").count
+    
+    Timecop.return
+  end
+  
   test "upcoming lectures should show the livestream iframe if livestream is set to true" do
     Timecop.freeze(Time.parse("2013-11-14T13:00:00+00:00"))
     stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
