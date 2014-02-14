@@ -39,6 +39,38 @@ class RootControllerTest < ActionController::TestCase
     assert_response :ok
   end
   
+  test "courses should have an atom feed" do
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&sort=date&tag=course_instance").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      to_return(:status => 200, :body => load_fixture('course-instances.json'), :headers => {})
+    stub_request(:get, "http://contentapi.dev/open-data-marketers.json").
+        to_return(:status => 200, :body => load_fixture('open-data-marketers.json'), :headers => {})
+    get :courses_article, :slug => 'open-data-marketers', :section=> 'courses'
+    
+    assert_response :ok
+    page = Nokogiri::HTML(response.body)
+    
+    assert_equal "/courses/open-data-marketers.atom", page.css('head link')[0][:href]
+  end
+  
+  test "courses atom feed should return the correct stuff" do
+    Timecop.freeze(Time.parse("2013-12-22T13:00:00+00:00"))
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&sort=date&tag=course_instance").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      to_return(:status => 200, :body => load_fixture('course-instances.json'), :headers => {})
+    stub_request(:get, "http://contentapi.dev/introduction-open-data-journalists-finding-stories-data.json").
+        to_return(:status => 200, :body => load_fixture('introduction-open-data-journalists-finding-stories-data.json'), :headers => {})
+    get :courses_article, :slug => 'introduction-open-data-journalists-finding-stories-data', :section=> 'courses', :format => 'atom'
+    
+    assert_response :ok
+      
+    page = Nokogiri::XML(response.body)
+        
+    assert_equal 1, page.css("entry").count
+    
+    Timecop.return
+  end
+  
   test "course instances should load correctly" do
     stub_request(:get, "http://contentapi.dev/course-instance.json?course=open-data-marketers&date=2014-01-22").
       to_return(:status => 200, :body => load_fixture('open-data-marketers-2014-01-22.json'), :headers => {})

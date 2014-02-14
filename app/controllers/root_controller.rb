@@ -5,7 +5,7 @@ class RootController < ApplicationController
   slimmer_template :www
   
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
-  before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article, :team_article]) { alternate_formats [:atom, :json] }
+  before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article, :team_article, :courses_article]) { alternate_formats [:atom, :json] }
   
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list_module$/
@@ -325,6 +325,7 @@ class RootController < ApplicationController
     @instances = content_api.sorted_by('course_instance', 'date').results.delete_if { 
                   |course| course.details.course != params[:slug] || DateTime.parse(course.details.date) < Time.now }
     @instances.sort_by! { |instance| instance.details.date }
+    @section = 'courses'
     
     respond_to do |format|
       format.html do
@@ -332,6 +333,11 @@ class RootController < ApplicationController
       end
       format.json do
         redirect_to "#{api_domain}/#{params[:slug]}.json"
+      end
+      format.atom do
+        @artefacts = @instances
+        @title = "Upcoming #{@publication.title} courses"
+        render "content/course"
       end
     end
   end
