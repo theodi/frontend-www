@@ -5,7 +5,7 @@ class RootController < ApplicationController
   slimmer_template :www
   
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
-  before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article, :team_article, :courses_article, :lunchtime_lectures]) { alternate_formats [:atom, :json] }
+  before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article, :team_article, :courses_article, :lunchtime_lectures, :courses_list]) { alternate_formats [:atom, :json] }
   
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list_module$/
@@ -322,12 +322,14 @@ class RootController < ApplicationController
   end
   
   def courses_article
-    @publication = fetch_article(params[:slug], params[:edition], "courses")
+    @courses = {}
+    @courses[params[:slug]] = fetch_article(params[:slug], params[:edition], "courses")
+    @publication = @courses[params[:slug]]
     @instances = content_api.sorted_by('course_instance', 'date').results.delete_if { 
                   |course| course.details.course != params[:slug] || DateTime.parse(course.details.date) < Time.now }
     @instances.sort_by! { |instance| instance.details.date }
     @section = 'courses'
-    
+        
     respond_to do |format|
       format.html do
         render "content/course"
@@ -337,9 +339,29 @@ class RootController < ApplicationController
       end
       format.atom do
         @artefacts = @instances
-        @title = "Upcoming #{@publication.title} courses"
+        @title = "Upcoming #{@courses[params[:slug]].title} courses"
         render "content/course"
       end
+    end
+  end
+  
+  def courses_list
+    if params[:format] == "atom"
+      @artefacts = content_api.sorted_by('course_instance', 'date').results.delete_if { |course|
+        DateTime.parse(course.details.date) < Time.now }
+      @artefacts.sort_by! { |instance| instance.details.date }
+      @section = 'courses'
+      
+      @courses = {}
+      
+      @artefacts.each do |instance|
+        @courses[instance.details.course] ||= fetch_article(instance.details.course, nil, "courses")
+      end
+      
+      @title = "Upcoming courses"
+      render "content/course"
+    else
+      list(params)
     end
   end
   

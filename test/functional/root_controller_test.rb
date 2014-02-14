@@ -71,6 +71,28 @@ class RootControllerTest < ActionController::TestCase
     Timecop.return
   end
   
+  test "courses list atom feed should return the correct stuff" do
+    Timecop.freeze(Time.parse("2014-02-14T13:00:00+00:00"))
+    
+    stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&sort=date&tag=course_instance").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      to_return(:status => 200, :body => load_fixture('course-instances-short.json'), :headers => {})
+      
+    stub_request(:get, "http://contentapi.dev/open-data-practice.json").
+      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      to_return(:status => 200, :body => load_fixture('open-data-practice.json'), :headers => {})
+    
+    get :courses_list, :slug => 'introduction-open-data-journalists-finding-stories-data', :section=> 'courses', :format => 'atom'
+    
+    assert_response :ok
+      
+    page = Nokogiri::XML(response.body)
+        
+    assert_equal 2, page.css("entry").count
+    
+    Timecop.return
+  end
+  
   test "course instances should load correctly" do
     stub_request(:get, "http://contentapi.dev/course-instance.json?course=open-data-marketers&date=2014-01-22").
       to_return(:status => 200, :body => load_fixture('open-data-marketers-2014-01-22.json'), :headers => {})

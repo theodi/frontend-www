@@ -12,9 +12,9 @@ xml.feed :xmlns => "http://www.w3.org/2005/Atom", "xmlns:dc" => "http://purl.org
         else
           section = @section
         end
-        xml.link :href => course_instance_url(@publication.slug, item.details.date[0..9])
+        xml.link :href => course_instance_url(@courses[item.details.course].slug, item.details.date[0..9])
         xml.title item.title, :type => 'html'
-        xml.content @publication.description, :type => 'html'
+        xml.content @courses[item.details.course].description, :type => 'html'
         xml.summary item.details.description, :type => 'html'
         xml.updated DateTime.parse(item.created_at).rfc3339
         xml.id send("#{@section.gsub('-', '_')}_article_path", item.slug, :only_path => false)
