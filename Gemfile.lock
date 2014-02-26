@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/theodi/alternate-rails.git
-  revision: 451bf7e71abe849094e99806e4b751d9a0761ce3
+  revision: b5e1fcc893c39b4dc8f6aeaea98215cc8928fd9a
   specs:
     alternate_rails (0.0.1)
       rails (~> 3.2.13)
@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: git://github.com/theodi/odlifier.git
-  revision: 0ce21d2fe105961a76f4b0cbd48052166c12ffb1
+  revision: 3e626287402c140b55493464e22f641f1f66cee5
   specs:
     odlifier (0.0.1)
       httparty
@@ -94,9 +94,9 @@ GEM
     currencies (0.4.2)
     daemons (1.1.9)
     docile (1.1.3)
-    dotenv (0.9.0)
-    dotenv-rails (0.9.0)
-      dotenv (= 0.9.0)
+    dotenv (0.10.0)
+    dotenv-rails (0.10.0)
+      dotenv (= 0.10.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
@@ -122,7 +122,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    metaclass (0.0.2)
+    metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (1.25.1)
     mocha (1.0.0)
@@ -195,7 +195,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.8)
+    sqlite3 (1.3.9)
     statsd-ruby (1.0.0)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
