@@ -10,7 +10,7 @@ gem 'dotenv-rails'
 gem 'foreman'
 gem 'thin'
 
-gem 'rack-google-analytics'
+gem 'rack-google-analytics', '0.14.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
