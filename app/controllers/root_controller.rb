@@ -272,8 +272,9 @@ class RootController < ApplicationController
   def page
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
                   fetch_artefact(params[:slug], params[:edition], nil, nil)
-
+                  
     @publication = PublicationPresenter.new(artefact)
+        
     respond_to do |format|
       format.html do
         begin
@@ -525,7 +526,7 @@ class RootController < ApplicationController
   def article(params, section = nil)
     section ||= params[:section]
     @publication = fetch_article(params[:slug], params[:edition], params[:section])
-    
+        
     respond_to do |format|
       format.html do
         begin

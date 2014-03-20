@@ -1,7 +1,23 @@
 <% content_for :title, @publication.title %>
 
-<div class="article-full">
+<div class="<%= @publication.article_class %>">
   <article class="article-body">
     <%= @publication.content.try(:html_safe) %>
   </article>
 </div>
+
+<% if @publication.related_links.count > 0 %>
+
+  <aside class="article-sidebar">
+
+      <% @publication.related_links.each do |link| %>
+        <div class="module module-light module-colour-<%= rand(1..12).to_i %>">
+      		<a href="<%= link[:url] %>">
+      			<h1 class="module-heading"><%= link[:title] %></h1>
+      		</a>
+      	</div>
+      <% end %>
+
+  </aside>
+
+<% end %>
