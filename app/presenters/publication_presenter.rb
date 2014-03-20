@@ -68,5 +68,20 @@ class PublicationPresenter
       false
     end
   end
+  
+  def related_links
+    externals = @artefact["related_external_links"] + @artefact["related"]
+    links = externals.map! do |l|
+        {
+          :title => l['title'],
+          :url => l['url'] || l['web_url']
+        }
+    end
+    links
+  end
+  
+  def article_class
+    related_links.count == 0 ? "article-full" : "article-main"
+  end
 
 end
