@@ -4,22 +4,22 @@
 
 <div class="article-main">
 	<article class="article-body">
-		<h2><%= @course.title %></h2>
+		<h2><%= @publication.title %></h2>
 		<h3 class="course-date"><%= date_range DateTime.parse(@publication.date), DateTime.parse(@publication.end_date) %></h3>
 		<h3 class="course-location"><%= @publication.location %></h3>
-		
+
 		<div class="course-meta">
 			<p><strong>Price:</strong> <%= @publication.price %> <%= link_to "Book now", @publication.url, :class => "btn btn-primary" %></p>
 		</div>
-		
+
 		<%= @course.description.html_safe %>
 
 		<%= @publication.description.html_safe %>
-		
+
 		<h3 class="course-leaders">Course Leader(s)</h3>
 		  <% @trainers.each do |trainer| %>
 		    <hr />
-		    
+
 		    <div class="row">
 		      <div class="col-md-4">
 		        <%= image_tag trainer.square_image || 'person-placeholder.png', alt: trainer.title %>
@@ -39,19 +39,19 @@
 
 <aside class="course-sidebar">
     <h3>Course</h3>
-    
+
     <div class="module module-light module-colour-4">
         <a href="<%= courses_article_path(@course.slug) %>">
         	<h4 class="module-heading"><%= @course.title %></h4>
         	<p class="category">Course</p>
         </a>
-    </div>    
-    
+    </div>
+
     <div class="module module-light module-colour-11">
         <a href="<%= courses_section_path %>">
         	<h4 class="module-heading">Other Courses</h4>
         	<p class="category">Course</p>
         </a>
-    </div>    
-    
+    </div>
+
 </aside>
