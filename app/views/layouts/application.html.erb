@@ -4,7 +4,7 @@
 </head>
 
 <body>
-  
+
   <div id='wrapper'>
     <% if content_for?(:title) %>
       <header class="page-title">
@@ -13,7 +13,7 @@
           </div>
       </header>
     <% end %>
-  
+
     <%= yield :hero %>
 
     <div class="container">
@@ -23,5 +23,7 @@
     </div>
 
   </div>
-  
+
+  <%= yield :extra_javascript %>
+
 </body>
