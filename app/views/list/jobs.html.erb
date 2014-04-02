@@ -4,8 +4,6 @@
 
   <%= render :partial => "list/list", :locals => { :artefacts => @artefacts } %>
 
-<%= render :partial => "list/masonry" %>
-
 <% else %>
 
   <p>Sorry there are no jobs currently listed. We regularly add new jobs, so keep checking back, or subscribe to our <%= link_to "atom feed", jobs_section_path(format: :atom) %></p>
