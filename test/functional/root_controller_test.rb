@@ -191,6 +191,19 @@ class RootControllerTest < ActionController::TestCase
       assert_match /<h1> <a href="\/lunchtime-lectures">Lunchtime Lectures<\/a> <\/h1>/, response.body.squish
     end
 
+    test "lunchtime lectures should show related lectures" do
+      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-why-anonymity-fails.json").
+        to_return(:status => 200, :body => load_fixture('friday-lunchtime-lecture-why-anonymity-fails.json'), :headers => {})
+      get :events_article, :slug => 'friday-lunchtime-lecture-why-anonymity-fails',
+          :section=>"events", :event_type=>:lunchtime_lectures
+
+      page = Nokogiri::HTML(response.body)
+
+      assert_equal 3, page.css('.module').count
+      assert_equal "Friday lunchtime lecture: FACELESS - what if all our lives were recorded?", page.css('.module h1').first.text
+      assert_equal "http://www.dev/lunchtime-lectures/friday-lunchtime-lecture-faceless-what-if-all-our-lives-were-recorded", page.css('.module a').first[:href]
+    end
+
     test "past events should return not show the booking link" do
       stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
         to_return(:status => 200, :body => load_fixture('friday-lunchtime-lecture-how-politicians-lie-with-data.json'), :headers => {})
