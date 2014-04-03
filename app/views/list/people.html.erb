@@ -1,6 +1,6 @@
 <% content_for :title, @title %>
 <div class="people-team">
-  
+
   <ul class="grid effect-2" id="grid-people">
 	<% @teams.each do |k,team| %>
 	  <% team[:people].each do |person| %>
@@ -24,7 +24,5 @@
     <% end %>
 	<% end %>
 	</ul>
-	
-</div>
 
-<%= render :partial => "list/masonry" %>
+</div>

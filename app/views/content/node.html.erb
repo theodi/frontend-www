@@ -5,42 +5,41 @@
 <div class ="article-full">
 	<article class="article-body">
 	  <h2><%= node_title @publication %></h2>
-  
+
     <%= image_tag(@publication.logo['web_url'], :class => 'node-logo') unless @publication.logo.nil? %>
-    
+
     <p>
   	  <%= node_subtitle @publication %>
-    </p>  
-    
+    </p>
+
     <p>
       <%= "Joined: " + Date.parse(@publication.join_date).strftime("%e %B %Y") rescue nil %>
     </p>
-    
+
     <div>
 	    <%= @publication.description.html_safe %>
     </div>
-    
+
     <h3>Get in Touch:</h3>
-    
+
     <ul>
     <%= content_tag :li, "Phone Number: #{@publication.telephone}" if @publication.telephone.present? %>
     <%= content_tag :li, "Email Address: ".html_safe+mail_to(@publication.email) if @publication.email.present? %>
     <%= content_tag :li, "Twitter: ".html_safe+link_to("@".html_safe+@publication.twitter, "http://twitter.com/"+@publication.twitter) if @publication.twitter.present? %>
     <%= content_tag :li, "Linkedin: ".html_safe+link_to(@publication.linkedin, @publication.linkedin) if @publication.linkedin.present? %>
     </ul>
-    
-    
+
+
     <% unless @news_artefacts.empty? %>
       <h3>News</h3>
-      
+
     	<ul class="grid effect-2 listing" id="grid2">
     		<% @news_artefacts.each do |artefact| %>
     			<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
     		<% end %>
     	</div>
 
-    	<%= render :partial => "list/masonry" %>
     <% end %>
-    
+
 	</article>
 </div>

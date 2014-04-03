@@ -1,6 +1,9 @@
-<div class="module module-light module-highlight-1 module-colour-<%= (publication.slug.length % 12) + 1 %>">
+<div class="module module-light module-highlight-1 module-colour-<%= (publication.slug.length % 12) + 1 %> <%= "module-image-fullbleed" if publication.details.module_image %>">
 	<a href="<%= send("#{section.gsub('-', '_')}_article_path", publication.slug) %>" target="_top">
-		<h1 class="module-heading"><%= publication.title %></h1>
-		<p class="category"><%= section.gsub('-', ' ') %></p>
+		<%= render :partial => "module/module_image", :locals => { publication: publication } %>
+		<div class="text">
+			<h1 class="module-heading"><%= publication.title %></h1>
+			<p class="category"><%= section.gsub('-', ' ') %></p>
+		</div>
 	</a>
 </div>

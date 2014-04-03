@@ -5,18 +5,18 @@
 		<section class="article-hero">
 			<%= render :partial => "section/hero", :locals => { :hero_image => "whatshappening_hero.jpg", :hero_text => nil, :hero_link => nil, :hero_alt => "What's happening?" } %>
 		</section>
-	<% end %>	
+	<% end %>
 <% end %>
 
 <% if @featured.length > 0 %>
 	<h2>Featured</h2>
-	
+
 	<ul class="grid effect-2 listing" id="grid2">
 		<% @featured.each do |artefact| %>
 			<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
 		<% end %>
 	</ul>
-	
+
 	<h2>All Events</h2>
 <% end %>
 
@@ -26,4 +26,4 @@
 	<% end %>
 </ul>
 
-<%= render :partial => "list/masonry" %>
+<%= render :partial => "list/background_check" %>

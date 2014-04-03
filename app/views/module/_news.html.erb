@@ -1,13 +1,16 @@
 <% section = 'blog' if publication.tag_ids.include?('blog') %>
 
-<div class="module module-light module-highlight-<%= section == 'blog' ? '3' : '1' %> module-colour-<%= (publication.slug.length % 12) + 1 %>">  
+<div class="module module-light module-highlight-<%= section == 'blog' ? '3' : '1' %> module-colour-<%= (publication.slug.length % 12) + 1 %> <%= "module-image-fullbleed" if publication.details.module_image %>">
 	<a href="<%= send("#{section}_article_path", publication.slug) %>" target="_top">
-		<h1 class="module-heading"><%= publication.title %></h1>
-	    <p class="module-subheading"><%= (publication.details.author||publication.author).name %></p>
-	    <p class="module-meta"><%= DateTime.parse(publication.created_at).strftime('%-d %B %Y') %></p>
-	    <% unless publication.details.nodes.nil? || publication.details.nodes.empty? || params[:action] == 'nodes_article' %>
-        <p class="module-subheading"><%= node_names(publication).join("<br/>").html_safe %></p>
-      <% end %>
-		<p class="category"><%= section %></p>
+		<%= render :partial => "module/module_image", :locals => { publication: publication } %>
+			<div class="text">
+				<h1 class="module-heading"><%= publication.title %></h1>
+		    <p class="module-subheading"><%= (publication.details.author||publication.author).name %></p>
+		    <p class="module-meta"><%= DateTime.parse(publication.created_at).strftime('%-d %B %Y') %></p>
+		    <% unless publication.details.nodes.nil? || publication.details.nodes.empty? || params[:action] == 'nodes_article' %>
+	        <p class="module-subheading"><%= node_names(publication).join("<br/>").html_safe %></p>
+	      <% end %>
+			<p class="category"><%= section %></p>
+			</div>
 	</a>
 </div>
