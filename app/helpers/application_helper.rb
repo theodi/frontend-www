@@ -1,3 +1,5 @@
+require 'open-uri'
+
 module ApplicationHelper
 
   def attachment(object, caption = true, options={})
@@ -20,14 +22,14 @@ module ApplicationHelper
     title = h asset['title']
     if asset['description'].present?
       title += "; " + asset['description']
-    end    
+    end
     byline = h(asset['attribution'])
-    byline = "By #{h asset['creator']}" if byline.blank? && asset['creator'].present? 
-    byline_link = link_to byline, asset['source'] if asset['source'] && byline    
+    byline = "By #{h asset['creator']}" if byline.blank? && asset['creator'].present?
+    byline_link = link_to byline, asset['source'] if asset['source'] && byline
     license = Odlifier.translate(asset['license'], nil)
     [title, byline_link, license].select{|x| !x.blank?}.join('. ').html_safe
   end
-  
+
   def author(publication)
     if publication.author
       if publication.author['tag_ids'].include?("team")
@@ -37,7 +39,7 @@ module ApplicationHelper
       end
     end
   end
-  
+
   def module_block(section, publication)
   	begin
   		render :partial => "module/#{section.gsub('-', '_')}", :locals => { :section => section, :publication => publication }
@@ -45,15 +47,15 @@ module ApplicationHelper
   	  render :partial => 'module/block', :locals => { :section => section, :publication => publication }
   	end
   end
-  
+
   def date_range(from_date, until_date)
     if from_date.to_date == until_date.to_date
      "#{from_date.strftime("%A %d %B %Y")}, #{from_date.strftime("%l:%M%P")} - #{until_date.strftime("%l:%M%P")}"
     else
      "#{from_date.strftime("%A %d %B %Y")} #{from_date.strftime("%l:%M%P")} - #{until_date.strftime("%A %d %B %Y")} #{until_date.strftime("%l:%M%P")}"
-    end    
+    end
   end
-  
+
   def upcoming_event?
     @publication.end_date.to_datetime > DateTime.now
   end
@@ -72,7 +74,7 @@ module ApplicationHelper
     str += " (beta)" if publication.beta
     str
   end
-  
+
   def node_subtitle(publication)
     if publication.level != "country"
       parts = [publication.host, publication.area, country(publication.region)]
@@ -86,5 +88,10 @@ module ApplicationHelper
   def node_names(publication)
     publication.details.nodes.map{|x| node_title(x) }
   end
-  
+
+  def data_uri(uri)
+    response = open(uri)
+    "data:#{response.content_type};base64,#{Base64.encode64(response.read)}"
+  end
+
 end
