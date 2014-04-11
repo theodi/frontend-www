@@ -14,9 +14,22 @@ require 'test/unit'
 require 'mocha/setup'
 require 'webmock/test_unit'
 require 'timecop'
+require 'vcr'
+
 WebMock.disable_net_connect!(:allow_localhost => true)
 
 require 'gds_api/test_helpers/content_api'
+
+VCR.configure do |c|
+  # Automatically filter all secure details that are stored in the environment
+  ignore_env = %w{SHLVL RUNLEVEL GUARD_NOTIFY DRB COLUMNS USER LOGNAME LINES TERM_PROGRAM_VERSION}
+  (ENV.keys-ignore_env).select{|x| x =~ /\A[A-Z_]*\Z/}.each do |key|
+    c.filter_sensitive_data("<#{key}>") { ENV[key] }
+  end
+  c.cassette_library_dir = 'test/fixtures/cassettes'
+  c.default_cassette_options = { :record => :once }
+  c.hook_into :webmock
+end
 
 class ActiveSupport::TestCase
   include GdsApi::TestHelpers::ContentApi

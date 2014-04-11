@@ -1,0 +1,50 @@
+<%= form_tag newsletters_path, method: :post do %>
+  <div class="form-group">
+    <%= label_tag :email, "Email address" %>
+    <%= email_field_tag :email, newsletter.email, class: "form-control", required: true %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :first_name, "First Name" %>
+    <%= text_field_tag :first_name, newsletter.first_name, class: "form-control", required: true  %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :last_name, "Last Name" %>
+    <%= text_field_tag :last_name, newsletter.last_name, class: "form-control", required: true  %>
+  </div>
+  <div class="form-group">
+    <%= label_tag "Email Format" %>
+    <div class="radio">
+      <%= label_tag do %>
+        <%= radio_button_tag :format, :html %>
+        HTML
+      <% end %>
+    </div>
+    <div class="radio">
+      <%= label_tag do %>
+        <%= radio_button_tag :format, :text %>
+        Text
+      <% end %>
+    </div>
+    <div class="radio">
+      <%= label_tag do %>
+        <%= radio_button_tag :format, :mobile %>
+        Mobile
+      <% end %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag "Newsletters" %>
+    <% newsletters.each do |newsletter| %>
+      <div class="checkbox">
+        <%= label_tag do %>
+          <%= check_box_tag "newsletters[]", newsletter['id'] %>
+          <%= newsletter['name'] %>
+        <% end %>
+        <p class="help-block"><%= newsletter['help'] %></p>
+      </div>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <%= button_tag "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

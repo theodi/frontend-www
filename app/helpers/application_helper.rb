@@ -94,4 +94,8 @@ module ApplicationHelper
     "data:#{response.content_type};base64,#{Base64.encode64(response.read)}"
   end
 
+  def newsletters
+    YAML.load_file("#{Rails.root.to_s}/config/newsletters.yml")[Rails.env]
+  end
+
 end
