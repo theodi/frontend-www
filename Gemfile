@@ -76,4 +76,4 @@ end
 # gem 'debugger'
 
 gem "newrelic_rpm"
-gem "badgerbadgerbadger"
+gem "badgerbadgerbadger"gem "gibbon"
