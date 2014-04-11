@@ -13,22 +13,19 @@ class Newsletters
   def subscribe!
     return unless valid?
     newsletters.each do |id|
-      begin
-        Gibbon::API.lists.subscribe({
-          id: id,
-          email: {
-            email: email
-          },
-          merge_vars: {
-            FNAME: first_name,
-            LNAME: last_name
-          },
-          email_type: format
-        })
-      rescue Gibbon::MailChimpError => e
-        binding.pry
-        self.errors[] << e.to_s.split(". Click here").first
-      end
+      subscribe = Gibbon::API.lists.subscribe({
+                    id: id,
+                    email: {
+                      email: email
+                    },
+                    merge_vars: {
+                      FNAME: first_name,
+                      LNAME: last_name
+                    },
+                    email_type: format
+                  })
+
+      errors.add(subscribe["name"] + ":", subscribe["error"].split(". Click here").first) if subscribe["error"]
     end
   end
 

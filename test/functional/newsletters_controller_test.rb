@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class NewslettersControllerTest < ActionController::TestCase
-
+  
   test "should display the form" do
     get :index
     assert_response :ok
@@ -109,6 +109,8 @@ class NewslettersControllerTest < ActionController::TestCase
 
       assert_response :ok
       assert_match /There were a few problems with your input, please check and try again/, response.body
+      assert_match /stuart.harrison@theodi.org is already subscribed to list This is a list/, response.body
+      assert_match /stuart.harrison@theodi.org is already subscribed to list This is another list/, response.body
 
     end
   end
