@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://us8.<PANOPTICON_USER>.mailchimp.com/2.0/lists/subscribe
+    body:
+      encoding: US-ASCII
+      string: ! '{"<PANOPTICON_USER>key":"<MAILCHIMP_API_KEY>","id":"a1c4b47c3a","email":{"email":"tech@the<CONTENTAPI_DEFAULT_ROLE>.org"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"},"update_existing":true,"email_type":"HTML"}'
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '66'
+      Vary:
+      - Accept-Enc<CONTENTAPI_DEFAULT_ROLE>ng
+      Date:
+      - Fri, 11 Apr 2014 09:45:34 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - _AVESTA_ENVIRONMENT=prod; path=/
+    body:
+      encoding: US-ASCII
+      string: ! '{"email":"tech@the<CONTENTAPI_DEFAULT_ROLE>.org","euid":"5ddbad0f2b","leid":"140978713"}'
+    http_version: 
+  recorded_at: Fri, 11 Apr 2014 09:45:36 GMT
+recorded_with: VCR 2.9.0

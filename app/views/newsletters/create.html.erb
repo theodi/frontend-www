@@ -1,0 +1,22 @@
+<% content_for :title, "Newsletters" %>
+
+<% if @newsletter.errors.count > 0 %>
+  <div class="alert alert-danger">
+    <p>There were a few problems with your input, please check and try again</p>
+    <ul>
+      <% @newsletter.errors.full_messages.each do |err| %>
+        <li><%= err %></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <div class="alert alert-success">
+    You have been sucessfully subscribed to your selected list(s)
+  </div>
+<% end %>
+
+<div class="article-main">
+  <div class="article-full">
+    <%= render "form", newsletter: @newsletter %>
+  </div>
+</div>

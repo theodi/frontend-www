@@ -58,6 +58,7 @@ group :test do
   gem 'pry'
   gem 'timecop'
   gem 'coveralls', :require => false
+  gem 'vcr'
 end
 
 # To use ActiveModel has_secure_password
@@ -76,4 +77,5 @@ end
 # gem 'debugger'
 
 gem "newrelic_rpm"
-gem "badgerbadgerbadger"gem "gibbon"
+gem "badgerbadgerbadger"
+gem "gibbon"
