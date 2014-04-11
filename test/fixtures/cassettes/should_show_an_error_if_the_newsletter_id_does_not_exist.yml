@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://us8.<PANOPTICON_USER>.mailchimp.com/2.0/lists/subscribe
+    body:
+      encoding: US-ASCII
+      string: ! '{"<PANOPTICON_USER>key":"<MAILCHIMP_API_KEY>","id":"blatantlyfakeid","email":{"email":"stuart.harrison@the<CONTENTAPI_DEFAULT_ROLE>.org"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"},"email_type":"HTML"}'
+    headers: {}
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Server:
+      - nginx
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '109'
+      X-Mailchimp-Api-Error-Code:
+      - '200'
+      Date:
+      - Fri, 11 Apr 2014 11:43:03 GMT
+      Connection:
+      - close
+      Set-Cookie:
+      - _AVESTA_ENVIRONMENT=prod; path=/
+    body:
+      encoding: US-ASCII
+      string: ! '{"status":"error","code":200,"name":"List_DoesNotExist","error":"Invalid
+        MailChimp List ID: blatantlyfakeid"}'
+    http_version: 
+  recorded_at: Fri, 11 Apr 2014 11:43:05 GMT
+recorded_with: VCR 2.9.0

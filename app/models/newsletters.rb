@@ -25,7 +25,7 @@ class Newsletters
                     email_type: format
                   })
 
-      errors.add(subscribe["name"] + ":", subscribe["error"].split(". Click here").first) if subscribe["error"]
+      errors.add(subscribe["name"] + "|", subscribe["error"].split(". Click here").first) if subscribe["error"]
     end
   end
 

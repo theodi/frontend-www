@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class NewslettersControllerTest < ActionController::TestCase
-  
+
   test "should display the form" do
     get :index
     assert_response :ok
@@ -112,6 +112,51 @@ class NewslettersControllerTest < ActionController::TestCase
       assert_match /stuart.harrison@theodi.org is already subscribed to list This is a list/, response.body
       assert_match /stuart.harrison@theodi.org is already subscribed to list This is another list/, response.body
 
+    end
+  end
+
+  test "should show an error if the newsetter ID does not exist" do
+    VCR.use_cassette('should_show_an_error_if_the_newsletter_id_does_not_exist') do
+      email = "stuart.harrison@theodi.org"
+      first_name = "Testy"
+      last_name = "McTest"
+      format = "HTML"
+      newsletters = ["blatantlyfakeid"]
+
+      post :create, {
+                      email: email,
+                      first_name: first_name,
+                      last_name: last_name,
+                      format: format,
+                      newsletters: newsletters
+                    }
+
+      assert_response :ok
+      assert_match /There were a few problems with your input, please check and try again/, response.body
+      assert_match /Invalid MailChimp List ID: blatantlyfakeid/, response.body
+
+    end
+  end
+
+  test "should show an error if the email is invalid" do
+    VCR.use_cassette('should_show_an_error_if_the_email_is_invalid') do
+      email = "notarealemail@example.com"
+      first_name = "Testy"
+      last_name = "McTest"
+      format = "HTML"
+      newsletters = ["a1c4b47c3a"]
+
+      post :create, {
+                      email: email,
+                      first_name: first_name,
+                      last_name: last_name,
+                      format: format,
+                      newsletters: newsletters
+                    }
+
+      assert_response :ok
+      assert_match /There were a few problems with your input, please check and try again/, response.body
+      assert_match /This email address looks fake or invalid. Please enter a real email address/, response.body
     end
   end
 

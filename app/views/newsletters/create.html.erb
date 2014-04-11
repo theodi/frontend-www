@@ -5,7 +5,7 @@
     <p>There were a few problems with your input, please check and try again</p>
     <ul>
       <% @newsletter.errors.full_messages.each do |err| %>
-        <li><%= err.split(":").last %></li>
+        <li><%= err.split("|").last %></li>
       <% end %>
     </ul>
   </div>
