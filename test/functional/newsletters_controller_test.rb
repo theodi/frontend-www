@@ -22,7 +22,7 @@ class NewslettersControllerTest < ActionController::TestCase
     assert_equal "News from the ODI", page.css('.checkbox p.help-block')[0].text.strip
 
     assert_equal "55b8ea4d35", page.css('.checkbox input')[1][:value]
-    assert_equal "ODI Robot", page.css('.checkbox label')[1].text.strip
+    assert_equal "ODI Robot (Daily)", page.css('.checkbox label')[1].text.strip
     assert_equal "Interesting links shared by our team", page.css('.checkbox p.help-block')[1].text.strip
   end
 
