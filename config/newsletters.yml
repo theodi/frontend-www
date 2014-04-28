@@ -14,11 +14,11 @@ production:
     help: "News from the ODI"
   -
     id: "19a76767af"
-    name: "Lectures and Training"
+    name: "Learning and Training (Monthly)"
     help: "News on training courses and Friday Lunchtime Lectures"
   -
     id: "ec52052e88"
-    name: "ODI Newsletter"
+    name: "ODI Robot (Daily)"
     help: "Interesting links shared by our team"
 test:
   -
@@ -27,5 +27,5 @@ test:
     help: "News from the ODI"
   -
     id: "55b8ea4d35"
-    name: "ODI Robot"
+    name: "ODI Robot (Daily)"
     help: "Interesting links shared by our team"
