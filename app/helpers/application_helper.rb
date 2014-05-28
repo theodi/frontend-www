@@ -98,4 +98,12 @@ module ApplicationHelper
     YAML.load_file("#{Rails.root.to_s}/config/newsletters.yml")[Rails.env]
   end
 
+  def page_title
+    [
+      content_for(:page_title),
+      strip_tags(content_for(:title)).strip,
+      'Open Data Institute'
+    ].reject { |a| a.blank? }.join(' | ')
+  end
+
 end
