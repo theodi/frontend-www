@@ -3,10 +3,10 @@ require 'gds_api/content_api'
 
 class RootController < ApplicationController
   slimmer_template :www
-  
+
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
-  before_filter(:only => [:news_list, :jobs_list, :events_list, :nodes_article, :team_article, :courses_article, :lunchtime_lectures, :courses_list]) { alternate_formats [:atom, :json] }
-  
+  before_filter(:only => [:blog_list, :news_list, :jobs_list, :events_list, :nodes_article, :team_article, :courses_article, :lunchtime_lectures, :courses_list]) { alternate_formats [:atom, :json] }
+
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list_module$/
       list_module(params)
@@ -25,7 +25,7 @@ class RootController < ApplicationController
     @section = content_api.section("index")
     render "section/section"
   end
-  
+
   def team_list
     @teams = {
       :board => {
@@ -63,7 +63,7 @@ class RootController < ApplicationController
       format.json do
         redirect_to "#{api_domain}/with_tag.json?tag=team"
       end
-    end  
+    end
   end
 
   def case_studies_list
@@ -108,7 +108,7 @@ class RootController < ApplicationController
   def events_article
     if params[:event_type]
       @section = "lunchtime-lectures" if params[:event_type].to_sym == :lunchtime_lectures
-      article(params, @section)    
+      article(params, @section)
     else
       event = ArtefactRetriever.new(content_api, Rails.logger, statsd).fetch_artefact(params[:slug], params[:edition], nil, nil)
       raise ActionController::RoutingError.new('Not Found') if event.nil?
@@ -132,9 +132,9 @@ class RootController < ApplicationController
       format.atom do
         render "list/feed", :layout => false
       end
-    end  
+    end
   end
-  
+
   def lunchtime_lectures
     @section = 'lunchtime-lectures'
     @upcoming = collect_events(['lunchtime-lecture'], :upcoming)
@@ -152,9 +152,9 @@ class RootController < ApplicationController
         @artefacts = instance_variable_get("@#{params[:type]}") || @upcoming
         render "list/feed", :layout => false
       end
-    end  
+    end
   end
-  
+
   def previous_events
     @section = 'events'
     @artefacts = collect_events(['event', 'course_instance'], :previous)
@@ -201,7 +201,7 @@ class RootController < ApplicationController
     @section = 'news'
     @news_artefacts = news_artefacts(node: params[:slug])
     @publication = fetch_article(params[:slug], params[:edition], params[:section])
-    
+
     respond_to do |format|
       format.html do
         render "content/node"
@@ -216,13 +216,13 @@ class RootController < ApplicationController
       end
     end
   end
-  
+
 
   def start_ups_article
     @section = 'news'
     @news_artefacts = news_artefacts(organization_name: params[:slug])
     @publication = fetch_article(params[:slug], params[:edition], params[:section])
-    
+
     respond_to do |format|
       format.html do
         render "content/organization"
@@ -242,7 +242,7 @@ class RootController < ApplicationController
     @section = 'news'
     @news_artefacts = news_artefacts(author: params[:slug])
     @publication = fetch_article(params[:slug], params[:edition], params[:section])
-    
+
     respond_to do |format|
       format.html do
         render "content/person"
@@ -272,9 +272,9 @@ class RootController < ApplicationController
   def page
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
                   fetch_artefact(params[:slug], params[:edition], nil, nil)
-                  
+
     @publication = PublicationPresenter.new(artefact)
-        
+
     respond_to do |format|
       format.html do
         begin
@@ -304,14 +304,14 @@ class RootController < ApplicationController
     raise RecordNotFound if date.nil?
     # Get instance
     instance = content_api.course_instance(date.strftime("%Y-%m-%d"), params[:slug], params[:edition])
-    
+
     @publication = PublicationPresenter.new(instance)
     @course = fetch_article(@publication.course, nil, "courses", false)
     @trainers = @publication.details['trainers'] ? @publication.details['trainers'].map { |t| fetch_article(t, nil, "people", false) unless t == "" }.reject{|p| p.nil?} : []
     @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
-    
+
     content_for :page_title, @title
-    
+
     respond_to do |format|
       format.html do
         render "content/course_instance"
@@ -321,16 +321,16 @@ class RootController < ApplicationController
       end
     end
   end
-  
+
   def courses_article
     @courses = {}
     @courses[params[:slug]] = fetch_article(params[:slug], params[:edition], "courses")
     @publication = @courses[params[:slug]]
-    @instances = content_api.sorted_by('course_instance', 'date').results.delete_if { 
+    @instances = content_api.sorted_by('course_instance', 'date').results.delete_if {
                   |course| course.details.course != params[:slug] || DateTime.parse(course.details.date) < Time.now }
     @instances.sort_by! { |instance| instance.details.date }
     @section = 'courses'
-        
+
     respond_to do |format|
       format.html do
         render "content/course"
@@ -345,30 +345,30 @@ class RootController < ApplicationController
       end
     end
   end
-  
+
   def courses_list
     if params[:format] == "atom"
       @artefacts = content_api.sorted_by('course_instance', 'date').results.delete_if { |course|
         DateTime.parse(course.details.date) < Time.now }
       @artefacts.sort_by! { |instance| instance.details.date }
       @section = 'courses'
-      
+
       @courses = {}
-      
+
       @artefacts.each do |instance|
         @courses[instance.details.course] ||= fetch_article(instance.details.course, nil, "courses")
       end
-      
+
       @title = "Upcoming courses"
       render "content/course"
     else
       list(params)
     end
   end
-  
+
   def case_studies_article
     @publication = fetch_article(params[:slug], params[:edition], "case_study")
-    
+
     respond_to do |format|
       format.html do
         render "content/case_study"
@@ -378,10 +378,10 @@ class RootController < ApplicationController
       end
     end
   end
-  
+
   def consultation_responses_article
     @publication = fetch_article(params[:slug], params[:edition], "consultation-response")
-    
+
     respond_to do |format|
       format.html do
         render "content/consultation_response"
@@ -422,13 +422,13 @@ class RootController < ApplicationController
       end
     end
   end
-  
+
   def team_list_module
     @section = 'team'
     slimmer_template "minimal"
     render "list_module/people", layout: 'minimal'
   end
-  
+
   def courses_list_module
     @artefact = content_api.upcoming("course_instance", "date")
     @course = fetch_article(@artefact.details.course, nil, "courses")
@@ -436,7 +436,7 @@ class RootController < ApplicationController
     slimmer_template "minimal"
     render "list_module/courses", layout: 'minimal'
   end
-  
+
   def events_list_module
     @section = "events"
     @artefact = content_api.upcoming("event", "start_date")
@@ -453,6 +453,15 @@ class RootController < ApplicationController
     render "list_module/list_module", layout: 'minimal'
   end
 
+  def blog_list
+    options = {}
+    if params[:format] == "atom"
+      options["whole_body"] = true
+    end
+    @artefacts = content_api.with_tag('blog', options).results.sort_by{|x| x.created_at}.reverse
+    list(params)
+  end
+
   def news_list
     options = {}
     if params[:format] == "atom"
@@ -464,7 +473,7 @@ class RootController < ApplicationController
   end
 
   protected
-  
+
   def list(params)
     @section = params[:section].parameterize
     options = {}
@@ -522,11 +531,11 @@ class RootController < ApplicationController
       render "module/module", layout: 'minimal'
     end
   end
-  
+
   def article(params, section = nil)
     section ||= params[:section]
     @publication = fetch_article(params[:slug], params[:edition], params[:section])
-        
+
     respond_to do |format|
       format.html do
         begin
@@ -540,24 +549,24 @@ class RootController < ApplicationController
       end
     end
   end
-  
+
   def fetch_article(slug, edition, section, set_title = true)
     artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).
                   fetch_artefact(slug, edition, nil, nil)
-    
+
     if set_title
       content_for :page_title, artefact.title
     end
 
     # If the content type or tag doesn't match the slug, return 404
-    if artefact['format'] != section.singularize && 
+    if artefact['format'] != section.singularize &&
         artefact['tags'].map { |t| t['content_with_tag']['slug'] == params[:section].singularize }.all? { |v| v === false }
-      raise ActionController::RoutingError.new('Not Found') 
+      raise ActionController::RoutingError.new('Not Found')
     end
 
     PublicationPresenter.new(artefact)
   end
-    
+
   def collect_events(tags, type)
     artefacts = collect_artefacts(tags)
     if type == :previous
@@ -569,7 +578,7 @@ class RootController < ApplicationController
     end
     return artefacts
   end
-  
+
   def collect_artefacts(tags)
     artefacts = []
     tags.each do |tag|
@@ -577,7 +586,7 @@ class RootController < ApplicationController
     end
     return artefacts
   end
-  
+
   def api_domain
     Plek.current.find("contentapi")
   end
