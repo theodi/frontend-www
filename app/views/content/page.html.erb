@@ -8,7 +8,7 @@
 
 <% if @publication.related_links.count > 0 %>
 
-  <aside class="article-sidebar">
+  <aside class="article-sidebar listing">
 
       <% @publication.related_links.each do |link| %>
         <div class="module module-light module-colour-<%= rand(1..12).to_i %>">
