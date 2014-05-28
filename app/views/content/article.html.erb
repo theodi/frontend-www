@@ -9,20 +9,38 @@
           <span class="date"><%= @publication.created %></span> by
           <%= author(@publication) %>
       </div>
-      
+
       <%= @publication.content.html_safe %>
-      
+
     </article>
-    
+
     <h3>Comments</h3>
-    
+
     <%= juvia_comments @publication.slug %>
-  
+
 </div>
 
-<aside class="article-sidebar">
+<aside class="article-sidebar listing">
+
+    <% if @publication.related_links.count > 0 %>
+
+      <h3>Related items</h3>
+
+      <% @publication.related_links.each do |link| %>
+        <div class="module module-light module-colour-<%= rand(1..12).to_i %>">
+          <a href="<%= link[:url] %>">
+            <h1 class="module-heading"><%= link[:title] %></h1>
+          </a>
+        </div>
+      <% end %>
+
+    <% end %>
+
+    <h3>Latest blog post</h3>
 
     <iframe seamless scrolling='no' src="/blog/module"></iframe>
+
+    <h3>Latest news</h3>
 
     <iframe seamless scrolling='no' src="/news/module"></iframe>
 
