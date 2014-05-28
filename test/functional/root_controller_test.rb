@@ -303,12 +303,23 @@ class RootControllerTest < ActionController::TestCase
       Timecop.return
     end
 
+    test "Blog should list blog posts in date order" do
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=blog").
+        to_return(:status => 200, :body => load_fixture('blog-list.json'), :headers => {})
+
+      get :blog_list, :section=>"blog"
+
+      html = Nokogiri::HTML(response.body)
+      assert_equal "2014:  Entering the age of open data business", html.css(".module-heading")[0].text
+      assert_equal " Investigating the British Open Data Ecosystem", html.css(".module-heading")[1].text
+
+    end
+
     test "Atom feeds should return full text feed" do
       stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=news&whole_body=true").
         to_return(:status => 200, :body => load_fixture('full-text-news.json'), :headers => {})
       stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=blog&whole_body=true").
         to_return(:status => 200, :body => '{"total":47,"start_index":1,"page_size":47,"current_page":1,"pages":1,"_response_info":{"status":"ok","links":[]},"description":"","results": []}', :headers => {})
-
 
       get :news_list, :format => 'atom', :section=>"news"
 
