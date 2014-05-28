@@ -102,8 +102,8 @@ module ApplicationHelper
     [
       content_for(:page_title),
       strip_tags(content_for(:title)).strip,
-      "Open Data Institute"
-    ].reject{ |a| a.blank? }.join(" | ")
+      'Open Data Institute'
+    ].reject { |a| a.blank? }.join(' | ')
   end
 
 end
