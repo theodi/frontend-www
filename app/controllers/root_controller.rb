@@ -463,10 +463,12 @@ class RootController < ApplicationController
   end
 
   def news_list
+    @page = (params[:page] || 1).to_i
     options = {}
     if params[:format] == "atom"
       options["whole_body"] = true
     end
+    options["page"] = @page
     @artefacts = news_artefacts(options)
     @hero_image = 'news_hero.jpg'
     list(params)
@@ -502,8 +504,8 @@ class RootController < ApplicationController
   end
 
   def news_artefacts(options = {})
-    artefacts = content_api.with_tag('news', options).results + content_api.with_tag('blog', options).results
-    artefacts.sort_by!{|x| x.created_at}.reverse!
+    options["sort"] = "date"
+    artefacts = content_api.with_tag('news,blog', options)
     artefacts
   end
 

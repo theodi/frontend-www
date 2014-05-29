@@ -316,10 +316,8 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "Atom feeds should return full text feed" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=news&whole_body=true").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog&whole_body=true").
         to_return(:status => 200, :body => load_fixture('full-text-news.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=blog&whole_body=true").
-        to_return(:status => 200, :body => '{"total":47,"start_index":1,"page_size":47,"current_page":1,"pages":1,"_response_info":{"status":"ok","links":[]},"description":"","results": []}', :headers => {})
 
       get :news_list, :format => 'atom', :section=>"news"
 
