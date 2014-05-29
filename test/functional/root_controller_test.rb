@@ -393,4 +393,30 @@ class RootControllerTest < ActionController::TestCase
       Timecop.return
     end
 
+    test "should show 30 results on news page" do
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog').
+        to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {})
+
+      get :news_list, :section => 'news'
+
+      html = Nokogiri::HTML(response.body)
+      assert_equal 30, html.css('.row .module').count
+    end
+
+    test "should have a 'next page' link when there are more pages" do
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog').
+        to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {:link => '<http://contentapi.dev/with_tag.json?include_children=1&page=2&sort=date&tag=news,blog>;rel="next"' })
+
+      get :news_list, :section => 'news'
+      assert_match /Next page/, response.body
+    end
+
+    test "should not have a 'previous page' link when we are on the first page" do
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog').
+        to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {})
+
+      get :news_list, :section => 'news'
+      assert_no_match /Previous page/, response.body
+    end
+
 end
