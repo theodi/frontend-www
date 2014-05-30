@@ -327,10 +327,8 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "Atom feeds should return full text feed" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=news&whole_body=true").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog&whole_body=true").
         to_return(:status => 200, :body => load_fixture('full-text-news.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=blog&whole_body=true").
-        to_return(:status => 200, :body => '{"total":47,"start_index":1,"page_size":47,"current_page":1,"pages":1,"_response_info":{"status":"ok","links":[]},"description":"","results": []}', :headers => {})
 
       get :news_list, :format => 'atom', :section=>"news"
 
@@ -404,6 +402,32 @@ class RootControllerTest < ActionController::TestCase
       html = Nokogiri::HTML(response.body)
       assert_equal "http://static.dev/assets/whatshappening_hero.jpg", html.css(".hero img").first[:src]
       Timecop.return
+    end
+
+    test "should show 30 results on news page" do
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog').
+        to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {})
+
+      get :news_list, :section => 'news'
+
+      html = Nokogiri::HTML(response.body)
+      assert_equal 30, html.css('.row .module').count
+    end
+
+    test "should have a 'next page' link when there are more pages" do
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog').
+        to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {:link => '<http://contentapi.dev/with_tag.json?include_children=1&page=2&sort=date&tag=news,blog>;rel="next"' })
+
+      get :news_list, :section => 'news'
+      assert_match /Next page/, response.body
+    end
+
+    test "should not have a 'previous page' link when we are on the first page" do
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog').
+        to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {})
+
+      get :news_list, :section => 'news'
+      assert_no_match /Previous page/, response.body
     end
 
 end
