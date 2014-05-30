@@ -4,21 +4,4 @@
 	<% end %>
 </div>
 
-<% if artefacts.respond_to?("results") %>
-
-<ul class="pager">
-
-	<% if artefacts.has_previous_page? %>
-		<li class="previous">
-			<%= link_to "Previous page", { controller: "root", action: action_name, params: { page: @page - 1} }, { class: "previous-page" } %>
-		</li>
-	<% end %>
-
-	<% if artefacts.has_next_page? %>
-		<li class="next">
-			<%= link_to "Next page", { controller: "root", action: action_name, params: { page: @page + 1 } }, { class: "next-page"} %>
-		</li>
-	<% end %>
-
-</ul>
-<% end %>
+<%= render :partial => "list/pager", :locals => { :artefacts => artefacts, :page => @page } %>

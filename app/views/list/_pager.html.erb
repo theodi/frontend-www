@@ -1,0 +1,55 @@
+<% if artefacts.respond_to?("results") %>
+
+  <ul class="pager">
+
+    <% if artefacts.has_previous_page? %>
+      <li class="previous">
+        <%= link_to "Previous page", { controller: "root", action: action_name, params: { page: page - 1} }, { class: "previous-page" } %>
+      </li>
+    <% end %>
+
+    <% if artefacts.has_next_page? %>
+      <li class="next">
+        <%= link_to "Next page", { controller: "root", action: action_name, params: { page: page + 1 } }, { class: "next-page"} %>
+      </li>
+    <% end %>
+
+  </ul>
+
+  <% if artefacts.has_previous_page? || artefacts.has_next_page? %>
+
+    <% content_for :extra_javascript do %>
+      <script>
+        $('.grid').infinitescroll({
+          navSelector  : '.pager',
+          nextSelector : '.pager .next-page',
+          itemSelector : '.grid li',
+          loading : {
+              msgText 		: '<i class="fa fa-spinner fa-spin fa-2x"></i>',
+              img 				: null,
+              finishedMsg : '',
+              speed			 : 0,
+          }
+        },
+        // trigger Masonry as a callback
+        function( newElements ) {
+          // hide new items while they are loading
+          var $newElems = $( newElements ).css({ opacity: 0 });
+          // ensure that images load before adding to masonry layout
+          $newElems.imagesLoaded(function(){
+            $('.grid').masonry( 'appended', $newElems, true );
+
+            new AnimOnScroll( document.getElementById('grid2'), {
+              minDuration : 0.4,
+              maxDuration : 0.7,
+              viewportFactor : 0.2
+            });
+          });
+        }
+      );
+      </script>
+    <% end %>
+
+  <% end %>
+
+<% end %>
