@@ -17,7 +17,8 @@ class PublicationPresenter
     :telephone, :email, :twitter, :linkedin, :github, :content,
     :region, :level, :status, :course, :date, :square, :location,
     :start_date, :end_date, :booking_url, :artist, :price,
-    :beta, :join_date, :area, :logo, :host, :livestream, :tagline
+    :beta, :join_date, :area, :logo, :host, :livestream, :tagline,
+    :joined_at
   ]
 
   PASS_THROUGH_KEYS.each do |key|

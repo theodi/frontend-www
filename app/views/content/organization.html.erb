@@ -33,6 +33,11 @@
     </ul>
 
     <%= @publication.description.html_safe %>
+
+    <% unless @publication.joined_at.blank? %>
+      <p>Joined on: <%= Date.parse(@publication.joined_at).to_formatted_s(:long) %></p>
+    <% end %>
+
   </article>
 
   <% unless @news_artefacts.total == 0 %>
