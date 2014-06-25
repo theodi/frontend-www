@@ -6,6 +6,10 @@
   <article class="article-body">
     <h2><%= @publication.title %></h2>
 
+    <% unless @publication.tagline.blank? %>
+      <p class='lead'><%= @publication.tagline %></p>
+    <% end %>
+
     <ul class='list-unstyled'>
     <% unless @publication.url.blank? %>
       <li><i class='fa fa-globe'></i> <%= link_to @publication.url, @publication.url %></li>
