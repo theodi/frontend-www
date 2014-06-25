@@ -2,20 +2,25 @@
   <a href="<%= start_ups_section_path %>">Startups</a>
 <% end %>
 
-<div class="article-full">
+<div class="article-main">
   <article class="article-body">
     <h2><%= @publication.title %></h2>
     <%= @publication.description.html_safe %>
   </article>
+
+  <% unless @news_artefacts.total == 0 %>
+    <h3>News</h3>
+
+  	<ul class="grid effect-2 listing" id="grid2">
+  		<% @news_artefacts.each do |artefact| %>
+  			<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
+  		<% end %>
+  	</div>
+
+  <% end %>
+
 </div>
 
-<% unless @news_artefacts.total == 0 %>
-  <h3>News</h3>
-
-	<ul class="grid effect-2 listing" id="grid2">
-		<% @news_artefacts.each do |artefact| %>
-			<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
-		<% end %>
-	</div>
-
-<% end %>
+<aside class="article-sidebar listing">
+  <%= render 'content/related' %>
+</aside>
