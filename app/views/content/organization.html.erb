@@ -5,6 +5,29 @@
 <div class="article-main">
   <article class="article-body">
     <h2><%= @publication.title %></h2>
+
+    <ul class='list-unstyled'>
+    <% unless @publication.url.blank? %>
+      <li><i class='fa fa-globe'></i> <%= link_to @publication.url, @publication.url %></li>
+    <% end %>
+
+    <% unless @publication.email.blank? %>
+      <li><i class='fa fa-envelope'></i> <%= mail_to @publication.email %></li>
+    <% end %>
+
+    <% unless @publication.twitter.blank? %>
+      <li><i class='fa fa-twitter'></i> <%= link_to '@'+@publication.twitter, "http://twitter.com/#{@publication.twitter}" %></li>
+    <% end %>
+
+    <% unless @publication.linkedin.blank? %>
+      <li><i class='fa fa-linkedin'></i> <%= link_to @publication.linkedin, @publication.linkedin %></li>
+    <% end %>
+
+    <% unless @publication.telephone.blank? %>
+      <li><i class='fa fa-phone'></i> <%= @publication.telephone %></li>
+    <% end %>
+    </ul>
+
     <%= @publication.description.html_safe %>
   </article>
 
