@@ -1,0 +1,19 @@
+<% if @publication.related_links.count > 0 %>
+
+  <h3>Related items</h3>
+
+  <% @publication.artefact["related"].each do |related| %>
+    <% artefact = ArtefactRetriever.new(content_api, Rails.logger, statsd).fetch_artefact(related['slug']) %>
+    <%= module_block artefact.format, artefact %>
+  <% end %>
+
+  <% @publication.artefact["related_external_links"].each do |link| %>
+    <div class="module module-light module-highlight-1 module-colour-<%= (link['url'].length % 12) + 1 %>">
+      <a href="<%= link['url'] %>">
+        <h1 class="module-heading"><%= link['title'] %></h1>
+        <p class='category'>link</p>
+      </a>
+    </div>
+  <% end %>
+
+<% end %>

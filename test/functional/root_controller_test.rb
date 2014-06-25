@@ -95,7 +95,7 @@ class RootControllerTest < ActionController::TestCase
       assert_response :ok
       page = Nokogiri::HTML(response.body)
 
-      assert_equal "/courses/open-data-marketers.atom", page.css('head link')[0][:href]
+      assert_equal "/courses/open-data-marketers.atom", page.css("head link[rel='alternate']")[0][:href]
     end
 
     test "courses atom feed should return the correct stuff" do
@@ -245,7 +245,7 @@ class RootControllerTest < ActionController::TestCase
       assert_response :ok
       page = Nokogiri::HTML(response.body)
 
-      assert_equal "/lunchtime-lectures.atom", page.css('head link')[0][:href]
+      assert_equal "/lunchtime-lectures.atom", page.css("head link[rel='alternate']")[0][:href]
     end
 
     test "lunchtime lectures atom feed should return the correct stuff" do
