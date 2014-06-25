@@ -6,6 +6,8 @@
   <article class="article-body">
     <h2><%= @publication.title %></h2>
 
+    <%= image_tag(@publication.logo['web_url'], :class => 'node-logo') unless @publication.logo.nil? %>
+
     <% unless @publication.tagline.blank? %>
       <p class='lead'><%= @publication.tagline %></p>
     <% end %>
