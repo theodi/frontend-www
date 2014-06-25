@@ -48,15 +48,17 @@ class ApplicationController < ActionController::Base
       CONTENT_API_CREDENTIALS
     )
   end
-  
+  helper_method :content_api
+
   def statsd
     statsd ||= Statsd.new("localhost").tap do |c|
       c.namespace = ENV['GOVUK_STATSD_PREFIX'].to_s
     end
   end
-  
-  
-  def event_type(event)    
+  helper_method :statsd
+
+
+  def event_type(event)
     url_map = {
       "open-data-challenge-series" => "challenge-series"
     }
