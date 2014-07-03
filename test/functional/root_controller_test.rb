@@ -61,6 +61,17 @@ class RootControllerTest < ActionController::TestCase
     assert_match /<a href="http:\/\/theodi.org\/blog\/cornerstone-open-data-postcode-address-file"> <h1 class="module-heading">A Cornerstone for Open Data: The Postcode Address File<\/h1> <\/a>/, response.body.squish
   end
 
+  test "should show related content against a news item" do
+    stub_request(:get, "http://contentapi.dev/odi-research-priorities-for-2014.json").
+      to_return(:status => 200, :body => load_fixture('odi-research-priorities-for-2014.json'), :headers => {})
+
+    get :page, :slug => 'odi-research-priorities-for-2014'
+    assert_response :ok
+
+    assert_match /<a href=\"http:\/\/www.dev\/blog\/letter-to-santa-2013\"> <h1 class=\"module-heading\">An open letter to Santa and a vision of open data for 2014<\/h1> <\/a>/, response.body.squish
+    assert_match /<a href=\"http:\/\/www.dev\/blog\/odi-node-knowledge-feb-2014\"> <h1 class=\"module-heading\">Node knowledge - Feb 2014<\/h1> <\/a>/, response.body.squish
+  end
+
   test "should not show a sidebar for content without related content" do
     stub_request(:get, "http://contentapi.dev/data-as-culture-2014.json").
       to_return(:status => 200, :body => load_fixture('no-related.json'), :headers => {})
@@ -84,7 +95,7 @@ class RootControllerTest < ActionController::TestCase
       assert_response :ok
       page = Nokogiri::HTML(response.body)
 
-      assert_equal "/courses/open-data-marketers.atom", page.css('head link')[0][:href]
+      assert_equal "/courses/open-data-marketers.atom", page.css("head link[rel='alternate']")[0][:href]
     end
 
     test "courses atom feed should return the correct stuff" do
@@ -234,7 +245,7 @@ class RootControllerTest < ActionController::TestCase
       assert_response :ok
       page = Nokogiri::HTML(response.body)
 
-      assert_equal "/lunchtime-lectures.atom", page.css('head link')[0][:href]
+      assert_equal "/lunchtime-lectures.atom", page.css("head link[rel='alternate']")[0][:href]
     end
 
     test "lunchtime lectures atom feed should return the correct stuff" do

@@ -1,4 +1,4 @@
-class PublicationPresenter  
+class PublicationPresenter
   attr_reader :artefact
 
   attr_accessor :places, :parts, :current_part
@@ -12,12 +12,13 @@ class PublicationPresenter
   ]
 
   PASS_THROUGH_DETAILS_KEYS = [
-    :body, :subtitle, :featured, :image, :honorific_prefix, 
+    :body, :subtitle, :featured, :image, :honorific_prefix,
     :honorific_suffix, :affiliation, :role, :description, :url,
     :telephone, :email, :twitter, :linkedin, :github, :content,
     :region, :level, :status, :course, :date, :square, :location,
     :start_date, :end_date, :booking_url, :artist, :price,
-    :beta, :join_date, :area, :logo, :host, :livestream
+    :beta, :join_date, :area, :logo, :host, :livestream, :tagline,
+    :joined_at
   ]
 
   PASS_THROUGH_KEYS.each do |key|
@@ -31,7 +32,7 @@ class PublicationPresenter
       details[key.to_s] if details
     end
   end
-    
+
   def format
     @artefact["format"]
   end
@@ -43,12 +44,12 @@ class PublicationPresenter
   def created
     DateTime.parse(@artefact["created_at"]).strftime("%Y-%m-%d")
   end
-  
+
   def image
     if @artefact['details']['image']
       @artefact['details']['image']
     elsif @artefact['details']['file'] && @artefact['details']['file']['content_type'] == 'image/jpeg'
-      @artefact['details']['file'] 
+      @artefact['details']['file']
     end
   end
 
@@ -68,7 +69,7 @@ class PublicationPresenter
       false
     end
   end
-  
+
   def related_links
     externals = @artefact["related_external_links"] + @artefact["related"]
     links = externals.map! do |l|
@@ -79,7 +80,7 @@ class PublicationPresenter
     end
     links
   end
-  
+
   def article_class
     related_links.count == 0 ? "article-full" : "article-main"
   end

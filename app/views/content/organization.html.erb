@@ -2,20 +2,59 @@
   <a href="<%= start_ups_section_path %>">Startups</a>
 <% end %>
 
-<div class="article-full">
+<div class="article-main">
   <article class="article-body">
     <h2><%= @publication.title %></h2>
+
+    <%= image_tag(@publication.logo['web_url'], :class => 'node-logo') unless @publication.logo.nil? %>
+
+    <% unless @publication.tagline.blank? %>
+      <p class='lead'><%= @publication.tagline %></p>
+    <% end %>
+
+    <ul class='list-unstyled'>
+    <% unless @publication.url.blank? %>
+      <li><i class='fa fa-globe'></i> <%= link_to @publication.url, @publication.url %></li>
+    <% end %>
+
+    <% unless @publication.email.blank? %>
+      <li><i class='fa fa-envelope'></i> <%= mail_to @publication.email %></li>
+    <% end %>
+
+    <% unless @publication.twitter.blank? %>
+      <li><i class='fa fa-twitter'></i> <%= link_to '@'+@publication.twitter, "http://twitter.com/#{@publication.twitter}" %></li>
+    <% end %>
+
+    <% unless @publication.linkedin.blank? %>
+      <li><i class='fa fa-linkedin'></i> <%= link_to @publication.linkedin, @publication.linkedin %></li>
+    <% end %>
+
+    <% unless @publication.telephone.blank? %>
+      <li><i class='fa fa-phone'></i> <%= @publication.telephone %></li>
+    <% end %>
+    </ul>
+
     <%= @publication.description.html_safe %>
+
+    <% unless @publication.joined_at.blank? %>
+      <p>Joined on: <%= Date.parse(@publication.joined_at).to_formatted_s(:long) %></p>
+    <% end %>
+
   </article>
+
+  <% unless @news_artefacts.total == 0 %>
+    <h3>News</h3>
+
+  	<ul class="grid effect-2 listing" id="grid2">
+  		<% @news_artefacts.each do |artefact| %>
+  			<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
+  		<% end %>
+  	</div>
+
+  <% end %>
+
 </div>
 
-<% unless @news_artefacts.empty? %>
-  <h3>News</h3>
-
-	<ul class="grid effect-2 listing" id="grid2">
-		<% @news_artefacts.each do |artefact| %>
-			<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
-		<% end %>
-	</div>
-
-<% end %>
+<aside class="article-sidebar listing">
+  <%= render 'content/related' %>
+</aside>
