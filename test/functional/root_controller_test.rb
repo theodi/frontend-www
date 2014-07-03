@@ -345,6 +345,18 @@ class RootControllerTest < ActionController::TestCase
       assert_match /Sorry there are no jobs currently listed. We regularly add new jobs, so keep checking back, or subscribe to our <a href="\/jobs.atom">atom feed<\/a>/, response.body
     end
 
+    test "Startups should be split into current and graduated" do
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=start-up").
+        to_return(:status => 200, :body => load_fixture('startups.json'), :headers => {})
+
+      get :start_ups_list, :section => "start-ups"
+
+      html = Nokogiri::HTML(response.body)
+
+      assert_equal 2, html.css(".current li").count
+      assert_equal 1, html.css(".graduated li").count
+    end
+
     test "should get previous events page with old events" do
       stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=event").
         to_return(:status => 200, :body => load_fixture('events.json'), :headers => {})
