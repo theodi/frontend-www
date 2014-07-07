@@ -469,7 +469,7 @@ class RootController < ApplicationController
       options["whole_body"] = true
     end
     options["page"] = @page
-    @artefacts = news_artefacts(options)
+    @artefacts = news_artefacts(options).select{|x| x.nodes.empty?}
     @hero_image = 'news_hero.jpg'
     list(params)
   end
