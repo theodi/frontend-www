@@ -8,8 +8,16 @@
   </div>
 <% end %>
 
-<ul class="grid effect-2 listing" id="grid2">
-	<% @artefacts.each do |artefact| %>
-		<%= render :partial => "list/block", :locals => { :artefact => artefact } %>
-	<% end %>
-</div>
+<h2>Current</h2>
+<ul class="grid effect-2 listing current" id="grid2">
+  <% @current.each do |artefact| %>
+    <%= render :partial => "list/block", :locals => { :artefact => artefact } %>
+  <% end %>
+</ul>
+
+<h2>Graduated</h2>
+<ul class="grid effect-2 listing graduated" id="grid2">
+  <% @graduated.each do |artefact| %>
+    <%= render :partial => "list/block", :locals => { :artefact => artefact } %>
+  <% end %>
+</ul>
