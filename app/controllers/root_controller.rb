@@ -483,6 +483,7 @@ class RootController < ApplicationController
     end
     @artefacts = news_artefacts(options)
     @artefacts.results.select! { |x| x.nodes.any? }
+    @title = "Node news"
     list(params)
   end
 
@@ -516,7 +517,7 @@ class RootController < ApplicationController
       options["whole_body"] = true
     end
     @artefacts ||= content_api.with_tag(params[:section].singularize, options).results
-    @title = params[:section].gsub('-', ' ').humanize.capitalize
+    @title ||= params[:section].gsub('-', ' ').humanize.capitalize
     respond_to do |format|
       format.html do
         begin
