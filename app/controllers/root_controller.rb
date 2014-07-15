@@ -5,7 +5,7 @@ class RootController < ApplicationController
   slimmer_template :www
 
   before_filter(:except => [:index, :section, /^(.*)_list_module$/]) { alternate_formats [:json] }
-  before_filter(:only => [:blog_list, :news_list, :jobs_list, :events_list, :nodes_article, :team_article, :courses_article, :lunchtime_lectures, :courses_list]) { alternate_formats [:atom, :json] }
+  before_filter(:only => [:blog_list, :news_list, :jobs_list, :events_list, :nodes_article, :team_article, :courses_article, :lunchtime_lectures, :courses_list, :node_news]) { alternate_formats [:atom, :json] }
 
   def action_missing(name, *args, &block)
     if name.to_s =~ /^(.*)_list_module$/
@@ -475,6 +475,18 @@ class RootController < ApplicationController
     list(params)
   end
 
+  def node_news_list
+    params[:section] = "news"
+    options = {}
+    if params[:format] == "atom"
+      options["whole_body"] = true
+    end
+    @artefacts = news_artefacts(options)
+    @artefacts.results.select! { |x| x.nodes.any? }
+    @title = "Node news"
+    list(params)
+  end
+
   def start_ups_list
     @publication = fetch_article('start-ups', params[:edition], "article") rescue nil
     @section = 'start_ups'
@@ -505,7 +517,7 @@ class RootController < ApplicationController
       options["whole_body"] = true
     end
     @artefacts ||= content_api.with_tag(params[:section].singularize, options).results
-    @title = params[:section].gsub('-', ' ').humanize.capitalize
+    @title ||= params[:section].gsub('-', ' ').humanize.capitalize
     respond_to do |format|
       format.html do
         begin

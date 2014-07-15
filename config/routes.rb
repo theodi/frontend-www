@@ -12,7 +12,7 @@ Www::Application.routes.draw do
   get "culture/collection", as: "culture_collection", to: 'root#culture_collection'
   get "events/previous", as: "previous_events_section", to: "root#previous_events"
   get "lunchtime-lectures", as: "lunchtime_lectures_section", to: "root#lunchtime_lectures"
-
+  get "nodes/news", as: 'node_news', to: 'root#node_news_list'
 
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|
     section_slug = section.to_s.dasherize
