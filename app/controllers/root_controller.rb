@@ -475,6 +475,17 @@ class RootController < ApplicationController
     list(params)
   end
 
+  def node_news_list
+    params[:section] = "news"
+    options = {}
+    if params[:format] == "atom"
+      options["whole_body"] = true
+    end
+    @artefacts = news_artefacts(options)
+    @artefacts.results.select! { |x| x.nodes.any? }
+    list(params)
+  end
+
   def start_ups_list
     @publication = fetch_article('start-ups', params[:edition], "article") rescue nil
     @section = 'start_ups'

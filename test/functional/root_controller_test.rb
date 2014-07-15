@@ -442,4 +442,15 @@ class RootControllerTest < ActionController::TestCase
       assert_no_match /Previous page/, response.body
     end
 
+    test "should only have node news on the node news page" do
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&sort=date&tag=news,blog').
+        to_return(:status => 200, :body => load_fixture('news-page-with-nodes.json'), :headers => {})
+
+      get :node_news_list
+      html = Nokogiri::HTML(response.body)
+
+      assert_equal 3, html.css('.row .module').count
+      assert_match /ODI Paris/, response.body
+    end
+
 end
