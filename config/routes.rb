@@ -3,6 +3,8 @@ Www::Application.routes.draw do
 
   root :to => 'root#index'
 
+  get "search", to: "search#perform"
+
   urlMaps = YAML.load_file("#{Rails.root.to_s}/config/url-mapping.yml")
   urlMaps.each do |item|
     get "#{item['url']}", as: "#{item['slug'].gsub('-','_')}_page", to: 'root#page', :slug => item['slug']

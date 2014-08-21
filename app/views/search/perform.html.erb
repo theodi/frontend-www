@@ -1,0 +1,20 @@
+<% content_for :title, "Search Results" %>
+
+<div class="article-full">
+  <article class="article-body">
+      <h2>You searched for &ldquo;<%= @search_term %>&rdquo;</h2>
+
+      <div class="article-meta">
+        <%= pluralize(@result_count, 'result') %> found
+      </div>
+
+      <ul class="results-list" id="js-live-search-results">
+        <% @results.each_with_index do |result, index| %>
+          <%= render partial: "result", locals: { result: result } %>
+        <% end %>
+      </ul>
+
+
+  </article>
+
+</div>
