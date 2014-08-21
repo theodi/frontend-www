@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: git://github.com/theodi/gds-api-adapters.git
-  revision: 34282e6bc2605c70e19569428ce79753cd2511d7
+  revision: 1801f9e893a0c18e1a23f44690b6bcbcdb58de67
   specs:
-    gds-api-adapters (7.5.0)
+    gds-api-adapters (7.25.0)
       activesupport
       link_header
       lrucache (~> 0.1.1)
