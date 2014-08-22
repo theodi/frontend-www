@@ -3,7 +3,7 @@ require 'test_helper'
 class RootControllerTest < ActionController::TestCase
 
   test "should get index" do
-    stub_request(:get, "http://contentapi.dev/section.json?id=index").
+    stub_request(:get, "http://contentapi.dev/section.json?id=index&role=odi").
       to_return(:status => 200, :body => load_fixture('homepage.json'), :headers => {})
 
     get :index
@@ -32,7 +32,7 @@ class RootControllerTest < ActionController::TestCase
   end
 
   test "should get about page" do
-    stub_request(:get, "http://contentapi.dev/section.json?id=about").
+    stub_request(:get, "http://contentapi.dev/section.json?id=about&role=odi").
       to_return(:status => 200, :body => load_fixture('homepage.json'), :headers => {})
 
     get :section, :section => "about"
@@ -40,7 +40,7 @@ class RootControllerTest < ActionController::TestCase
   end
 
   test "should get page" do
-    stub_request(:get, "http://contentapi.dev/data-as-culture-2014.json").
+    stub_request(:get, "http://contentapi.dev/data-as-culture-2014.json?role=odi").
       to_return(:status => 200, :body => load_fixture('data-as-culture-2014.json'), :headers => {})
 
     get :page, :slug => 'data-as-culture-2014'
@@ -48,7 +48,7 @@ class RootControllerTest < ActionController::TestCase
   end
 
   test "should show related content against a page" do
-    stub_request(:get, "http://contentapi.dev/data-as-culture-2014.json").
+    stub_request(:get, "http://contentapi.dev/data-as-culture-2014.json?role=odi").
       to_return(:status => 200, :body => load_fixture('data-as-culture-2014.json'), :headers => {})
 
     get :page, :slug => 'data-as-culture-2014'
@@ -62,7 +62,7 @@ class RootControllerTest < ActionController::TestCase
   end
 
   test "should show related content against a news item" do
-    stub_request(:get, "http://contentapi.dev/odi-research-priorities-for-2014.json").
+    stub_request(:get, "http://contentapi.dev/odi-research-priorities-for-2014.json?role=odi").
       to_return(:status => 200, :body => load_fixture('odi-research-priorities-for-2014.json'), :headers => {})
 
     get :page, :slug => 'odi-research-priorities-for-2014'
@@ -73,7 +73,7 @@ class RootControllerTest < ActionController::TestCase
   end
 
   test "should not show a sidebar for content without related content" do
-    stub_request(:get, "http://contentapi.dev/data-as-culture-2014.json").
+    stub_request(:get, "http://contentapi.dev/data-as-culture-2014.json?role=odi").
       to_return(:status => 200, :body => load_fixture('no-related.json'), :headers => {})
 
     get :page, :slug => 'data-as-culture-2014'
@@ -85,11 +85,12 @@ class RootControllerTest < ActionController::TestCase
   end
 
   test "courses should have an atom feed" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&sort=date&tag=course_instance").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('course-instances.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/open-data-marketers.json").
+
+      stub_request(:get, "http://contentapi.dev/open-data-marketers.json?role=odi").
           to_return(:status => 200, :body => load_fixture('open-data-marketers.json'), :headers => {})
+
       get :courses_article, :slug => 'open-data-marketers', :section=> 'courses'
 
       assert_response :ok
@@ -100,11 +101,12 @@ class RootControllerTest < ActionController::TestCase
 
     test "courses atom feed should return the correct stuff" do
       Timecop.freeze(Time.parse("2013-12-22T13:00:00+00:00"))
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&sort=date&tag=course_instance").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('course-instances.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/introduction-open-data-journalists-finding-stories-data.json").
+
+      stub_request(:get, "http://contentapi.dev/introduction-open-data-journalists-finding-stories-data.json?role=odi").
           to_return(:status => 200, :body => load_fixture('introduction-open-data-journalists-finding-stories-data.json'), :headers => {})
+
       get :courses_article, :slug => 'introduction-open-data-journalists-finding-stories-data', :section=> 'courses', :format => 'atom'
 
       assert_response :ok
@@ -119,12 +121,10 @@ class RootControllerTest < ActionController::TestCase
     test "courses list atom feed should return the correct stuff" do
       Timecop.freeze(Time.parse("2014-02-14T13:00:00+00:00"))
 
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&sort=date&tag=course_instance").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('course-instances-short.json'), :headers => {})
 
-      stub_request(:get, "http://contentapi.dev/open-data-practice.json").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/open-data-practice.json?role=odi").
         to_return(:status => 200, :body => load_fixture('open-data-practice.json'), :headers => {})
 
       get :courses_list, :slug => 'introduction-open-data-journalists-finding-stories-data', :section=> 'courses', :format => 'atom'
@@ -140,10 +140,10 @@ class RootControllerTest < ActionController::TestCase
 
     test "courses should include instances in a sidebar" do
       Timecop.freeze(Time.parse("2013-12-22T13:00:00+00:00"))
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&sort=date&tag=course_instance").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('course-instances.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/introduction-open-data-journalists-finding-stories-data.json").
+
+      stub_request(:get, "http://contentapi.dev/introduction-open-data-journalists-finding-stories-data.json?role=odi").
           to_return(:status => 200, :body => load_fixture('introduction-open-data-journalists-finding-stories-data.json'), :headers => {})
 
       get :courses_article, :slug => 'introduction-open-data-journalists-finding-stories-data', :section=> 'courses'
@@ -160,11 +160,11 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "course instances should load correctly" do
-      stub_request(:get, "http://contentapi.dev/course-instance.json?course=open-data-marketers&date=2014-01-22").
+      stub_request(:get, "http://contentapi.dev/course-instance.json?course=open-data-marketers&date=2014-01-22&role=odi").
         to_return(:status => 200, :body => load_fixture('open-data-marketers-2014-01-22.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/open-data-marketers.json").
+      stub_request(:get, "http://contentapi.dev/open-data-marketers.json?role=odi").
           to_return(:status => 200, :body => load_fixture('open-data-marketers.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/kathryn-corrick.json").
+      stub_request(:get, "http://contentapi.dev/kathryn-corrick.json?role=odi").
         to_return(:status => 200, :body => load_fixture('kathryn-corrick.json'), :headers => {})
       get :course_instance, :slug => 'open-data-marketers', :date => '2014-01-22'
       assert_response :ok
@@ -176,16 +176,18 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "course instances without trainers should render OK" do
-      stub_request(:get, "http://contentapi.dev/course-instance.json?course=open-data-practice&date=2013-04-08").
+      stub_request(:get, "http://contentapi.dev/course-instance.json?course=open-data-practice&date=2013-04-08&role=odi").
         to_return(:status => 200, :body => load_fixture('open-data-practice-2013-04-08.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/open-data-practice.json").
+
+      stub_request(:get, "http://contentapi.dev/open-data-practice.json?role=odi").
           to_return(:status => 200, :body => load_fixture('open-data-practice.json'), :headers => {})
+
       get :course_instance, :slug => 'open-data-practice', :date => '2013-04-08'
       assert_response :ok
     end
 
     test "past events should return correct title" do
-      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
+      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json?role=odi").
         to_return(:status => 200, :body => load_fixture('show-me-the-future-of-food-and-open-data.json'), :headers => {})
       get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
           :section=>"events", :event_type=>:event
@@ -194,7 +196,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "lunchtime lectures should have correct title" do
-      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
+      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json?role=odi").
         to_return(:status => 200, :body => load_fixture('friday-lunchtime-lecture-how-politicians-lie-with-data.json'), :headers => {})
       get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
           :section=>"events", :event_type=>:lunchtime_lectures
@@ -203,7 +205,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "lunchtime lectures should show related lectures" do
-      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-why-anonymity-fails.json").
+      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-why-anonymity-fails.json?role=odi").
         to_return(:status => 200, :body => load_fixture('friday-lunchtime-lecture-why-anonymity-fails.json'), :headers => {})
       get :events_article, :slug => 'friday-lunchtime-lecture-why-anonymity-fails',
           :section=>"events", :event_type=>:lunchtime_lectures
@@ -216,7 +218,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "past events should return not show the booking link" do
-      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
+      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json?role=odi").
         to_return(:status => 200, :body => load_fixture('friday-lunchtime-lecture-how-politicians-lie-with-data.json'), :headers => {})
       get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
           :section=>"events", :event_type=>:lunchtime_lectures
@@ -232,12 +234,10 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "lunchtime lectures should have an atom feed" do
-      stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json?role=odi").
         to_return(:status => 200, :body => load_fixture('lunchtime-lectures-intro.json'), :headers => {})
 
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=lunchtime-lecture").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=lunchtime-lecture").
         to_return(:status => 200, :body => load_fixture('lunchtime-lectures.json'), :headers => {})
 
       get :lunchtime_lectures
@@ -251,12 +251,10 @@ class RootControllerTest < ActionController::TestCase
     test "lunchtime lectures atom feed should return the correct stuff" do
       Timecop.freeze(Time.parse("2013-12-22T13:00:00+00:00"))
 
-      stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json?role=odi").
         to_return(:status => 200, :body => load_fixture('lunchtime-lectures-intro.json'), :headers => {})
 
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=lunchtime-lecture").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=lunchtime-lecture").
         to_return(:status => 200, :body => load_fixture('lunchtime-lectures.json'), :headers => {})
 
       get :lunchtime_lectures, :format => 'atom'
@@ -273,12 +271,10 @@ class RootControllerTest < ActionController::TestCase
     test "previous lunchtime lectures atom feed should return the correct stuff" do
       Timecop.freeze(Time.parse("2013-12-22T13:00:00+00:00"))
 
-      stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json?role=odi").
         to_return(:status => 200, :body => load_fixture('lunchtime-lectures-intro.json'), :headers => {})
 
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=lunchtime-lecture").
-        with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'Authorization'=>'Bearer overwritten on deploy', 'Content-Type'=>'application/json', 'User-Agent'=>'GDS Api Client v. 7.5.0'}).
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=lunchtime-lecture").
         to_return(:status => 200, :body => load_fixture('lunchtime-lectures.json'), :headers => {})
 
       get :lunchtime_lectures, :format => 'atom', :type => 'previous'
@@ -294,7 +290,7 @@ class RootControllerTest < ActionController::TestCase
 
     test "upcoming lectures should show the livestream iframe if livestream is set to true" do
       Timecop.freeze(Time.parse("2013-11-14T13:00:00+00:00"))
-      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
+      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json?role=odi").
         to_return(:status => 200, :body => load_fixture('lecture-with-livestream.json'), :headers => {})
       get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
           :section=>"events", :event_type => :lunchtime_lectures
@@ -305,7 +301,7 @@ class RootControllerTest < ActionController::TestCase
 
     test "upcoming lectures should not show the livestream iframe if livestream is set to false" do
       Timecop.freeze(Time.parse("2013-11-14T13:00:00+00:00"))
-      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json").
+      stub_request(:get, "http://contentapi.dev/friday-lunchtime-lecture-how-politicians-lie-with-data.json?role=odi").
         to_return(:status => 200, :body => load_fixture('lecture-no-livestream.json'), :headers => {})
       get :events_article, :slug => 'friday-lunchtime-lecture-how-politicians-lie-with-data',
           :section=>"events", :event_type => :lunchtime_lectures
@@ -315,7 +311,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "Blog should list blog posts in date order" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=blog").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=blog").
         to_return(:status => 200, :body => load_fixture('blog-list.json'), :headers => {})
 
       get :blog_list, :section=>"blog"
@@ -327,7 +323,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "Atom feeds should return full text feed" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog&whole_body=true").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&tag=news,blog&whole_body=true").
         to_return(:status => 200, :body => load_fixture('full-text-news.json'), :headers => {})
 
       get :news_list, :format => 'atom', :section=>"news"
@@ -337,7 +333,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "Jobs list shows message if no jobs are listed" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=job").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=job").
         to_return(:status => 200, :body => load_fixture('no-jobs.json'), :headers => {})
 
       get :jobs_list, :section => "jobs"
@@ -346,7 +342,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "Startups should be split into current and graduated" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=start-up").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=start-up").
         to_return(:status => 200, :body => load_fixture('startups.json'), :headers => {})
 
       get :start_ups_list, :section => "start-ups"
@@ -358,9 +354,9 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should get previous events page with old events" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=event").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&role=odi&tag=event").
         to_return(:status => 200, :body => load_fixture('events.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=course_instance").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
 
       get :previous_events, :section=>"events"
@@ -372,9 +368,9 @@ class RootControllerTest < ActionController::TestCase
 
     end
     test "should get featured events on previous events" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=event").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=event").
         to_return(:status => 200, :body => load_fixture('events-with-featured.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=course_instance").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
 
       get :previous_events, :section=>"events"
@@ -386,9 +382,9 @@ class RootControllerTest < ActionController::TestCase
     test "should get featured events on events page" do
       Timecop.freeze( Time.parse("2014-01-14T13:00:00+00:00") )
 
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=event").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=event").
         to_return(:status => 200, :body => load_fixture('events-with-featured.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=course_instance").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
 
       get :events_list, :section=>"events"
@@ -402,9 +398,9 @@ class RootControllerTest < ActionController::TestCase
     test "should get events page with forthcoming events" do
       Timecop.freeze( Time.parse("2014-01-14T13:00:00+00:00") )
 
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=event").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=event").
         to_return(:status => 200, :body => load_fixture('events.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&tag=course_instance").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
 
       get :events_list, :section=>"events"
@@ -417,7 +413,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should show 30 results on news page" do
-      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog').
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&tag=news,blog').
         to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {})
 
       get :news_list, :section => 'news'
@@ -427,15 +423,15 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should have a 'next page' link when there are more pages" do
-      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog').
-        to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {:link => '<http://contentapi.dev/with_tag.json?include_children=1&page=2&sort=date&tag=news,blog>;rel="next"' })
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&tag=news,blog').
+        to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {:link => '<http://contentapi.dev/with_tag.json?include_children=1&page=2&role=odi&sort=date&tag=news,blog>;rel="next"' })
 
       get :news_list, :section => 'news'
       assert_match /Next page/, response.body
     end
 
     test "should not have a 'previous page' link when we are on the first page" do
-      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&sort=date&tag=news,blog').
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&tag=news,blog').
         to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {})
 
       get :news_list, :section => 'news'
@@ -443,7 +439,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should only have node news on the node news page" do
-      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&sort=date&tag=news,blog').
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&tag=news,blog').
         to_return(:status => 200, :body => load_fixture('news-page-with-nodes.json'), :headers => {})
 
       get :node_news_list
