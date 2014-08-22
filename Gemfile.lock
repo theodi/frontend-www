@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/theodi/gds-api-adapters.git
-  revision: 1801f9e893a0c18e1a23f44690b6bcbcdb58de67
+  revision: 1a963d9064719d1aff608e6b7232166ae4af489b
   specs:
     gds-api-adapters (7.25.0)
       activesupport
@@ -141,6 +141,9 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-remote (0.1.8)
+      pry (~> 0.9)
+      slop (~> 3.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -245,6 +248,7 @@ DEPENDENCIES
   odlifier!
   plek (= 1.5.0)
   pry
+  pry-remote
   rack-google-analytics (= 0.14.0)
   rails (~> 3.2.14)
   sass-rails (~> 3.2.3)
