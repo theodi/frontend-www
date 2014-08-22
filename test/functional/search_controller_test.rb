@@ -12,9 +12,9 @@ class SearchControllerTest < ActionController::TestCase
 
     doc = Nokogiri::HTML response.body
 
-    assert_match doc.search('.article-full').inner_html, /fucking stupid/
-    assert_match doc.search('.article-full .article-meta').inner_text, /10 results found/
-    assert_equal doc.search('.article-full .results-list li').count, 10
+    assert_match doc.search('.article-full').inner_html, /great technical team here!/
+    assert_match doc.search('.article-full .article-meta').inner_text, /1 result found/
+    assert_equal doc.search('.article-full .results-list li').count, 1
   end
 
 end
