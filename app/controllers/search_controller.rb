@@ -6,12 +6,13 @@ class SearchController < ApplicationController
 
   def perform
     @search_term = params[:q]
+    @page = (params[:page] || 1).to_i
 
-    search_response = content_api.search(@search_term)
+    search_response = content_api.search(@search_term, @page)
 
-    results = SearchResultsPresenter.new(search_response)
-    @result_count = results.result_count
-    @results = results.results
+    @results = SearchResultsPresenter.new(search_response)
+    @result_count = @results.result_count
+    @pages = @results.pages
   end
 
   protected
