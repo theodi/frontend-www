@@ -1,0 +1,35 @@
+<% content_for :title, "Search Results" %>
+
+<div class="article-full">
+  <article class="article-body">
+      <h2>You searched for &ldquo;<%= @search_term %>&rdquo;</h2>
+
+      <div class="article-meta">
+        <%= pluralize(@result_count, 'result') %> found
+      </div>
+
+      <ul class="results-list" id="js-live-search-results">
+        <% @results.results.each_with_index do |result, index| %>
+          <%= render partial: "result", locals: { result: result } %>
+        <% end %>
+      </ul>
+
+      <ul class="pager">
+
+        <% if @results.has_previous_page? %>
+          <li class="previous">
+            <%= link_to "Previous page", { controller: "search", action: "perform", params: { q: @search_term, page: @page - 1} }, { class: "previous-page" }  %>
+          </li>
+        <% end %>
+
+        <% if @results.has_next_page? %>
+          <li class="next">
+            <%= link_to "Next page",  { controller: "search", action: action_name, params: {  q: @search_term, page: @page + 1 } }, { class: "next-page"}  %>
+          </li>
+        <% end %>
+
+      </ul>
+
+  </article>
+
+</div>
