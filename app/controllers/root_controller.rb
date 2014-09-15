@@ -481,8 +481,7 @@ class RootController < ApplicationController
     if params[:format] == "atom"
       options["whole_body"] = true
     end
-    @artefacts = news_artefacts(options)
-    @artefacts.results.select! { |x| x.nodes.any? }
+    @artefacts = content_api.with_tag('news,blog', {node: "all"}).results.sort_by{|x| x.created_at}.reverse
     @title = "Node news"
     list(params)
   end

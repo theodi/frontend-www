@@ -439,13 +439,13 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should only have node news on the node news page" do
-      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&tag=news,blog').
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&node=all&role=odi&tag=news,blog').
         to_return(:status => 200, :body => load_fixture('news-page-with-nodes.json'), :headers => {})
 
       get :node_news_list
       html = Nokogiri::HTML(response.body)
 
-      assert_equal 3, html.css('.row .module').count
+      assert_equal 10, html.css('.row .module').count
       assert_match /ODI Paris/, response.body
     end
 
