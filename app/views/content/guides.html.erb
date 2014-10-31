@@ -2,9 +2,13 @@
   <a href="<%= guides_section_path %>">Guides</a>
 <% end %>
 
-<div class="article-full">
+<div class="<%= @publication.article_class %>">
 	<article class="article-body">
 	  <h2><%= @publication.title %></h2>
 	  <%= @publication.content.html_safe %>  
 	</article>
 </div>
+
+<aside class="article-sidebar listing">
+  <%= render 'content/related' %>
+</aside>
