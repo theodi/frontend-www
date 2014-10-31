@@ -1,4 +1,13 @@
-<% section = 'blog' if publication.tag_ids.include?('blog') %>
+<% 
+	section = case 
+		when publication.tag_ids.include?('blog')
+		 'blog'
+		when publication.tag_ids.include?('guide')
+		 'guides'
+		else
+		 'news'
+		end
+%>
 
 <div class="module module-light module-highlight-<%= section == 'blog' ? '3' : '1' %> module-colour-<%= (publication.slug.length % 12) + 1 %> <%= "module-image-fullbleed" if publication.details.module_image %>">
 	<a href="<%= send("#{section}_article_path", publication.slug) %>" target="_top">
