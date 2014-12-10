@@ -7,7 +7,7 @@ source 'https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/'
 gem 'rails', '~> 3.2.14'
 gem 'dotenv-rails'
 
-gem 'foreman'
+gem 'foreman', '< 0.65.0'
 gem 'thin'
 
 gem 'rack-google-analytics', '0.14.0'
