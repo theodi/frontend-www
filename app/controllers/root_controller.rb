@@ -362,6 +362,7 @@ class RootController < ApplicationController
       @title = "Upcoming courses"
       render "content/course"
     else
+      @publication = fetch_article("courses", nil, "article")
       list(params)
     end
   end
