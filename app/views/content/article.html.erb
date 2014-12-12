@@ -14,9 +14,13 @@
 
     </article>
 
-    <h3>Comments</h3>
+    <%= @section %>
 
-    <%= juvia_comments @publication.slug %>
+    <% if @publication.artefact.tag_ids.include?('blog') %>
+      <h3>Comments</h3>
+
+      <%= juvia_comments @publication.slug %>
+    <% end %>
 
 </div>
 
