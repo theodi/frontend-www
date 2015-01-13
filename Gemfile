@@ -33,6 +33,9 @@ gem 'jbuilder'
 
 gem 'font-awesome-rails'
 
+# Handle bad UTF8 strings
+gem 'utf8-cleaner'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
