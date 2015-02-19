@@ -310,7 +310,7 @@ class RootController < ApplicationController
     @trainers = @publication.details['trainers'] ? @publication.details['trainers'].map { |t| fetch_article(t, nil, "people", false) unless t == "" }.reject{|p| p.nil?} : []
     @title = @course.title + " - " + DateTime.parse(@publication.date).strftime("%A %d %B %Y")
 
-    content_for :page_title, @title
+    content_for :page_title, @title.html_safe
 
     respond_to do |format|
       format.html do
@@ -591,7 +591,7 @@ class RootController < ApplicationController
                   fetch_artefact(slug, edition, nil, nil)
 
     if set_title
-      content_for :page_title, artefact.title
+      content_for :page_title, artefact.title.html_safe
     end
 
     # If the content type or tag doesn't match the slug, return 404
