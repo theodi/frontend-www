@@ -1,9 +1,16 @@
-<%= @tags_from_url %>
+<div class="tag-results">
 
-<% @artifacts.each do |artefact| %>
-  <article class="tag-result">
-    <h2><%= link_to(artefact.title, artefact.web_url ) %></h2>
-    <div class="content"><%= raw artefact.details.description %></div>
-    <%= render :partial => "content/tags", locals: {artefact: artefact }  %>
-  </article>
-<% end %>
+<span class="result-count"><%= pluralize(@artifacts.count, 'result') %> found</span>
+
+<ul class="result-list">
+  <% @artifacts.each do |artefact| %>
+    <li>
+    <article class="tag-result">
+      <h2><%= link_to(artefact.title, artefact.web_url ) %></h2>
+      <div class="content"><%= raw artefact.details.description %></div>
+      <%= render :partial => "content/tags", locals: {tags: artefact.tags }  %>
+    </article>
+    </li>
+  <% end %>
+</ul>
+</div>

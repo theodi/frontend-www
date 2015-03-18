@@ -1,9 +1,9 @@
-<% if artefact.tags.count > 0 %>
+<% if tags.count > 0 %>
 <div class="tags">
 
 <h3>Tagged as:</h3>
 
-<% artefact.tags.each do |tag| %>
+<% tags.each do |tag| %>
   <%=  %>
   <span class='tag'><%= link_to("#{tag.title}", tag.content_with_tag.web_url) %></span>
 <% end %>
