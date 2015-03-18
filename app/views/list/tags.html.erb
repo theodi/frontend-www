@@ -1,0 +1,9 @@
+<%= @tags_from_url %>
+
+<% @artifacts.each do |artefact| %>
+  <article class="tag-result">
+    <h2><%= link_to(artefact.title, artefact.web_url ) %></h2>
+    <div class="content"><%= raw artefact.details.description %></div>
+    <%= render :partial => "content/tags", locals: {artefact: artefact }  %>
+  </article>
+<% end %>

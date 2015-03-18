@@ -50,6 +50,9 @@ Www::Application.routes.draw do
 
   get "courses/:slug/:date", as: 'course_instance', to: 'root#course_instance'
 
+  get 'tags/*tag', to: 'tag#index'
+  get 'tags', to: 'tag#index'
+
   get ":slug", as: "page", to: 'root#page'
 
 end
