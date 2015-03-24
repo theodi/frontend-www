@@ -2,10 +2,10 @@
 <div class="tags">
 
 <h3>Tagged as:</h3>
-
 <% tags.each do |tag| %>
-  <%=  %>
+  <% if tag.details.type == "keyword" %>
   <span class='tag'><%= link_to("#{tag.title}", tag.content_with_tag.web_url) %></span>
+  <% end %>
 <% end %>
 <% end %>
 </div>
