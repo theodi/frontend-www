@@ -1,6 +1,12 @@
 <div class="tag-results">
 
-<span class="result-count"><%= pluralize(@artifacts.count, 'result') %> found</span>
+<span class="result-count"><%= pluralize(@artefacts.count, 'result') %> found</span>
+
+<% if @artefacts.empty? %>
+  <div class="no-result well">
+    We couldn't find anything for that tag.
+  </div>
+<% end %>
 
 <ul class="result-list">
   <% @artefacts.each do |artefact| %>

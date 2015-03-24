@@ -6,11 +6,6 @@ xml.feed :xmlns => "http://www.w3.org/2005/Atom", "xmlns:dc" => "http://purl.org
   xml.link :href => request.original_url, :rel => "self"
   @artefacts.each do |item|
     xml.entry do
-      if item.tag_ids.include?('blog')
-        section = 'blog'
-      else
-        section = @section
-      end
       xml.link :href => item.web_url
       xml.title item.title, :type => 'html'
       xml.content item.details.body, :type => 'html'
