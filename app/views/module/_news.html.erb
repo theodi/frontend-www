@@ -4,13 +4,15 @@
 		 'blog'
 		when publication.tag_ids.include?('guide')
 		 'guides'
-		else
+		when publication.tag_ids.include?('news')
 		 'news'
+		else
+			nil
 		end
 %>
 
 <div class="module module-light module-highlight-<%= section == 'blog' ? '3' : '1' %> module-colour-<%= (publication.slug.length % 12) + 1 %> <%= "module-image-fullbleed" if publication.details.module_image %>">
-	<a href="<%= send("#{section}_article_path", publication.slug) %>" target="_top">
+	<a href="<%= send((section ? section+'_article_path' : 'page_path'), publication.slug) %>" target="_top">
 		<%= render :partial => "module/module_image", :locals => { publication: publication } %>
 			<div class="text">
 				<h1 class="module-heading"><%= publication.title %></h1>
