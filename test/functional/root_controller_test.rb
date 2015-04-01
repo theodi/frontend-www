@@ -92,6 +92,16 @@ class RootControllerTest < ActionController::TestCase
     assert_match /<h3>Comments<\/h3>/, response.body.squish
   end
 
+  test "should show tags on a blog post" do
+    stub_request(:get, "http://contentapi.dev/guest-post-fifteen-open-data-insights-from-the-open-data-in-developing-countries-project.json?role=odi").
+    to_return(:status => 200, :body => load_fixture('blog-post.json'), :headers => {})
+
+    get :blog_article, :slug => 'guest-post-fifteen-open-data-insights-from-the-open-data-in-developing-countries-project', :section => 'blog'
+    assert_response :ok
+
+    assert_match /<h3>Tagged as:<\/h3>/, response.body.squish
+  end
+
   test "should not show a sidebar for content without related content" do
     stub_request(:get, "http://contentapi.dev/data-as-culture-2014.json?role=odi").
       to_return(:status => 200, :body => load_fixture('no-related.json'), :headers => {})

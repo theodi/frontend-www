@@ -11,8 +11,9 @@
       </div>
 
       <%= @publication.content.html_safe %>
-
     </article>
+
+    <%= render :partial => "content/tags", locals: { tags: @publication.artefact.tags }  %>
 
     <%= @section %>
 
@@ -25,6 +26,9 @@
 </div>
 
 <aside class="article-sidebar listing">
+    <% if !@publication.artefact.nil? %>
+    <%= render :partial => "content/tags", locals: { tags: @publication.artefact.tags } %>
+    <% end %>
 
     <% if @publication.related_links.count > 0 %>
 

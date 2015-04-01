@@ -1,4 +1,4 @@
-xml.instruct! :xml, :version => "1.0" 
+xml.instruct! :xml, :version => "1.0"
 xml.feed :xmlns => "http://www.w3.org/2005/Atom", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
   xml.title @title
   xml.updated DateTime.parse(@artefacts.first.updated_at) rescue DateTime.now
@@ -8,7 +8,7 @@ xml.feed :xmlns => "http://www.w3.org/2005/Atom", "xmlns:dc" => "http://purl.org
     @artefacts.each do |item|
       xml.entry do
         if item.tag_ids.include?('blog')
-          section = 'blog' 
+          section = 'blog'
         else
           section = @section
         end

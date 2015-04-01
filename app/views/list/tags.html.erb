@@ -1,0 +1,22 @@
+<div class="tag-results">
+
+<span class="result-count"><%= pluralize(@artefacts.count, 'result') %> found</span>
+
+<% if @artefacts.empty? %>
+  <div class="no-result well">
+    We couldn't find anything for that tag.
+  </div>
+<% end %>
+
+<ul class="result-list">
+  <% @artefacts.each do |artefact| %>
+    <li>
+    <article class="tag-result">
+      <h2><%= link_to(artefact.title, artefact.web_url ) %></h2>
+      <div class="content"><%= raw artefact.details.description %></div>
+      <%= render :partial => "content/tags", locals: {tags: artefact.tags }  %>
+    </article>
+    </li>
+  <% end %>
+</ul>
+</div>
