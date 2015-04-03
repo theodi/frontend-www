@@ -13,7 +13,7 @@
     <li>
     <article class="tag-result">
       <h2><%= link_to(artefact.title, artefact.web_url ) %></h2>
-      <p>
+      <p class="description">
       <%= truncate(Nokogiri::HTML(artefact.details.description).inner_text, length: 200, separator: ' ') %>
       </p>
       <%= link_to("Read more >", artefact.web_url) %>

@@ -11,7 +11,7 @@ class TagControllerTest < ActionController::TestCase
 
     doc = Nokogiri::HTML response.body
 
-    assert_match doc.search('.content').inner_html, /Established from its inception/
+    assert_match doc.search('.description').inner_html, /Established from its inception/
     assert_match doc.search('.result-count').inner_text, /1 result found/
 
     assert_equal doc.search('.tag-results ul li').count, 1
