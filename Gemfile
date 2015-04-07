@@ -11,7 +11,6 @@ gem 'foreman', '< 0.65.0'
 gem 'thin'
 
 gem 'rack-google-analytics', '0.14.0'
-gem 'rack-rewrite', '~> 1.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
