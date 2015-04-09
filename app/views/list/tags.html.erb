@@ -9,6 +9,7 @@
 <% end %>
 
 <ul class="result-list">
+
   <% @artefacts.each do |artefact| %>
     <li>
     <article class="tag-result">
@@ -16,7 +17,6 @@
       <p class="description">
       <%= truncate(Nokogiri::HTML(artefact.details.description).inner_text, length: 200, separator: ' ') %>
       </p>
-      <%= link_to("Read more >", artefact.web_url) %>
       <%= render :partial => "content/tags", locals: {tags: artefact.tags }  %>
     </article>
     </li>
