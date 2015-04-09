@@ -14,20 +14,8 @@ class TagController < ApplicationController
       rescue GdsApi::HTTPNotFound
         @artefacts = []
       end
-      @artefacts = @artefacts.reject do |artefact|
-        doesnotexist = false
 
-        # The second that a joined tag isn't in tag_ids,
-        # we need to reject the artefact
-
-        # All the joined tags are represented.
-        @joined_tags.each do |tag|
-          unless artefact.tag_ids.include? tag
-            doesnotexist = true
-          end
-        end
-        doesnotexist
-      end
+      @artefacts = filter_artefacts(@artefacts, @joined_tags)
     else
       @artefacts = []
     end
@@ -42,6 +30,23 @@ class TagController < ApplicationController
       end
       format.atom do
         render "list/tags", layout: false
+      end
+    end
+  end
+
+  protected
+
+  def filter_artefacts(artefacts, joined_tags)
+    artefacts.reject do |artefact|
+
+      # The second that a joined tag isn't in tag_ids,
+      # we need to reject the artefact
+
+      # All the joined tags are represented.
+      joined_tags.inject(false) do |truthy, tag|
+        unless artefact.tag_ids.include? tag
+          truthy = true
+        end
       end
     end
   end
