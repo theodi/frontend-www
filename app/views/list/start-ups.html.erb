@@ -1,10 +1,15 @@
 <% content_for :title, "Startups" %>
 
 <% unless @publication.nil? %>
-  <div class="article-full">
-    <article class="article-body">
-      <%= @publication.content.html_safe %>
-    </article>
+  <div>
+    <div class="article-main">
+      <article class="article-body">
+        <%= @publication.content.html_safe %>
+      </article>
+    </div>
+    <aside class="article-sidebar listing">
+      <%= render 'content/related' %>
+    </aside>
   </div>
 <% end %>
 
