@@ -8,12 +8,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   
-  before_filter :cache_control
-  
-  def cache_control
-    expires_in 4.hours, public: true
-  end
-
   unless Rails.env.development?
     
     rescue_from GdsApi::TimedOutException, with: :error_500
