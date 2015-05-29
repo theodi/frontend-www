@@ -1,4 +1,11 @@
 Www::Application.routes.draw do
+  
+  # Permenant redirects
+  redirects = YAML.load_file("#{Rails.root.to_s}/config/redirects.yml")
+  redirects.each do |from, to|
+    match from => redirect(to)
+  end
+
   resources :newsletters, only: [:index, :create]
 
   root :to => 'root#index'

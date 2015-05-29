@@ -62,6 +62,7 @@ group :test do
   gem 'timecop'
   gem 'coveralls', :require => false
   gem 'vcr'
+  gem 'rspec-rails'
 end
 
 # To use ActiveModel has_secure_password
