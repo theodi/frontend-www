@@ -6,7 +6,13 @@ require File.expand_path('../config/application', __FILE__)
 
 Www::Application.load_tasks
 
-task :default => 'test'
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+end
+
+task :default => ['test', 'spec']
 
 task :bootstrap => :environment do
   # Woosh!
