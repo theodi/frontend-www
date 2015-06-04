@@ -8,6 +8,14 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   
+  before_filter :cache_control
+  
+  def cache_control
+    # Expire immediately so that Rack::Cache doesn't cache here,
+    # but allow public caching so that Cloudflare can do its thing.
+    expires_in 0.hours, public: true
+  end
+
   unless Rails.env.development?
     
     rescue_from GdsApi::TimedOutException, with: :error_500
