@@ -11,9 +11,8 @@ class ApplicationController < ActionController::Base
   before_filter :cache_control
   
   def cache_control
-    # Expire immediately so that Rack::Cache doesn't cache here,
-    # but allow public caching so that Cloudflare can do its thing.
-    expires_in 0.hours, public: true
+    # Allow public caching so that Cloudflare can do its thing.
+    expires_in 4.hours, public: true
   end
 
   unless Rails.env.development?

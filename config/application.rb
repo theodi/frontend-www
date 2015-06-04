@@ -5,6 +5,7 @@ require "action_mailer/railtie"
 require "active_resource/railtie"
 require "rails/test_unit/railtie"
 require "sprockets/railtie"
+require 'rack/cache'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -56,6 +57,9 @@ module Www
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     # config.active_record.whitelist_attributes = true
+
+    # Don't cache anything here on the filesystem - let it happen downstream
+    config.middleware.delete Rack::Cache
 
     # Enable the asset pipeline
     config.assets.enabled = true
