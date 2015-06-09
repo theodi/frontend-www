@@ -393,7 +393,7 @@ class RootControllerTest < ActionController::TestCase
       html = Nokogiri::HTML(response.body)
 
       assert_equal 2, html.css(".current li").count
-      assert_equal 0, html.css(".current li").count
+      assert_equal 0, html.css(".graduated li").count
     end
 
     test "Graduated startups page should contain only graduated startups" do
