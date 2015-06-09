@@ -24,10 +24,8 @@ Www::Application.routes.draw do
   get "nodes/news", as: 'node_news', to: 'root#node_news_list'
 
   # Load variants of start-ups lists
-  [:current, :graduated].each do |section|
-    section_slug = section.to_s.dasherize
-    get "start-ups/#{section_slug}", as: "start_ups_#{section}_section", to: "root#start_ups_#{section}_list", :section => "start_ups_#{section_slug}"
-  end
+  get "current-start-ups", as: "start_ups_current_section", to: "root#start_ups_current_list", :section => "start_ups"
+  get "graduated-start-ups", as: "start_ups_graduated_section", to: "root#start_ups_graduated_list", :section => "start_ups"
 
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|
     section_slug = section.to_s.dasherize
