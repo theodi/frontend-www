@@ -397,7 +397,15 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "Graduated startups page should contain only graduated startups" do
-      skip "TKTKTK"
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=start-up").
+        to_return(:status => 200, :body => load_fixture('startups.json'), :headers => {})
+
+      get :start_ups_graduated_list, :section => "start-ups"
+
+      html = Nokogiri::HTML(response.body)
+
+      assert_equal 0, html.css(".current li").count
+      assert_equal 1, html.css(".graduated li").count
     end
 
     test "should get previous events page with old events" do
