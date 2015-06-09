@@ -23,6 +23,12 @@ Www::Application.routes.draw do
   get "lunchtime-lectures", as: "lunchtime_lectures_section", to: "root#lunchtime_lectures"
   get "nodes/news", as: 'node_news', to: 'root#node_news_list'
 
+  # Load variants of start-ups lists
+  [:current, :graduated].each do |section|
+    section_slug = section.to_s.dasherize
+    get "start-ups/#{section_slug}", as: "start_ups_#{section}_section", to: "root#start_ups_#{section}_list", :section => "start_ups_#{section_slug}"
+  end
+
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|
     section_slug = section.to_s.dasherize
     get "#{section_slug}", as: "#{section}_section", to: "root##{section}_list", :section => section_slug

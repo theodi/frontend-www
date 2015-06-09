@@ -12,17 +12,3 @@
     </aside>
   </div>
 <% end %>
-
-<h2>Current</h2>
-<ul class="grid effect-2 listing current" id="grid2">
-  <% @current.each do |artefact| %>
-    <%= render :partial => "list/block", :locals => { :artefact => artefact } %>
-  <% end %>
-</ul>
-
-<h2>Graduated</h2>
-<ul class="grid effect-2 listing graduated" id="grid2">
-  <% @graduated.each do |artefact| %>
-    <%= render :partial => "list/block", :locals => { :artefact => artefact } %>
-  <% end %>
-</ul>
