@@ -490,10 +490,7 @@ class RootController < ApplicationController
   def start_ups_list
     @publication = fetch_article('start-ups', params[:edition], "article") rescue nil
     @section = 'start_ups'
-    artefacts = content_api.with_tag('start-up', {}).results
     @title = "Startups"
-    @current = artefacts.select { |a| a.details.graduated.nil? }
-    @graduated = artefacts.select { |a| !a.details.graduated.nil? }
     respond_to do |format|
       format.html do
         render "list/start-ups"
@@ -506,6 +503,18 @@ class RootController < ApplicationController
         render "list/feed"
       end
     end
+  end
+
+  def start_ups_current_list
+    artefacts = content_api.with_tag('start-up', {}).results
+    list = artefacts.select { |a| a.details.graduated.nil? }
+    start_ups_listing("Current Startups", list, "current")
+  end
+
+  def start_ups_graduated_list
+    artefacts = content_api.with_tag('start-up', {}).results
+    list = artefacts.select { |a| !a.details.graduated.nil? }
+    start_ups_listing("Graduated Startups", list, "graduated")
   end
 
   protected
@@ -625,6 +634,25 @@ class RootController < ApplicationController
 
   def api_domain
     Plek.current.find("contentapi")
+  end
+
+  def start_ups_listing(title, list, style)
+    @section = 'start_ups'
+    @title = title
+    @list = list
+    @style = style
+    respond_to do |format|
+      format.html do
+        render "list/start-ups-listing"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=#{params[:section].singularize}"
+      end
+      format.atom do
+        slimmer_template nil
+        render "list/feed"
+      end
+    end
   end
 
 end

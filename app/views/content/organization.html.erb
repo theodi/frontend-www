@@ -13,6 +13,12 @@
     <% end %>
 
     <ul class='list-unstyled'>
+    <% if @publication.details['graduated'].blank? %>
+      <li class='start_up current'><i class='fa fa-shield'></i> <%= link_to "Current", start_ups_current_section_path %></li>
+    <% else %>
+      <li class='start_up graduated'><i class='fa fa-shield'></i> <%= link_to "Graduated", start_ups_graduated_section_path %></li>
+    <% end %>
+
     <% unless @publication.url.blank? %>
       <li><i class='fa fa-globe'></i> <%= link_to @publication.url, @publication.url %></li>
     <% end %>
