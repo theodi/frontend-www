@@ -2,14 +2,12 @@
   <a href="<%= start_ups_section_path %>">Startups</a>
 <% end %>
 
-<div class="article-main">
-  <article class="article-body">
-    <h2><%= @title %></h2>
-    <ul class="grid effect-2 listing <%= @style %>" id="grid2">
-      <% @list.each do |artefact| %>
-        <%= render :partial => "list/block", :locals => { :artefact => artefact } %>
-      <% end %>
-    </ul>
-  </article>
+<div>
+  <h2><%= @title %></h2>
+  <ul class="grid effect-2 listing <%= @style %>" id="grid2">
+    <% @list.each do |artefact| %>
+      <%= render :partial => "list/block", :locals => { :artefact => artefact } %>
+    <% end %>
+  </ul>
 </div>
 
