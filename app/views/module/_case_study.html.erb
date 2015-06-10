@@ -2,7 +2,7 @@
 	<a href="<%= case_studies_article_path(publication.slug) %>" target="_top">
 		<%= render :partial => "module/module_image", :locals => { publication: publication } %>
 		<div class="text">
-			<h1 class="module-heading"><%= publication.title %></span></h1>
+			<h1 class="module-heading"><%= publication.title %></h1>
 			<p class="category"><%= publication.format.gsub('_',' ') %></p>
 		</div>
 	</a>
