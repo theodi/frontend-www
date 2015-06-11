@@ -117,8 +117,9 @@ class RootController < ApplicationController
   end
 
   def events_list
+    @publication = fetch_article('events', params[:edition], "article") rescue nil
     @section = 'events'
-    @artefacts = collect_events(['event', 'course_instance'], :upcoming)
+    @artefacts = collect_events(['event'], :upcoming)
     @featured = @artefacts.reject{|x| !x.tag_ids.include?('featured') }
     @title = "What's happening?"
     @hero_image = true
