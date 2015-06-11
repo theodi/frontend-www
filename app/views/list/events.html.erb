@@ -11,10 +11,9 @@
   <div>
     <div class="article-main">
       <article class="article-body">
-
-      <% unless @publication.nil? %>
-        <%= @publication.content.html_safe %>
-      <% end %>
+        <% unless @publication.nil? %>
+          <%= @publication.content.html_safe %>
+        <% end %>
 <% if @featured.length > 0 %>
 	<h2>Featured</h2>
 
@@ -33,11 +32,12 @@
 	<% end %>
 </ul>
       </article>
-      <% unless @publication.nil? %>
-        <aside class="article-sidebar listing">
-          <%= render 'content/related' %>
-        </aside>
-      <% end %>
     </div>
+    <% unless @publication.nil? %>
+      <aside class="article-sidebar listing">
+        <%= render 'content/related' %>
+      </aside>
+    <% end %>
+  </div>
 
 <%= render :partial => "list/background_check" %>
