@@ -179,7 +179,8 @@ class RootController < ApplicationController
     @publication = fetch_article('about-nodes', params[:edition], "article")
     begin
       @artefacts = content_api.sorted_by('node', 'curated').results
-      levels = {"country" => 0, "city" => 1, "comms" => 2}
+      levels = {"country" => 0, "city" => 1, "comms" => 2,
+                "learning" => 3, "network" => 4, "network_learning" => 5}
       @artefacts.sort! do |a,b|
         comp = (levels[a.details.level] <=> levels[b.details.level])
         comp.zero? ? (a.title <=> b.title) : comp
