@@ -118,10 +118,11 @@ class RootController < ApplicationController
 
   def events_list
     @section = 'events'
-    @artefacts = collect_events(['event', 'course_instance'], :upcoming)
+    @publication = fetch_article('events', params[:edition], "article") rescue nil
+    @artefacts = collect_events(['event'], :upcoming)
     @featured = @artefacts.reject{|x| !x.tag_ids.include?('featured') }
-    @title = "What's happening?"
-    @hero_image = true
+    @title = "Forthcoming events"
+    @hero_image = false
     respond_to do |format|
       format.html do
         render "list/events"

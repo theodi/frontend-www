@@ -4,6 +4,12 @@
 		<div class="text">
 			<h1 class="module-heading"><%= publication.title %><br /><span class="date"><%= Date.parse(publication.details.start_date).strftime("%A %d %B %Y") %><br/>at <%= DateTime.parse(publication.details.start_date).strftime("%l:%M%p") %></span></h1>
 			<p class="category"><%= event_type(publication).gsub('-', ' ') %></p>
+            <% unless publication.details.location.blank? %>
+                <p class="location"><%= publication.details.location %></p>
+            <% end %>
 		</div>
 	</a>
+    <% unless publication.details.booking_url.blank? %>
+        <%= link_to "Register", publication.details.booking_url, :class => "booking_url"%>
+    <% end %>
 </div>
