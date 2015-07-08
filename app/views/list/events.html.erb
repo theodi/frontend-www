@@ -17,24 +17,24 @@
 <% if @featured.length > 0 %>
 	<h2>Featured</h2>
 
-	<ul class="row effect-2 listing" id="featured-events">
+	<div class="row effect-2 listing" id="featured-events">
 		<% @featured.each do |artefact| %>
-			<li class="col-xs-12">
+			<div class="col-xs-12">
 				<%= module_block @section, artefact %>
-			</li>
+			</div>
 		<% end %>
-	</ul>
+	</div>
 
 	<h2>All Events</h2>
 <% end %>
 
-<ul class="row effect-2 listing" id="all-events">
+<div class="row effect-2 listing" id="all-events">
 	<% @artefacts.each do |artefact| %>
-		<li class="col-xs-12">
+		<div class="col-xs-12">
 			<%= module_block @section, artefact %>
-		</li>
+		</div>
 	<% end %>
-</ul>
+</div>
       </article>
     </div>
     <% unless @publication.nil? %>
