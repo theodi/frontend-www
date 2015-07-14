@@ -26,34 +26,14 @@ class RootController < ApplicationController
     render "section/section"
   end
 
-  def team_list
-    @teams = {
-      :board => {
-        :name => "Board",
-        :colour => 8
-      },
-      :executive => {
-        :name => "Executive Team",
-        :colour => 8
-      },
-      :commercial => {
-        :name => "Commercial Team",
-        :colour => 8
-      },
-      :technical => {
-        :name => "Technical Team",
-        :colour => 8
-      },
-      :operations => {
-        :name => "Operations Team",
-        :colour => 8
-      },
-    }
-    people = []
-    @teams.map do |team,hash|
-      members = content_api.sorted_by(team.to_s, "curated").results.delete_if { |member| people.include?(member.slug) }
-      people += members.map { |member| member.slug }
-      hash[:people] = members
+    def team_list
+    @teams = Hash[content_api.tag("team").results.map{|t| [t.content_with_tag.slug.to_sym, t.title]}]
+    @people = content_api.with_tag(:team).results
+    @people.each do |person|
+      tags = person.tag_ids.keep_if { |tag| @teams[tag.to_sym] }
+      person.teams = tags.map {|t| @teams[t.to_sym]}
+      person.link = team_article_path(person.slug)
+      person.picture = person.details.image.versions.square rescue "person-placeholder.png"
     end
     @title = "Team"
     respond_to do |format|

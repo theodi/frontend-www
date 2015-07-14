@@ -1,28 +1,49 @@
 <% content_for :title, @title %>
 <div class="people-team">
+  <p>Type to filter teams: <input type="text" class="text-input" id="team-filter" value="" /></p>
 
   <ul class="grid effect-2" id="grid-people">
-	<% @teams.each do |k,team| %>
-	  <% team[:people].each do |person| %>
-	  <li class="home-module">
-        <div class="module module-light module-colour-<%= team[:colour] %>">
-            <a href="<%= team_article_path(person.slug) %>">
-                <%= image_tag person.details.image.versions.square, width: "238", alt: person.title %>
+    <div class="grid-sizer"></div>
+    <% @people.each_with_index do |person, idx| %>
+    <li class="home-module" data-index="<%= idx %>">
+        <div class="module module-light module-colour-8">
+            <a href="<%= person.link %>">
+                <%= image_tag person.picture, width: "238", alt: person.title %>
                 <h1 class="module-heading"><%= person.title %></h1>
                 <p class="module-subheading"><%= person.details.role %></p>
-                <p class="category">
-                  <% tags = person.tag_ids.keep_if { |tag| @teams[tag.to_sym] } %>
-                  <% tags.each_index do |i| %>
-                    <% tag = tags[i].to_sym %>
-                    <%= @teams[tag][:name] %>
-                    <%= ' & ' if i < tags.length - 1 %>
-                  <% end %>
-                </p>
+                <p class="category"><%= person.teams.join(' & ') %></p>
             </a>
         </div>
     </li>
     <% end %>
-	<% end %>
-	</ul>
+  </ul>
 
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var grid = $("#grid-people").masonry({
+        itemSelector: '.home-module',
+        columnWidth: '.grid-sizer'
+    });
+
+    $("#team-filter").keyup(function(){
+      // Retrieve the input field text and reset the count to zero
+      var filter = $(this).val(), count = 0;
+      var target = $("#grid-people .home-module");
+      if (filter) {
+        // Select items to hide with a filter
+        var outGroup = target.filter(function() {
+          return $(this).find(".category").text().search(new RegExp(filter, "i")) < 0;
+        });
+        // Select everything else...
+        var inGroup = target.not(outGroup);
+        outGroup.hide();
+        inGroup.show();
+      } else {
+        target.show();
+      }
+      grid.masonry();
+    });
+  });
+</script>
