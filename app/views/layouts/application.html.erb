@@ -9,8 +9,11 @@
   <div id='wrapper'>
     <% if content_for?(:title) %>
       <header class="page-title">
-          <div class="container">
+          <div class="container header-wrap">
               <h1><%= yield :title %></h1>
+              <% if content_for?(:page_title_extra) %>
+                  <%= yield :page_title_extra %>
+              <% end %>
           </div>
       </header>
     <% end %>

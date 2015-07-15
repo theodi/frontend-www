@@ -1,8 +1,10 @@
 <% content_for :title, @title %>
-<div class="people-team">
-  <p class="row">Filter by team:
+<% content_for :page_title_extra do %>
+  <p class="header-right">Filter by team:
     <%= select_tag("team-filter", options_for_select(@team_options)) %>
   </p>
+<% end %>
+<div class="people-team">
 
   <ul class="grid effect-2" id="grid-people">
     <div class="grid-sizer"></div>
