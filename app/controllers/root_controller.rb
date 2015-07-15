@@ -27,16 +27,19 @@ class RootController < ApplicationController
   end
 
   def team_list
-    teams = Hash[content_api.tag("team").results.map{|t| [t.content_with_tag.slug.to_sym, t.title]}]
+    teams = Hash[content_api.tag("team").results.
+      map {|t| [t.content_with_tag.slug.to_sym, { "title" => t.title, "count" => 0}]}]
     @people = content_api.with_tag(:team).results
     @people.each do |person|
       tags = person.tag_ids.keep_if { |tag| teams[tag.to_sym] }
-      person.teams = Hash[tags.map {|t| [t.to_sym, teams[t.to_sym]]}]
+      person.teams = Hash[tags.map {|t| [t.to_sym, teams[t.to_sym]["title"]]}]
+      person.teams.keys.each {|tag| teams[tag]["count"] += 1}
       person.link = team_article_path(person.slug)
       person.picture = person.details.image.versions.square rescue "person-placeholder.png"
     end
     @title = "Team"
-    @team_options = Hash[ [["All teams", :"-ALL-TEAMS-"]] + teams.map{ |k,v| [v, k]}.sort]
+    @team_options = Hash[ [["All teams", :"-ALL-TEAMS-"]] +
+      teams.select {|k,v| v["count"] > 0}.map{ |k,v| [v["title"], k]}.sort]
     respond_to do |format|
       format.html do
         render "list/people"
