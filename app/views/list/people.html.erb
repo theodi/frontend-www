@@ -26,11 +26,6 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    var grid = $("#grid-people").masonry({
-        itemSelector: '.home-module',
-        columnWidth: '.grid-sizer'
-    });
-
     $("#team-filter").change(function() {
       // Retrieve the filter value and reset the count to zero
       var filter_string = $(this).val();
@@ -48,7 +43,11 @@
         outGroup.hide();
         inGroup.show();
       }
-      grid.masonry();
+      $("#grid-people").masonry({
+        itemSelector: '.home-module',
+        columnWidth: '.grid-sizer'
+      }).masonry();
+      window.dispatchEvent(new Event('scroll'));
     });
   });
 </script>
