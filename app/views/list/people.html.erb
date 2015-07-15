@@ -1,28 +1,28 @@
 <% content_for :title, @title %>
+<% content_for :page_title_extra do %>
+  <p class="header-right">Filter by team:
+    <%= select_tag("team-filter", options_for_select(@team_options)) %>
+  </p>
+<% end %>
 <div class="people-team">
 
   <ul class="grid effect-2" id="grid-people">
-	<% @teams.each do |k,team| %>
-	  <% team[:people].each do |person| %>
-	  <li class="home-module">
-        <div class="module module-light module-colour-<%= team[:colour] %>">
-            <a href="<%= team_article_path(person.slug) %>">
-                <%= image_tag person.details.image.versions.square, width: "238", alt: person.title %>
+    <div class="grid-sizer"></div>
+    <% @people.each_with_index do |person, idx| %>
+    <li class="home-module" data-index="<%= idx %>">
+        <div class="module module-light module-colour-8">
+            <a href="<%= person.link %>">
+                <%= image_tag person.picture, width: "238", alt: person.title %>
                 <h1 class="module-heading"><%= person.title %></h1>
                 <p class="module-subheading"><%= person.details.role %></p>
-                <p class="category">
-                  <% tags = person.tag_ids.keep_if { |tag| @teams[tag.to_sym] } %>
-                  <% tags.each_index do |i| %>
-                    <% tag = tags[i].to_sym %>
-                    <%= @teams[tag][:name] %>
-                    <%= ' & ' if i < tags.length - 1 %>
-                  <% end %>
-                </p>
+                <p class="category" data-teams="<%= person.teams.keys.join(' ') %>"><%= person.teams.values.join(' & ') %></p>
             </a>
         </div>
     </li>
     <% end %>
-	<% end %>
-	</ul>
+  </ul>
 
 </div>
+
+
+<%= javascript_include_tag "live-filter.js" %>
