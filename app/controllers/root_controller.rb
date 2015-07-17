@@ -613,7 +613,7 @@ class RootController < ApplicationController
   def collect_artefacts(tags)
     artefacts = []
     tags.each do |tag|
-      artefacts += content_api.with_tag(tag).results
+      artefacts += content_api.with_tag(tag).results rescue []
     end
     return artefacts
   end
