@@ -122,8 +122,8 @@ class RootController < ApplicationController
 
   def lunchtime_lectures
     @section = 'lunchtime-lectures'
-    @upcoming = collect_events(['lunchtime-lecture'], :upcoming)
-    @previous = collect_events(['lunchtime-lecture'], :previous)
+    @upcoming = collect_events(['lunchtime-lecture', 'event:lunchtime-lecture'], :upcoming)
+    @previous = collect_events(['lunchtime-lecture', 'event:lunchtime-lecture'], :previous)
     @title = "Lunchtime Lectures"
     @publication = fetch_article("lunchtime-lectures", nil, "article")
     respond_to do |format|

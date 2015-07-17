@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
     url_map = {
       "open-data-challenge-series" => "challenge-series"
     }
-    x = event.details.event_type || "event"
+    x = event.details.event_type.sub(/^event:/,'') || "event"
     url_map[x] || x
   end
   helper_method :event_type
