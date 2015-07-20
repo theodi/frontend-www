@@ -122,8 +122,8 @@ class RootController < ApplicationController
 
   def lunchtime_lectures
     @section = 'lunchtime-lectures'
-    @upcoming = collect_events(['lunchtime-lecture'], :upcoming)
-    @previous = collect_events(['lunchtime-lecture'], :previous)
+    @upcoming = collect_events(['lunchtime-lecture', 'event:lunchtime-lecture'], :upcoming)
+    @previous = collect_events(['lunchtime-lecture', 'event:lunchtime-lecture'], :previous)
     @title = "Lunchtime Lectures"
     @publication = fetch_article("lunchtime-lectures", nil, "article")
     respond_to do |format|
@@ -613,7 +613,7 @@ class RootController < ApplicationController
   def collect_artefacts(tags)
     artefacts = []
     tags.each do |tag|
-      artefacts += content_api.with_tag(tag).results
+      artefacts += content_api.with_tag(tag).results rescue []
     end
     return artefacts
   end
