@@ -106,4 +106,8 @@ module ApplicationHelper
     ].reject { |a| a.blank? }.join(' | ')
   end
 
+  def canonical_url
+    url_for :only_path => false
+  end
+
 end

@@ -20,7 +20,7 @@ gem 'statsd-ruby', '1.0.0', :require => 'statsd'
 gem 'sqlite3'
 gem 'plek', '1.5.0'
 gem 'gds-api-adapters', :github => 'theodi/gds-api-adapters'
-gem 'slimmer'
+gem 'slimmer', github: 'dringtech/slimmer'
 
 gem 'juvia_rails', github: 'theodi/juvia_rails'
 gem 'alternate_rails', github: 'theodi/alternate-rails'
@@ -83,3 +83,4 @@ end
 gem "newrelic_rpm"
 gem "badgerbadgerbadger"
 gem "gibbon"
+gem 'metamagic'
