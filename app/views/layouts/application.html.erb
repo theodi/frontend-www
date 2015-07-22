@@ -1,5 +1,13 @@
 <head>
-  <title><%= page_title %></title>
+  <%= metamagic :title => page_title,
+    :og => {
+      :title => page_title,
+      :url => canonical_url,
+      :description => "A page on the ODI website",
+      :type => "website",
+      :site_name => "Open Data Institute"
+    }
+  %>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <%= alternate_auto_discovery_link_tags %>
 </head>
