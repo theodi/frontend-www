@@ -1,4 +1,8 @@
-<% meta :og => { :description => @section['description'] } %>
+<% if @section['description'].present? %>
+  <% if @section['Title'] != 'Index' %>
+    <% meta :og => { :description => @section['description'] } %>
+  <% end %>
+<% end %>
 
 <% content_for :title, @title %>
 
