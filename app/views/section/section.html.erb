@@ -1,5 +1,5 @@
 <% if @section['description'].present? %>
-  <% if @section['Title'] != 'Index' %>
+  <% if @section['title'] != 'Index' %>
     <% meta :og => { :description => @section['description'] } %>
   <% end %>
 <% end %>
