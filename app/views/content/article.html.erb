@@ -1,3 +1,7 @@
+<% if @publication.details['description'].present? %>
+  <% meta :og => { :description => @publication.details['description'] } %>
+<% end %>
+
 <% content_for :title do %>
   <a href="<%= news_section_path %>">News</a>
 <% end %>
