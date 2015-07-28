@@ -132,7 +132,9 @@ module ApplicationHelper
   def set_og_image content
     doc = Nokogiri::HTML( content )
     images = doc.css('img').map{ |i| i['src'] } # Array of strings
-    meta :og => { :image => images[0] }
+    if images.length > 0
+      meta :og => { :image => images[0] }
+    end
   end
 
 end
