@@ -115,6 +115,7 @@ module ApplicationHelper
     case page.format.to_sym
     when :article
       set_og_description page.details["description"]
+      set_og_image page.details["content"]
     else
       set_og_description page.details["excerpt"]
     end
@@ -126,6 +127,12 @@ module ApplicationHelper
     if content.present?
       meta :og => { :description => content }
     end
+  end
+
+  def set_og_image content
+    doc = Nokogiri::HTML( content )
+    images = doc.css('img').map{ |i| i['src'] } # Array of strings
+    meta :og => { :image => images[0] }
   end
 
 end
