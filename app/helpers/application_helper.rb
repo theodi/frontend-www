@@ -110,4 +110,22 @@ module ApplicationHelper
     url_for :only_path => false
   end
 
+  def article_meta page, type=:article
+    meta :og => { :type => type.to_s }
+    case page.format.to_sym
+    when :article
+      set_og_description page.details["description"]
+    else
+      set_og_description page.details["excerpt"]
+    end
+  end
+
+  private
+
+  def set_og_description content
+    if content.present?
+      meta :og => { :description => content }
+    end
+  end
+
 end
