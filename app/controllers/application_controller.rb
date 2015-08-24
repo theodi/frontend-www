@@ -6,9 +6,24 @@ end
 class ApplicationController < ActionController::Base
   include Slimmer::Template
 
+  before_filter :redirect_to_theodi_org if Rails.env.production?
+
   protect_from_forgery
   
   before_filter :cache_control
+
+  # Redirect opendatainstitute.org to theodi.org
+  def redirect_to_theodi_org
+    redirects = {
+      'opendatainstitute.org' => 'theodi.org',
+      'www.opendatainstitute.org' => 'theodi.org'
+    }
+    if redirects.has_key? request.host
+      new_host = redirects[request.host]
+      new_url = "#{request.protocol}#{new_host}#{request.fullpath}"
+      redirect_to new_url, status: :moved_permanently 
+    end
+  end
   
   def cache_control
     # Allow public caching so that Cloudflare can do its thing.
