@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-source 'https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/'
 
 #ruby=ruby-1.9.3
 #ruby-gemset=www
@@ -82,5 +81,5 @@ end
 
 gem "newrelic_rpm"
 gem "badgerbadgerbadger"
-gem "gibbon"
+gem "gibbon", "~> 1.2.1" # Pinned to 1.2.1, 2.0.0 requires Ruby >= 2.0.0
 gem 'metamagic'
