@@ -1,13 +1,15 @@
 <head>
+  <% description = "The Open Data Institute (ODI) equip, connect and inspire people around the world to innovate with data. Co-founded by Sir Tim Berners-Lee and Sir Nigel Shadbolt, the ODI provides events, training, membership and consultancy around open data." %>
   <%= metamagic :title => page_title,
     :og => {
       :title => page_title,
       :url => canonical_url,
-      :description => "The Open Data Institute catalyses open data culture to create economic, environmental & social value. It helps unlock supply, generates demand & shares knowledge to address local and global issues.",
+      :description => description,
       :image => "#{Plek.current.find("static")}/assets/about_hero.jpg",
       :type => "website",
       :site_name => "Open Data Institute"
     },
+    :description => description,
     :twitter => {
       :card => "summary_large_image",
       :site => "@ODIHQ"
