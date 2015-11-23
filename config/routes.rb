@@ -1,5 +1,5 @@
 Www::Application.routes.draw do
-  
+
   # Permenant redirects
   redirects = YAML.load_file("#{Rails.root.to_s}/config/redirects.yml")
   redirects.each do |from, to|
@@ -54,7 +54,7 @@ Www::Application.routes.draw do
     get "#{section_slug}/:slug/badge", as: "#{event_type}_badge", to: 'root#badge', :section => "events", :event_type => event_type
   end
 
-  [:about, :get_involved, :learning].each do |section|
+  [:about, :get_involved, :learning, :network, :our_focus, :publications].each do |section|
     slug = section.to_s.dasherize
     get "#{slug}", as: "#{section}_section", to: 'root#section', section: slug
   end
