@@ -252,7 +252,11 @@ class RootController < ApplicationController
   def section
     @section = content_api.section(params[:section])
     @title = @section['title']
-    render "section/section"
+    begin
+      render "section/#{params[:section]}"
+    rescue
+      render "section/section"
+    end
   end
 
   def page

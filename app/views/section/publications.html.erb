@@ -1,0 +1,47 @@
+<% if @section['description'].present? %>
+  <% if @section['title'] != 'Index' %>
+    <% meta :og => { :description => @section['description'] } %>
+  <% end %>
+<% end %>
+
+<% content_for :title, @title %>
+
+<% content_for :hero do %>
+<section class="article-hero<%= ' within-header' unless @title %>">
+  <%= render :partial => "section/hero", :locals => { :hero_image => @section['hero'], :hero_text => @section['description'], :hero_link => @section['link'], :hero_alt => @section['description'] } %>
+</section>
+<% end %>
+Do you want to delve more deeply into the work that we do? Do you want to gain a better understanding of the impact of open data? Our guides, research papers and case studies are the perfect way to find out more.
+
+<ul class="grid effect-2" id="grid2">
+
+    <% @section['modules'].each do |m| %>
+
+    <li class="home-module">
+      <% if m['type'] == "Frame" %>
+        <iframe seamless scrolling='no' src="<%= m['frame'] %>/module"></iframe>
+      <% elsif m['type'] == "Image" %>
+        <div class="module module-light module-colour- module-image-fullbleed">
+          <div class="image">
+            <a href="<%= m['link'] %>">
+              <%= image_tag m['image'], :alt => m['title'] %>
+            </a>
+          </div>
+        </div>
+      <% else %>
+        <div class="module module-light module-colour-<%= m['colour'] %>">
+            <a href="<%= m['link'] %>">
+                <% if m['title'] && m['type'] == "Text" %>
+                  <h1 class="module-heading"><%= m['title'] %></h1>
+                <% end %>
+                <% if m['text'] && m['type'] == "Text" %>
+                  <p class="module-subheading"><%= m['text'] %></p>
+                <% end %>
+            </a>
+        </div>
+      <% end %>
+
+    </li>
+
+    <% end %>
+  </ul>
