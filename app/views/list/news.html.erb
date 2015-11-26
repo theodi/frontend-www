@@ -1,0 +1,21 @@
+<% content_for :title, @title %>
+
+<% content_for :hero do %>
+	<% if @hero_image %>
+		<section class="article-hero">
+			<%= render :partial => "section/hero", :locals => { :hero_image => "odi_news.jpg", :hero_text => @hero_text, :hero_link => nil, :hero_alt => @title  } %>
+		</section>
+	<% end %>
+<% end %>
+
+<div class="article-full">
+  <article class="article-body">
+    <p>Stay ahead of the curve with the latest open data news, blogs and comment from the ODI team, global network and industry experts around the world. From practical tips for publishing open data to inspiring accounts of how open data has changed lives, we’re publishing new blogs all the time. </p>
+  </article>
+</div>
+
+<h2>Current news</h2>
+
+<%= render :partial => "list/list", :locals => { :artefacts => @artefacts } %>
+
+<%= render :partial => "list/background_check" %>
