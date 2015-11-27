@@ -8,12 +8,19 @@
 	<% end %>
 <% end %>
 
-  <div>
-    <div class="article-main">
+ <div>
+    <div class="article-full">
       <article class="article-body">
         <% unless @publication.nil? %>
           <%= @publication.content.html_safe %>
         <% end %>
+			<article>
+		</div>
+</div>
+<div>
+	<div class="article-main">
+		<article class="article-body">
+
 <% if @featured.length > 0 %>
 	<h2>Featured</h2>
 
