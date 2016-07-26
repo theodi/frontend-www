@@ -1,16 +1,12 @@
 <% article_meta @publication %>
 
 <% content_for :title do %>
-  <a href="<%= news_section_path %>">News</a>
+  <a href="<%= news_section_path %>">Case studies</a>
 <% end %>
 
 <div class="article-main">
     <article class="article-body">
       <h2><%= @publication.title %></h2>
-      <div class="article-meta">
-          <span class="date"><%= @publication.created %></span> by
-          <%= author(@publication) %>
-      </div>
 
       <%= @publication.content.html_safe %>
     </article>
