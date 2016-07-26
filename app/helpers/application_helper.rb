@@ -32,7 +32,7 @@ module ApplicationHelper
 
   def author(publication)
     if publication.author
-      if publication.author['tag_ids'].include?("team")
+      if publication.author['tag_ids'].include?("team") && publication.author['state'] == 'published'
         link_to publication.author["name"], team_article_path(publication.author["slug"]), :class => "author"
       else
         content_tag :span, publication.author["name"], :class => "author"
