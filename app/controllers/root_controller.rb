@@ -51,6 +51,7 @@ class RootController < ApplicationController
   end
 
   def summit_speaker_list
+    @year = params[:year]
     @section = params[:section].parameterize
     @artefacts = content_api.sorted_by(@section.dasherize, 'curated').results
     @title = "Summit Speakers"
