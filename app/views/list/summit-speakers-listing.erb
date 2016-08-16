@@ -1,0 +1,21 @@
+<% content_for :title do %>
+  <a href="<%= send("summit_#{@year}_section_path") %>">Summit 2016</a>
+<% end %>
+
+<h2>Speakers</h2>
+
+<div class="people-team">
+  <ul class="grid effect-2" id="grid-people">
+    <div class="grid-sizer"></div>
+    <% @artefacts.each_with_index do |person| %>
+    <li class="home-module">
+        <div class="module module-light module-colour-8">
+            <a href="<%= send("summit_speaker_#{@year}_article_path", person['slug']) %>">
+                <%= image_tag person_image(person), width: "238", alt: person.title %>
+                <h1 class="module-heading"><%= person.title %></h1>
+            </a>
+        </div>
+    </li>
+    <% end %>
+  </ul>
+</div>

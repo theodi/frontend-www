@@ -50,6 +50,21 @@ class RootController < ApplicationController
     end
   end
 
+  def summit_speaker_list
+    @year = params[:year]
+    @section = params[:section].parameterize
+    @artefacts = content_api.sorted_by(@section.dasherize, 'curated').results
+    @title = "Summit #{@year} Speakers"
+    respond_to do |format|
+      format.html do
+        render "list/summit-speakers-listing"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=summit-speaker"
+      end
+    end
+  end
+
   def case_studies_list
     @section = params[:section].parameterize
     @artefacts = content_api.sorted_by('case_study', 'curated').results
@@ -87,6 +102,14 @@ class RootController < ApplicationController
         redirect_to "#{api_domain}/with_tag.json?tag=creative_work"
       end
     end
+  end
+
+  def summit_page
+    @year = params[:year].to_i
+    @section = "summit"
+    summit_pages = YAML.load_file(File.join Rails.root, 'config' , 'summit_pages.yml')
+    params[:slug] = summit_pages[@year]
+    article(params, @section)
   end
 
   def events_article
@@ -240,6 +263,20 @@ class RootController < ApplicationController
         @artefacts = @news_artefacts
         @title = "News for #{@publication.title}"
         render "list/feed"
+      end
+    end
+  end
+
+  def summit_speaker_article
+    @year = params[:year]
+    @publication = fetch_article(params[:slug], params[:edition], 'person')
+
+    respond_to do |format|
+      format.html do
+        render "content/summit_speaker"
+      end
+      format.json do
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
       end
     end
   end
