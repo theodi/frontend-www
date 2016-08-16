@@ -28,8 +28,9 @@ Www::Application.routes.draw do
   get "graduated-start-ups", as: "start_ups_graduated_section", to: "root#start_ups_graduated_list", :section => "start_ups"
 
   [2016].each do |year|
-    get "summit/#{year}/speakers", as: 'summit_speaker_list', to: 'root#summit_speaker_list', section: "summit_speaker_#{year}"
-    get "summit/#{year}/speakers/:slug", as: 'summit_speaker_article', to: 'root#summit_speaker_article', section: "summit_speaker_#{year}"
+    get "summit/#{year}", as: "summit_section", to: "root#summit_page", year: year, section: 'events'
+    get "summit/#{year}/speakers", as: "summit_speaker_#{year}_list", to: 'root#summit_speaker_list', section: "summit_speaker_#{year}"
+    get "summit/#{year}/speakers/:slug", as: "summit_speaker_#{year}_article", to: 'root#summit_speaker_article', section: "summit_speaker_#{year}"
   end
 
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|
@@ -45,7 +46,7 @@ Www::Application.routes.draw do
     get "#{section_slug}/:slug/badge", as: "#{section}_badge", to: 'root#badge', :section => section_slug
   end
 
-  [:lunchtime_lectures, :meetups, :research_afternoons, :challenge_series, :roundtables, :workshops, :networking_events, :panel_discussions, :summit].each do |event_type|
+  [:lunchtime_lectures, :meetups, :research_afternoons, :challenge_series, :roundtables, :workshops, :networking_events, :panel_discussions].each do |event_type|
     section_slug = event_type.to_s.dasherize
 
     get "#{section_slug}", as: "#{event_type}_section", to: "root#events_list", :section => "events", :event_type => event_type

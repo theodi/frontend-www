@@ -103,9 +103,16 @@ class RootController < ApplicationController
     end
   end
 
+  def summit_page
+    @year = params[:year].to_i
+    @section = "summit"
+    summit_pages = YAML.load_file(File.join Rails.root, 'config' , 'summit_pages.yml')
+    params[:slug] = summit_pages[@year]
+    article(params, @section)
+  end
+
   def events_article
     if params[:event_type]
-      @section = "summit" if params[:event_type].to_sym == :summit
       @section = "lunchtime-lectures" if params[:event_type].to_sym == :lunchtime_lectures
       article(params, @section)
     else

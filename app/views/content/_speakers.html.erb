@@ -3,7 +3,7 @@
     <% speakers.each do |person| %>
       <li class="home-module">
           <div class="module module-light module-colour-8 listing">
-              <a href="<%= person['web_url'] %>">
+              <a href="<%= send("summit_speaker_#{@year}_article_path", person['slug']) %>">
                   <%= image_tag person_image(person), width: "238", alt: person['title'] %>
                   <h1 class="module-heading"><%= person['title'] %></h1>
                   <p class="module-subheading">Description of talk...</p>
@@ -12,7 +12,7 @@
       </li>
     <% end %>
   </ul>
-  <p id="all-speakers"><%= link_to "View all", summit_speaker_list_path %></p>
+  <p id="all-speakers"><%= link_to "View all", send("summit_speaker_#{@year}_list_path") %></p>
 </div>
 
 <hr />
