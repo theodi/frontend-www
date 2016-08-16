@@ -4,7 +4,7 @@
       <li class="home-module">
           <div class="module module-light module-colour-8 listing">
               <a href="<%= person['web_url'] %>">
-                  <%= image_tag 'http://asset-manager.dev/uploads/assets/b1/bd/57b1bd564ea4616bf6000001/michaelbluth.jpg', width: "238", alt: person['title'] %>
+                  <%= image_tag person_image(person), width: "238", alt: person['title'] %>
                   <h1 class="module-heading"><%= person['title'] %></h1>
                   <p class="module-subheading">Description of talk...</p>
               </a>
