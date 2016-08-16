@@ -40,7 +40,7 @@ Www::Application.routes.draw do
     get "#{section_slug}/:slug/badge", as: "#{section}_badge", to: 'root#badge', :section => section_slug
   end
 
-  [:lunchtime_lectures, :meetups, :research_afternoons, :challenge_series, :roundtables, :workshops, :networking_events, :panel_discussions].each do |event_type|
+  [:lunchtime_lectures, :meetups, :research_afternoons, :challenge_series, :roundtables, :workshops, :networking_events, :panel_discussions, :summit].each do |event_type|
     section_slug = event_type.to_s.dasherize
 
     get "#{section_slug}", as: "#{event_type}_section", to: "root#events_list", :section => "events", :event_type => event_type

@@ -121,6 +121,17 @@ module ApplicationHelper
     end
   end
 
+  def speakers(publication)
+    return nil unless publication.format == 'event'
+    publication.artefact['related'].select do |r|
+      r['format'] == 'person'
+    end
+  end
+
+  def person_image(person)
+    person['id'].gsub('.json', '/image?version=square')
+  end
+
   private
 
   def set_og_description content

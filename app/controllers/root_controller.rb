@@ -91,6 +91,7 @@ class RootController < ApplicationController
 
   def events_article
     if params[:event_type]
+      @section = "summit" if params[:event_type].to_sym == :summit
       @section = "lunchtime-lectures" if params[:event_type].to_sym == :lunchtime_lectures
       article(params, @section)
     else

@@ -1,0 +1,43 @@
+<div id="speakers">
+  <ul class="people-team">
+    <% speakers.each do |person| %>
+      <li class="home-module">
+          <div class="module module-light module-colour-8 listing">
+              <a href="<%= person['web_url'] %>">
+                  <%= image_tag 'http://asset-manager.dev/uploads/assets/b1/bd/57b1bd564ea4616bf6000001/michaelbluth.jpg', width: "238", alt: person['title'] %>
+                  <h1 class="module-heading"><%= person['title'] %></h1>
+                  <p class="module-subheading">Description of talk...</p>
+              </a>
+          </div>
+      </li>
+    <% end %>
+  </ul>
+  <p id="all-speakers"><%= link_to "View all", "#" %></p>
+</div>
+
+<hr />
+
+<script>
+$('.people-team').slick({
+  dots: false,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  prevArrow: null,
+  nextArrow: '<div id="speaker-nav"><i class="fa fa-chevron-right fa-6" aria-hidden="true"></i></div>',
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      }
+    },
+    {
+      breakpoint: 768,
+      settings: "unslick"
+    }
+  ]
+});
+</script>
