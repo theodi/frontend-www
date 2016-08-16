@@ -51,8 +51,8 @@ class RootController < ApplicationController
   end
 
   def summit_speaker_list
-    @section = 'summit_speaker'
-    @artefacts = content_api.sorted_by('summit-speaker', 'curated').results
+    @section = params[:section].parameterize
+    @artefacts = content_api.sorted_by(@section.dasherize, 'curated').results
     @title = "Summit Speakers"
     respond_to do |format|
       format.html do
@@ -260,7 +260,7 @@ class RootController < ApplicationController
   end
 
   def summit_speaker_article
-    @publication = fetch_article(params[:slug], params[:edition], params[:section])
+    @publication = fetch_article(params[:slug], params[:edition], 'person')
 
     respond_to do |format|
       format.html do

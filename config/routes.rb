@@ -27,8 +27,10 @@ Www::Application.routes.draw do
   get "current-start-ups", as: "start_ups_current_section", to: "root#start_ups_current_list", :section => "start_ups"
   get "graduated-start-ups", as: "start_ups_graduated_section", to: "root#start_ups_graduated_list", :section => "start_ups"
 
-  get "summit/speakers", as: 'summit_speaker_list', to: 'root#summit_speaker_list', section: 'people'
-  get "summit/speakers/:slug", as: 'summit_speaker_article', to: 'root#summit_speaker_article', section: 'people'
+  [2016].each do |year|
+    get "summit/#{year}/speakers", as: 'summit_speaker_list', to: 'root#summit_speaker_list', section: "summit_speaker_#{year}"
+    get "summit/#{year}/speakers/:slug", as: 'summit_speaker_article', to: 'root#summit_speaker_article', section: "summit_speaker_#{year}"
+  end
 
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|
     section_slug = section.to_s.dasherize
