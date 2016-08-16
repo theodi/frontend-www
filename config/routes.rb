@@ -27,6 +27,9 @@ Www::Application.routes.draw do
   get "current-start-ups", as: "start_ups_current_section", to: "root#start_ups_current_list", :section => "start_ups"
   get "graduated-start-ups", as: "start_ups_graduated_section", to: "root#start_ups_graduated_list", :section => "start_ups"
 
+  get "summit/speakers", as: 'summit_speaker_list', to: 'root#summit_speaker_list', section: 'people'
+  get "summit/speakers/:slug", as: 'summit_speaker_article', to: 'root#summit_speaker_article', section: 'people'
+
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|
     section_slug = section.to_s.dasherize
     get "#{section_slug}", as: "#{section}_section", to: "root##{section}_list", :section => section_slug
@@ -58,8 +61,6 @@ Www::Application.routes.draw do
     slug = section.to_s.dasherize
     get "#{slug}", as: "#{section}_section", to: 'root#section', section: slug
   end
-
-  get "summit/speakers/:slug", as: 'summit_speaker_article', to: 'root#summit_speaker_article', section: 'people'
 
   get "courses/:slug/:date", as: 'course_instance', to: 'root#course_instance'
 

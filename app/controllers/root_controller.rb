@@ -50,6 +50,20 @@ class RootController < ApplicationController
     end
   end
 
+  def summit_speaker_list
+    @section = 'summit_speaker'
+    @artefacts = content_api.sorted_by('summit-speaker', 'curated').results
+    @title = "Summit Speakers"
+    respond_to do |format|
+      format.html do
+        render "list/summit-speakers-listing"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=summit-speaker"
+      end
+    end
+  end
+
   def case_studies_list
     @section = params[:section].parameterize
     @artefacts = content_api.sorted_by('case_study', 'curated').results
