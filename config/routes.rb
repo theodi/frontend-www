@@ -23,15 +23,19 @@ Www::Application.routes.draw do
   get "lunchtime-lectures", as: "lunchtime_lectures_section", to: "root#lunchtime_lectures"
   get "nodes/news", as: 'node_news', to: 'root#node_news_list'
 
-  # Load variants of start-ups lists
-  get "current-start-ups", as: "start_ups_current_section", to: "root#start_ups_current_list", :section => "start_ups"
-  get "graduated-start-ups", as: "start_ups_graduated_section", to: "root#start_ups_graduated_list", :section => "start_ups"
+  # Summit stuff
+  summit_pages = YAML.load_file(File.join Rails.root, 'config' , 'summit_pages.yml')
 
   [2016].each do |year|
     get "summit/#{year}", as: "summit_section", to: "root#summit_page", year: year, section: 'events'
     get "summit/#{year}/speakers", as: "summit_speaker_#{year}_list", to: 'root#summit_speaker_list', section: "summit_speaker_#{year}"
     get "summit/#{year}/speakers/:slug", as: "summit_speaker_#{year}_article", to: 'root#summit_speaker_article', section: "summit_speaker_#{year}"
+    get ":section_slug/#{summit_pages[year]}", to: redirect("/summit/#{year}")
   end
+
+  # Load variants of start-ups lists
+  get "current-start-ups", as: "start_ups_current_section", to: "root#start_ups_current_list", :section => "start_ups"
+  get "graduated-start-ups", as: "start_ups_graduated_section", to: "root#start_ups_graduated_list", :section => "start_ups"
 
   [:blog, :news, :jobs, :team, :case_studies, :courses, :creative_works, :start_ups, :nodes, :consultation_responses, :guides, :events, :culture].each do |section|
     section_slug = section.to_s.dasherize
