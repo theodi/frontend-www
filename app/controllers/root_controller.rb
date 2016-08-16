@@ -268,6 +268,7 @@ class RootController < ApplicationController
   end
 
   def summit_speaker_article
+    @year = params[:year]
     @publication = fetch_article(params[:slug], params[:edition], 'person')
 
     respond_to do |format|

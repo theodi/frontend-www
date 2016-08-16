@@ -1,7 +1,7 @@
 <% article_meta @publication, :person %>
 
 <% content_for :title do %>
-  <a href="<%= team_section_path %>">Summit Speakers</a>
+  <a href="<%= send("summit_speaker_#{@year}_list_path") %>">Summit <%= @year %> Speakers</a>
 <% end %>
 
 <div class="article-main">
