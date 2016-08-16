@@ -1,4 +1,8 @@
-<% content_for :title, @title %>
+<% content_for :title do %>
+  <a href="<%= send("summit_#{@year}_section_path") %>">Summit 2016</a>
+<% end %>
+
+<h2>Speakers</h2>
 
 <div class="people-team">
   <ul class="grid effect-2" id="grid-people">
