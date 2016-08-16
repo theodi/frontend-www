@@ -1,0 +1,24 @@
+<% article_meta @publication, :person %>
+
+<% content_for :title do %>
+  <a href="<%= team_section_path %>">Summit Speakers</a>
+<% end %>
+
+<div class="article-main">
+  <article class="people-body">
+    <h2><%= [@publication.honorific_prefix, @publication.title, @publication.honorific_suffix].join(" ") %></h2>
+	  <h3><%= @publication.role %></h3>
+    <%= @publication.description.html_safe %>
+  </article>
+</div>
+
+<aside class="article-sidebar">
+    <div class="module module-image-fullbleed">
+	    <%= image_tag @publication.square_image || 'person-placeholder.png', alt: @publication.title %>
+      <div id="social">
+        <%= content_tag(:a ,fa_icon("linkedin-square 2x"), :href => @publication.linkedin, :title => "LinkedIn") unless @publication.linkedin.blank? %>
+        <%= content_tag(:a , fa_icon("github 2x"), :href => @publication.github, :title => "Github") unless @publication.github.blank? %>
+        <%= content_tag(:a ,fa_icon("twitter 2x"), :href => "http://www.twitter.com/#{@publication.twitter}", :title => "Twitter") unless @publication.twitter.blank? %>
+      </div>
+    </div>
+</aside>

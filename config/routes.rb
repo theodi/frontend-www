@@ -59,6 +59,8 @@ Www::Application.routes.draw do
     get "#{slug}", as: "#{section}_section", to: 'root#section', section: slug
   end
 
+  get "summit/speakers/:slug", as: 'summit_speaker_article', to: 'root#summit_speaker_article', section: 'people'
+
   get "courses/:slug/:date", as: 'course_instance', to: 'root#course_instance'
 
   get 'tags/*tag', to: 'tag#index'

@@ -245,6 +245,19 @@ class RootController < ApplicationController
     end
   end
 
+  def summit_speaker_article
+    @publication = fetch_article(params[:slug], params[:edition], params[:section])
+
+    respond_to do |format|
+      format.html do
+        render "content/summit_speaker"
+      end
+      format.json do
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
+      end
+    end
+  end
+
   def start_ups_list
     @publication = fetch_article('start-ups', params[:edition], "article") rescue nil
     list(params)
