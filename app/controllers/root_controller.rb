@@ -54,7 +54,7 @@ class RootController < ApplicationController
     @year = params[:year]
     @section = params[:section].parameterize
     @artefacts = content_api.sorted_by(@section.dasherize, 'curated').results
-    @title = "Summit Speakers"
+    @title = "Summit #{@year} Speakers"
     respond_to do |format|
       format.html do
         render "list/summit-speakers-listing"
