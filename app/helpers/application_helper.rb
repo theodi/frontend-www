@@ -33,7 +33,9 @@ module ApplicationHelper
   def author(publication)
     if publication.author
       if publication.author['tag_ids'].include?("team")
-        link_to publication.author["name"], team_article_path(publication.author["slug"]), :class => "author"
+        link_to team_article_path(publication.author["slug"]), :class => "author" do
+          "#{publication.author["name"]} #{author_image(publication.author)}".html_safe
+        end
       else
         content_tag :span, publication.author["name"], :class => "author"
       end
@@ -130,6 +132,10 @@ module ApplicationHelper
 
   def person_image(person)
     person['id'].gsub('.json', '/image?version=square')
+  end
+
+  def author_image(author)
+    image_tag "http://contentapi.theodi.org/#{author['slug']}/image?version=square", alt: author['name'], size: "50x50"
   end
 
   private
