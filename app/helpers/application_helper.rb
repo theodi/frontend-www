@@ -125,13 +125,14 @@ module ApplicationHelper
 
   def speakers(publication)
     return nil unless publication.format == 'event'
+    publication.artefact['related'].map! { |r| OpenStruct.new(r) }
     publication.artefact['related'].select do |r|
-      r['format'] == 'person'
+      r.format == 'person'
     end
   end
 
   def person_image(person)
-    person['id'].gsub('.json', '/image?version=square')
+    person.id.gsub('.json', '/image?version=square')
   end
 
   def author_image(author)
