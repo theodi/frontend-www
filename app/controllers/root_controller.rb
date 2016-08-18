@@ -648,6 +648,7 @@ class RootController < ApplicationController
       artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) < Date.today}
       artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}
     end
+    artefacts.reject! { |a| a.tag_ids.select { |t| t.match(/session/) }.count > 0 }
     return artefacts
   end
 
