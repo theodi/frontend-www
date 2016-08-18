@@ -139,6 +139,18 @@ module ApplicationHelper
     image_tag "http://contentapi.theodi.org/#{author['slug']}/image?version=square", alt: author['name'], size: "50x50"
   end
 
+  def summit_speakers(publication)
+    body = """
+      <hr />
+      <h2>Speakers</h2>
+    """
+    body << render(:partial => 'content/speakers', :locals => { :speakers => speakers(publication) })
+  end
+
+  def summit_description(publication)
+    publication.description.gsub(/^.+\[speakers\].+$/, summit_speakers(publication)).html_safe
+  end
+
   private
 
   def set_og_description content
