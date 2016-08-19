@@ -30,6 +30,7 @@ Www::Application.routes.draw do
     get "summit/#{year}", as: "summit_#{year}_section", to: "root#summit_page", year: year, section: 'events'
     get "summit/#{year}/speakers", as: "summit_speaker_#{year}_list", to: 'root#summit_speaker_list', section: "summit_speaker_#{year}", year: year
     get "summit/#{year}/speakers/:slug", as: "summit_speaker_#{year}_article", to: 'root#summit_speaker_article', section: "summit_speaker_#{year}", year: year
+    get "summit/#{year}/sessions/:slug", as: "summit_session_#{year}_article", to: 'root#summit_session_article', section: "summit_sesson_#{year}", year: year
     get ":section_slug/#{summit_pages[year]}", to: redirect("/summit/#{year}")
   end
 

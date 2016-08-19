@@ -1,0 +1,27 @@
+<h1>Sessions</h1>
+<% sessions.each do |time, sessions| %>
+  <% if sessions.count > 0 %>
+  <div class="row">
+    <hr />
+    <div class="col-md-2">
+      <h2><%= Time.parse(time).strftime('%l%P') %></h2>
+    </div>
+    <div class="col-md-10">
+      <ul class="grid effect-2 listing" id="grid2">
+      	<% sessions.each do |session| %>
+          <li class="home-module">
+            <div class="module module-light module-highlight-1 module-colour-<%= (session.slug.length % 12) + 1 %>">
+            	<a href="<%= send("summit_session_#{@year}_article_path", session.slug) %>" target="_top">
+            		<div class="text">
+            			<h1 class="module-heading"><%= session.title %></h1>
+                  <p><%= session_time(session.extras['start_date']) %> - <%= session_time(session.extras['end_date']) %></p>
+            			<p class="category"><%= session.extras['location'] %></p>
+            		</div>
+            	</a>
+            </div>
+          </li>
+      	<% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
