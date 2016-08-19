@@ -152,7 +152,8 @@ module ApplicationHelper
         slug: s.slug,
         start_date: details['start_date'],
         end_date: details['end_date'],
-        location: details['location']
+        location: details['location'],
+        module_image: details['module_image'].try(:[], 'web_url')
       }
     end
 
