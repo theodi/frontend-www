@@ -131,6 +131,27 @@ module ApplicationHelper
     end
   end
 
+  def event_sessions(publication)
+    return nil unless publication.format == 'event'
+
+    publication.artefact['related'].map! { |r| OpenStruct.new(r) }
+    sessions = publication.artefact['related'].select { |r| r.format == 'event' }
+
+    times = {}
+
+    sessions.each do |s|
+      time = Time.parse(s.extras['start_date']).strftime("%H:%M:%S")
+      times[time] ||= []
+      times[time] << s
+    end
+
+    times
+  end
+
+  def session_time(time)
+    Time.parse(time).strftime('%l:%M %P')
+  end
+
   def person_image(person)
     person.id.gsub('.json', '/image?version=square')
   end
