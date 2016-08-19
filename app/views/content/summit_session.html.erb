@@ -1,0 +1,22 @@
+<% article_meta @publication, :person %>
+
+<% content_for :title do %>
+  <a href="<%= send("summit_session_#{@year}_list_path") %>">Summit <%= @year %> Sessions</a>
+<% end %>
+
+<div class ="article-full">
+	<article class="article-body">
+    <h2><%= @publication.title %></h2>
+    <h3><%= date_range DateTime.parse(@publication.start_date), DateTime.parse(@publication.end_date) %></h3>
+
+    <%= @publication.description.html_safe %>
+
+    <% speakers = speakers(@publication) %>
+
+    <% if speakers.count > 0 %>
+      <h3>Speakers</h3>
+
+      <%= render :partial => 'content/speakers', :locals => { :speakers => speakers } %>
+    <% end %>
+	</article>
+</div>

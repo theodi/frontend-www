@@ -1,0 +1,7 @@
+<% content_for :title do %>
+  <a href="<%= send("summit_#{@year}_section_path") %>">Summit 2016</a>
+<% end %>
+
+<h2>Sessions</h2>
+
+<%= render :partial => "list/summit_sessions", :locals => { :sessions => marshal_sessions(@artefacts) } %>

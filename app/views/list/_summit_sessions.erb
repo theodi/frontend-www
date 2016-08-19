@@ -1,0 +1,16 @@
+<% sessions.each do |time, sessions| %>
+  <% if sessions.count > 0 %>
+  <div class="row">
+    <hr />
+    <div class="col-md-2">
+      <h2><%= Time.parse(time).strftime('%l%P') %></h2>
+    </div>
+    <div class="col-md-10">
+      <ul class="grid effect-2 listing" id="grid2">
+      	<% sessions.each do |session| %>
+          <%= render :partial => "list/summit_session", :locals => { :session => session } %>
+      	<% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

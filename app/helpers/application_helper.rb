@@ -123,12 +123,29 @@ module ApplicationHelper
     end
   end
 
-  def speakers(publication)
-    return nil unless publication.format == 'event'
-    publication.artefact['related'].map! { |r| OpenStruct.new(r) }
-    publication.artefact['related'].select do |r|
-      r.format == 'person'
+  def marshal_sessions(sessions)
+    times = {}
+
+    sessions.each do |s|
+      details = s.details
+
+      time = Time.parse(details['start_date']).strftime("%H:%M:%S")
+      times[time] ||= []
+      times[time] << {
+        title: s.title,
+        slug: s.slug,
+        start_date: details['start_date'],
+        end_date: details['end_date'],
+        location: details['location'],
+        module_image: details['module_image'].try(:[], 'web_url')
+      }
     end
+
+    times
+  end
+
+  def session_time(time)
+    Time.parse(time).strftime('%l:%M %P')
   end
 
   def person_image(person)
@@ -139,16 +156,16 @@ module ApplicationHelper
     image_tag "http://contentapi.theodi.org/#{author['slug']}/image?version=square", alt: author['name'], size: "50x50"
   end
 
-  def summit_speakers(publication)
+  def summit_speakers(speakers)
     body = """
       <hr />
       <h2>Speakers</h2>
     """
-    body << render(:partial => 'content/speakers', :locals => { :speakers => speakers(publication) })
+    body << render(:partial => 'content/speakers', :locals => { :speakers => speakers })
   end
 
-  def summit_description(publication)
-    publication.description.gsub(/^.+\[speakers\].+$/, summit_speakers(publication)).html_safe
+  def summit_description(publication, speakers)
+    publication.description.gsub(/^.+\[speakers\].+$/, summit_speakers(speakers)).html_safe
   end
 
   private

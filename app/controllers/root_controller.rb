@@ -109,6 +109,8 @@ class RootController < ApplicationController
     @section = "summit"
     summit_pages = YAML.load_file(File.join Rails.root, 'config' , 'summit_pages.yml')
     params[:slug] = summit_pages[@year]
+    @speakers = content_api.sorted_by("summit-speaker-#{@year}", 'curated').results
+    @sessions = content_api.sorted_by("event:summit-session-#{@year}", 'curated').results
     article(params, @section)
   end
 
@@ -277,6 +279,35 @@ class RootController < ApplicationController
       end
       format.json do
         redirect_to "#{api_domain}/#{params[:slug]}.json"
+      end
+    end
+  end
+
+  def summit_session_article
+    @year = params[:year]
+    @publication = fetch_article(params[:slug], params[:edition], 'event')
+
+    respond_to do |format|
+      format.html do
+        render "content/summit_session"
+      end
+      format.json do
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
+      end
+    end
+  end
+
+  def summit_session_list
+    @year = params[:year]
+    @section = params[:section].parameterize
+    @artefacts = content_api.sorted_by('event:summit-session-2016', 'curated').results
+    @title = "Summit #{@year} Sessions"
+    respond_to do |format|
+      format.html do
+        render "list/summit-sessions-listing"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=summit-sessions-2016"
       end
     end
   end
