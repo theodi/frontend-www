@@ -2,7 +2,7 @@
 <h3><%= date_range DateTime.parse(publication.start_date), DateTime.parse(publication.end_date) %></h3>
 
 <p><%= publication.location %></p>
-<%= summit_description(publication) %>
+<%= summit_description(publication, speakers) %>
 
 <%= render(:partial => 'content/sessions', :locals => { :sessions => marshal_sessions(sessions) }) %>
 

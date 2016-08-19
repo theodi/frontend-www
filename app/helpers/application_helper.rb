@@ -123,13 +123,6 @@ module ApplicationHelper
     end
   end
 
-  def speakers(publication)
-    return nil unless publication.format == 'event'
-    publication.artefact['related'].map! { |r| OpenStruct.new(r) }
-    publication.artefact['related'].select do |r|
-      r.format == 'person'
-    end
-  end
 
   def event_sessions(publication)
     return nil unless publication.format == 'event'
@@ -172,16 +165,16 @@ module ApplicationHelper
     image_tag "http://contentapi.theodi.org/#{author['slug']}/image?version=square", alt: author['name'], size: "50x50"
   end
 
-  def summit_speakers(publication)
+  def summit_speakers(speakers)
     body = """
       <hr />
       <h2>Speakers</h2>
     """
-    body << render(:partial => 'content/speakers', :locals => { :speakers => speakers(publication) })
+    body << render(:partial => 'content/speakers', :locals => { :speakers => speakers })
   end
 
-  def summit_description(publication)
-    publication.description.gsub(/^.+\[speakers\].+$/, summit_speakers(publication)).html_safe
+  def summit_description(publication, speakers)
+    publication.description.gsub(/^.+\[speakers\].+$/, summit_speakers(speakers)).html_safe
   end
 
   private
