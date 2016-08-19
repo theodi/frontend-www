@@ -136,13 +136,24 @@ module ApplicationHelper
 
     publication.artefact['related'].map! { |r| OpenStruct.new(r) }
     sessions = publication.artefact['related'].select { |r| r.format == 'event' }
+    marshal_sessions(sessions)
+  end
 
+  def marshal_sessions(sessions)
     times = {}
 
     sessions.each do |s|
-      time = Time.parse(s.extras['start_date']).strftime("%H:%M:%S")
+      details = s.details || s.extras
+
+      time = Time.parse(details['start_date']).strftime("%H:%M:%S")
       times[time] ||= []
-      times[time] << s
+      times[time] << {
+        title: s.title,
+        slug: s.slug,
+        start_date: details['start_date'],
+        end_date: details['end_date'],
+        location: details['location']
+      }
     end
 
     times

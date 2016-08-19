@@ -295,6 +295,21 @@ class RootController < ApplicationController
     end
   end
 
+  def summit_session_list
+    @year = params[:year]
+    @section = params[:section].parameterize
+    @artefacts = content_api.sorted_by('event:summit-session-2016', 'curated').results
+    @title = "Summit #{@year} Sessions"
+    respond_to do |format|
+      format.html do
+        render "list/summit-sessions-listing"
+      end
+      format.json do
+        redirect_to "#{api_domain}/with_tag.json?tag=summit-sessions-2016"
+      end
+    end
+  end
+
   def start_ups_list
     @publication = fetch_article('start-ups', params[:edition], "article") rescue nil
     list(params)

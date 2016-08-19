@@ -97,6 +97,14 @@ class ApplicationHelperTest < ActionView::TestCase
 
     sessions = event_sessions(publication)
 
+    assert_equal sessions["09:00:00"].first, {
+      title: "Session 1",
+      slug: "session-1",
+      start_date: "2016-11-01T09:00:00+00:00",
+      end_date: "2016-11-01T10:00+00:00",
+      location: "Place"
+    }
+
     assert_equal sessions["09:00:00"].count, 4
     assert_equal sessions["11:00:00"].count, 3
     assert_equal sessions["14:00:00"].count, 2
