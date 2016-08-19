@@ -123,20 +123,11 @@ module ApplicationHelper
     end
   end
 
-
-  def event_sessions(publication)
-    return nil unless publication.format == 'event'
-
-    publication.artefact['related'].map! { |r| OpenStruct.new(r) }
-    sessions = publication.artefact['related'].select { |r| r.format == 'event' }
-    marshal_sessions(sessions)
-  end
-
   def marshal_sessions(sessions)
     times = {}
 
     sessions.each do |s|
-      details = s.details || s.extras
+      details = s.details
 
       time = Time.parse(details['start_date']).strftime("%H:%M:%S")
       times[time] ||= []
