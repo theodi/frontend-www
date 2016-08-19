@@ -109,6 +109,7 @@ class RootController < ApplicationController
     @section = "summit"
     summit_pages = YAML.load_file(File.join Rails.root, 'config' , 'summit_pages.yml')
     params[:slug] = summit_pages[@year]
+    @sessions = content_api.sorted_by("event:summit-session-#{@year}", 'curated').results
     article(params, @section)
   end
 

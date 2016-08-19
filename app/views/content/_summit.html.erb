@@ -4,7 +4,7 @@
 <p><%= publication.location %></p>
 <%= summit_description(publication) %>
 
-<%= render(:partial => 'content/sessions', :locals => { :sessions => event_sessions(publication) }) %>
+<%= render(:partial => 'content/sessions', :locals => { :sessions => marshal_sessions(sessions) }) %>
 
 <% if upcoming_event? %>
   <p><%= link_to "More information and to book your place", publication.booking_url if publication.booking_url.present? %></p>
