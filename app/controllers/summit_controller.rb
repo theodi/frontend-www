@@ -3,7 +3,6 @@ class SummitController < RootController
   def index
     @year = params[:year].to_i
     @section = "summit"
-    summit_pages = YAML.load_file(File.join Rails.root, 'config' , 'summit_pages.yml')
     params[:slug] = summit_pages[@year]['summit']
     @speakers = content_api.sorted_by("summit-speaker-#{@year}", 'curated').results
     @sessions = content_api.sorted_by("event:summit-session-#{@year}", 'curated').results
@@ -67,5 +66,19 @@ class SummitController < RootController
       end
     end
   end
+
+  def training_day_page
+    @year = params[:year].to_i
+    @section = "summit_training_day"
+    params[:slug] = summit_pages[@year]['training']
+    @sessions = content_api.sorted_by("event:summit-training-day-session-#{@year}", 'curated').results
+    article(params, @section)
+  end
+
+  private
+
+    def summit_pages
+      YAML.load_file(File.join Rails.root, 'config' , 'summit_pages.yml')
+    end
 
 end
