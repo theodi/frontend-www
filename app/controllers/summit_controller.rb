@@ -75,6 +75,20 @@ class SummitController < RootController
     article(params, @section)
   end
 
+  def training_day_article
+    @year = params[:year]
+    @publication = fetch_article(params[:slug], params[:edition], 'event')
+
+    respond_to do |format|
+      format.html do
+        render "content/training_day_session"
+      end
+      format.json do
+        redirect_to "#{api_domain}/#{params[:slug]}.json"
+      end
+    end
+  end
+
   private
 
     def summit_pages
