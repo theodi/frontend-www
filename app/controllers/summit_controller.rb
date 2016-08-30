@@ -71,7 +71,7 @@ class SummitController < RootController
     @year = params[:year].to_i
     @section = "summit_training_day"
     params[:slug] = summit_pages[@year]['training']
-    @sessions = content_api.sorted_by("event:summit-training-day-session-#{@year}", 'curated').results
+    @sessions = get_sessions
     article(params, @section)
   end
 
@@ -79,6 +79,18 @@ class SummitController < RootController
 
     def summit_pages
       YAML.load_file(File.join Rails.root, 'config' , 'summit_pages.yml')
+    end
+
+    def get_sessions
+      results = content_api.sorted_by("event:summit-training-day-session-#{@year}", 'curated').results
+      sessions = {}
+
+      ['explorer','strategist','practitioner','pioneer'].each do |type|
+        sessions[type] = results.select { |r| r.tag_ids.include?("stream-#{type}") }
+                                .sort_by { |r| DateTime.parse(r.details.start_date) }
+      end
+
+      sessions
     end
 
 end
