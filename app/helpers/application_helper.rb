@@ -123,6 +123,14 @@ module ApplicationHelper
     end
   end
 
+  def speakers(publication)
+    return nil unless publication.format == 'event'
+    publication.artefact['related'].map! { |r| OpenStruct.new(r) }
+    publication.artefact['related'].select do |r|
+      r.format == 'person'
+    end
+  end
+
   def marshal_sessions(sessions)
     times = {}
 
