@@ -27,12 +27,12 @@ Www::Application.routes.draw do
   summit_pages = YAML.load_file(File.join Rails.root, 'config' , 'summit_pages.yml')
 
   [2016].each do |year|
-    get "summit/#{year}", as: "summit_#{year}_section", to: "root#summit_page", year: year, section: 'events'
-    get "summit/#{year}/speakers", as: "summit_speaker_#{year}_list", to: 'root#summit_speaker_list', section: "summit_speaker_#{year}", year: year
-    get "summit/#{year}/speakers/:slug", as: "summit_speaker_#{year}_article", to: 'root#summit_speaker_article', section: "summit_speaker_#{year}", year: year
-    get "summit/#{year}/sessions/:slug", as: "summit_session_#{year}_article", to: 'root#summit_session_article', section: "summit_sesson_#{year}", year: year
-    get "summit/#{year}/sessions", as: "summit_session_#{year}_list", to: 'root#summit_session_list', section: "summit_sesson_#{year}", year: year
-    get ":section_slug/#{summit_pages[year]}", to: redirect("/summit/#{year}")
+    get "summit/#{year}", as: "summit_#{year}_section", to: "summit#index", year: year, section: 'events'
+    get "summit/#{year}/speakers", as: "summit_speaker_#{year}_list", to: 'summit#speaker_list', section: "summit_speaker_#{year}", year: year
+    get "summit/#{year}/speakers/:slug", as: "summit_speaker_#{year}_article", to: 'summit#speaker_article', section: "summit_speaker_#{year}", year: year
+    get "summit/#{year}/sessions/:slug", as: "summit_session_#{year}_article", to: 'summit#session_article', section: "summit_sesson_#{year}", year: year
+    get "summit/#{year}/sessions", as: "summit_session_#{year}_list", to: 'summit#session_list', section: "summit_sesson_#{year}", year: year
+
   end
 
   # Load variants of start-ups lists
