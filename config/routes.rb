@@ -33,6 +33,8 @@ Www::Application.routes.draw do
     get "summit/#{year}/sessions/:slug", as: "summit_session_#{year}_article", to: 'summit#session_article', section: "summit_sesson_#{year}", year: year
     get "summit/#{year}/sessions", as: "summit_session_#{year}_list", to: 'summit#session_list', section: "summit_sesson_#{year}", year: year
 
+    get ":section_slug/#{summit_pages[year]['summit']}", to: redirect("/summit/#{year}")
+    get ":section_slug/#{summit_pages[year]['training']}", to: redirect("/summit/#{year}/training-day")
   end
 
   # Load variants of start-ups lists
