@@ -1,15 +1,21 @@
 <% article_meta @publication %>
 
 <% content_for :title do %>
-  <% if @publication.end_date.to_datetime >= DateTime.now %>
-    <a href="<%= events_section_path %>">Events</a>
-  <% else %>
-    <a href="<%= previous_events_section_path %>">Previous Events</a>
-  <% end %>
+  <%= link_to "Summit #{@year} Training Day", send("summit_#{@year}_training_day_section_path") %>
 <% end %>
 
 <div class ="article-full">
 	<article class="article-body">
 	  <%= render :partial => 'content/event', :locals => { :publication => @publication, :upcoming_event => @upcoming_event } %>
-	</article>
+
+    <% unless @trainer.nil? %>
+      <hr />
+      <h2>Trainer</h2>
+
+      <h3><%= [@trainer.honorific_prefix, @trainer.title, @trainer.honorific_suffix].join(" ") %></h3>
+      <%= image_tag @trainer.square_image || 'person-placeholder.png', alt: @trainer.title, class: 'pull-right' %>
+
+      <%= @trainer.description.html_safe %>
+    <% end %>
+  </article>
 </div>

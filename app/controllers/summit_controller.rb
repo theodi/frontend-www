@@ -78,6 +78,7 @@ class SummitController < RootController
   def training_day_article
     @year = params[:year]
     @publication = fetch_article(params[:slug], params[:edition], 'event')
+    @trainer = get_trainer
 
     respond_to do |format|
       format.html do
@@ -105,6 +106,15 @@ class SummitController < RootController
       end
 
       sessions
+    end
+
+    def get_trainer
+      person = @publication.artefact.related.select { |r| r.format == 'person' }.try(:first)
+      if person.present?
+        fetch_article(person.slug, nil, 'person')
+      else
+        nil
+      end
     end
 
 end
