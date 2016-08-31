@@ -1,0 +1,36 @@
+<h2><%= publication.title %></h2>
+<h3><%= date_range DateTime.parse(publication.start_date), DateTime.parse(publication.end_date) %></h3>
+
+<p><%= publication.location %></p>
+<%= publication.description.html_safe %>
+
+<h3>Session Descriptions</h3>
+
+<table class="table">
+
+  <thead>
+    <tr>
+      <th></th>
+      <th scope="col">10:00 - 11:20</th>
+      <th scope="col">11:40 - 13:00</th>
+      <th scope="col">14:00 - 15:20</th>
+      <th scope="col">15:40 - 17:00</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sessions.each do |name, sessions| %>
+      <tr>
+        <th scope="row"><%= name.capitalize %> stream</th>
+        <% sessions.each do |s| %>
+          <td><%= link_to(s.title, s.web_url) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<% if upcoming_event? %>
+  <p><%= link_to "More information and to book your place", publication.booking_url if publication.booking_url.present? %></p>
+<% end %>
