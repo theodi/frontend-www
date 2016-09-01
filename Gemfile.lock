@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/theodi/gds-api-adapters.git
-  revision: 1a963d9064719d1aff608e6b7232166ae4af489b
+  revision: d1c4ce05b00dc71712b93502c7df43362ca9671e
   specs:
     gds-api-adapters (7.25.0)
       activesupport
@@ -284,3 +284,6 @@ DEPENDENCIES
   utf8-cleaner
   vcr
   webmock
+
+BUNDLED WITH
+   1.11.2
