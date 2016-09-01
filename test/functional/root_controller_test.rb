@@ -284,7 +284,7 @@ class RootControllerTest < ActionController::TestCase
       stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json?role=odi").
         to_return(:status => 200, :body => load_fixture('lunchtime-lectures-intro.json'), :headers => {})
 
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=lunchtime-lecture").
+      stub_request(:get, "http://contentapi.dev/lecture-list.json?role=odi").
         to_return(:status => 200, :body => load_fixture('lunchtime-lectures.json'), :headers => {})
 
       get :lunchtime_lectures, :format => 'atom'
