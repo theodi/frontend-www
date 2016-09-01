@@ -267,7 +267,7 @@ class RootControllerTest < ActionController::TestCase
       stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json?role=odi").
         to_return(:status => 200, :body => load_fixture('lunchtime-lectures-intro.json'), :headers => {})
 
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=lunchtime-lecture").
+      stub_request(:get, "http://contentapi.dev/lecture-list.json?role=odi").
         to_return(:status => 200, :body => load_fixture('lunchtime-lectures.json'), :headers => {})
 
       get :lunchtime_lectures
@@ -293,27 +293,7 @@ class RootControllerTest < ActionController::TestCase
 
       page = Nokogiri::XML(response.body)
 
-      assert_equal 5, page.css("entry").count
-
-      Timecop.return
-    end
-
-    test "previous lunchtime lectures atom feed should return the correct stuff" do
-      Timecop.freeze(Time.parse("2013-12-22T13:00:00+00:00"))
-
-      stub_request(:get, "http://contentapi.dev/lunchtime-lectures.json?role=odi").
-        to_return(:status => 200, :body => load_fixture('lunchtime-lectures-intro.json'), :headers => {})
-
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=lunchtime-lecture").
-        to_return(:status => 200, :body => load_fixture('lunchtime-lectures.json'), :headers => {})
-
-      get :lunchtime_lectures, :format => 'atom', :type => 'previous'
-
-      assert_response :ok
-
-      page = Nokogiri::XML(response.body)
-
-      assert_equal 7, page.css("entry").count
+      assert_equal 3, page.css("entry").count
 
       Timecop.return
     end
