@@ -122,8 +122,10 @@ class RootController < ApplicationController
 
   def lunchtime_lectures
     @section = 'lunchtime-lectures'
-    @upcoming = collect_events(['lunchtime-lecture', 'event:lunchtime-lecture'], :upcoming)
-    @previous = collect_events(['lunchtime-lecture', 'event:lunchtime-lecture'], :previous)
+    events = content_api.lectures
+
+    @upcoming = events.upcoming
+    @previous = events.previous
     @title = "Lunchtime Lectures"
     @publication = fetch_article("lunchtime-lectures", nil, "article")
     respond_to do |format|
@@ -131,10 +133,10 @@ class RootController < ApplicationController
         render "list/lunchtime-lectures"
       end
       format.json do
-        redirect_to "#{api_domain}/with_tag.json?tag=events"
+        redirect_to "#{api_domain}/lecture-list.json"
       end
       format.atom do
-        @artefacts = instance_variable_get("@#{params[:type]}") || @upcoming
+        @artefacts = @upcoming
         render "list/feed", :layout => false
       end
     end
