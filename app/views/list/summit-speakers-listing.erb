@@ -13,6 +13,7 @@
             <a href="<%= send("summit_speaker_#{@year}_article_path", person.slug) %>">
                 <%= image_tag person_image(person), width: "238", alt: person.title %>
                 <h1 class="module-heading"><%= person.title %></h1>
+                <p class="module-subheading"><%= person.details['role'] %></p>
             </a>
         </div>
     </li>
