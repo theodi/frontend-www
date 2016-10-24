@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://us6.<PANOPTICON_USER>.mailchimp.com/2.<XPC_SERVICE_NAME>/lists/subscribe
+    uri: https://us6.api.mailchimp.com/2.0/lists/subscribe
     body:
       encoding: UTF-8
-      string: '{"<PANOPTICON_USER>key":"<MAILCHIMP_API_KEY>","id":"3<XPC_SERVICE_NAME>89417f22","email":{"email":"tech@the<CONTENTAPI_DEFAULT_ROLE>.org"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"}}'
+      string: '{"apikey":"<MAILCHIMP_API_KEY>","id":"3089417f22","email":{"email":"tech@the<CONTENTAPI_DEFAULT_ROLE>.org"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"}}'
     headers: {}
   response:
     status:
@@ -21,15 +21,14 @@ http_interactions:
       Vary:
       - Accept-Enc<CONTENTAPI_DEFAULT_ROLE>ng
       Date:
-      - Mon, 24 Oct 2<XPC_SERVICE_NAME>16 <XPC_SERVICE_NAME>8:<XPC_SERVICE_NAME>2:56
-        GMT
+      - Mon, 24 Oct 2016 09:33:02 GMT
       Connection:
       - keep-alive
       Set-Cookie:
       - _AVESTA_ENVIRONMENT=prod; path=/
     body:
       encoding: UTF-8
-      string: '{"email":"tech@the<CONTENTAPI_DEFAULT_ROLE>.org","euid":"b1ddea64fe","leid":"1<XPC_SERVICE_NAME>1342825"}'
+      string: '{"email":"tech@the<CONTENTAPI_DEFAULT_ROLE>.org","euid":"b1ddea64fe","leid":"101342825"}'
     http_version: 
-  recorded_at: Mon, 24 Oct 2016 08:02:56 GMT
+  recorded_at: Mon, 24 Oct 2016 09:33:00 GMT
 recorded_with: VCR 2.9.3

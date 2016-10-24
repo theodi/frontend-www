@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://us6.<PANOPTICON_USER>.mailchimp.com/2.<XPC_SERVICE_NAME>/lists/subscribe
+    uri: https://us6.api.mailchimp.com/2.0/lists/subscribe
     body:
       encoding: UTF-8
-      string: '{"<PANOPTICON_USER>key":"<MAILCHIMP_API_KEY>","id":"3<XPC_SERVICE_NAME>89417f22","email":{"email":"notarealemail@example.com"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"}}'
+      string: '{"apikey":"<MAILCHIMP_API_KEY>","id":"3089417f22","email":{"email":"notarealemail@example.com"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"}}'
     headers: {}
   response:
     status:
@@ -19,18 +19,17 @@ http_interactions:
       Content-Length:
       - '142'
       X-Mailchimp-Api-Error-Code:
-      - "-1<XPC_SERVICE_NAME><XPC_SERVICE_NAME>"
+      - "-100"
       Date:
-      - Mon, 24 Oct 2<XPC_SERVICE_NAME>16 <XPC_SERVICE_NAME>8:<XPC_SERVICE_NAME>8:47
-        GMT
+      - Mon, 24 Oct 2016 09:33:00 GMT
       Connection:
       - close
       Set-Cookie:
       - _AVESTA_ENVIRONMENT=prod; path=/
     body:
       encoding: UTF-8
-      string: '{"status":"error","code":-1<XPC_SERVICE_NAME><XPC_SERVICE_NAME>,"name":"ValidationError","error":"This
+      string: '{"status":"error","code":-100,"name":"ValidationError","error":"This
         email address looks fake or invalid. Please enter a real email address."}'
     http_version: 
-  recorded_at: Mon, 24 Oct 2016 08:08:47 GMT
+  recorded_at: Mon, 24 Oct 2016 09:32:59 GMT
 recorded_with: VCR 2.9.3
