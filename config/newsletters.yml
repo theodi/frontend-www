@@ -1,31 +1,15 @@
 development:
   -
-    id: "a1c4b47c3a"
+    id: "3089417f22"
     name: "ODI Newsletter"
     help: "News from the ODI"
-  -
-    id: "55b8ea4d35"
-    name: "ODI Robot"
-    help: "Interesting links shared by our team"
 production:
   -
     id: "380ec5286f"
     name: "ODI Newsletter"
     help: "News from the ODI"
-  -
-    id: "19a76767af"
-    name: "Learning and Training (Monthly)"
-    help: "News on training courses and Friday Lunchtime Lectures"
-  -
-    id: "ec52052e88"
-    name: "ODI Robot (Daily)"
-    help: "Interesting links shared by our team"
 test:
   -
-    id: "a1c4b47c3a"
+    id: "3089417f22"
     name: "ODI Newsletter"
     help: "News from the ODI"
-  -
-    id: "55b8ea4d35"
-    name: "ODI Robot (Daily)"
-    help: "Interesting links shared by our team"
