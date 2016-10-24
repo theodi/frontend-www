@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://us8.<PANOPTICON_USER>.mailchimp.com/2.0/lists/subscribe
+    uri: https://us6.api.mailchimp.com/2.0/lists/subscribe
     body:
-      encoding: US-ASCII
-      string: ! '{"<PANOPTICON_USER>key":"<MAILCHIMP_API_KEY>","id":"a1c4b47c3a","email":{"email":"notarealemail@example.com"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"},"email_type":"HTML"}'
+      encoding: UTF-8
+      string: '{"apikey":"<MAILCHIMP_API_KEY>","id":"3089417f22","email":{"email":"notarealemail@example.com"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"}}'
     headers: {}
   response:
     status:
@@ -13,25 +13,23 @@ http_interactions:
       message: Internal Server Error
     headers:
       Server:
-      - nginx
+      - openresty
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '141'
+      - '142'
       X-Mailchimp-Api-Error-Code:
-      - '-100'
+      - "-100"
       Date:
-      - Fri, 11 Apr 2014 11:56:04 GMT
+      - Mon, 24 Oct 2016 09:33:00 GMT
       Connection:
       - close
       Set-Cookie:
       - _AVESTA_ENVIRONMENT=prod; path=/
-      X-N:
-      - S
     body:
-      encoding: US-ASCII
-      string: ! '{"status":"error","code":-100,"name":"ValidationError","error":"This
-        email address looks fake or invalid. Please enter a real email address"}'
+      encoding: UTF-8
+      string: '{"status":"error","code":-100,"name":"ValidationError","error":"This
+        email address looks fake or invalid. Please enter a real email address."}'
     http_version: 
-  recorded_at: Fri, 11 Apr 2014 11:56:07 GMT
-recorded_with: VCR 2.9.0
+  recorded_at: Mon, 24 Oct 2016 09:32:59 GMT
+recorded_with: VCR 2.9.3

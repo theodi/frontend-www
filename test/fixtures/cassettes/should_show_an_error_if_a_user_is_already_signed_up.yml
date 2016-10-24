@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://us8.<PANOPTICON_USER>.mailchimp.com/2.0/lists/subscribe
+    uri: https://us6.api.mailchimp.com/2.0/lists/subscribe
     body:
-      encoding: US-ASCII
-      string: ! '{"<PANOPTICON_USER>key":"<MAILCHIMP_API_KEY>","id":"a1c4b47c3a","email":{"email":"stuart.harrison@the<CONTENTAPI_DEFAULT_ROLE>.org"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"},"email_type":"HTML"}'
+      encoding: UTF-8
+      string: '{"apikey":"<MAILCHIMP_API_KEY>","id":"3089417f22","email":{"email":"pezholio+fefsfdsfdsfsdfdsff@gmail.com"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"}}'
     headers: {}
   response:
     status:
@@ -13,56 +13,23 @@ http_interactions:
       message: Internal Server Error
     headers:
       Server:
-      - nginx
+      - openresty
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '179'
+      - '144'
       X-Mailchimp-Api-Error-Code:
       - '214'
       Date:
-      - Fri, 11 Apr 2014 11:34:55 GMT
+      - Mon, 24 Oct 2016 09:33:00 GMT
       Connection:
       - close
       Set-Cookie:
       - _AVESTA_ENVIRONMENT=prod; path=/
     body:
-      encoding: US-ASCII
-      string: ! '{"status":"error","code":214,"name":"List_AlreadySubscribed","error":"stuart.harrison@the<CONTENTAPI_DEFAULT_ROLE>.org
-        is already subscribed to list This is a list. Click here to update your profile."}'
+      encoding: UTF-8
+      string: '{"status":"error","code":214,"name":"List_AlreadySubscribed","error":"pezholio+fefsfdsfdsfsdfdsff@gmail.com
+        is already subscribed to the list."}'
     http_version: 
-  recorded_at: Fri, 11 Apr 2014 11:34:58 GMT
-- request:
-    method: post
-    uri: https://us8.<PANOPTICON_USER>.mailchimp.com/2.0/lists/subscribe
-    body:
-      encoding: US-ASCII
-      string: ! '{"<PANOPTICON_USER>key":"<MAILCHIMP_API_KEY>","id":"55b8ea4d35","email":{"email":"stuart.harrison@the<CONTENTAPI_DEFAULT_ROLE>.org"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"},"email_type":"HTML"}'
-    headers: {}
-  response:
-    status:
-      code: 500
-      message: Internal Server Error
-    headers:
-      Server:
-      - nginx
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '185'
-      X-Mailchimp-Api-Error-Code:
-      - '214'
-      Date:
-      - Fri, 11 Apr 2014 11:34:55 GMT
-      Connection:
-      - close
-      Set-Cookie:
-      - _AVESTA_ENVIRONMENT=prod; path=/
-    body:
-      encoding: US-ASCII
-      string: ! '{"status":"error","code":214,"name":"List_AlreadySubscribed","error":"stuart.harrison@the<CONTENTAPI_DEFAULT_ROLE>.org
-        is already subscribed to list This is another list. Click here to update your
-        profile."}'
-    http_version: 
-  recorded_at: Fri, 11 Apr 2014 11:34:58 GMT
-recorded_with: VCR 2.9.0
+  recorded_at: Mon, 24 Oct 2016 09:32:59 GMT
+recorded_with: VCR 2.9.3
