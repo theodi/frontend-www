@@ -28,7 +28,7 @@ class NewslettersControllerTest < ActionController::TestCase
 
       assert_response :ok
 
-      assert_match /You have been sucessfully subscribed/, response.body
+      assert_match /You have been successfully subscribed/, response.body
     end
   end
 
