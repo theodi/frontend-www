@@ -32,6 +32,9 @@
     },
     "RAILS_ENV": {
       "required": true
+    },
+    "MAILCHIMP_API_KEY": {
+      "required": true
     }
   },
   "formation": {},
