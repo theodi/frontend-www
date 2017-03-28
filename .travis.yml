@@ -3,12 +3,6 @@ sudo: false
 cache: bundler
 rvm:
 - 1.9.3
-after_success:
-- '[ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && curl
-  -v -X DELETE -u $GITHUB_USER:$GITHUB_PASSWORD "https://api.github.com/repos/$TRAVIS_REPO_SLUG/git/refs/tags/CURRENT"'
-- '[ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && curl
-  -v -X POST -d ''{"ref":"refs/tags/CURRENT","sha":"''$TRAVIS_COMMIT''"}''  --header
-  "Content-Type:application/json" -u $GITHUB_USER:$GITHUB_PASSWORD "https://api.github.com/repos/$TRAVIS_REPO_SLUG/git/refs"'
 branches:
   except:
   - CURRENT
@@ -22,25 +16,8 @@ notifications:
     on_failure: always
 env:
   global:
-  - secure: LXSYmKFc/Tudwt4vpUJ1QGCzTNnjE/lqBhVw7nqaPbl/NIDuySQlyIbBn+/NoWjLBjLlpTqZT+lC+fpGbD+mZISXpA2V3z8DYn6zkFTg1a3wjEp9gOMxrfoRdJqulMACa1emTY+mr9+z/339d4f1UoH4ecWbo03wmCwO8MCb9P4=
-  - secure: HctKB7l2HdBf7ZlUNBc5NQ72TvqbnemwACGg6XHan3Kr7uWq1TyF2TKtGW2DTBLH10MVPoRG2MPgF6fBboL3E3xVy3gQZqPzvhuGbmUEjBpT8FXJBEKtJ89VTati/xOrMHIOuSIEKpKohmzpw6QxAEvW2N88zXWzRZMHKUXCEfk=
-  - secure: aP1A+6dol4UrCylux4PNL+qhBNHr0L3e8uok57c2ZBa19pOY6cYHFuh5v7Ha2DCP4AGtrUjikUhCHRe5Q0v2uTaock1tTYgX3+zEC78pbqlgVou977c4bXKk1HkDC6S9Q9+7yyLsQVDaDmxv+Bn/o9IAAtQeHaEI+0KuuI+Jrm4=
-  - secure: W3pRz0ZhBoonrW6CTb6Gzug4f8tjeyaaYd0M2XgRunE/rE1d7MITyZnpcOfA3W2bieZS/ITfFzZ8H2mdsibC1ohl96Y7E+D++I3KirN3wmoAUtT7mjRqTBIS2ijVEhINSJS7A6Uw/vv53ocSVRazcGheb2kIb7nU2djtdXzFFNw=
-  - secure: R44Z8XuBfWysz5wgXw0wA+NI2HN+xs2YKIJMBL2L5xRdxY627V1xtRElchWYhirUvv91pZp9LoAqNTy2VgjReQdPn1YoQ5u0yWj82Y9f8IZtYaBnnXUruGN6ukLvxXa7qvD9wL2TDrnMwV/xVUpOYTzGYMB857u+++Ub8KwAXzg=
-  - secure: is7BN5kr3qORB0Kx1HaTiUQROSXrsy0rTPVqUamERbVYi63NIsy5I9jhQfGD08Rbjq/yR8V7PUlOoplQARbAAwiEM/j+pij5rUMKgI+tGL9favzdlZTE4f3i1LFO8mmXxXogvtB5NpudcNt745FM6iGhd5/eh3iHrAhwSp18ynM=
-  - secure: Vuq1f5tYzE/aK42JzSm3SlCiAVqNaDjfnbKRwlQ2j/xhQgwCN8RINue1zjgfuoV1bp+l806B+QOi/4oouy8sj7l3AAW5dCSR0RHo1uEpjzu+MohU5uhbbFS9Ys+XSbYWxumCZoMWOjDfmEh7PcLA9faO5trRBXfTmdqpGmQtng4=
-  - secure: WnNpD0SuRxtEyw8qh2Wcbj3+BhWDqS3Yfxkyvit/Gqkj0WdLeD6DOdxGMOja03lPeWdSPbGntIA07AYVK7PjoeXRvsqKmlrJ4DlZBOMYU2lw31eCndyyjiz11/uqbQjqzSR1Gziat6yy0Na8J5jtmw+Y8+lKYGIH+UDvaVbKwMs=
-  - secure: Fj0VfCu+IJJOPQmJfuo7X0npNvbO8VnnDNoLk3jCkx+Xr7B2Fz08AJst9YUyukSoFlneMytZw32f+3Z4Ik9ScJKXnrlX+yc58Hn16hUCD7sb1ehi4or8Fe3PGQZ4YLg3QMgb6uuVeImoLgzIk4/vy4wFYwgkG2e6qR9PCrZP0Mk=
-  - secure: FdqItmbtydGkjBYvdIOpbneXDu2Kn6jIoA5xbqSGZErEJ2zEeKY2UWl0h8hTuqCBHTNoaqpKK2VfgX49yMSJPotr3whdptOY0yb58sL08CNtV4heZdo/a8Of4lq0lUm5Fe+mPGxT/pW79LDvfBaSF4S3G3OwybqttCetfjH4hH8=
-  - secure: FpFTuP3YRHLBJVo1xdt5mTQ17njR/cQW5FoQ1/ey/i9zlbzFpZTLd9eV6Pl0Qf6bu9VtkXgDupTo0a9BR3QmUGS6KwATzCnQjgGci5WJ4XkubuOzGRp5VcCbUcsQ24RX56kZeKL6DHEabq0+h8P5hOE413Y5IJuy1zFQPVRwVv8=
-  - secure: ez+0Urem5BmZOskASHI1I6cAIxRcv5oLNufD5B+fZmJ+XZ5BMpxXOtHt1CP6UivoC91dOCrxPBonTEO7vwLGl6D/Hxefc448BmLhd2BLoskTD+f0plj26u+7iRxbJRy45j0BmyJCfsesTsMnHN5HTwN/kNveAZO+mJVcsUhQLyU=
-  - secure: Chp9bDuPXStiIkU4PLVLeaThDSRDEcjQMYWKFVQG0ZH7dcCLxabw9w2Hf8X4jxh4M79xUHt0N4n/dZurVHCZkCjtLcbJKRmOzM8DoJVDHj+7CF0c+OxJa2TNK/YqwByO9QY//pwJSSFO82TDoAekZ3rk3Xo4LH3WhrqDBuAWJSM=
-  - secure: mO5nYZqsuYik8UEH01TFoJTg4oOuAhGGWI7qICPNW1/mWi0iBBu1cr4zUeVJhOzoDG6WytXAmu7oGUUA18KQuil9b7yDQ16XmgLTdsciVhvY4pBHq74s8AuuQ4dTl5CgAToP51aEovUxZ5r+4h0NmGqHsu1+CtbUjDIrgvige8k=
-  - secure: faWeWCL3FUQdjThMXOH9YADp2F490Hk3G5HX2IqIqHxi8kOEAdNUU9YEcE+gkOyO2Drf8XNYC9lCjR8MZwp9FC0J4LpT935c93igjxHznD7lQlWueAVWppXy5DQ85P65XIqholFYT48D7OSRWHLiL29x/+d3o8nDS/ubk4+yrBE=
-  - secure: ImDmjUr98xJbu8k6I7LBXR7DPhtlcrQOxZYMsHjqV/E4czftHe9nJI/Ud2MrSwGyfHVPkoqfVux3fKIvy11TgKYwN95q7JPx3O2rDUODm/TFT7P649AyBRpgtTxOiyME3Y8IG69Dj0bypX02TEXs/lTzAO1XimeXtQoOaV+IZ/0=
-  - secure: QlWNnss3eZAsjPrBt6rQ7SGpzeo690MUviZ4maE+dlY1U3klUoozlzaCyqNc9aSrneZvSOal+uHz5F1HKA8Dya1oAeLGD7EFz3e26xO2Xv+lCsg0flhuLQmaIK6RBFa82C6sVP3dmMYvTCAC7SMKLrzT+3sQ0E5vVCaDq1fJ90E=
-  - secure: eqYfvvLQt6YU9TtX4QJi7tszo6VycSNlouzSFHN1cZm5zVZkC31oVavez+uZSy5JDdZF4VHyjY7lbI2bMVokwZr2ltgRPW56ZQhrGpIDul/yz1HO//m4swfroDHgFeL/DSLYT71zLKiZW/uV62sX7iFuuFyWbxDZ1w7JJdPY78U=
-  - secure: g0OAxotHmMOxcMVCNkJ1Wnp9nOT/04KXNptNh5gvPAcGEInLUat8oKDqRIzjq39CTW+gG6FRyOUNL7LDG1PwUNpGEysOmmxU2DxBKK/53qi6++hXe4Suhbfkw9/3CM3B+O3cffBPmzfpm+w5RWLNKp3ynnkvns7slwpflmEmREI=
-  - secure: CkNWrhQkS6tzKen3ldRPEjNk1y0is1FMT5bD2+YbVjyFnzB71JXpd9I9b4YYrq67kmy4mS0NgcIJoaemuEGgYy/sNhmcIYok6iLxtlYXNshbKEDM9xAjlDw4t3sd5bVYhFO8k62ttSGKigC572N9Asg2FU1MXh2xmlShnlQ0x9M=
-  - secure: U6qV2Glm1Fdkeya1bfGFv7ScWTJb7mqnbyMEMtQZVSq0hmEloOsSpXuwZc2Lf9dEiH6APfFfui75D3q/AyyizU/ZgwFtstoGDqTdrS9+CENjOqf3Gz3JrfTrDetMjWg9/OZCdS9WMbLsWWf8uFbsL7WJEuBB+dOi5G5b9UqWIxo=
-  - secure: cPovsaglHlVWga/n2/Hj+yFwpCxKoSpEMPKEykmqBv6Ajur6yC7ZPC576rj3AXmmj9zHFxMOj0WJ56k77g6P3yujddlVKdeQGkpKDnygFlLA0cxckpB7GtB2rGHXriKlPr2N9usZECCd9jUCVlRISJQTaY2sKX7wasl9izvTAzg=
+  - GOVUK_APP_DOMAIN: dev
+  - DEV_DOMAIN: dev
+  - JUVIA_BASE_URL: https://juvia.example.com
+  - QUIRKAFLEEG_FRONTEND_JUVIA_SITE_KEY: abc123
+  - QUIRKAFLEEG_FRONTEND_SESSION_SECRET: abc123

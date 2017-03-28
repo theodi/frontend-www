@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-#ruby=ruby-1.9.3
-#ruby-gemset=www
+ruby "1.9.3"
 
 gem 'rails', '~> 3.2.14'
 gem 'dotenv-rails'
@@ -51,6 +50,7 @@ gem 'odlifier', github: 'theodi/odlifier'
 
 group :production do
   gem 'airbrake'
+  gem 'rails_12factor'
 end
 
 group :test do

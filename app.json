@@ -1,0 +1,44 @@
+{
+  "name": "odi-frontend",
+  "description": "",
+  "scripts": {},
+  "env": {
+    "GOVUK_APP_DOMAIN": {
+      "required": true
+    },
+    "JUVIA_BASE_URL": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "QUIRKAFLEEG_AIRBRAKE_KEY": {
+      "required": true
+    },
+    "QUIRKAFLEEG_FRONTEND_ANALYTICS_KEY": {
+      "required": true
+    },
+    "QUIRKAFLEEG_FRONTEND_JUVIA_SITE_KEY": {
+      "required": true
+    },
+    "QUIRKAFLEEG_FRONTEND_SESSION_SECRET": {
+      "required": true
+    },
+    "QUIRKAFLEEG_FRONTEND_CONTENTAPI_BEARER_TOKEN": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    }
+  },
+  "formation": {},
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
