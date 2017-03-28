@@ -15,7 +15,6 @@ gem 'rack-google-analytics'
 
 gem 'statsd-ruby', '1.0.0', :require => 'statsd'
 
-gem 'sqlite3'
 gem 'plek', '1.5.0'
 gem 'gds-api-adapters', :github => 'theodi/gds-api-adapters'
 gem 'slimmer', '~> 8.4.0'
@@ -62,6 +61,10 @@ group :test do
   gem 'coveralls', :require => false
   gem 'vcr'
   gem 'rspec-rails'
+end
+
+group :development, :test do
+  gem 'sqlite3'
 end
 
 # To use ActiveModel has_secure_password
