@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.mailchimp.com/2.0/lists/subscribe
+    uri: https://us6.api.mailchimp.com/2.0/lists/subscribe
     body:
       encoding: UTF-8
       string: '{"apikey":"<MAILCHIMP_API_KEY>","id":"3089417f22","email":{"email":"tech@theodi.org"},"merge_vars":{"FNAME":"Testy","LNAME":"McTest"}}'
