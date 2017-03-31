@@ -605,7 +605,7 @@ class RootController < ApplicationController
   end
 
   def collect_events(tags, type)
-    artefacts = collect_artefacts(tags)
+    artefacts = collect_artefacts(tags, page: 1)
     if type == :previous
       artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) > Date.today}
       artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}.reverse!
@@ -617,10 +617,10 @@ class RootController < ApplicationController
     return artefacts
   end
 
-  def collect_artefacts(tags)
+  def collect_artefacts(tags, options = {})
     artefacts = []
     tags.each do |tag|
-      artefacts += content_api.with_tag(tag).results rescue []
+      artefacts += content_api.with_tag(tag, options).results rescue []
     end
     return artefacts
   end
