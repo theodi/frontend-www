@@ -6,7 +6,7 @@ gem 'rails', '~> 3.2.14'
 gem 'dotenv-rails'
 
 gem 'foreman', '< 0.65.0'
-gem 'thin'
+gem 'puma'
 
 gem 'rack-google-analytics'
 
