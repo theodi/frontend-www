@@ -103,7 +103,7 @@ class RootController < ApplicationController
   def events_list
     @section = 'events'
     @publication = fetch_article('events', params[:edition], "article") rescue nil
-    @artefacts = collect_events(['event'], :upcoming, summary: true, page: 1)
+    @artefacts = collect_events(['event'], :upcoming, summary: true, page: 1, sort: "date")
     @featured = @artefacts.reject{|x| !x.tag_ids.include?('featured') }
     @title = "Forthcoming events"
     @hero_image = false
@@ -144,7 +144,7 @@ class RootController < ApplicationController
 
   def previous_events
     @section = 'events'
-    @artefacts = collect_events(['event', 'course_instance'], :previous, summary: true, page: 1)
+    @artefacts = collect_events(['event', 'course_instance'], :previous, summary: true, page: 1, sort: "date")
     @featured = @artefacts.reject{|x| !x.tag_ids.include?('featured') }
     @title = "Previous Events"
     @hero_image = false
