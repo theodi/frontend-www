@@ -389,9 +389,9 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should get previous events page with old events" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&role=odi&tag=event").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&summary=true&role=odi&tag=event").
         to_return(:status => 200, :body => load_fixture('events.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=course_instance").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&summary=true&tag=course_instance&role=odi").
         to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
 
       get :previous_events, :section=>"events"
@@ -403,9 +403,9 @@ class RootControllerTest < ActionController::TestCase
 
     end
     test "should get featured events on previous events" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=event").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&summary=true&role=odi&tag=event").
         to_return(:status => 200, :body => load_fixture('events-with-featured.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=course_instance").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&summary=true&tag=course_instance&role=odi").
         to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
 
       get :previous_events, :section=>"events"
@@ -416,12 +416,9 @@ class RootControllerTest < ActionController::TestCase
 
     test "should get featured events on events page" do
       Timecop.freeze( Time.parse("2014-01-14T13:00:00+00:00") )
-
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=event").
+    
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&summary=true&tag=event&role=odi").
         to_return(:status => 200, :body => load_fixture('events-with-featured.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=course_instance").
-        to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
-
       get :events_list, :section=>"events"
 
       assert_match /Featured/, response.body
@@ -432,12 +429,10 @@ class RootControllerTest < ActionController::TestCase
 
     test "should get events page with forthcoming events" do
       Timecop.freeze( Time.parse("2014-01-14T13:00:00+00:00") )
-
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=event").
+    
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&summary=true&tag=event&role=odi").
         to_return(:status => 200, :body => load_fixture('events.json'), :headers => {})
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=course_instance").
-        to_return(:status => 200, :body => load_fixture('empty.json'), :headers => {})
-
+    
       get :events_list, :section=>"events"
 
       assert_match /Friday lunchtime lecture/, response.body

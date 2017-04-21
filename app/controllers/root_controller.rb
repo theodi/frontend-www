@@ -103,7 +103,7 @@ class RootController < ApplicationController
   def events_list
     @section = 'events'
     @publication = fetch_article('events', params[:edition], "article") rescue nil
-    @artefacts = collect_events(['event'], :upcoming)
+    @artefacts = collect_events(['event'], :upcoming, summary: true, page: 1)
     @featured = @artefacts.reject{|x| !x.tag_ids.include?('featured') }
     @title = "Forthcoming events"
     @hero_image = false
@@ -112,7 +112,7 @@ class RootController < ApplicationController
         render "list/events"
       end
       format.json do
-        redirect_to "#{api_domain}/with_tag.json?tag=events"
+        redirect_to "#{api_domain}/with_tag.json?tag=events&summary=true"
       end
       format.atom do
         render "list/feed", :layout => false
@@ -144,7 +144,7 @@ class RootController < ApplicationController
 
   def previous_events
     @section = 'events'
-    @artefacts = collect_events(['event', 'course_instance'], :previous)
+    @artefacts = collect_events(['event', 'course_instance'], :previous, summary: true, page: 1)
     @featured = @artefacts.reject{|x| !x.tag_ids.include?('featured') }
     @title = "Previous Events"
     @hero_image = false
@@ -604,8 +604,8 @@ class RootController < ApplicationController
     PublicationPresenter.new(artefact)
   end
 
-  def collect_events(tags, type)
-    artefacts = collect_artefacts(tags)
+  def collect_events(tags, type, options = {})
+    artefacts = collect_artefacts(tags, options)
     if type == :previous
       artefacts.reject!{|x| Date.parse(x.details.start_date || x.details.date) > Date.today}
       artefacts.sort_by!{|x| Date.parse(x.details.start_date || x.details.date)}.reverse!
@@ -617,10 +617,10 @@ class RootController < ApplicationController
     return artefacts
   end
 
-  def collect_artefacts(tags)
+  def collect_artefacts(tags, options = {})
     artefacts = []
     tags.each do |tag|
-      artefacts += content_api.with_tag(tag).results rescue []
+      artefacts += content_api.with_tag(tag, options).results rescue []
     end
     return artefacts
   end
