@@ -540,6 +540,8 @@ class RootController < ApplicationController
 
   def news_artefacts(options = {})
     options["sort"] = "date"
+    options["page"] ||= 1
+    options["summary"] = true unless options["whole_body"]
     artefacts = content_api.with_tag('news,blog', options)
     artefacts
   end
