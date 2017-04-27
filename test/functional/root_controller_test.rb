@@ -321,7 +321,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "Blog should list blog posts in date order" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&summary=true&tag=blog").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&summary=true&tag=blog").
         to_return(:status => 200, :body => load_fixture('blog-list.json'), :headers => {})
 
       get :blog_list, :section=>"blog"
@@ -469,7 +469,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should only have node news on the node news page" do
-      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&node=all&role=odi&summary=true&tag=news,blog').
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&node=all&page=1&role=odi&sort=date&summary=true&tag=news,blog').
         to_return(:status => 200, :body => load_fixture('news-page-with-nodes.json'), :headers => {})
 
       get :node_news_list
