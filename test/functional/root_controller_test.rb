@@ -321,7 +321,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "Blog should list blog posts in date order" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&tag=blog").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&summary=true&tag=blog").
         to_return(:status => 200, :body => load_fixture('blog-list.json'), :headers => {})
 
       get :blog_list, :section=>"blog"
@@ -443,7 +443,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should show 30 results on news page" do
-      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&tag=news,blog').
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&summary=true&tag=news,blog').
         to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {})
 
       get :news_list, :section => 'news'
@@ -453,7 +453,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should have a 'next page' link when there are more pages" do
-      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&tag=news,blog').
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&summary=true&tag=news,blog').
         to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {:link => '<http://contentapi.dev/with_tag.json?include_children=1&page=2&role=odi&sort=date&tag=news,blog>;rel="next"' })
 
       get :news_list, :section => 'news'
@@ -461,7 +461,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should not have a 'previous page' link when we are on the first page" do
-      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&tag=news,blog').
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&page=1&role=odi&sort=date&summary=true&tag=news,blog').
         to_return(:status => 200, :body => load_fixture('news-page.json'), :headers => {})
 
       get :news_list, :section => 'news'
@@ -469,7 +469,7 @@ class RootControllerTest < ActionController::TestCase
     end
 
     test "should only have node news on the node news page" do
-      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&node=all&role=odi&tag=news,blog').
+      stub_request(:get, 'http://contentapi.dev/with_tag.json?include_children=1&node=all&role=odi&summary=true&tag=news,blog').
         to_return(:status => 200, :body => load_fixture('news-page-with-nodes.json'), :headers => {})
 
       get :node_news_list
