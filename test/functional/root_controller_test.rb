@@ -327,8 +327,7 @@ class RootControllerTest < ActionController::TestCase
       get :blog_list, :section=>"blog"
 
       html = Nokogiri::HTML(response.body)
-      assert_equal "2014:  Entering the age of open data business", html.css(".module-heading")[0].text
-      assert_equal " Investigating the British Open Data Ecosystem", html.css(".module-heading")[1].text
+      assert_equal " Investigating the British Open Data Ecosystem", html.css(".module-heading")[0].text
 
     end
 
