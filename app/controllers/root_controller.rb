@@ -447,11 +447,11 @@ class RootController < ApplicationController
   end
 
   def blog_list
-    options = {}
+    options = {tag: "blog"}
     if params[:format] == "atom"
       options["whole_body"] = true
     end
-    @artefacts = content_api.with_tag('blog', options).results.sort_by{|x| x.created_at}.reverse
+    @artefacts = news_artefacts(options)
     list(params)
   end
 
@@ -470,11 +470,11 @@ class RootController < ApplicationController
 
   def node_news_list
     params[:section] = "news"
-    options = {}
+    options = {node: "all"}
     if params[:format] == "atom"
       options["whole_body"] = true
     end
-    @artefacts = content_api.with_tag('news,blog', {node: "all"}).results.sort_by{|x| x.created_at}.reverse
+    @artefacts = news_artefacts(options)
     @title = "Node news"
     list(params)
   end
@@ -542,7 +542,8 @@ class RootController < ApplicationController
     options["sort"] = "date"
     options["page"] ||= 1
     options["summary"] = true unless options["whole_body"]
-    artefacts = content_api.with_tag('news,blog', options)
+    tag = options.delete(:tag) || "news,blog"
+    artefacts = content_api.with_tag(tag, options)
     artefacts
   end
 
