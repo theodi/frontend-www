@@ -172,6 +172,12 @@ module ApplicationHelper
     publication.description.gsub(/^.+\[speakers\].+$/, summit_speakers(speakers)).html_safe
   end
 
+  def parse_to_local_time(string)
+    tz = TZInfo::Timezone.get("Europe/London");
+    tz.utc_to_local(DateTime.parse(@publication.start_date));
+  end
+
+
   private
 
   def set_og_description content

@@ -1,5 +1,5 @@
 <h2><%= publication.title %></h2>
-<h3><%= date_range DateTime.parse(publication.start_date), DateTime.parse(publication.end_date) %></h3>
+<h3><%= date_range parse_to_local_time(publication.start_date), parse_to_local_time(publication.end_date) %></h3>
 
 <p><%= publication.location %></p>
 <%= publication.description.html_safe %>
