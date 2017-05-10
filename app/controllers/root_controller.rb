@@ -318,9 +318,10 @@ class RootController < ApplicationController
     @courses = {}
     @courses[params[:slug]] = fetch_article(params[:slug], params[:edition], "courses")
     @publication = @courses[params[:slug]]
-    @instances = content_api.sorted_by('course_instance', 'date').results.delete_if {
-                  |course| course.details.course != params[:slug] || DateTime.parse(course.details.date) < Time.now }
-    @instances.sort_by! { |instance| instance.details.date }
+    @instances = collect_events(['event', 'course_instance'], :upcoming, summary: true, page: 1, sort: "date")
+#    @instances = content_api.sorted_by('course_instance', 'date').results.delete_if {
+#                  |course| course.details.course != params[:slug] || DateTime.parse(course.details.date) < Time.now }
+#    @instances.sort_by! { |instance| instance.details.date }
     @section = 'courses'
 
     respond_to do |format|
