@@ -115,7 +115,7 @@ class RootControllerTest < ActionController::TestCase
   end
 
   test "courses should have an atom feed" do
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&tag=course_instance").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&page=1&summary=true&sort=date&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('course-instances.json'), :headers => {})
 
       stub_request(:get, "http://contentapi.dev/open-data-marketers.json?role=odi").
@@ -131,7 +131,7 @@ class RootControllerTest < ActionController::TestCase
 
     test "courses atom feed should return the correct stuff" do
       Timecop.freeze(Time.parse("2013-12-22T13:00:00+00:00"))
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&tag=course_instance").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&page=1&summary=true&sort=date&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('course-instances.json'), :headers => {})
 
       stub_request(:get, "http://contentapi.dev/introduction-open-data-journalists-finding-stories-data.json?role=odi").
@@ -151,7 +151,7 @@ class RootControllerTest < ActionController::TestCase
     test "courses list atom feed should return the correct stuff" do
       Timecop.freeze(Time.parse("2014-02-14T13:00:00+00:00"))
 
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&tag=course_instance").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&page=1&summary=true&sort=date&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('course-instances-short.json'), :headers => {})
 
       stub_request(:get, "http://contentapi.dev/open-data-practice.json?role=odi").
@@ -170,7 +170,7 @@ class RootControllerTest < ActionController::TestCase
 
     test "courses should include instances in a sidebar" do
       Timecop.freeze(Time.parse("2013-12-22T13:00:00+00:00"))
-      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&sort=date&tag=course_instance").
+      stub_request(:get, "http://contentapi.dev/with_tag.json?include_children=1&role=odi&page=1&summary=true&sort=date&tag=course_instance").
         to_return(:status => 200, :body => load_fixture('course-instances.json'), :headers => {})
 
       stub_request(:get, "http://contentapi.dev/introduction-open-data-journalists-finding-stories-data.json?role=odi").
