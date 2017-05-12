@@ -12,7 +12,10 @@
     "LANG": {
       "required": true
     },
-    "QUIRKAFLEEG_AIRBRAKE_KEY": {
+    "AIRBRAKE_PROJECT_ID": {
+      "required": true
+    },
+    "AIRBRAKE_API_KEY": {
       "required": true
     },
     "QUIRKAFLEEG_FRONTEND_ANALYTICS_KEY": {

@@ -63,9 +63,9 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.3.8)
-    airbrake (4.3.0)
-      builder
-      multi_json
+    airbrake (5.6.1)
+      airbrake-ruby (~> 1.6)
+    airbrake-ruby (1.6.0)
     arel (3.0.3)
     badgerbadgerbadger (0.13.0)
       git (~> 1.2)
