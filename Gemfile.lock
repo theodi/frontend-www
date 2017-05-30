@@ -101,9 +101,8 @@ GEM
     execjs (2.6.0)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
-    foreman (0.64.0)
-      dotenv (~> 0.7.0)
-      thor (>= 0.13.6)
+    foreman (0.83.0)
+      thor (~> 0.19.1)
     gibbon (1.2.1)
       httparty
       multi_json (>= 1.9.0)
@@ -229,7 +228,7 @@ GEM
     statsd-ruby (1.0.0)
     term-ansicolor (1.3.2)
       tins (~> 1.0)
-    thor (0.19.1)
+    thor (0.19.4)
     tilt (1.4.1)
     timecop (0.8.0)
     tins (1.6.0)
@@ -259,7 +258,7 @@ DEPENDENCIES
   coveralls
   dotenv-rails
   font-awesome-rails
-  foreman (< 0.65.0)
+  foreman (< 0.84.0)
   gds-api-adapters!
   gibbon (~> 1.2.1)
   jbuilder
