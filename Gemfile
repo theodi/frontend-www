@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby "1.9.3"
 
 gem 'rake', '< 11.0'
-gem 'rails', '~> 3.2.14'
+gem 'rails', '~> 3.2.22'
 gem 'dotenv-rails'
 
 gem 'foreman', '< 0.65.0'
