@@ -14,7 +14,7 @@ gem 'rack-google-analytics'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'statsd-ruby', '1.0.0', :require => 'statsd'
+gem 'statsd-ruby', '1.4.0', :require => 'statsd'
 
 gem 'plek', '1.5.0'
 gem 'gds-api-adapters', :github => 'theodi/gds-api-adapters'
