@@ -98,7 +98,7 @@ GEM
     dotenv-rails (0.7.0)
       dotenv (= 0.7.0)
     erubis (2.7.0)
-    execjs (2.6.0)
+    execjs (2.7.0)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
     foreman (0.83.0)
@@ -236,9 +236,8 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.53)
-    uglifier (2.7.1)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
+    uglifier (3.2.0)
+      execjs (>= 0.3.0, < 3)
     utf8-cleaner (0.2.5)
       activesupport
     vcr (2.9.3)
@@ -282,7 +281,7 @@ DEPENDENCIES
   sqlite3
   statsd-ruby (= 1.4.0)
   timecop
-  uglifier (>= 1.0.3)
+  uglifier (>= 3.2.0)
   utf8-cleaner
   vcr
   webmock
