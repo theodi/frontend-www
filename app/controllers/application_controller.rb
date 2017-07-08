@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
     def error_503(e); error(503, e); end
 
     def error(status_code, exception = nil)
-      if exception && ENV['QUIRKAFLEEG_AIRBRAKE_KEY']
+      if exception && ENV['AIRBRAKE_API_KEY']
         notify_airbrake(exception)
       end
       respond_to do |format|
