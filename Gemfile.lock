@@ -1,13 +1,15 @@
 GIT
-  remote: git://github.com/theodi/alternate-rails.git
+  remote: https://github.com/theodi/alternate-rails.git
   revision: 83a5b8b73655283b2d9729eeae848488881eecc4
+  ref: 83a5b8b73655283b2d9729eeae848488881eecc4
   specs:
     alternate_rails (0.0.2)
       rails (>= 3.2.13)
 
 GIT
-  remote: git://github.com/theodi/gds-api-adapters.git
+  remote: https://github.com/theodi/gds-api-adapters.git
   revision: d1c4ce05b00dc71712b93502c7df43362ca9671e
+  ref: d1c4ce05b00dc71712b93502c7df43362ca9671e
   specs:
     gds-api-adapters (7.25.0)
       activesupport
@@ -18,15 +20,17 @@ GIT
       rest-client (~> 1.6.3)
 
 GIT
-  remote: git://github.com/theodi/juvia_rails.git
+  remote: https://github.com/theodi/juvia_rails.git
   revision: 0e6dd7d597f10ad9174fb0c08de635a5f0063777
+  ref: 0e6dd7d597f10ad9174fb0c08de635a5f0063777
   specs:
     juvia_rails (0.0.1)
       rails (~> 3.2.1)
 
 GIT
-  remote: git://github.com/theodi/odlifier.git
+  remote: https://github.com/theodi/odlifier.git
   revision: b3940e0cda805ccb502b5a87d0a3bbfdc93ed032
+  ref: b3940e0cda805ccb502b5a87d0a3bbfdc93ed032
   specs:
     odlifier (0.1.1)
       httparty

@@ -17,11 +17,11 @@ gem 'rack-google-analytics'
 gem 'statsd-ruby', '1.4.0', :require => 'statsd'
 
 gem 'plek', '2.0.0'
-gem 'gds-api-adapters', :github => 'theodi/gds-api-adapters'
+gem 'gds-api-adapters', git: 'https://github.com/theodi/gds-api-adapters.git', ref: "d1c4ce05b00dc71712b93502c7df43362ca9671e"
 gem 'slimmer', '~> 8.4.0'
 
-gem 'juvia_rails', github: 'theodi/juvia_rails'
-gem 'alternate_rails', github: 'theodi/alternate-rails'
+gem 'juvia_rails', git: 'https://github.com/theodi/juvia_rails.git', ref: "0e6dd7d597f10ad9174fb0c08de635a5f0063777"
+gem 'alternate_rails', git: 'https://github.com/theodi/alternate-rails.git', ref: "83a5b8b73655283b2d9729eeae848488881eecc4"
 
 gem 'countries'
 
@@ -46,7 +46,7 @@ group :assets do
   gem 'uglifier', '>= 3.2.0'
 end
 
-gem 'odlifier', github: 'theodi/odlifier'
+gem 'odlifier', git: 'https://github.com/theodi/odlifier.git', ref: "b3940e0cda805ccb502b5a87d0a3bbfdc93ed032"
 
 group :production do
   gem 'airbrake'
