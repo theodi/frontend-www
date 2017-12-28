@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
-gem 'rake', '< 12.0'
+gem 'rake', '< 13.0'
 gem 'rails', '~> 3.2.22'
 gem 'dotenv-rails'
 
