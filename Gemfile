@@ -85,5 +85,5 @@ end
 
 gem "newrelic_rpm"
 gem "badgerbadgerbadger"
-gem "gibbon", "~> 1.2.1" # Pinned to 1.2.1, 2.0.0 requires Ruby >= 2.0.0
+gem "gibbon", "~> 3.2.0" # Pinned to 1.2.1, 2.0.0 requires Ruby >= 2.0.0
 gem 'metamagic'
