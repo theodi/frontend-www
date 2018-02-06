@@ -16,7 +16,7 @@ gem 'rack-google-analytics'
 
 gem 'statsd-ruby', '1.4.0', :require => 'statsd'
 
-gem 'plek', '2.0.0'
+gem 'plek', '2.1.1'
 gem 'gds-api-adapters', git: 'https://github.com/theodi/gds-api-adapters.git', ref: "d1c4ce05b00dc71712b93502c7df43362ca9671e"
 gem 'slimmer', '~> 8.4.0'
 
